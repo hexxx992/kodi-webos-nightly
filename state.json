@@ -9,5 +9,10 @@
   "originalVersionCode": "22.90.701",
   "sha256": "9091baff6111a741198fd0df4126d92ecfbd8f8e67861d55ce5140e342c82c19",
   "ipkSize": 100498934,
-  "assetUrl": "https://github.com/hexxx992/kodi-webos-nightly/releases/download/kodi-nightly/org.xbmc.kodi_23.26.275_arm.ipk"
+  "assetUrl": "https://github.com/hexxx992/kodi-webos-nightly/releases/download/kodi-nightly/org.xbmc.kodi_23.26.275_arm.ipk",
+  "feedVersion": "23.26.275",
+  "upstreamVersion": "22.90.701",
+  "commitCount": 51,
+  "metadataUpdatedLocal": "2026-10-04 02:53:41 PDT",
+  "metadataUpdatedUTC": "2026-10-04 09:53:41 UTC"
 }
