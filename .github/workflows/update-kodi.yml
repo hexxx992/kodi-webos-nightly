@@ -1,0 +1,154 @@
+name: Update Kodi webOS Nightly
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Find latest Kodi nightly and build repo.json
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          BASE="https://mirrors.kodi.tv/nightlies/webos/master"
+
+          HTML="$(curl -fsSL "$BASE/")"
+
+          FILE="$(
+            printf '%s' "$HTML" |
+            grep -oE 'org\.xbmc\.kodi_[0-9]{8}-[0-9a-f]+-master_arm\.ipk' |
+            sort -u |
+            sort -r |
+            head -n 1
+          )"
+
+          if [ -z "$FILE" ]; then
+            echo "Could not find Kodi webOS nightly"
+            exit 1
+          fi
+
+          URL="$BASE/$FILE"
+
+          echo "Latest nightly: $FILE"
+
+          TMP="$(mktemp -d)"
+          curl -fL "$URL" -o "$TMP/kodi.ipk"
+
+          HASH="$(sha256sum "$TMP/kodi.ipk" | awk '{print $1}')"
+          SIZE="$(stat -c%s "$TMP/kodi.ipk")"
+
+          CONTROL_ARCHIVE="$(
+            ar t "$TMP/kodi.ipk" |
+            grep '^control\.tar' |
+            head -n 1
+          )"
+
+          mkdir -p "$TMP/control"
+
+          ar p "$TMP/kodi.ipk" "$CONTROL_ARCHIVE" \
+            > "$TMP/$CONTROL_ARCHIVE"
+
+          tar -xf "$TMP/$CONTROL_ARCHIVE" \
+            -C "$TMP/control"
+
+          VERSION="$(
+            awk -F': ' '
+              /^Version:/ {
+                gsub(/\r/, "", $2)
+                print $2
+                exit
+              }
+            ' "$TMP/control/control"
+          )"
+
+          if [ -z "$VERSION" ]; then
+            echo "Could not determine package version"
+            exit 1
+          fi
+
+          echo "Kodi package version: $VERSION"
+
+          export FILE
+          export URL
+          export HASH
+          export SIZE
+          export VERSION
+
+          python3 <<'PY'
+          import json
+          import os
+
+          version = os.environ["VERSION"]
+          url = os.environ["URL"]
+          sha256 = os.environ["HASH"]
+          size = int(os.environ["SIZE"])
+
+          icon = (
+              "https://raw.githubusercontent.com/xbmc/xbmc/"
+              "master/tools/Linux/packaging/media/icon256x256.png"
+          )
+
+          repo = {
+              "paging": {
+                  "page": 1,
+                  "count": 1,
+                  "maxPage": 1,
+                  "itemsTotal": 1
+              },
+              "packages": [
+                  {
+                      "id": "org.xbmc.kodi",
+                      "title": "Kodi Nightly",
+                      "iconUri": icon,
+                      "manifest": {
+                          "id": "org.xbmc.kodi",
+                          "version": version,
+                          "type": "native",
+                          "title": "Kodi Nightly",
+                          "appDescription":
+                              "Official Kodi master nightly build for webOS",
+                          "iconUri": icon,
+                          "sourceUrl":
+                              "https://github.com/xbmc/xbmc",
+                          "rootRequired": False,
+                          "ipkUrl": url,
+                          "ipkHash": {
+                              "sha256": sha256
+                          },
+                          "ipkSize": size
+                      }
+                  }
+              ]
+          }
+
+          with open("repo.json", "w", encoding="utf-8") as f:
+              json.dump(repo, f, indent=2, ensure_ascii=False)
+              f.write("\n")
+          PY
+
+      - name: Commit updated repository
+        shell: bash
+        run: |
+          git config user.name "Kodi Nightly Bot"
+          git config user.email "actions@github.com"
+
+          git add repo.json
+
+          if git diff --cached --quiet; then
+            echo "No new Kodi nightly"
+            exit 0
+          fi
+
+          git commit -m "Update Kodi webOS nightly"
+          git push
