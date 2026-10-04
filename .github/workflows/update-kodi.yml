@@ -2,9 +2,7 @@ name: Update Kodi webOS Nightly
 
 on:
   workflow_dispatch:
-
   schedule:
-    # 每 6 小时检查一次
     - cron: "17 */6 * * *"
 
 permissions:
@@ -17,13 +15,7 @@ concurrency:
   group: kodi-nightly-update
   cancel-in-progress: false
 
-
 jobs:
-
-  # ==============================================================
-  # UPDATE KODI FEED
-  # ==============================================================
-
   update:
     runs-on: ubuntu-24.04
 
@@ -33,634 +25,331 @@ jobs:
     env:
       KODI_NIGHTLY_BASE: https://mirrors.kodi.tv/nightlies/webos/master
       KODI_GITHUB_REPO: xbmc/xbmc
-
       RELEASE_TAG: kodi-nightly
-
       PAGES_BASE: https://hexxx992.github.io/kodi-webos-nightly
 
-
     steps:
-
-      # ============================================================
-      # 1. Checkout
-      # ============================================================
-
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
-
-      # ============================================================
-      # 2. Detect latest official Kodi webOS Nightly
+      # ------------------------------------------------------------
+      # Detect the newest official webOS nightly.
       #
       # HARD RULE:
-      #
-      # NEW_COMMIT == OLD_COMMIT
-      # -> STOP
-      #
-      # 不重新打包
-      # 不更新时间
-      # 不改 repo.json
-      # 不部署 Pages
-      # ============================================================
-
+      # If NEW_COMMIT == OLD_COMMIT, stop here and change nothing.
+      # ------------------------------------------------------------
       - name: Detect latest Kodi nightly
         id: detect
         shell: bash
-
         run: |
           set -euo pipefail
 
-          echo "Fetching Kodi webOS nightly directory..."
+          python3 <<'PY'
+          import json
+          import os
+          import re
+          import urllib.request
+          from datetime import datetime, timezone
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
 
-          HTML="$(
-            curl -fsSL \
-              "${KODI_NIGHTLY_BASE}/"
-          )"
+          base = os.environ["KODI_NIGHTLY_BASE"].rstrip("/")
+          github_repo = os.environ["KODI_GITHUB_REPO"]
+          output_file = Path(os.environ["GITHUB_OUTPUT"])
 
+          def fetch_text(url, headers=None):
+              req = urllib.request.Request(
+                  url,
+                  headers=headers or {"User-Agent": "kodi-webos-nightly-feed"}
+              )
+              with urllib.request.urlopen(req, timeout=60) as response:
+                  return response.read().decode("utf-8", errors="replace")
 
-          mapfile -t FILES < <(
-            printf '%s' "$HTML" |
-            grep -oE \
-              'org\.xbmc\.kodi_[0-9]{8}-[0-9a-f]+-master_arm\.ipk' |
-            sort -u |
-            sort -r
+          # Ask the Kodi mirror to sort by modification time descending.
+          # This avoids choosing between two same-day builds by commit hash.
+          html = fetch_text(base + "/?C=M&O=D")
+
+          pattern = re.compile(
+              r"org\.xbmc\.kodi_(\d{8})-([0-9a-f]+)-master_arm\.ipk"
           )
 
-
-          if [ "${#FILES[@]}" -eq 0 ]; then
-            echo "ERROR: No Kodi webOS nightly found."
-            exit 1
-          fi
-
-
-          FILE="${FILES[0]}"
-
-
-          BUILD_DATE="$(
-            printf '%s' "$FILE" |
-            sed -E \
-              's/^org\.xbmc\.kodi_([0-9]{8})-.*/\1/'
-          )"
-
-
-          NEW_COMMIT="$(
-            printf '%s' "$FILE" |
-            sed -E \
-              's/^org\.xbmc\.kodi_[0-9]{8}-([0-9a-f]+)-master_arm\.ipk$/\1/'
-          )"
-
-
-          SOURCE_URL="${KODI_NIGHTLY_BASE}/${FILE}"
-
-
-          # ========================================================
-          # Read previous state
-          # ========================================================
-
-          OLD_COMMIT=""
-          OLD_FEED_VERSION=""
-
-
-          if [ -f state.json ]; then
-
-            OLD_COMMIT="$(
-              jq -r \
-                '.sourceCommit // empty' \
-                state.json
-            )"
-
-            OLD_FEED_VERSION="$(
-              jq -r \
-                '.feedVersion // empty' \
-                state.json
-            )"
-
-          fi
-
-
-          # 如果 state.json 没有版本，尝试从 repo.json 恢复
-          if [ -z "$OLD_FEED_VERSION" ] && \
-             [ -f repo.json ]; then
-
-            OLD_FEED_VERSION="$(
-              jq -r \
-                '.packages[0].manifest.version // empty' \
-                repo.json
-            )"
-
-          fi
-
-
-          # ========================================================
-          # SAME COMMIT = ABSOLUTELY NOTHING
-          # ========================================================
-
-          if [ -n "$OLD_COMMIT" ] && \
-             [ "$NEW_COMMIT" = "$OLD_COMMIT" ]; then
-
-            echo
-            echo "=============================================="
-            echo "Kodi commit has NOT changed."
-            echo
-            echo "Commit:"
-            echo "$NEW_COMMIT"
-            echo
-            echo "No update generated."
-            echo "No package rebuild."
-            echo "No metadata change."
-            echo "No Pages deployment."
-            echo "=============================================="
-
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-
-            exit 0
-
-          fi
-
-
-          # ========================================================
-          # Previous Nightly commit for changelog
-          # ========================================================
-
-          COMPARE_FROM=""
-
-
-          if [ -n "$OLD_COMMIT" ]; then
-
-            COMPARE_FROM="$OLD_COMMIT"
-
-          elif [ "${#FILES[@]}" -ge 2 ]; then
-
-            PREVIOUS_FILE="${FILES[1]}"
-
-            COMPARE_FROM="$(
-              printf '%s' "$PREVIOUS_FILE" |
-              sed -E \
-                's/^org\.xbmc\.kodi_[0-9]{8}-([0-9a-f]+)-master_arm\.ipk$/\1/'
-            )"
-
-          fi
-
-
-          # ========================================================
-          # Kodi upstream version information
-          # ========================================================
-
-          VERSION_TXT="$(
-            curl -fsSL \
-              "https://raw.githubusercontent.com/${KODI_GITHUB_REPO}/${NEW_COMMIT}/version.txt"
-          )"
-
-
-          KODI_MAJOR="$(
-            printf '%s\n' "$VERSION_TXT" |
-            awk '$1=="VERSION_MAJOR"{print $2}'
-          )"
-
-
-          KODI_MINOR="$(
-            printf '%s\n' "$VERSION_TXT" |
-            awk '$1=="VERSION_MINOR"{print $2}'
-          )"
-
-
-          KODI_TAG="$(
-            printf '%s\n' "$VERSION_TXT" |
-            awk '$1=="VERSION_TAG"{print $2}'
-          )"
-
-
-          UPSTREAM_VERSION="$(
-            printf '%s\n' "$VERSION_TXT" |
-            awk '$1=="VERSION_CODE"{print $2}'
-          )"
-
-
-          if [ -z "$KODI_MAJOR" ]; then
-
-            echo "ERROR: Unable to determine Kodi version."
-            exit 1
-
-          fi
-
-
-          if [ -n "$KODI_TAG" ]; then
-
-            DISPLAY_VERSION="${KODI_MAJOR}.${KODI_MINOR}-${KODI_TAG}"
-
-          else
-
-            DISPLAY_VERSION="${KODI_MAJOR}.${KODI_MINOR}"
-
-          fi
-
-
-          # ========================================================
-          # Homebrew version
-          #
-          # Format:
-          #
-          # 23.26.275
-          #
-          # Only a NEW COMMIT reaches this code.
-          #
-          # revision =
-          # max(
-          #     current day-of-year,
-          #     old revision + 1
-          # )
-          # ========================================================
-
-          YEAR="${BUILD_DATE:0:4}"
-          MONTH="${BUILD_DATE:4:2}"
-          DAY="${BUILD_DATE:6:2}"
-
-          YY="${YEAR:2:2}"
-
-
-          DAY_OF_YEAR="$(
-            date \
-              -d "${YEAR}-${MONTH}-${DAY}" \
-              +%j
-          )"
-
-
-          DAY_OF_YEAR="$((10#$DAY_OF_YEAR))"
-
-
-          if [ -z "$OLD_FEED_VERSION" ]; then
-
-            REVISION="$DAY_OF_YEAR"
-
-            FEED_VERSION="${KODI_MAJOR}.${YY}.${REVISION}"
-
-          else
-
-            OLD_MAJOR="$(
-              printf '%s' "$OLD_FEED_VERSION" |
-              awk -F. '{print $1}'
-            )"
-
-
-            OLD_YEAR="$(
-              printf '%s' "$OLD_FEED_VERSION" |
-              awk -F. '{print $2}'
-            )"
-
-
-            OLD_REVISION="$(
-              printf '%s' "$OLD_FEED_VERSION" |
-              awk -F. '{print $3}'
-            )"
-
-
-            if [ "$OLD_MAJOR" != "$KODI_MAJOR" ] || \
-               [ "$OLD_YEAR" != "$YY" ]; then
-
-              REVISION="$DAY_OF_YEAR"
-
-            else
-
-              if [[ "$OLD_REVISION" =~ ^[0-9]+$ ]]; then
-
-                NEXT_REVISION="$((OLD_REVISION + 1))"
-
-              else
-
-                NEXT_REVISION="$DAY_OF_YEAR"
-
-              fi
-
-
-              if [ "$DAY_OF_YEAR" -gt "$NEXT_REVISION" ]; then
-
-                REVISION="$DAY_OF_YEAR"
-
-              else
-
-                REVISION="$NEXT_REVISION"
-
-              fi
-
-            fi
-
-
-            FEED_VERSION="${KODI_MAJOR}.${YY}.${REVISION}"
-
-          fi
-
-
-          # ========================================================
-          # Update time
-          # ========================================================
-
-          UPDATED_UTC="$(
-            date -u \
-              '+%Y-%m-%d %H:%M:%S UTC'
-          )"
-
-
-          UPDATED_LOCAL="$(
-            TZ=America/Los_Angeles \
-            date \
-              '+%Y-%m-%d %H:%M:%S %Z'
-          )"
-
-
-          echo
-          echo "=============================================="
-          echo "NEW Kodi Nightly"
-          echo "=============================================="
-          echo "Kodi:             $DISPLAY_VERSION"
-          echo "Official version: $UPSTREAM_VERSION"
-          echo "Nightly:          $BUILD_DATE-$NEW_COMMIT"
-          echo "Previous commit:  $COMPARE_FROM"
-          echo "Homebrew version: $FEED_VERSION"
-          echo "Updated:          $UPDATED_LOCAL"
-          echo "=============================================="
-
-
-          {
-            echo "changed=true"
-            echo "file=$FILE"
-            echo "build_date=$BUILD_DATE"
-            echo "new_commit=$NEW_COMMIT"
-            echo "compare_from=$COMPARE_FROM"
-            echo "source_url=$SOURCE_URL"
-            echo "display_version=$DISPLAY_VERSION"
-            echo "upstream_version=$UPSTREAM_VERSION"
-            echo "feed_version=$FEED_VERSION"
-            echo "updated_local=$UPDATED_LOCAL"
-            echo "updated_utc=$UPDATED_UTC"
-          } >> "$GITHUB_OUTPUT"
-
-
-      # ============================================================
-      # 3. Install tools only when there is a NEW Kodi commit
-      # ============================================================
-
-      - name: Install required tools
+          files = []
+          seen = set()
+
+          for match in pattern.finditer(html):
+              filename = match.group(0)
+              if filename in seen:
+                  continue
+              seen.add(filename)
+              files.append(
+                  {
+                      "file": filename,
+                      "date": match.group(1),
+                      "commit": match.group(2),
+                  }
+              )
+
+          if not files:
+              raise SystemExit("ERROR: No Kodi webOS nightly found.")
+
+          latest = files[0]
+          filename = latest["file"]
+          build_date = latest["date"]
+          new_commit = latest["commit"]
+          source_url = f"{base}/{filename}"
+
+          state = {}
+          state_path = Path("state.json")
+          if state_path.exists():
+              try:
+                  state = json.loads(state_path.read_text(encoding="utf-8"))
+              except Exception as exc:
+                  raise SystemExit(f"ERROR: Cannot read state.json: {exc}")
+
+          old_commit = str(state.get("sourceCommit") or "").strip()
+          old_feed_version = str(
+              state.get("feedVersion")
+              or state.get("repoVersion")
+              or ""
+          ).strip()
+
+          # Recovery path if state.json is incomplete.
+          repo_path = Path("repo.json")
+          if repo_path.exists():
+              try:
+                  repo = json.loads(repo_path.read_text(encoding="utf-8"))
+                  package = repo["packages"][0]
+                  manifest = package["manifest"]
+
+                  if not old_feed_version:
+                      old_feed_version = str(
+                          manifest.get("version") or ""
+                      ).strip()
+
+                  if not old_commit:
+                      short_desc = str(
+                          package.get("shortDescription") or ""
+                      )
+                      m = re.search(
+                          r"\b\d{8}-([0-9a-f]{7,40})\b",
+                          short_desc
+                      )
+                      if m:
+                          old_commit = m.group(1)
+              except Exception:
+                  pass
+
+          # Strict rule requested by the user.
+          if old_commit and new_commit == old_commit:
+              print("Kodi commit has not changed.")
+              print(f"Current commit: {new_commit}")
+              print("No package rebuild.")
+              print("No metadata update.")
+              print("No Pages deployment.")
+              with output_file.open("a", encoding="utf-8") as f:
+                  f.write("changed=false\n")
+              raise SystemExit(0)
+
+          # Changelog start.
+          if old_commit:
+              compare_from = old_commit
+          elif len(files) >= 2:
+              compare_from = files[1]["commit"]
+          else:
+              compare_from = ""
+
+          # Kodi version.txt for this exact commit.
+          version_txt = fetch_text(
+              f"https://raw.githubusercontent.com/"
+              f"{github_repo}/{new_commit}/version.txt"
+          )
+
+          values = {}
+          for line in version_txt.splitlines():
+              parts = line.split()
+              if len(parts) >= 2 and parts[0].startswith("VERSION_"):
+                  values[parts[0]] = parts[1]
+
+          kodi_major = values.get("VERSION_MAJOR", "")
+          kodi_minor = values.get("VERSION_MINOR", "")
+          kodi_tag = values.get("VERSION_TAG", "")
+          upstream_version = values.get("VERSION_CODE", "")
+
+          if not kodi_major:
+              raise SystemExit("ERROR: Unable to determine Kodi major version.")
+
+          display_version = f"{kodi_major}.{kodi_minor}"
+          if kodi_tag:
+              display_version += f"-{kodi_tag}"
+
+          # Homebrew version: KodiMajor.YY.Revision
+          build_dt = datetime.strptime(build_date, "%Y%m%d")
+          yy = build_dt.strftime("%y")
+          day_of_year = int(build_dt.strftime("%j"))
+
+          if not old_feed_version:
+              revision = day_of_year
+          else:
+              parts = old_feed_version.split(".")
+              if (
+                  len(parts) == 3
+                  and parts[0].isdigit()
+                  and parts[1].isdigit()
+                  and parts[2].isdigit()
+              ):
+                  old_major, old_year, old_revision = parts
+                  if old_major != kodi_major or old_year != yy:
+                      revision = day_of_year
+                  else:
+                      revision = max(day_of_year, int(old_revision) + 1)
+              else:
+                  revision = day_of_year
+
+          feed_version = f"{kodi_major}.{yy}.{revision}"
+
+          now_utc = datetime.now(timezone.utc)
+          now_local = now_utc.astimezone(
+              ZoneInfo("America/Los_Angeles")
+          )
+
+          updated_utc = now_utc.strftime("%Y-%m-%d %H:%M:%S UTC")
+          updated_local = now_local.strftime("%Y-%m-%d %H:%M:%S %Z")
+
+          outputs = {
+              "changed": "true",
+              "file": filename,
+              "build_date": build_date,
+              "new_commit": new_commit,
+              "compare_from": compare_from,
+              "source_url": source_url,
+              "display_version": display_version,
+              "upstream_version": upstream_version,
+              "feed_version": feed_version,
+              "updated_local": updated_local,
+              "updated_utc": updated_utc,
+          }
+
+          print("NEW Kodi Nightly detected")
+          for key, value in outputs.items():
+              print(f"{key}: {value}")
+
+          with output_file.open("a", encoding="utf-8") as f:
+              for key, value in outputs.items():
+                  f.write(f"{key}={value}\n")
+          PY
+
+      - name: Install packaging tools
         if: steps.detect.outputs.changed == 'true'
-
         shell: bash
-
         run: |
+          set -euo pipefail
           sudo apt-get update
-
           sudo apt-get install -y \
-            jq \
             binutils \
             zstd \
             xz-utils \
             bzip2
 
-
-      # ============================================================
-      # 4. Get ALL commits between previous and current Nightly
-      # ============================================================
-
+      # ------------------------------------------------------------
+      # Fetch every commit between the previous and new nightlies.
+      # ------------------------------------------------------------
       - name: Get all commits since previous nightly
         if: steps.detect.outputs.changed == 'true'
-
         id: changelog
-
         shell: bash
-
         env:
           GH_TOKEN: ${{ github.token }}
-
           OLD_COMMIT: ${{ steps.detect.outputs.compare_from }}
           NEW_COMMIT: ${{ steps.detect.outputs.new_commit }}
-
         run: |
           set -euo pipefail
 
-
-          rm -rf compare-pages
-          mkdir -p compare-pages
-
-
-          if [ -z "$OLD_COMMIT" ]; then
-
-            echo \
-              "- No previous nightly commit available." \
-              > commits.md
-
-            echo "commit_count=0" >> "$GITHUB_OUTPUT"
-
-            exit 0
-
-          fi
-
-
-          PAGE=1
-
-
-          while true
-          do
-
-            URL="https://api.github.com/repos/${KODI_GITHUB_REPO}/compare/${OLD_COMMIT}...${NEW_COMMIT}?per_page=100&page=${PAGE}"
-
-
-            echo "Fetching commit page ${PAGE}..."
-
-
-            curl \
-              --fail \
-              --silent \
-              --show-error \
-              --location \
-              -H "Authorization: Bearer ${GH_TOKEN}" \
-              -H "Accept: application/vnd.github+json" \
-              "$URL" \
-              -o "compare-pages/page-${PAGE}.json"
-
-
-            COUNT="$(
-              jq \
-                '.commits | length' \
-                "compare-pages/page-${PAGE}.json"
-            )"
-
-
-            echo "Commits returned: $COUNT"
-
-
-            if [ "$COUNT" -eq 0 ]; then
-              break
-            fi
-
-
-            if [ "$COUNT" -lt 100 ]; then
-              break
-            fi
-
-
-            PAGE=$((PAGE + 1))
-
-          done
-
-
           python3 <<'PY'
-          import glob
           import json
-          import re
+          import os
+          import urllib.parse
+          import urllib.request
+          from pathlib import Path
 
+          token = os.environ["GH_TOKEN"]
+          old_commit = os.environ.get("OLD_COMMIT", "").strip()
+          new_commit = os.environ["NEW_COMMIT"].strip()
+          output_file = Path(os.environ["GITHUB_OUTPUT"])
 
-          def number(path):
-              match = re.search(
-                  r"page-(\d+)\.json$",
-                  path
-              )
+          headers = {
+              "Accept": "application/vnd.github+json",
+              "Authorization": f"Bearer {token}",
+              "User-Agent": "kodi-webos-nightly-feed",
+              "X-GitHub-Api-Version": "2022-11-28",
+          }
 
-              if not match:
-                  return 0
-
-              return int(
-                  match.group(1)
-              )
-
-
-          files = sorted(
-              glob.glob(
-                  "compare-pages/page-*.json"
-              ),
-              key=number
-          )
-
+          def api_get(url):
+              req = urllib.request.Request(url, headers=headers)
+              with urllib.request.urlopen(req, timeout=60) as response:
+                  return json.load(response)
 
           commits = []
           seen = set()
 
-
-          for filename in files:
-
-              with open(
-                  filename,
-                  "r",
-                  encoding="utf-8"
-              ) as f:
-
-                  data = json.load(f)
-
-
-              for item in data.get(
-                  "commits",
-                  []
-              ):
-
-                  sha = item.get(
-                      "sha",
-                      ""
+          if old_commit:
+              page = 1
+              while True:
+                  url = (
+                      "https://api.github.com/repos/xbmc/xbmc/compare/"
+                      f"{old_commit}...{new_commit}"
+                      f"?per_page=100&page={page}"
                   )
+                  data = api_get(url)
+                  page_commits = data.get("commits", [])
 
+                  if not page_commits:
+                      break
 
-                  if not sha:
-                      continue
+                  for item in page_commits:
+                      sha = str(item.get("sha") or "")
+                      if not sha or sha in seen:
+                          continue
+                      seen.add(sha)
 
+                      message = (
+                          item.get("commit", {})
+                          .get("message", "")
+                          .splitlines()[0]
+                          .strip()
+                      ) or "(no commit message)"
 
-                  if sha in seen:
-                      continue
+                      commits.append(
+                          {
+                              "sha": sha,
+                              "short": sha[:8],
+                              "message": message,
+                          }
+                      )
 
+                  if len(page_commits) < 100:
+                      break
+                  page += 1
 
-                  seen.add(
-                      sha
-                  )
-
-
-                  message = (
-                      item
-                      .get("commit", {})
-                      .get("message", "")
-                      .splitlines()[0]
-                      .strip()
-                  )
-
-
-                  if not message:
-                      message = "(no commit message)"
-
-
-                  message = (
-                      message
-                      .replace("`", "'")
-                      .replace("\r", " ")
-                      .replace("\n", " ")
-                  )
-
-
-                  commits.append(
-                      {
-                          "sha": sha,
-                          "short": sha[:8],
-                          "message": message
-                      }
-                  )
-
-
-          with open(
-              "commits.json",
-              "w",
-              encoding="utf-8"
-          ) as f:
-
-              json.dump(
-                  commits,
-                  f,
-                  indent=2,
-                  ensure_ascii=False
-              )
-
-
-          with open(
-              "commit-count.txt",
-              "w",
-              encoding="utf-8"
-          ) as f:
-
-              f.write(
-                  str(len(commits))
-              )
-
-
-          print(
-              "Total commits:",
-              len(commits)
+          Path("commits.json").write_text(
+              json.dumps(commits, indent=2, ensure_ascii=False) + "\n",
+              encoding="utf-8",
           )
+
+          print(f"Total commits: {len(commits)}")
+
+          with output_file.open("a", encoding="utf-8") as f:
+              f.write(f"commit_count={len(commits)}\n")
           PY
-
-
-          COMMIT_COUNT="$(
-            cat commit-count.txt
-          )"
-
-
-          echo \
-            "commit_count=$COMMIT_COUNT" \
-            >> "$GITHUB_OUTPUT"
-
-
-      # ============================================================
-      # 5. Download official Kodi IPK
-      # ============================================================
 
       - name: Download official Kodi nightly
         if: steps.detect.outputs.changed == 'true'
-
         shell: bash
-
         env:
           SOURCE_URL: ${{ steps.detect.outputs.source_url }}
-
         run: |
           set -euo pipefail
-
-
-          echo "Downloading:"
-          echo "$SOURCE_URL"
-
 
           curl \
             --fail \
@@ -670,313 +359,158 @@ jobs:
             "$SOURCE_URL" \
             -o kodi-source.ipk
 
-
-          echo
           echo "Official source package:"
-
           ls -lh kodi-source.ipk
-
           sha256sum kodi-source.ipk
 
-
-      # ============================================================
-      # 6. Repackage
-      #
-      # Kodi binary/resources unchanged.
-      #
-      # Only change:
-      #
-      # appinfo.json version
-      # control Version
-      # ============================================================
-
+      # ------------------------------------------------------------
+      # Repackage only the webOS package version metadata.
+      # Kodi executable/libraries/resources remain unchanged.
+      # ------------------------------------------------------------
       - name: Repackage with Homebrew nightly version
         if: steps.detect.outputs.changed == 'true'
-
         shell: bash
-
         env:
           FEED_VERSION: ${{ steps.detect.outputs.feed_version }}
-
         run: |
           set -euo pipefail
 
-
           rm -rf ipk-work
-          mkdir ipk-work
-
+          mkdir -p ipk-work
           cd ipk-work
-
 
           ar x ../kodi-source.ipk
 
-
           CONTROL_ARCHIVE="$(
-            find . \
-              -maxdepth 1 \
-              -type f \
-              -name 'control.tar.*' |
-            head -n 1
+            find . -maxdepth 1 -type f -name 'control.tar.*' | head -n 1
           )"
-
-
           DATA_ARCHIVE="$(
-            find . \
-              -maxdepth 1 \
-              -type f \
-              -name 'data.tar.*' |
-            head -n 1
+            find . -maxdepth 1 -type f -name 'data.tar.*' | head -n 1
           )"
 
-
-          if [ -z "$CONTROL_ARCHIVE" ] || \
-             [ -z "$DATA_ARCHIVE" ]; then
-
+          if [ -z "$CONTROL_ARCHIVE" ] || [ -z "$DATA_ARCHIVE" ]; then
             echo "ERROR: IPK archives not found."
-
             exit 1
-
           fi
-
 
           CONTROL_NAME="${CONTROL_ARCHIVE#./}"
           DATA_NAME="${DATA_ARCHIVE#./}"
 
-
-          mkdir control
-          mkdir data
-
+          mkdir -p control data
 
           extract_archive() {
+            local archive="$1"
+            local dest="$2"
 
-            ARCHIVE="$1"
-            DEST="$2"
-
-
-            case "$ARCHIVE" in
-
+            case "$archive" in
               *.tar.gz|*.tgz)
-
-                tar \
-                  -xzf "$ARCHIVE" \
-                  -C "$DEST"
+                tar -xzf "$archive" -C "$dest"
                 ;;
-
               *.tar.xz)
-
-                tar \
-                  -xJf "$ARCHIVE" \
-                  -C "$DEST"
+                tar -xJf "$archive" -C "$dest"
                 ;;
-
               *.tar.zst|*.tar.zstd)
-
-                tar \
-                  --zstd \
-                  -xf "$ARCHIVE" \
-                  -C "$DEST"
+                tar --zstd -xf "$archive" -C "$dest"
                 ;;
-
               *.tar.bz2)
-
-                tar \
-                  -xjf "$ARCHIVE" \
-                  -C "$DEST"
+                tar -xjf "$archive" -C "$dest"
                 ;;
-
               *)
-
-                tar \
-                  -xf "$ARCHIVE" \
-                  -C "$DEST"
+                tar -xf "$archive" -C "$dest"
                 ;;
-
             esac
-
           }
 
-
-          extract_archive \
-            "$CONTROL_ARCHIVE" \
-            control
-
-
-          extract_archive \
-            "$DATA_ARCHIVE" \
-            data
-
-
-          # ========================================================
-          # appinfo.json
-          # ========================================================
+          extract_archive "$CONTROL_ARCHIVE" control
+          extract_archive "$DATA_ARCHIVE" data
 
           APPINFO="$(
-            find data \
-              -type f \
-              -path '*/org.xbmc.kodi/appinfo.json' |
-            head -n 1
+            find data -type f -path '*/org.xbmc.kodi/appinfo.json' | head -n 1
           )"
-
 
           if [ -z "$APPINFO" ]; then
-
-            echo "ERROR: appinfo.json not found."
-
+            echo "ERROR: Kodi appinfo.json not found."
             exit 1
-
           fi
 
+          APPINFO_PATH="$APPINFO" python3 <<'PY'
+          import json
+          import os
+          from pathlib import Path
 
-          jq \
-            --arg version "$FEED_VERSION" \
-            '.version = $version' \
-            "$APPINFO" \
-            > "${APPINFO}.new"
+          path = Path(os.environ["APPINFO_PATH"])
+          version = os.environ["FEED_VERSION"]
 
-
-          mv \
-            "${APPINFO}.new" \
-            "$APPINFO"
-
-
-          # ========================================================
-          # Debian control
-          # ========================================================
+          data = json.loads(path.read_text(encoding="utf-8"))
+          data["version"] = version
+          path.write_text(
+              json.dumps(data, indent=2, ensure_ascii=False) + "\n",
+              encoding="utf-8",
+          )
+          PY
 
           CONTROL_FILE="$(
-            find control \
-              -type f \
-              -name control |
-            head -n 1
+            find control -type f -name control | head -n 1
           )"
 
-
           if [ -z "$CONTROL_FILE" ]; then
-
-            echo "ERROR: control file not found."
-
+            echo "ERROR: IPK control file not found."
             exit 1
-
           fi
 
-
-          sed -i \
-            "s/^Version:.*/Version: ${FEED_VERSION}/" \
-            "$CONTROL_FILE"
-
-
-          # ========================================================
-          # md5sums
-          # ========================================================
+          if grep -q '^Version:' "$CONTROL_FILE"; then
+            sed -i "s/^Version:.*/Version: ${FEED_VERSION}/" "$CONTROL_FILE"
+          else
+            printf '\nVersion: %s\n' "$FEED_VERSION" >> "$CONTROL_FILE"
+          fi
 
           if [ -f control/md5sums ]; then
-
             (
               cd data
-
-              find . \
-                -type f \
-                -print0 |
-              sort -z |
-              xargs -0 md5sum |
-              sed \
-                's#  \./#  #' \
+              find . -type f -print0 \
+                | sort -z \
+                | xargs -0 md5sum \
+                | sed 's#  \./#  #' \
                 > ../control/md5sums
             )
-
           fi
 
-
-          rm -f \
-            "$CONTROL_ARCHIVE" \
-            "$DATA_ARCHIVE"
-
-
-          # ========================================================
-          # Preserve original compression type
-          # ========================================================
+          rm -f "$CONTROL_ARCHIVE" "$DATA_ARCHIVE"
 
           pack_archive() {
+            local name="$1"
+            local source_dir="$2"
 
-            NAME="$1"
-            SOURCE="$2"
-
-
-            case "$NAME" in
-
+            case "$name" in
               *.tar.gz|*.tgz)
-
-                tar \
-                  --numeric-owner \
-                  --owner=0 \
-                  --group=0 \
-                  -czf "$NAME" \
-                  -C "$SOURCE" .
+                tar --numeric-owner --owner=0 --group=0 \
+                  -czf "$name" -C "$source_dir" .
                 ;;
-
               *.tar.xz)
-
-                tar \
-                  --numeric-owner \
-                  --owner=0 \
-                  --group=0 \
-                  -cJf "$NAME" \
-                  -C "$SOURCE" .
+                tar --numeric-owner --owner=0 --group=0 \
+                  -cJf "$name" -C "$source_dir" .
                 ;;
-
               *.tar.zst|*.tar.zstd)
-
-                tar \
-                  --numeric-owner \
-                  --owner=0 \
-                  --group=0 \
-                  --zstd \
-                  -cf "$NAME" \
-                  -C "$SOURCE" .
+                tar --numeric-owner --owner=0 --group=0 \
+                  --zstd -cf "$name" -C "$source_dir" .
                 ;;
-
               *.tar.bz2)
-
-                tar \
-                  --numeric-owner \
-                  --owner=0 \
-                  --group=0 \
-                  -cjf "$NAME" \
-                  -C "$SOURCE" .
+                tar --numeric-owner --owner=0 --group=0 \
+                  -cjf "$name" -C "$source_dir" .
                 ;;
-
               *)
-
-                tar \
-                  --numeric-owner \
-                  --owner=0 \
-                  --group=0 \
-                  -cf "$NAME" \
-                  -C "$SOURCE" .
+                tar --numeric-owner --owner=0 --group=0 \
+                  -cf "$name" -C "$source_dir" .
                 ;;
-
             esac
-
           }
 
-
-          pack_archive \
-            "$CONTROL_NAME" \
-            control
-
-
-          pack_archive \
-            "$DATA_NAME" \
-            data
-
+          pack_archive "$CONTROL_NAME" control
+          pack_archive "$DATA_NAME" data
 
           if [ ! -f debian-binary ]; then
-
-            printf '2.0\n' \
-              > debian-binary
-
+            printf '2.0\n' > debian-binary
           fi
-
 
           ar rcs \
             ../kodi-nightly.ipk \
@@ -984,58 +518,31 @@ jobs:
             "$CONTROL_NAME" \
             "$DATA_NAME"
 
-
           cd ..
 
-
-          echo
           echo "Repacked package:"
-
           ls -lh kodi-nightly.ipk
-
           sha256sum kodi-nightly.ipk
-
-
-      # ============================================================
-      # 7. Upload current package to GitHub Release
-      # ============================================================
 
       - name: Upload Kodi nightly package
         if: steps.detect.outputs.changed == 'true'
-
         shell: bash
-
         env:
           GH_TOKEN: ${{ github.token }}
-
           FEED_VERSION: ${{ steps.detect.outputs.feed_version }}
-
           DISPLAY_VERSION: ${{ steps.detect.outputs.display_version }}
-
           UPSTREAM_VERSION: ${{ steps.detect.outputs.upstream_version }}
-
           BUILD_DATE: ${{ steps.detect.outputs.build_date }}
-
           NEW_COMMIT: ${{ steps.detect.outputs.new_commit }}
-
           UPDATED_LOCAL: ${{ steps.detect.outputs.updated_local }}
-
           COMMIT_COUNT: ${{ steps.changelog.outputs.commit_count }}
-
         run: |
           set -euo pipefail
 
-
           ASSET_NAME="org.xbmc.kodi_${FEED_VERSION}_arm.ipk"
+          mv kodi-nightly.ipk "$ASSET_NAME"
 
-
-          mv \
-            kodi-nightly.ipk \
-            "$ASSET_NAME"
-
-
-          RELEASE_NOTES="$(
-            cat <<EOF
+          cat > release-notes.txt <<EOF
           Kodi ${DISPLAY_VERSION} Nightly
 
           Nightly Build:
@@ -1056,858 +563,332 @@ jobs:
           Based on the official Kodi webOS master nightly.
 
           Kodi executables, libraries and resources are unchanged.
-
           Only webOS package version metadata is modified for Homebrew Channel nightly update detection.
           EOF
-          )"
 
-
-          if ! gh release view \
-            "$RELEASE_TAG" \
-            >/dev/null 2>&1; then
-
-            gh release create \
-              "$RELEASE_TAG" \
-              --title "Kodi webOS Nightly" \
-              --notes "$RELEASE_NOTES"
-
-          else
-
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
             gh release edit \
               "$RELEASE_TAG" \
               --title "Kodi webOS Nightly" \
-              --notes "$RELEASE_NOTES"
-
+              --notes-file release-notes.txt
+          else
+            gh release create \
+              "$RELEASE_TAG" \
+              --title "Kodi webOS Nightly" \
+              --notes-file release-notes.txt
           fi
-
 
           gh release upload \
             "$RELEASE_TAG" \
             "$ASSET_NAME" \
             --clobber
 
-
-          # Keep only latest Kodi IPK
           gh release view \
             "$RELEASE_TAG" \
             --json assets \
-            --jq '.assets[].name' |
-          while read -r OLD_ASSET
-          do
+            --jq '.assets[].name' \
+          | while read -r old_asset; do
+              if [ -n "$old_asset" ] && [ "$old_asset" != "$ASSET_NAME" ]; then
+                echo "Removing old asset: $old_asset"
+                gh release delete-asset \
+                  "$RELEASE_TAG" \
+                  "$old_asset" \
+                  --yes || true
+              fi
+            done
 
-            if [ -n "$OLD_ASSET" ] && \
-               [ "$OLD_ASSET" != "$ASSET_NAME" ]; then
+          echo "ASSET_NAME=$ASSET_NAME" >> "$GITHUB_ENV"
 
-              echo "Removing old asset:"
-              echo "$OLD_ASSET"
-
-              gh release delete-asset \
-                "$RELEASE_TAG" \
-                "$OLD_ASSET" \
-                --yes || true
-
-            fi
-
-          done
-
-
-          echo \
-            "ASSET_NAME=$ASSET_NAME" \
-            >> "$GITHUB_ENV"
-
-
-      # ============================================================
-      # 8. Generate:
-      #
-      # repo.json
-      # full_description.html
-      # CHANGELOG.md
-      # state.json
-      #
-      # repo.json will be served from:
-      #
-      # https://hexxx992.github.io/kodi-webos-nightly/repo.json
-      # ============================================================
-
+      # ------------------------------------------------------------
+      # Generate:
+      # - repo.json
+      # - full_description.html
+      # - state.json
+      # - CHANGELOG.md
+      # ------------------------------------------------------------
       - name: Generate Homebrew metadata
         if: steps.detect.outputs.changed == 'true'
-
         shell: bash
-
         env:
           SOURCE_FILE: ${{ steps.detect.outputs.file }}
-
           SOURCE_URL: ${{ steps.detect.outputs.source_url }}
-
           BUILD_DATE: ${{ steps.detect.outputs.build_date }}
-
           NEW_COMMIT: ${{ steps.detect.outputs.new_commit }}
-
           PREVIOUS_COMMIT: ${{ steps.detect.outputs.compare_from }}
-
           DISPLAY_VERSION: ${{ steps.detect.outputs.display_version }}
-
           UPSTREAM_VERSION: ${{ steps.detect.outputs.upstream_version }}
-
           FEED_VERSION: ${{ steps.detect.outputs.feed_version }}
-
           UPDATED_LOCAL: ${{ steps.detect.outputs.updated_local }}
-
           UPDATED_UTC: ${{ steps.detect.outputs.updated_utc }}
-
           COMMIT_COUNT: ${{ steps.changelog.outputs.commit_count }}
-
         run: |
           set -euo pipefail
 
-
-          SHA256="$(
-            sha256sum "$ASSET_NAME" |
-            awk '{print $1}'
-          )"
-
-
-          SIZE="$(
-            stat \
-              -c '%s' \
-              "$ASSET_NAME"
-          )"
-
-
-          ASSET_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/${RELEASE_TAG}/${ASSET_NAME}"
-
-
-          export SHA256
-          export SIZE
-          export ASSET_URL
-
-
           python3 <<'PY'
+          import hashlib
           import html
           import json
           import os
-
           from pathlib import Path
 
+          source_file = os.environ["SOURCE_FILE"]
+          source_url = os.environ["SOURCE_URL"]
+          build_date = os.environ["BUILD_DATE"]
+          new_commit = os.environ["NEW_COMMIT"]
+          previous_commit = os.environ.get("PREVIOUS_COMMIT", "").strip()
+          display_version = os.environ["DISPLAY_VERSION"]
+          upstream_version = os.environ["UPSTREAM_VERSION"]
+          feed_version = os.environ["FEED_VERSION"]
+          updated_local = os.environ["UPDATED_LOCAL"]
+          updated_utc = os.environ["UPDATED_UTC"]
+          commit_count = int(os.environ.get("COMMIT_COUNT", "0"))
+          pages_base = os.environ["PAGES_BASE"].rstrip("/")
+          release_tag = os.environ["RELEASE_TAG"]
+          repository = os.environ["GITHUB_REPOSITORY"]
+          asset_name = os.environ["ASSET_NAME"]
 
-          source_file = os.environ[
-              "SOURCE_FILE"
-          ]
-
-
-          source_url = os.environ[
-              "SOURCE_URL"
-          ]
-
-
-          build_date = os.environ[
-              "BUILD_DATE"
-          ]
-
-
-          new_commit = os.environ[
-              "NEW_COMMIT"
-          ]
-
-
-          previous_commit = os.environ.get(
-              "PREVIOUS_COMMIT",
-              ""
+          asset_path = Path(asset_name)
+          sha256 = hashlib.sha256(asset_path.read_bytes()).hexdigest()
+          size = asset_path.stat().st_size
+          asset_url = (
+              f"https://github.com/{repository}/releases/download/"
+              f"{release_tag}/{asset_name}"
           )
 
-
-          display_version = os.environ[
-              "DISPLAY_VERSION"
-          ]
-
-
-          upstream_version = os.environ[
-              "UPSTREAM_VERSION"
-          ]
-
-
-          feed_version = os.environ[
-              "FEED_VERSION"
-          ]
-
-
-          updated_local = os.environ[
-              "UPDATED_LOCAL"
-          ]
-
-
-          updated_utc = os.environ[
-              "UPDATED_UTC"
-          ]
-
-
-          commit_count = int(
-              os.environ.get(
-                  "COMMIT_COUNT",
-                  "0"
-              )
+          commits = json.loads(
+              Path("commits.json").read_text(encoding="utf-8")
           )
-
-
-          sha256 = os.environ[
-              "SHA256"
-          ]
-
-
-          size = int(
-              os.environ[
-                  "SIZE"
-              ]
-          )
-
-
-          asset_url = os.environ[
-              "ASSET_URL"
-          ]
-
-
-          pages_base = os.environ[
-              "PAGES_BASE"
-          ]
-
-
-          with open(
-              "commits.json",
-              "r",
-              encoding="utf-8"
-          ) as f:
-
-              commits = json.load(f)
-
 
           icon_url = (
               "https://raw.githubusercontent.com/"
-              "xbmc/xbmc/master/media/"
-              "icon256x256.png"
+              "xbmc/xbmc/master/media/icon256x256.png"
           )
 
-
           compare_url = ""
-
-
           if previous_commit:
-
               compare_url = (
-                  "https://github.com/"
-                  "xbmc/xbmc/compare/"
-                  f"{previous_commit}..."
-                  f"{new_commit}"
+                  "https://github.com/xbmc/xbmc/compare/"
+                  f"{previous_commit}...{new_commit}"
               )
 
-
-          # ========================================================
-          # FULL DESCRIPTION HTML
-          # ========================================================
-
+          # Full HTML description shown by Homebrew Channel.
           description = [
-
-              (
-                  "<h2>Kodi "
-                  + html.escape(display_version)
-                  + " Nightly</h2>"
-              ),
-
+              f"<h2>Kodi {html.escape(display_version)} Nightly</h2>",
               (
                   "<p><b>Nightly Build:</b> "
-                  "<code>"
-                  + html.escape(
-                      build_date
-                      + "-"
-                      + new_commit
-                  )
-                  + "</code></p>"
+                  f"<code>{html.escape(build_date + '-' + new_commit)}</code></p>"
               ),
-
               (
                   "<p><b>Homebrew Nightly Version:</b> "
-                  "<code>"
-                  + html.escape(feed_version)
-                  + "</code></p>"
+                  f"<code>{html.escape(feed_version)}</code></p>"
               ),
-
               (
-                  "<p><b>Official Kodi webOS "
-                  "Package Version:</b> "
-                  "<code>"
-                  + html.escape(upstream_version)
-                  + "</code></p>"
+                  "<p><b>Official Kodi webOS Package Version:</b> "
+                  f"<code>{html.escape(upstream_version)}</code></p>"
               ),
-
-              (
-                  "<p><b>Feed Updated:</b> "
-                  + html.escape(updated_local)
-                  + "</p>"
-              ),
-
-              (
-                  "<p><b>Feed Updated (UTC):</b> "
-                  + html.escape(updated_utc)
-                  + "</p>"
-              ),
-
+              f"<p><b>Feed Updated:</b> {html.escape(updated_local)}</p>",
+              f"<p><b>Feed Updated (UTC):</b> {html.escape(updated_utc)}</p>",
               (
                   "<p><b>Commits Since Previous Nightly:</b> "
-                  + str(commit_count)
-                  + "</p>"
+                  f"{commit_count}</p>"
               ),
-
               "<hr>",
-
               "<h3>All Commits Since Previous Nightly</h3>",
-
-              "<ul>"
-
+              "<ul>",
           ]
 
-
           for commit in commits:
-
-              sha = commit[
-                  "sha"
-              ]
-
-
-              short = commit[
-                  "short"
-              ]
-
-
-              message = commit[
-                  "message"
-              ]
-
-
-              commit_url = (
-                  "https://github.com/"
-                  "xbmc/xbmc/commit/"
-                  + sha
-              )
-
+              sha = commit["sha"]
+              short = commit["short"]
+              message = commit["message"]
+              commit_url = f"https://github.com/xbmc/xbmc/commit/{sha}"
 
               description.append(
                   "<li>"
-                  "<a href=\""
-                  + html.escape(
-                      commit_url,
-                      quote=True
-                  )
-                  + "\">"
-                  + html.escape(short)
-                  + "</a> "
-                  + html.escape(message)
-                  + "</li>"
+                  f'<a href="{html.escape(commit_url, quote=True)}">'
+                  f"{html.escape(short)}</a> "
+                  f"{html.escape(message)}"
+                  "</li>"
               )
 
-
-          description.append(
-              "</ul>"
-          )
-
+          description.append("</ul>")
 
           if compare_url:
-
               description.extend(
                   [
-
                       "<hr>",
-
                       (
-                          "<p><a href=\""
-                          + html.escape(
-                              compare_url,
-                              quote=True
-                          )
-                          + "\">"
+                          f'<p><a href="{html.escape(compare_url, quote=True)}">'
                           "View full Kodi GitHub comparison"
                           "</a></p>"
-                      )
-
+                      ),
                   ]
               )
 
-
           description.extend(
               [
-
                   "<hr>",
-
                   "<h3>Package Information</h3>",
-
+                  "<p>Official Kodi Nightly:</p>",
+                  f"<p><code>{html.escape(source_file)}</code></p>",
                   (
-                      "<p>Official Kodi Nightly:</p>"
-                  )
-
-
-              ]
-          )
-
-
-          description.append(
-              "<p><code>"
-              + html.escape(source_file)
-              + "</code></p>"
-          )
-
-
-          description.extend(
-              [
-
-                  (
-                      "<p>Kodi executables, libraries "
-                      "and resources are unchanged.</p>"
+                      "<p>Kodi executables, libraries and resources are "
+                      "unchanged.</p>"
                   ),
-
                   (
-                      "<p>Only the webOS package version "
-                      "metadata is modified so Homebrew "
-                      "Channel can distinguish individual "
-                      "Nightly builds.</p>"
-                  )
-
+                      "<p>Only the webOS package version metadata is modified "
+                      "so Homebrew Channel can distinguish individual nightly "
+                      "builds.</p>"
+                  ),
               ]
           )
 
-
-          Path(
-              "full_description.html"
-          ).write_text(
-
-              "\n".join(
-                  description
-              ),
-
-              encoding="utf-8"
-
+          Path("full_description.html").write_text(
+              "\n".join(description) + "\n",
+              encoding="utf-8",
           )
 
-
-          # ========================================================
-          # Homebrew API metadata
-          #
-          # ?v=feed_version ensures every Nightly gets a
-          # different description URL and avoids stale caching.
-          # ========================================================
-
+          # Unique description URL for every Homebrew version avoids stale cache.
           full_description_url = (
-              pages_base
-              + "/full_description.html?v="
-              + feed_version
+              f"{pages_base}/full_description.html?v={feed_version}"
           )
-
 
           repo = {
-
               "paging": {
-
                   "page": 1,
-
                   "count": 1,
-
                   "maxPage": 1,
-
-                  "itemsTotal": 1
-
+                  "itemsTotal": 1,
               },
-
-
               "packages": [
-
                   {
-
-                      "id":
-                          "org.xbmc.kodi",
-
-
-                      "title":
-                          "Kodi Nightly",
-
-
-                      "iconUri":
-                          icon_url,
-
-
-                      "pool":
-                          "main",
-
-
-                      "shortDescription":
-                          (
-                              "Kodi "
-                              + display_version
-                              + " Nightly · "
-                              + build_date
-                              + "-"
-                              + new_commit
-                          ),
-
-
-                      "fullDescriptionUrl":
-                          full_description_url,
-
-
+                      "id": "org.xbmc.kodi",
+                      "title": "Kodi Nightly",
+                      "iconUri": icon_url,
+                      "pool": "main",
+                      "shortDescription": (
+                          f"Kodi {display_version} Nightly · "
+                          f"{build_date}-{new_commit}"
+                      ),
+                      "fullDescriptionUrl": full_description_url,
                       "manifest": {
-
-                          "id":
-                              "org.xbmc.kodi",
-
-
-                          "version":
-                              feed_version,
-
-
-                          "type":
-                              "native",
-
-
-                          "title":
-                              "Kodi Nightly",
-
-
-                          "appDescription":
-                              (
-                                  "Kodi "
-                                  + display_version
-                                  + " Nightly"
-                              ),
-
-
-                          "iconUri":
-                              icon_url,
-
-
-                          "sourceUrl":
-                              "https://github.com/xbmc/xbmc",
-
-
-                          "rootRequired":
-                              False,
-
-
-                          "ipkUrl":
-                              asset_url,
-
-
+                          "id": "org.xbmc.kodi",
+                          "version": feed_version,
+                          "type": "native",
+                          "title": "Kodi Nightly",
+                          "appDescription": (
+                              f"Kodi {display_version} Nightly"
+                          ),
+                          "iconUri": icon_url,
+                          "sourceUrl": "https://github.com/xbmc/xbmc",
+                          "rootRequired": False,
+                          "ipkUrl": asset_url,
                           "ipkHash": {
-
-                              "sha256":
-                                  sha256
-
+                              "sha256": sha256,
                           },
-
-
-                          "ipkSize":
-                              size
-
-                      }
-
+                          "ipkSize": size,
+                      },
                   }
-
-              ]
-
+              ],
           }
 
-
-          Path(
-              "repo.json"
-          ).write_text(
-
-              json.dumps(
-                  repo,
-                  indent=2,
-                  ensure_ascii=False
-              )
-              + "\n",
-
-              encoding="utf-8"
-
+          Path("repo.json").write_text(
+              json.dumps(repo, indent=2, ensure_ascii=False) + "\n",
+              encoding="utf-8",
           )
-
-
-          # ========================================================
-          # STATE
-          # ========================================================
 
           state = {
-
-              "sourceFile":
-                  source_file,
-
-
-              "sourceUrl":
-                  source_url,
-
-
-              "sourceCommit":
-                  new_commit,
-
-
-              "previousCommit":
-                  previous_commit,
-
-
-              "buildDate":
-                  build_date,
-
-
-              "feedVersion":
-                  feed_version,
-
-
-              "kodiDisplayVersion":
-                  display_version,
-
-
-              "upstreamVersion":
-                  upstream_version,
-
-
-              "updatedLocal":
-                  updated_local,
-
-
-              "updatedUTC":
-                  updated_utc,
-
-
-              "commitCount":
-                  commit_count,
-
-
-              "sha256":
-                  sha256,
-
-
-              "ipkSize":
-                  size,
-
-
-              "assetUrl":
-                  asset_url,
-
-
-              "repoUrl":
-                  pages_base + "/repo.json",
-
-
-              "fullDescriptionUrl":
-                  full_description_url
-
+              "sourceFile": source_file,
+              "sourceUrl": source_url,
+              "sourceCommit": new_commit,
+              "previousCommit": previous_commit,
+              "buildDate": build_date,
+              "feedVersion": feed_version,
+              "kodiDisplayVersion": display_version,
+              "upstreamVersion": upstream_version,
+              "updatedLocal": updated_local,
+              "updatedUTC": updated_utc,
+              "commitCount": commit_count,
+              "sha256": sha256,
+              "ipkSize": size,
+              "assetUrl": asset_url,
+              "repoUrl": f"{pages_base}/repo.json",
+              "fullDescriptionUrl": full_description_url,
           }
 
-
-          Path(
-              "state.json"
-          ).write_text(
-
-              json.dumps(
-                  state,
-                  indent=2,
-                  ensure_ascii=False
-              )
-              + "\n",
-
-              encoding="utf-8"
-
+          Path("state.json").write_text(
+              json.dumps(state, indent=2, ensure_ascii=False) + "\n",
+              encoding="utf-8",
           )
 
-
-          # ========================================================
-          # CHANGELOG
-          # ========================================================
-
-          changelog_path = Path(
-              "CHANGELOG.md"
-          )
-
-
+          changelog_path = Path("CHANGELOG.md")
           old_changelog = ""
-
-
           if changelog_path.exists():
+              old_changelog = changelog_path.read_text(encoding="utf-8")
 
-              old_changelog = (
-                  changelog_path
-                  .read_text(
-                      encoding="utf-8"
-                  )
-              )
-
-
-          header = (
-              "# Kodi webOS Nightly Changelog\n\n"
-          )
-
-
-          if old_changelog.startswith(
-              header
-          ):
-
-              old_changelog = (
-                  old_changelog[
-                      len(header):
-                  ]
-              )
-
+          header = "# Kodi webOS Nightly Changelog\n\n"
+          if old_changelog.startswith(header):
+              old_changelog = old_changelog[len(header):]
 
           entry = [
-
-              (
-                  "## Kodi "
-                  + display_version
-                  + " — "
-                  + build_date
-                  + "-"
-                  + new_commit
-              ),
-
+              f"## Kodi {display_version} — {build_date}-{new_commit}",
               "",
-
-              (
-                  "**Homebrew Version:** `"
-                  + feed_version
-                  + "`"
-              ),
-
+              f"**Homebrew Version:** `{feed_version}`",
               "",
-
-              (
-                  "**Official webOS Package Version:** `"
-                  + upstream_version
-                  + "`"
-              ),
-
+              f"**Official webOS Package Version:** `{upstream_version}`",
               "",
-
-              (
-                  "**Feed Updated:** `"
-                  + updated_local
-                  + "`"
-              ),
-
+              f"**Feed Updated:** `{updated_local}`",
               "",
-
-              (
-                  "**Commits:** "
-                  + str(commit_count)
-              ),
-
+              f"**Commits:** {commit_count}",
               "",
-
               "### All Commits",
-
-              ""
-
+              "",
           ]
 
-
           for commit in commits:
-
               entry.append(
-                  "- [`"
-                  + commit["short"]
-                  + "`](https://github.com/"
-                  "xbmc/xbmc/commit/"
-                  + commit["sha"]
-                  + ") "
-                  + commit["message"]
+                  f"- [`{commit['short']}`]"
+                  f"(https://github.com/xbmc/xbmc/commit/{commit['sha']}) "
+                  f"{commit['message']}"
               )
-
 
           if compare_url:
-
               entry.extend(
                   [
-
                       "",
-
-                      (
-                          "[Full Kodi GitHub comparison]("
-                          + compare_url
-                          + ")"
-                      )
-
+                      f"[Full Kodi GitHub comparison]({compare_url})",
                   ]
               )
-
 
           entry.extend(
               [
-
                   "",
-
-                  (
-                      "Official Nightly Source: "
-                      + source_url
-                  ),
-
+                  f"Official Nightly Source: {source_url}",
                   "",
-
                   "---",
-
-                  ""
-
+                  "",
               ]
           )
 
-
           changelog_path.write_text(
-
-              header
-              + "\n".join(entry)
-              + old_changelog,
-
-              encoding="utf-8"
-
+              header + "\n".join(entry) + old_changelog,
+              encoding="utf-8",
           )
 
-
-          print(
-              "repo.json URL:"
-          )
-
-          print(
-              pages_base + "/repo.json"
-          )
-
-
-          print(
-              "fullDescriptionUrl:"
-          )
-
-          print(
-              full_description_url
-          )
-
+          print(f"repo.json: {pages_base}/repo.json")
+          print(f"fullDescriptionUrl: {full_description_url}")
+          print(f"SHA256: {sha256}")
+          print(f"IPK size: {size}")
           PY
-
-
-      # ============================================================
-      # 9. Commit metadata to repository
-      # ============================================================
 
       - name: Commit repository metadata
         if: steps.detect.outputs.changed == 'true'
-
         shell: bash
-
         run: |
           set -euo pipefail
 
-
-          git config \
-            user.name \
-            "Kodi Nightly Bot"
-
-
-          git config \
-            user.email \
-            "actions@github.com"
-
+          git config user.name "Kodi Nightly Bot"
+          git config user.email "actions@github.com"
 
           git add \
             repo.json \
@@ -1915,114 +896,60 @@ jobs:
             CHANGELOG.md \
             full_description.html
 
-
-          if git diff \
-            --cached \
-            --quiet; then
-
+          if git diff --cached --quiet; then
             echo "Nothing changed."
-
           else
-
             git commit \
               -m "Update Kodi nightly to ${{ steps.detect.outputs.build_date }}-${{ steps.detect.outputs.new_commit }}"
-
             git push
-
           fi
 
-
-      # ============================================================
-      # 10. Prepare GitHub Pages site
-      # ============================================================
-
+      # ------------------------------------------------------------
+      # Prepare and upload the GitHub Pages artifact only for a new
+      # Kodi source commit.
+      # ------------------------------------------------------------
       - name: Prepare Pages site
         if: steps.detect.outputs.changed == 'true'
-
         shell: bash
-
         run: |
           set -euo pipefail
 
           rm -rf site
+          mkdir -p site
 
-          mkdir site
+          cp repo.json site/repo.json
+          cp full_description.html site/full_description.html
+          cp CHANGELOG.md site/CHANGELOG.md
 
+          touch site/.nojekyll
 
-          cp \
-            repo.json \
-            site/repo.json
-
-
-          cp \
-            full_description.html \
-            site/full_description.html
-
-
-          # Optional human-readable changelog
-          cp \
-            CHANGELOG.md \
-            site/CHANGELOG.md
-
-
-          touch \
-            site/.nojekyll
-
-
-          echo
-          echo "Pages site:"
-          find site \
-            -maxdepth 1 \
-            -type f \
-            -print
-
-
-      # ============================================================
-      # 11. Configure Pages
-      # ============================================================
+          find site -maxdepth 1 -type f -print
 
       - name: Configure GitHub Pages
         if: steps.detect.outputs.changed == 'true'
-
         uses: actions/configure-pages@v6
-
-
-      # ============================================================
-      # 12. Upload Pages artifact
-      # ============================================================
 
       - name: Upload GitHub Pages artifact
         if: steps.detect.outputs.changed == 'true'
-
         uses: actions/upload-pages-artifact@v5
         with:
           path: site
 
-
-  # ==============================================================
-  # DEPLOY GITHUB PAGES
-  # ==============================================================
-
   deploy-pages:
-
-    needs:
-      - update
-
+    needs: update
     if: needs.update.outputs.changed == 'true'
-
     runs-on: ubuntu-24.04
 
+    permissions:
+      pages: write
+      id-token: write
+      actions: read
 
     environment:
-
       name: github-pages
-
       url: ${{ steps.deployment.outputs.page_url }}
 
-
     steps:
-
       - name: Deploy to GitHub Pages
         id: deployment
-
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
