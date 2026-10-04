@@ -1,0 +1,83 @@
+name: Deploy Existing Feed to GitHub Pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Verify existing feed files
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          test -f repo.json
+          test -f full_description.html
+
+          echo "repo.json found"
+          echo "full_description.html found"
+
+          echo
+          echo "Current feed version:"
+          jq -r '.packages[0].manifest.version' repo.json
+
+          echo
+          echo "Current description URL:"
+          jq -r '.packages[0].fullDescriptionUrl // empty' repo.json
+
+      - name: Prepare Pages site
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          rm -rf site
+          mkdir -p site
+
+          cp repo.json site/repo.json
+          cp full_description.html site/full_description.html
+
+          if [ -f CHANGELOG.md ]; then
+            cp CHANGELOG.md site/CHANGELOG.md
+          fi
+
+          touch site/.nojekyll
+
+          echo
+          echo "Files to deploy:"
+          find site -maxdepth 1 -type f -print
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+  deploy:
+    needs: build
+
+    runs-on: ubuntu-24.04
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
