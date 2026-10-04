@@ -9,20 +9,29 @@
     {
       "id": "org.xbmc.kodi",
       "title": "Kodi Nightly",
+
+      "description": "# Kodi 23.0-ALPHA1 Nightly\n\n**Nightly Build:** `20261002-0056082c`\n\n**Homebrew Nightly Version:** `23.26.275`\n\n**Official Kodi webOS Package Version:** `22.90.701`\n\n**Feed Updated:** `... UTC`\n\n**Commits Since Previous Nightly:** `51`\n\n---\n\n## All Commits Since Previous Nightly\n\n- `...` commit...\n- `...` commit...\n...",
+
       "iconUri": "https://raw.githubusercontent.com/xbmc/xbmc/master/media/icon256x256.png",
+
       "manifest": {
         "id": "org.xbmc.kodi",
         "version": "23.26.275",
         "type": "native",
         "title": "Kodi Nightly",
-        "appDescription": "<h2>Kodi 23.0-ALPHA1 Nightly</h2><p><b>Nightly build:</b> 20261002-0056082c</p><p><b>Homebrew version:</b> 23.26.275</p><p><b>Kodi upstream version code:</b> 22.90.701</p><h3>Changes since previous nightly</h3><ul><li>RetroPlayer: Ask about a savestate&#x27;s game client before opening the game (2dfad7d9)</li><li>RetroPlayer: Keep a DMA buffer mapped until its last reader is done (e05562de)</li><li>[JSON-RPC] Change version to 14.0.0 for v23 development (20ae57cf)</li><li>fixed: reject an aspect ratio whose key would not fit an int (963d9256)</li><li>RetroPlayer: Close the leaderboards when a game has none (e563e07c)</li><li>changed: find a running video scan by the scanning job&#x27;s own type (ab688011)</li><li>fixed: reject an aspect ratio that has no key of its own (1a74787f)</li><li>RetroPlayer: Close the leaderboards without a flash (b2ff98e5)</li><li>RetroPlayer: Report a closed game as stopped, not ended (8613ae4e)</li><li>[guilib] Keep a game in the game window when it opens there (52245df1)</li><li>changed: move LangInfo to xbmc/language (9ce9ddc1)</li><li>changed: open and decode a file&#x27;s video through one reusable session (3196cab5)</li><li>+ 39 additional commits</li></ul><p><a href=\"https://github.com/xbmc/xbmc/compare/f889ea2d...0056082c\">View full GitHub comparison</a></p><p>Binary source: official Kodi webOS master nightly. Only the webOS package version metadata is changed so Homebrew Channel can distinguish nightly builds.</p>",
+
+        "appDescription": "Official Kodi webOS master nightly",
+
         "iconUri": "https://raw.githubusercontent.com/xbmc/xbmc/master/media/icon256x256.png",
         "sourceUrl": "https://github.com/xbmc/xbmc",
         "rootRequired": false,
+
         "ipkUrl": "https://github.com/hexxx992/kodi-webos-nightly/releases/download/kodi-nightly/org.xbmc.kodi_23.26.275_arm.ipk",
+
         "ipkHash": {
           "sha256": "9091baff6111a741198fd0df4126d92ecfbd8f8e67861d55ce5140e342c82c19"
         },
+
         "ipkSize": 100498934
       }
     }
