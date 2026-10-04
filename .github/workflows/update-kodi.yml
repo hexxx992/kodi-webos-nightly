@@ -2,21 +2,13 @@ name: Update Kodi webOS Nightly
 
 on:
   workflow_dispatch:
-    inputs:
-      force_rebuild:
-        description: "Force rebuild even if Kodi commit has not changed"
-        required: false
-        type: boolean
-        default: false
 
   schedule:
     # 每 6 小时检查一次
     - cron: "17 */6 * * *"
 
-
 permissions:
   contents: write
-
 
 concurrency:
   group: kodi-nightly-update
@@ -25,18 +17,12 @@ concurrency:
 
 jobs:
   update:
-
     runs-on: ubuntu-latest
 
     env:
       KODI_NIGHTLY_BASE: https://mirrors.kodi.tv/nightlies/webos/master
       KODI_GITHUB_REPO: xbmc/xbmc
-
       RELEASE_TAG: kodi-nightly
-
-      # 改 Workflow 结构时修改这个字符串。
-      # 即使 Kodi commit 没变，也会自动重新生成一次。
-      SCHEMA_VERSION: description-v4-commit-versioning
 
 
     steps:
@@ -65,16 +51,12 @@ jobs:
 
 
       # ============================================================
-      # 2. 查找最新 Kodi webOS Nightly
+      # 2. Detect latest Kodi webOS Nightly
       # ============================================================
 
       - name: Detect latest Kodi nightly
         id: detect
-
         shell: bash
-
-        env:
-          FORCE_REBUILD: ${{ github.event.inputs.force_rebuild || 'false' }}
 
         run: |
           set -euo pipefail
@@ -98,10 +80,8 @@ jobs:
 
 
           if [ "${#FILES[@]}" -eq 0 ]; then
-
             echo "ERROR: No Kodi webOS nightly found."
             exit 1
-
           fi
 
 
@@ -126,35 +106,18 @@ jobs:
 
 
           # ========================================================
-          # 读取上一次状态
+          # Read previous state
           # ========================================================
 
-          OLD_FILE=""
           OLD_COMMIT=""
-          OLD_PREVIOUS_COMMIT=""
           OLD_FEED_VERSION=""
-          OLD_SCHEMA=""
 
 
           if [ -f state.json ]; then
 
-            OLD_FILE="$(
-              jq -r \
-                '.sourceFile // empty' \
-                state.json
-            )"
-
-
             OLD_COMMIT="$(
               jq -r \
                 '.sourceCommit // empty' \
-                state.json
-            )"
-
-
-            OLD_PREVIOUS_COMMIT="$(
-              jq -r \
-                '.previousCommit // empty' \
                 state.json
             )"
 
@@ -165,40 +128,36 @@ jobs:
                 state.json
             )"
 
-
-            OLD_SCHEMA="$(
-              jq -r \
-                '.schemaVersion // empty' \
-                state.json
-            )"
-
           fi
 
 
           # ========================================================
-          # 判断是否需要更新
+          # HARD RULE:
           #
-          # 核心规则：
+          # Same Kodi commit = NO UPDATE
           #
-          # NEW_COMMIT == OLD_COMMIT
-          #     → 不生成新 Homebrew 版本
+          # Doesn't matter:
+          # - date changed
+          # - workflow manually triggered
+          # - workflow file changed
           #
-          # 除非：
-          #     FORCE_REBUILD = true
-          #     或 schema 发生变化
+          # Absolutely nothing gets rebuilt.
           # ========================================================
 
           if [ -n "$OLD_COMMIT" ] && \
-             [ "$NEW_COMMIT" = "$OLD_COMMIT" ] && \
-             [ "$OLD_SCHEMA" = "$SCHEMA_VERSION" ] && \
-             [ "$FORCE_REBUILD" != "true" ]; then
+             [ "$NEW_COMMIT" = "$OLD_COMMIT" ]; then
 
             echo
-            echo "Kodi source commit has not changed."
+            echo "=============================================="
+            echo "Kodi source commit has NOT changed."
+            echo
             echo "Current commit:"
             echo "$NEW_COMMIT"
             echo
-            echo "No new Homebrew version will be generated."
+            echo "No package will be rebuilt."
+            echo "No repo.json update."
+            echo "No version change."
+            echo "=============================================="
             echo
 
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -209,53 +168,20 @@ jobs:
 
 
           # ========================================================
-          # 确定 changelog comparison 起点
+          # Determine previous commit
           # ========================================================
 
           COMPARE_FROM=""
 
 
-          # --------------------------------------------------------
-          # Case 1:
-          # commit 没变，只是 Force Rebuild / schema 更新
-          #
-          # 使用原来保存的 previousCommit，
-          # 这样 Description 仍显示同一批 commits
-          # --------------------------------------------------------
-
-          if [ -n "$OLD_COMMIT" ] && \
-             [ "$NEW_COMMIT" = "$OLD_COMMIT" ]; then
-
-            if [ -n "$OLD_PREVIOUS_COMMIT" ]; then
-
-              COMPARE_FROM="$OLD_PREVIOUS_COMMIT"
-
-            fi
-
-
-          # --------------------------------------------------------
-          # Case 2:
-          # Kodi 真正出现新 commit
-          #
-          # comparison = 上一次 nightly -> 新 nightly
-          # --------------------------------------------------------
-
-          elif [ -n "$OLD_COMMIT" ]; then
+          # Normal update
+          if [ -n "$OLD_COMMIT" ]; then
 
             COMPARE_FROM="$OLD_COMMIT"
 
-          fi
-
-
-          # --------------------------------------------------------
-          # Case 3:
-          # 第一次运行
-          #
-          # 用官方目录中第二新的 Nightly 作为 comparison 起点
-          # --------------------------------------------------------
-
-          if [ -z "$COMPARE_FROM" ] && \
-             [ "${#FILES[@]}" -ge 2 ]; then
+          # First run:
+          # use second newest official nightly
+          elif [ "${#FILES[@]}" -ge 2 ]; then
 
             PREVIOUS_FILE="${FILES[1]}"
 
@@ -270,7 +196,7 @@ jobs:
 
 
           # ========================================================
-          # 读取 Kodi 对应 commit 的官方版本信息
+          # Read Kodi upstream version
           # ========================================================
 
           VERSION_TXT="$(
@@ -281,37 +207,31 @@ jobs:
 
           KODI_MAJOR="$(
             printf '%s\n' "$VERSION_TXT" |
-            awk \
-              '$1=="VERSION_MAJOR"{print $2}'
+            awk '$1=="VERSION_MAJOR"{print $2}'
           )"
 
 
           KODI_MINOR="$(
             printf '%s\n' "$VERSION_TXT" |
-            awk \
-              '$1=="VERSION_MINOR"{print $2}'
+            awk '$1=="VERSION_MINOR"{print $2}'
           )"
 
 
           KODI_TAG="$(
             printf '%s\n' "$VERSION_TXT" |
-            awk \
-              '$1=="VERSION_TAG"{print $2}'
+            awk '$1=="VERSION_TAG"{print $2}'
           )"
 
 
           UPSTREAM_VERSION="$(
             printf '%s\n' "$VERSION_TXT" |
-            awk \
-              '$1=="VERSION_CODE"{print $2}'
+            awk '$1=="VERSION_CODE"{print $2}'
           )"
 
 
           if [ -z "$KODI_MAJOR" ]; then
-
-            echo "ERROR: Unable to determine Kodi major version."
+            echo "ERROR: Could not determine Kodi version."
             exit 1
-
           fi
 
 
@@ -327,36 +247,30 @@ jobs:
 
 
           # ========================================================
-          # 生成 Homebrew Nightly Version
+          # Homebrew Nightly Version
           #
-          # 格式：
+          # Format:
           #
           # KodiMajor.YY.Revision
           #
-          # 示例：
+          # Example:
           #
-          # Kodi 23
-          # 2026
-          # 第 275 天
-          #
-          # => 23.26.275
+          # 23.26.275
           #
           #
-          # 关键规则：
+          # RULE:
           #
-          # 第一次：
-          #   revision = 当年第几天
+          # First build:
+          # revision = day-of-year
           #
-          # commit 没变化：
-          #   保留 OLD_FEED_VERSION
+          # New commit:
           #
-          # commit 有变化：
+          # revision =
           #
-          #   revision =
-          #   max(
-          #       当前 day-of-year,
-          #       previous revision + 1
-          #   )
+          # max(
+          #   current day-of-year,
+          #   previous revision + 1
+          # )
           #
           # ========================================================
 
@@ -378,7 +292,7 @@ jobs:
 
 
           # --------------------------------------------------------
-          # 第一次运行
+          # First run
           # --------------------------------------------------------
 
           if [ -z "$OLD_FEED_VERSION" ]; then
@@ -389,52 +303,30 @@ jobs:
 
 
           # --------------------------------------------------------
-          # Commit 没变化：
-          #
-          # 例如 Force Rebuild / schema upgrade
-          #
-          # Homebrew version 必须保持完全不变
-          # --------------------------------------------------------
-
-          elif [ -n "$OLD_COMMIT" ] && \
-               [ "$NEW_COMMIT" = "$OLD_COMMIT" ]; then
-
-            FEED_VERSION="$OLD_FEED_VERSION"
-
-
-          # --------------------------------------------------------
-          # Kodi commit 真正发生变化
+          # Existing feed + NEW COMMIT
           # --------------------------------------------------------
 
           else
 
             OLD_MAJOR="$(
               printf '%s' "$OLD_FEED_VERSION" |
-              awk -F. \
-                '{print $1}'
+              awk -F. '{print $1}'
             )"
 
 
             OLD_YEAR="$(
               printf '%s' "$OLD_FEED_VERSION" |
-              awk -F. \
-                '{print $2}'
+              awk -F. '{print $2}'
             )"
 
 
             OLD_REVISION="$(
               printf '%s' "$OLD_FEED_VERSION" |
-              awk -F. \
-                '{print $3}'
+              awk -F. '{print $3}'
             )"
 
 
-            # ------------------------------------------------------
-            # Kodi major 或年份变化
-            #
-            # 重新以当前 day-of-year 开始
-            # ------------------------------------------------------
-
+            # Kodi major or calendar year changed
             if [ "$OLD_MAJOR" != "$KODI_MAJOR" ] || \
                [ "$OLD_YEAR" != "$YY" ]; then
 
@@ -442,12 +334,6 @@ jobs:
 
 
             else
-
-              # ----------------------------------------------------
-              # 正常情况：
-              #
-              # Previous + 1
-              # ----------------------------------------------------
 
               if [[ "$OLD_REVISION" =~ ^[0-9]+$ ]]; then
 
@@ -460,15 +346,11 @@ jobs:
               fi
 
 
-              # ----------------------------------------------------
-              # 如果隔了多天才有新 Nightly：
+              # Use whichever is greater:
               #
-              # 使用当天 day-of-year
-              #
-              # 如果同一天多个 Nightly：
-              #
-              # 使用 previous + 1
-              # ----------------------------------------------------
+              # current calendar day
+              # or
+              # previous revision + 1
 
               if [ "$DAY_OF_YEAR" -gt "$NEXT_REVISION" ]; then
 
@@ -489,7 +371,7 @@ jobs:
 
 
           # ========================================================
-          # Feed 更新时间
+          # Repository update time
           # ========================================================
 
           UPDATED_UTC="$(
@@ -498,40 +380,30 @@ jobs:
           )"
 
 
-          UPDATED_LOCAL="$(
-            TZ=America/Los_Angeles \
-            date \
-              '+%Y-%m-%d %H:%M:%S %Z'
-          )"
-
-
           echo
-          echo "================================================"
-          echo "Kodi webOS Nightly"
-          echo "================================================"
+          echo "=============================================="
+          echo "NEW Kodi Nightly detected"
+          echo "=============================================="
           echo
-          echo "Kodi Version:"
+          echo "Kodi:"
           echo "$DISPLAY_VERSION"
           echo
-          echo "Kodi Upstream Package Version:"
+          echo "Official webOS package version:"
           echo "$UPSTREAM_VERSION"
           echo
           echo "Nightly:"
           echo "$BUILD_DATE-$NEW_COMMIT"
           echo
-          echo "Previous Nightly Commit:"
+          echo "Previous commit:"
           echo "$COMPARE_FROM"
           echo
-          echo "Homebrew Version:"
+          echo "Homebrew version:"
           echo "$FEED_VERSION"
           echo
-          echo "Feed Updated:"
-          echo "$UPDATED_LOCAL"
-          echo
-          echo "Feed Updated UTC:"
+          echo "Feed updated:"
           echo "$UPDATED_UTC"
           echo
-          echo "================================================"
+          echo "=============================================="
 
 
           {
@@ -553,15 +425,13 @@ jobs:
 
             echo "feed_version=$FEED_VERSION"
 
-            echo "updated_local=$UPDATED_LOCAL"
-
             echo "updated_utc=$UPDATED_UTC"
 
           } >> "$GITHUB_OUTPUT"
 
 
       # ============================================================
-      # 3. 获取两个 Nightly 之间所有 commits
+      # 3. Get ALL commits between Nightlies
       # ============================================================
 
       - name: Get all commits since previous nightly
@@ -602,11 +472,8 @@ jobs:
 
 
           echo
-          echo "Comparing Kodi commits:"
-          echo
-          echo "$OLD_COMMIT"
-          echo "..."
-          echo "$NEW_COMMIT"
+          echo "Comparing:"
+          echo "$OLD_COMMIT ... $NEW_COMMIT"
           echo
 
 
@@ -619,7 +486,7 @@ jobs:
             URL="https://api.github.com/repos/${KODI_GITHUB_REPO}/compare/${OLD_COMMIT}...${NEW_COMMIT}?per_page=100&page=${PAGE}"
 
 
-            echo "Fetching compare page ${PAGE}..."
+            echo "Fetching page $PAGE..."
 
 
             curl \
@@ -640,7 +507,7 @@ jobs:
             )"
 
 
-            echo "Commits returned: $COUNT"
+            echo "Commits on page: $COUNT"
 
 
             if [ "$COUNT" -eq 0 ]; then
@@ -665,17 +532,14 @@ jobs:
           import re
 
 
-          def page_number(path):
+          def page_number(filename):
 
               match = re.search(
                   r"page-(\d+)\.json$",
-                  path
+                  filename
               )
 
-              if match:
-                  return int(match.group(1))
-
-              return 0
+              return int(match.group(1)) if match else 0
 
 
           files = sorted(
@@ -692,19 +556,17 @@ jobs:
 
           for filename in files:
 
-              try:
+              with open(
+                  filename,
+                  "r",
+                  encoding="utf-8"
+              ) as f:
 
-                  with open(
-                      filename,
-                      "r",
-                      encoding="utf-8"
-                  ) as f:
-
+                  try:
                       data = json.load(f)
 
-              except Exception:
-
-                  continue
+                  except Exception:
+                      continue
 
 
               for item in data.get(
@@ -712,21 +574,21 @@ jobs:
                   []
               ):
 
-                  sha = item.get(
+                  full_sha = item.get(
                       "sha",
                       ""
                   )
 
 
-                  if not sha:
+                  if not full_sha:
                       continue
 
 
-                  if sha in seen:
+                  if full_sha in seen:
                       continue
 
 
-                  seen.add(sha)
+                  seen.add(full_sha)
 
 
                   message = (
@@ -742,7 +604,6 @@ jobs:
                       message = "(no commit message)"
 
 
-                  # Markdown 安全处理
                   message = (
                       message
                       .replace("`", "'")
@@ -753,7 +614,8 @@ jobs:
 
                   commits.append(
                       (
-                          sha[:8],
+                          full_sha,
+                          full_sha[:8],
                           message
                       )
                   )
@@ -768,15 +630,22 @@ jobs:
               if not commits:
 
                   f.write(
-                      "- No commits found between these builds.\n"
+                      "- No commits found between these nightly builds.\n"
                   )
 
               else:
 
-                  for sha, message in commits:
+                  for full_sha, short_sha, message in commits:
+
+                      url = (
+                          "https://github.com/"
+                          "xbmc/xbmc/commit/"
+                          + full_sha
+                      )
+
 
                       f.write(
-                          f"- `{sha}` {message}\n"
+                          f"- [`{short_sha}`]({url}) {message}\n"
                       )
 
 
@@ -792,8 +661,7 @@ jobs:
 
 
           print(
-              "Total commits:",
-              len(commits)
+              f"Total commits: {len(commits)}"
           )
 
           PY
@@ -810,19 +678,17 @@ jobs:
 
 
           echo
-          echo "================================================"
+          echo "=============================================="
           echo "ALL COMMITS"
-          echo "================================================"
-          echo
+          echo "=============================================="
 
           cat commits.md
 
-          echo
-          echo "================================================"
+          echo "=============================================="
 
 
       # ============================================================
-      # 4. 下载 Kodi 官方 Nightly IPK
+      # 4. Download official Kodi Nightly
       # ============================================================
 
       - name: Download official Kodi nightly
@@ -851,24 +717,17 @@ jobs:
 
 
           echo
-          echo "Downloaded:"
           ls -lh kodi-source.ipk
 
 
           echo
           echo "Official SHA256:"
+
           sha256sum kodi-source.ipk
 
 
       # ============================================================
-      # 5. 修改 webOS Package Version
-      #
-      # 只修改：
-      #
-      # appinfo.json version
-      # Debian control Version
-      #
-      # Kodi executable / libraries / resources 均不修改
+      # 5. Modify ONLY webOS package version metadata
       # ============================================================
 
       - name: Repackage with Homebrew nightly version
@@ -885,7 +744,6 @@ jobs:
 
           rm -rf ipk-work
           mkdir -p ipk-work
-
 
           cd ipk-work
 
@@ -914,7 +772,7 @@ jobs:
           if [ -z "$CONTROL_ARCHIVE" ] || \
              [ -z "$DATA_ARCHIVE" ]; then
 
-            echo "ERROR: Could not locate IPK archives."
+            echo "ERROR: IPK archive structure not found."
 
             ls -la
 
@@ -941,16 +799,16 @@ jobs:
 
               *.tar.gz|*.tgz)
 
-                tar \
-                  -xzf "$ARCHIVE" \
+                tar -xzf \
+                  "$ARCHIVE" \
                   -C "$DEST"
                 ;;
 
 
               *.tar.xz)
 
-                tar \
-                  -xJf "$ARCHIVE" \
+                tar -xJf \
+                  "$ARCHIVE" \
                   -C "$DEST"
                 ;;
 
@@ -966,16 +824,16 @@ jobs:
 
               *.tar.bz2)
 
-                tar \
-                  -xjf "$ARCHIVE" \
+                tar -xjf \
+                  "$ARCHIVE" \
                   -C "$DEST"
                 ;;
 
 
               *)
 
-                tar \
-                  -xf "$ARCHIVE" \
+                tar -xf \
+                  "$ARCHIVE" \
                   -C "$DEST"
                 ;;
 
@@ -995,7 +853,7 @@ jobs:
 
 
           # ========================================================
-          # 修改 appinfo.json
+          # appinfo.json
           # ========================================================
 
           APPINFO="$(
@@ -1014,12 +872,6 @@ jobs:
           fi
 
 
-          echo
-          echo "Changing webOS package version to:"
-          echo "$FEED_VERSION"
-          echo
-
-
           jq \
             --arg version "$FEED_VERSION" \
             '.version = $version' \
@@ -1033,7 +885,7 @@ jobs:
 
 
           # ========================================================
-          # 修改 Debian control Version
+          # Debian control metadata
           # ========================================================
 
           CONTROL_FILE="$(
@@ -1046,7 +898,7 @@ jobs:
 
           if [ -z "$CONTROL_FILE" ]; then
 
-            echo "ERROR: IPK control file not found."
+            echo "ERROR: control file not found."
             exit 1
 
           fi
@@ -1058,13 +910,10 @@ jobs:
 
 
           # ========================================================
-          # 如存在 md5sums，重新生成
+          # Regenerate md5sums if present
           # ========================================================
 
           if [ -f control/md5sums ]; then
-
-            echo "Regenerating md5sums..."
-
 
             (
               cd data
@@ -1082,17 +931,13 @@ jobs:
           fi
 
 
-          # ========================================================
-          # 删除旧 archive
-          # ========================================================
-
           rm -f \
             "$CONTROL_ARCHIVE" \
             "$DATA_ARCHIVE"
 
 
           # ========================================================
-          # 使用和原 IPK 相同的压缩格式重新打包
+          # Repack using original compression format
           # ========================================================
 
           pack_archive() {
@@ -1192,20 +1037,19 @@ jobs:
 
 
           echo
-          echo "Final package:"
+          echo "Repacked Nightly:"
+
           ls -lh kodi-nightly.ipk
 
 
           echo
           echo "Final SHA256:"
+
           sha256sum kodi-nightly.ipk
 
 
       # ============================================================
-      # 6. 上传到 GitHub Release
-      #
-      # 固定使用 kodi-nightly Release
-      # 只保留最新 IPK
+      # 6. Upload latest IPK to GitHub Release
       # ============================================================
 
       - name: Upload Kodi Nightly package
@@ -1226,7 +1070,7 @@ jobs:
 
           NEW_COMMIT: ${{ steps.detect.outputs.new_commit }}
 
-          UPDATED_LOCAL: ${{ steps.detect.outputs.updated_local }}
+          UPDATED_UTC: ${{ steps.detect.outputs.updated_utc }}
 
           COMMIT_COUNT: ${{ steps.changelog.outputs.commit_count }}
 
@@ -1252,20 +1096,20 @@ jobs:
           Homebrew Version:
           ${FEED_VERSION}
 
-          Official Kodi webOS Package Version:
+          Official webOS Package Version:
           ${UPSTREAM_VERSION}
 
           Commits Since Previous Nightly:
           ${COMMIT_COUNT}
 
           Feed Updated:
-          ${UPDATED_LOCAL}
+          ${UPDATED_UTC}
 
           Based on the official Kodi webOS master nightly.
 
           Kodi executables, libraries and resources are unchanged.
 
-          Only webOS package version metadata is modified so Homebrew Channel can distinguish individual nightly builds.
+          Only webOS package version metadata is modified for Homebrew Channel update detection.
           EOF
           )"
 
@@ -1295,10 +1139,7 @@ jobs:
             --clobber
 
 
-          # --------------------------------------------------------
-          # 删除旧 IPK，只保留当前版本
-          # --------------------------------------------------------
-
+          # Only keep newest IPK
           gh release view \
             "$RELEASE_TAG" \
             --json assets \
@@ -1328,11 +1169,11 @@ jobs:
 
 
       # ============================================================
-      # 7. 生成 Homebrew repo.json
+      # 7. Generate Homebrew repo.json
       #
-      # ★ Description 在 package 顶层
-      # ★ 显示更新时间
-      # ★ 显示所有 commits
+      # IMPORTANT:
+      #
+      # Full description is at package top level.
       # ============================================================
 
       - name: Generate Homebrew repository metadata
@@ -1357,8 +1198,6 @@ jobs:
 
           FEED_VERSION: ${{ steps.detect.outputs.feed_version }}
 
-          UPDATED_LOCAL: ${{ steps.detect.outputs.updated_local }}
-
           UPDATED_UTC: ${{ steps.detect.outputs.updated_utc }}
 
           COMMIT_COUNT: ${{ steps.changelog.outputs.commit_count }}
@@ -1369,8 +1208,7 @@ jobs:
 
           SHA256="$(
             sha256sum "$ASSET_NAME" |
-            awk \
-              '{print $1}'
+            awk '{print $1}'
           )"
 
 
@@ -1397,56 +1235,33 @@ jobs:
           from pathlib import Path
 
 
-          source_file = os.environ[
-              "SOURCE_FILE"
-          ]
+          source_file = os.environ["SOURCE_FILE"]
+          source_url = os.environ["SOURCE_URL"]
 
+          build_date = os.environ["BUILD_DATE"]
 
-          source_url = os.environ[
-              "SOURCE_URL"
-          ]
-
-
-          build_date = os.environ[
-              "BUILD_DATE"
-          ]
-
-
-          new_commit = os.environ[
-              "NEW_COMMIT"
-          ]
-
+          new_commit = os.environ["NEW_COMMIT"]
 
           previous_commit = os.environ.get(
               "PREVIOUS_COMMIT",
               ""
           )
 
-
           display_version = os.environ[
               "DISPLAY_VERSION"
           ]
-
 
           upstream_version = os.environ[
               "UPSTREAM_VERSION"
           ]
 
-
           feed_version = os.environ[
               "FEED_VERSION"
           ]
 
-
-          updated_local = os.environ[
-              "UPDATED_LOCAL"
-          ]
-
-
           updated_utc = os.environ[
               "UPDATED_UTC"
           ]
-
 
           commit_count = int(
               os.environ.get(
@@ -1455,18 +1270,11 @@ jobs:
               )
           )
 
-
-          sha256 = os.environ[
-              "SHA256"
-          ]
-
+          sha256 = os.environ["SHA256"]
 
           size = int(
-              os.environ[
-                  "SIZE"
-              ]
+              os.environ["SIZE"]
           )
-
 
           asset_url = os.environ[
               "ASSET_URL"
@@ -1481,7 +1289,7 @@ jobs:
 
 
           # ========================================================
-          # 读取完整 Commit List
+          # Full commit list
           # ========================================================
 
           commits_path = Path(
@@ -1507,7 +1315,7 @@ jobs:
 
 
           # ========================================================
-          # Full Compare URL
+          # Compare URL
           # ========================================================
 
           compare_url = ""
@@ -1526,12 +1334,17 @@ jobs:
           # ========================================================
           # Homebrew Description
           #
-          # 必须位于 package 顶层。
+          # TOP-LEVEL package description
           # ========================================================
 
           description_parts = [
 
               f"# Kodi {display_version} Nightly",
+
+              "",
+
+              f"**Nightly Build:** "
+              f"`{build_date}-{new_commit}`",
 
               "",
 
@@ -1545,17 +1358,7 @@ jobs:
 
               "",
 
-              f"**Nightly Build:** "
-              f"`{build_date}-{new_commit}`",
-
-              "",
-
               f"**Feed Updated:** "
-              f"`{updated_local}`",
-
-              "",
-
-              f"**Feed Updated (UTC):** "
               f"`{updated_utc}`",
 
               "",
@@ -1613,8 +1416,8 @@ jobs:
                   "",
 
                   (
-                      "This build is based on the "
-                      "official Kodi webOS master nightly:"
+                      "Based on the official Kodi "
+                      "webOS master nightly:"
                   ),
 
                   "",
@@ -1624,8 +1427,8 @@ jobs:
                   "",
 
                   (
-                      "Kodi executables, libraries and "
-                      "resources are unchanged."
+                      "Kodi executables, libraries "
+                      "and resources are unchanged."
                   ),
 
                   "",
@@ -1639,7 +1442,7 @@ jobs:
 
                   "",
 
-                  "Official source:",
+                  "**Official Source:**",
 
                   "",
 
@@ -1685,7 +1488,7 @@ jobs:
                           "Kodi Nightly",
 
 
-                      # ★ Homebrew 长 Description
+                      # Full Homebrew detail description
                       "description":
                           description,
 
@@ -1712,7 +1515,7 @@ jobs:
                               "Kodi Nightly",
 
 
-                          # ★ 短说明
+                          # Short app description only
                           "appDescription":
                               "Official Kodi webOS master nightly",
 
@@ -1775,12 +1578,6 @@ jobs:
 
           state = {
 
-              "schemaVersion":
-                  os.environ[
-                      "SCHEMA_VERSION"
-                  ],
-
-
               "sourceFile":
                   source_file,
 
@@ -1811,10 +1608,6 @@ jobs:
 
               "upstreamVersion":
                   upstream_version,
-
-
-              "updatedLocal":
-                  updated_local,
 
 
               "updatedUTC":
@@ -1857,8 +1650,6 @@ jobs:
 
           # ========================================================
           # CHANGELOG.md
-          #
-          # 保存完整历史
           # ========================================================
 
           changelog_path = Path(
@@ -1912,7 +1703,7 @@ jobs:
               "",
 
               (
-                  f"**Official Package Version:** "
+                  f"**Official webOS Package Version:** "
                   f"`{upstream_version}`"
               ),
 
@@ -1920,7 +1711,7 @@ jobs:
 
               (
                   f"**Feed Updated:** "
-                  f"`{updated_local}`"
+                  f"`{updated_utc}`"
               ),
 
               "",
@@ -1996,9 +1787,9 @@ jobs:
 
 
           echo
-          echo "================================================"
+          echo "=============================================="
           echo "Generated repo.json"
-          echo "================================================"
+          echo "=============================================="
           echo
 
           cat repo.json
@@ -2007,7 +1798,7 @@ jobs:
 
 
       # ============================================================
-      # 8. Commit repo metadata
+      # 8. Commit metadata
       # ============================================================
 
       - name: Commit repository update
