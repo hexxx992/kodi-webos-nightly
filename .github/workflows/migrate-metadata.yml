@@ -12,7 +12,6 @@ jobs:
 
     env:
       EXPECTED_FEED_VERSION: "23.26.275"
-
       KODI_DISPLAY_VERSION: "23.0-ALPHA1"
       KODI_UPSTREAM_VERSION: "22.90.701"
 
@@ -38,7 +37,7 @@ jobs:
       # ============================================================
       # 2. Safety check
       #
-      # 防止以后已经升级到新 Nightly 时误运行这个一次性 Workflow
+      # 只允许对当前 23.26.275 / 0056082c 执行一次迁移
       # ============================================================
 
       - name: Verify current feed
@@ -52,73 +51,71 @@ jobs:
           fi
 
           CURRENT_VERSION="$(
-            jq -r '.packages[0].manifest.version // empty' repo.json
+            jq -r \
+              '.packages[0].manifest.version // empty' \
+              repo.json
           )"
 
           if [ "$CURRENT_VERSION" != "$EXPECTED_FEED_VERSION" ]; then
-
             echo "ERROR:"
-            echo "This migration is only for:"
+            echo "Expected version:"
             echo "$EXPECTED_FEED_VERSION"
             echo
-            echo "Current repo version is:"
+            echo "Current version:"
             echo "$CURRENT_VERSION"
             echo
             echo "Nothing was changed."
-
             exit 1
           fi
 
-
-          # 如果 state.json 存在，再确认 commit
           if [ -f state.json ]; then
 
             STATE_COMMIT="$(
-              jq -r '.sourceCommit // empty' state.json
+              jq -r \
+                '.sourceCommit // empty' \
+                state.json
             )"
 
             if [ -n "$STATE_COMMIT" ] && \
                [ "$STATE_COMMIT" != "$CURRENT_COMMIT" ]; then
 
               echo "ERROR:"
-              echo "state.json already points to another Kodi commit:"
+              echo "state.json points to:"
               echo "$STATE_COMMIT"
               echo
               echo "Expected:"
               echo "$CURRENT_COMMIT"
               echo
               echo "Nothing was changed."
-
               exit 1
 
             fi
 
           fi
 
-
           echo
           echo "Safety check passed."
           echo
-          echo "Feed version:"
+          echo "Version:"
           echo "$CURRENT_VERSION"
           echo
-          echo "Kodi commit:"
+          echo "Commit:"
           echo "$CURRENT_COMMIT"
 
 
       # ============================================================
-      # 3. Resolve full commit hashes
+      # 3. Resolve full Kodi commit hashes
       # ============================================================
 
-      - name: Resolve Kodi commit hashes
+      - name: Resolve commit hashes
         id: resolve
         shell: bash
+
         env:
           GH_TOKEN: ${{ github.token }}
 
         run: |
           set -euo pipefail
-
 
           OLD_FULL="$(
             curl \
@@ -132,7 +129,6 @@ jobs:
             jq -r '.sha'
           )"
 
-
           NEW_FULL="$(
             curl \
               --fail \
@@ -145,26 +141,22 @@ jobs:
             jq -r '.sha'
           )"
 
-
-          echo "Previous:"
+          echo "Previous full commit:"
           echo "$OLD_FULL"
 
           echo
-          echo "Current:"
+          echo "Current full commit:"
           echo "$NEW_FULL"
 
-
-          {
-            echo "old_full=$OLD_FULL"
-            echo "new_full=$NEW_FULL"
-          } >> "$GITHUB_OUTPUT"
+          echo "old_full=$OLD_FULL" >> "$GITHUB_OUTPUT"
+          echo "new_full=$NEW_FULL" >> "$GITHUB_OUTPUT"
 
 
       # ============================================================
       # 4. Get ALL commits
       #
-      # 当前这两个 nightly 之间约几十个 commits，
-      # 但这里仍然支持分页。
+      # 获取 f889ea2d -> 0056082c 的全部 commits
+      # 不截断
       # ============================================================
 
       - name: Get all commits
@@ -173,20 +165,16 @@ jobs:
 
         env:
           GH_TOKEN: ${{ github.token }}
-
           OLD_FULL: ${{ steps.resolve.outputs.old_full }}
           NEW_FULL: ${{ steps.resolve.outputs.new_full }}
 
         run: |
           set -euo pipefail
 
-
           rm -rf compare-pages
           mkdir -p compare-pages
 
-
           PAGE=1
-
 
           while true
           do
@@ -194,7 +182,6 @@ jobs:
             URL="https://api.github.com/repos/${KODI_GITHUB_REPO}/compare/${OLD_FULL}...${NEW_FULL}?per_page=100&page=${PAGE}"
 
             echo "Fetching compare page ${PAGE}..."
-
 
             curl \
               --fail \
@@ -204,27 +191,23 @@ jobs:
               -H "Authorization: Bearer ${GH_TOKEN}" \
               -H "Accept: application/vnd.github+json" \
               "$URL" \
-              -o "compare-pages/page-${PAGE}.json"
-
+              > "compare-pages/page-${PAGE}.json"
 
             COUNT="$(
-              jq '.commits | length' \
+              jq \
+                '.commits | length' \
                 "compare-pages/page-${PAGE}.json"
             )"
 
-
             echo "Commits returned: $COUNT"
-
 
             if [ "$COUNT" -eq 0 ]; then
               break
             fi
 
-
             if [ "$COUNT" -lt 100 ]; then
               break
             fi
-
 
             PAGE=$((PAGE + 1))
 
@@ -238,18 +221,27 @@ jobs:
 
 
           def page_number(path):
-              m = re.search(r"page-(\d+)\.json$", path)
-              return int(m.group(1)) if m else 0
+              m = re.search(
+                  r"page-(\d+)\.json$",
+                  path
+              )
 
+              if m:
+                  return int(m.group(1))
 
-          files = sorted(
-              glob.glob("compare-pages/page-*.json"),
-              key=page_number
-          )
+              return 0
 
 
           commits = []
           seen = set()
+
+
+          files = sorted(
+              glob.glob(
+                  "compare-pages/page-*.json"
+              ),
+              key=page_number
+          )
 
 
           for filename in files:
@@ -263,12 +255,24 @@ jobs:
                   data = json.load(f)
 
 
-              for item in data.get("commits", []):
+              for item in data.get(
+                  "commits",
+                  []
+              ):
 
-                  sha = item.get("sha", "")
+                  sha = item.get(
+                      "sha",
+                      ""
+                  )
 
-                  if not sha or sha in seen:
+
+                  if not sha:
                       continue
+
+
+                  if sha in seen:
+                      continue
+
 
                   seen.add(sha)
 
@@ -286,7 +290,6 @@ jobs:
                       message = "(no commit message)"
 
 
-                  # 防止破坏 Markdown
                   message = (
                       message
                       .replace("`", "'")
@@ -326,8 +329,10 @@ jobs:
                           + full_sha
                       )
 
+
                       f.write(
-                          f"- [`{short_sha}`]({commit_url}) "
+                          f"- [`{short_sha}`]"
+                          f"({commit_url}) "
                           f"{message}\n"
                       )
 
@@ -338,10 +343,14 @@ jobs:
               encoding="utf-8"
           ) as f:
 
-              f.write(str(len(commits)))
+              f.write(
+                  str(len(commits))
+              )
 
 
-          print(f"Total commits: {len(commits)}")
+          print(
+              f"Total commits: {len(commits)}"
+          )
           PY
 
 
@@ -349,10 +358,9 @@ jobs:
             cat commit-count.txt
           )"
 
-
-          echo "commit_count=$COMMIT_COUNT" \
+          echo \
+            "commit_count=$COMMIT_COUNT" \
             >> "$GITHUB_OUTPUT"
-
 
           echo
           echo "=============================================="
@@ -367,7 +375,7 @@ jobs:
 
 
       # ============================================================
-      # 5. Metadata update timestamp
+      # 5. Generate metadata update time
       # ============================================================
 
       - name: Generate update timestamp
@@ -377,19 +385,16 @@ jobs:
         run: |
           set -euo pipefail
 
-
           UPDATED_UTC="$(
             date -u \
               '+%Y-%m-%d %H:%M:%S UTC'
           )"
-
 
           UPDATED_LOCAL="$(
             TZ=America/Los_Angeles \
             date \
               '+%Y-%m-%d %H:%M:%S %Z'
           )"
-
 
           echo "UTC:"
           echo "$UPDATED_UTC"
@@ -398,21 +403,24 @@ jobs:
           echo "Los Angeles:"
           echo "$UPDATED_LOCAL"
 
+          echo \
+            "updated_utc=$UPDATED_UTC" \
+            >> "$GITHUB_OUTPUT"
 
-          {
-            echo "updated_utc=$UPDATED_UTC"
-            echo "updated_local=$UPDATED_LOCAL"
-          } >> "$GITHUB_OUTPUT"
+          echo \
+            "updated_local=$UPDATED_LOCAL" \
+            >> "$GITHUB_OUTPUT"
 
 
       # ============================================================
-      # 6. Modify ONLY repo metadata
+      # 6. Modify metadata ONLY
       #
-      # NO IPK download
-      # NO repackaging
-      # NO Release modification
-      # NO SHA change
-      # NO version change
+      # 不下载 IPK
+      # 不重新打包
+      # 不修改 Release
+      # 不修改版本
+      # 不修改 SHA256
+      # 不修改 ipkSize
       # ============================================================
 
       - name: Migrate repo metadata
@@ -434,10 +442,17 @@ jobs:
           python3 <<'PY'
           import json
           import os
+
           from pathlib import Path
 
 
-          repo_path = Path("repo.json")
+          # ========================================================
+          # Read current repo.json
+          # ========================================================
+
+          repo_path = Path(
+              "repo.json"
+          )
 
 
           with repo_path.open(
@@ -448,64 +463,100 @@ jobs:
               repo = json.load(f)
 
 
-          package = repo["packages"][0]
-          manifest = package["manifest"]
+          package = repo[
+              "packages"
+          ][0]
+
+
+          manifest = package[
+              "manifest"
+          ]
 
 
           # ========================================================
-          # Preserve current package metadata exactly
+          # Preserve current package information EXACTLY
           # ========================================================
 
-          feed_version = manifest["version"]
-
-          ipk_url = manifest["ipkUrl"]
-          ipk_hash = manifest["ipkHash"]
-          ipk_size = manifest["ipkSize"]
+          feed_version = manifest[
+              "version"
+          ]
 
 
-          kodi_display_version = os.environ[
+          ipk_url = manifest[
+              "ipkUrl"
+          ]
+
+
+          ipk_hash = manifest[
+              "ipkHash"
+          ]
+
+
+          ipk_size = manifest[
+              "ipkSize"
+          ]
+
+
+          # ========================================================
+          # Metadata
+          # ========================================================
+
+          display_version = os.environ[
               "KODI_DISPLAY_VERSION"
           ]
+
 
           upstream_version = os.environ[
               "KODI_UPSTREAM_VERSION"
           ]
 
+
           build_date = os.environ[
               "BUILD_DATE"
           ]
+
 
           previous_commit = os.environ[
               "PREVIOUS_COMMIT"
           ]
 
+
           current_commit = os.environ[
               "CURRENT_COMMIT"
           ]
+
 
           old_full = os.environ[
               "OLD_FULL"
           ]
 
+
           new_full = os.environ[
               "NEW_FULL"
           ]
+
 
           updated_utc = os.environ[
               "UPDATED_UTC"
           ]
 
+
           updated_local = os.environ[
               "UPDATED_LOCAL"
           ]
 
+
           commit_count = int(
-              os.environ["COMMIT_COUNT"]
+              os.environ[
+                  "COMMIT_COUNT"
+              ]
           )
 
 
           commits_md = (
-              Path("commits.md")
+              Path(
+                  "commits.md"
+              )
               .read_text(
                   encoding="utf-8"
               )
@@ -522,74 +573,171 @@ jobs:
 
 
           # ========================================================
-          # Correct Homebrew top-level description
+          # Build top-level Homebrew Description
+          #
+          # 不使用 triple quote，避免 YAML indentation 问题
           # ========================================================
 
-          description = f"""# Kodi {kodi_display_version} Nightly
+          description_lines = [
 
-**Nightly Build:** `{build_date}-{current_commit}`
+              f"# Kodi {display_version} Nightly",
 
-**Homebrew Nightly Version:** `{feed_version}`
+              "",
 
-**Official Kodi webOS Package Version:** `{upstream_version}`
+              (
+                  f"**Nightly Build:** "
+                  f"`{build_date}-{current_commit}`"
+              ),
 
-**Feed Updated:** `{updated_local}`
+              "",
 
-**Feed Updated (UTC):** `{updated_utc}`
+              (
+                  f"**Homebrew Nightly Version:** "
+                  f"`{feed_version}`"
+              ),
 
-**Commits Since Previous Nightly:** `{commit_count}`
+              "",
 
----
+              (
+                  f"**Official Kodi webOS Package Version:** "
+                  f"`{upstream_version}`"
+              ),
 
-## All Commits Since Previous Nightly
+              "",
 
-{commits_md}
+              (
+                  f"**Feed Updated:** "
+                  f"`{updated_local}`"
+              ),
 
----
+              "",
 
-[View full comparison on Kodi GitHub]({compare_url})
+              (
+                  f"**Feed Updated (UTC):** "
+                  f"`{updated_utc}`"
+              ),
 
----
+              "",
 
-## Package Information
+              (
+                  f"**Commits Since Previous Nightly:** "
+                  f"`{commit_count}`"
+              ),
 
-Based on the official Kodi webOS master nightly:
+              "",
 
-`org.xbmc.kodi_{build_date}-{current_commit}-master_arm.ipk`
+              "---",
 
-Kodi executables, libraries and resources are unchanged.
+              "",
 
-Only the webOS package version metadata was modified when this Homebrew package was originally generated so Homebrew Channel can distinguish nightly builds.
-"""
+              "## All Commits Since Previous Nightly",
+
+              "",
+
+              commits_md,
+
+              "",
+
+              "---",
+
+              "",
+
+              (
+                  "[View full comparison on Kodi GitHub]"
+                  f"({compare_url})"
+              ),
+
+              "",
+
+              "---",
+
+              "",
+
+              "## Package Information",
+
+              "",
+
+              (
+                  "Based on the official Kodi "
+                  "webOS master nightly:"
+              ),
+
+              "",
+
+              (
+                  f"`org.xbmc.kodi_"
+                  f"{build_date}-"
+                  f"{current_commit}-"
+                  f"master_arm.ipk`"
+              ),
+
+              "",
+
+              (
+                  "Kodi executables, libraries "
+                  "and resources are unchanged."
+              ),
+
+              "",
+
+              (
+                  "Only the webOS package version metadata "
+                  "was modified when this Homebrew package "
+                  "was originally generated so Homebrew "
+                  "Channel can distinguish nightly builds."
+              )
+
+          ]
+
+
+          description = "\n".join(
+              description_lines
+          )
 
 
           # ========================================================
-          # Add correct TOP-LEVEL description
+          # Correct Homebrew fields
           # ========================================================
 
-          package["description"] = description
+          package[
+              "description"
+          ] = description
 
 
-          # ========================================================
-          # appDescription becomes SHORT description only
-          # ========================================================
-
-          manifest["appDescription"] = (
+          manifest[
+              "appDescription"
+          ] = (
               "Official Kodi webOS master nightly"
           )
 
 
           # ========================================================
-          # Safety:
-          #
-          # Explicitly preserve these existing values.
+          # Explicitly preserve package values
           # ========================================================
 
-          manifest["version"] = feed_version
-          manifest["ipkUrl"] = ipk_url
-          manifest["ipkHash"] = ipk_hash
-          manifest["ipkSize"] = ipk_size
+          manifest[
+              "version"
+          ] = feed_version
 
+
+          manifest[
+              "ipkUrl"
+          ] = ipk_url
+
+
+          manifest[
+              "ipkHash"
+          ] = ipk_hash
+
+
+          manifest[
+              "ipkSize"
+          ] = ipk_size
+
+
+          # ========================================================
+          # Save repo.json
+          # ========================================================
 
           with repo_path.open(
               "w",
@@ -603,16 +751,18 @@ Only the webOS package version metadata was modified when this Homebrew package 
                   ensure_ascii=False
               )
 
-              f.write("\n")
+              f.write(
+                  "\n"
+              )
 
 
           # ========================================================
-          # Update state.json metadata only
-          #
-          # sourceCommit/version stay unchanged.
+          # Update state.json metadata
           # ========================================================
 
-          state_path = Path("state.json")
+          state_path = Path(
+              "state.json"
+          )
 
 
           if state_path.exists():
@@ -629,31 +779,49 @@ Only the webOS package version metadata was modified when this Homebrew package 
               state = {}
 
 
-          # Do NOT change sourceCommit if already correct
-          state["sourceCommit"] = current_commit
-          state["previousCommit"] = previous_commit
+          state[
+              "sourceCommit"
+          ] = current_commit
 
-          state["feedVersion"] = feed_version
 
-          state["kodiDisplayVersion"] = (
-              kodi_display_version
-          )
+          state[
+              "previousCommit"
+          ] = previous_commit
 
-          state["upstreamVersion"] = (
-              upstream_version
-          )
 
-          state["buildDate"] = build_date
+          state[
+              "feedVersion"
+          ] = feed_version
 
-          state["commitCount"] = commit_count
 
-          state["metadataUpdatedLocal"] = (
-              updated_local
-          )
+          state[
+              "kodiDisplayVersion"
+          ] = display_version
 
-          state["metadataUpdatedUTC"] = (
-              updated_utc
-          )
+
+          state[
+              "upstreamVersion"
+          ] = upstream_version
+
+
+          state[
+              "buildDate"
+          ] = build_date
+
+
+          state[
+              "commitCount"
+          ] = commit_count
+
+
+          state[
+              "metadataUpdatedLocal"
+          ] = updated_local
+
+
+          state[
+              "metadataUpdatedUTC"
+          ] = updated_utc
 
 
           with state_path.open(
@@ -668,155 +836,135 @@ Only the webOS package version metadata was modified when this Homebrew package 
                   ensure_ascii=False
               )
 
-              f.write("\n")
+              f.write(
+                  "\n"
+              )
 
 
-          print(
-              "Migration completed."
+          # ========================================================
+          # CHANGELOG.md
+          # ========================================================
+
+          changelog_lines = [
+
+              "# Kodi webOS Nightly Changelog",
+
+              "",
+
+              (
+                  f"## Kodi {display_version} "
+                  f"— {build_date}-{current_commit}"
+              ),
+
+              "",
+
+              (
+                  f"**Homebrew Version:** "
+                  f"`{feed_version}`"
+              ),
+
+              "",
+
+              (
+                  f"**Official webOS Package Version:** "
+                  f"`{upstream_version}`"
+              ),
+
+              "",
+
+              (
+                  f"**Feed Updated:** "
+                  f"`{updated_local}`"
+              ),
+
+              "",
+
+              (
+                  f"**Feed Updated (UTC):** "
+                  f"`{updated_utc}`"
+              ),
+
+              "",
+
+              (
+                  f"**Commits:** "
+                  f"{commit_count}"
+              ),
+
+              "",
+
+              "### All Commits",
+
+              "",
+
+              commits_md,
+
+              "",
+
+              (
+                  "[Full Kodi GitHub comparison]"
+                  f"({compare_url})"
+              ),
+
+              ""
+
+          ]
+
+
+          Path(
+              "CHANGELOG.md"
+          ).write_text(
+
+              "\n".join(
+                  changelog_lines
+              ),
+
+              encoding="utf-8"
+
           )
 
+
           print(
-              "Feed version preserved:",
+              "Metadata migration complete."
+          )
+
+
+          print(
+              "Version preserved:",
               feed_version
           )
 
+
           print(
-              "IPK URL preserved:",
+              "IPK preserved:",
               ipk_url
           )
 
+
           print(
-              "IPK SHA256 preserved:",
-              ipk_hash.get("sha256")
+              "SHA256 preserved:",
+              ipk_hash.get(
+                  "sha256"
+              )
           )
+
 
           print(
               "IPK size preserved:",
               ipk_size
           )
 
+
           print(
-              "Commits added:",
+              "Commits:",
               commit_count
           )
+
           PY
 
 
       # ============================================================
-      # 7. Rebuild current CHANGELOG entry
-      # ============================================================
-
-      - name: Update changelog
-        shell: bash
-
-        env:
-          COMMIT_COUNT: ${{ steps.changelog.outputs.commit_count }}
-
-          OLD_FULL: ${{ steps.resolve.outputs.old_full }}
-          NEW_FULL: ${{ steps.resolve.outputs.new_full }}
-
-          UPDATED_UTC: ${{ steps.time.outputs.updated_utc }}
-          UPDATED_LOCAL: ${{ steps.time.outputs.updated_local }}
-
-        run: |
-          set -euo pipefail
-
-
-          python3 <<'PY'
-          import os
-          from pathlib import Path
-
-
-          feed_version = os.environ[
-              "EXPECTED_FEED_VERSION"
-          ]
-
-          display_version = os.environ[
-              "KODI_DISPLAY_VERSION"
-          ]
-
-          upstream_version = os.environ[
-              "KODI_UPSTREAM_VERSION"
-          ]
-
-          build_date = os.environ[
-              "BUILD_DATE"
-          ]
-
-          current_commit = os.environ[
-              "CURRENT_COMMIT"
-          ]
-
-          old_full = os.environ[
-              "OLD_FULL"
-          ]
-
-          new_full = os.environ[
-              "NEW_FULL"
-          ]
-
-          commit_count = os.environ[
-              "COMMIT_COUNT"
-          ]
-
-          updated_local = os.environ[
-              "UPDATED_LOCAL"
-          ]
-
-          updated_utc = os.environ[
-              "UPDATED_UTC"
-          ]
-
-
-          commits_md = (
-              Path("commits.md")
-              .read_text(
-                  encoding="utf-8"
-              )
-              .strip()
-          )
-
-
-          compare_url = (
-              "https://github.com/"
-              "xbmc/xbmc/compare/"
-              f"{old_full}..."
-              f"{new_full}"
-          )
-
-
-          content = f"""# Kodi webOS Nightly Changelog
-
-## Kodi {display_version} — {build_date}-{current_commit}
-
-**Homebrew Version:** `{feed_version}`
-
-**Official webOS Package Version:** `{upstream_version}`
-
-**Feed Updated:** `{updated_local}`
-
-**Feed Updated (UTC):** `{updated_utc}`
-
-**Commits:** {commit_count}
-
-### All Commits
-
-{commits_md}
-
-[Full Kodi GitHub comparison]({compare_url})
-
-"""
-
-
-          Path("CHANGELOG.md").write_text(
-              content,
-              encoding="utf-8"
-          )
-          PY
-
-
-      # ============================================================
-      # 8. Verify that package itself was NOT changed
+      # 7. Verify
       # ============================================================
 
       - name: Verify preserved package metadata
@@ -826,10 +974,28 @@ Only the webOS package version metadata was modified when this Homebrew package 
           set -euo pipefail
 
 
+          VERSION="$(
+            jq -r \
+              '.packages[0].manifest.version' \
+              repo.json
+          )"
+
+
+          if [ "$VERSION" != "$EXPECTED_FEED_VERSION" ]; then
+
+            echo "ERROR:"
+            echo "Package version changed unexpectedly."
+
+            exit 1
+
+          fi
+
+
           echo
           echo "=============================================="
-          echo "FINAL PACKAGE METADATA"
+          echo "FINAL METADATA"
           echo "=============================================="
+
 
           jq '{
             version:
@@ -852,28 +1018,13 @@ Only the webOS package version metadata was modified when this Homebrew package 
           }' repo.json
 
 
-          VERSION="$(
-            jq -r \
-              '.packages[0].manifest.version' \
-              repo.json
-          )"
-
-
-          if [ "$VERSION" != "$EXPECTED_FEED_VERSION" ]; then
-
-            echo "ERROR: Version unexpectedly changed."
-            exit 1
-
-          fi
-
-
           echo
           echo "Version correctly preserved:"
           echo "$VERSION"
 
 
       # ============================================================
-      # 9. Commit metadata only
+      # 8. Commit metadata ONLY
       # ============================================================
 
       - name: Commit metadata migration
