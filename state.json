@@ -1,0 +1,13 @@
+{
+  "sourceFile": "org.xbmc.kodi_20261002-0056082c-master_arm.ipk",
+  "sourceUrl": "https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261002-0056082c-master_arm.ipk",
+  "sourceCommit": "0056082c",
+  "previousCommit": "f889ea2d",
+  "buildDate": "20261002",
+  "repoVersion": "23.26.275",
+  "kodiDisplayVersion": "23.0-ALPHA1",
+  "originalVersionCode": "22.90.701",
+  "sha256": "9091baff6111a741198fd0df4126d92ecfbd8f8e67861d55ce5140e342c82c19",
+  "ipkSize": 100498934,
+  "assetUrl": "https://github.com/hexxx992/kodi-webos-nightly/releases/download/kodi-nightly/org.xbmc.kodi_23.26.275_arm.ipk"
+}
