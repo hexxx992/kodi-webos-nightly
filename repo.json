@@ -1,0 +1,30 @@
+{
+  "paging": {
+    "page": 1,
+    "count": 1,
+    "maxPage": 1,
+    "itemsTotal": 1
+  },
+  "packages": [
+    {
+      "id": "org.xbmc.kodi",
+      "title": "Kodi Nightly",
+      "iconUri": "https://raw.githubusercontent.com/xbmc/xbmc/master/tools/Linux/packaging/media/icon256x256.png",
+      "manifest": {
+        "id": "org.xbmc.kodi",
+        "version": "22.90.701",
+        "type": "native",
+        "title": "Kodi Nightly",
+        "appDescription": "Official Kodi master nightly build for webOS",
+        "iconUri": "https://raw.githubusercontent.com/xbmc/xbmc/master/tools/Linux/packaging/media/icon256x256.png",
+        "sourceUrl": "https://github.com/xbmc/xbmc",
+        "rootRequired": false,
+        "ipkUrl": "https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261002-0056082c-master_arm.ipk",
+        "ipkHash": {
+          "sha256": "8c6f7b4529a30480fb4d0eb88d9d8dab6b2f09749ed14d33e5ffa5349fbd24c3"
+        },
+        "ipkSize": 99805150
+      }
+    }
+  ]
+}
