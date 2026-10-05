@@ -1,5 +1,89 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261004-d1cecd8a
+
+**Homebrew Version:** `23.26.277`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-10-05 07:31:22 PDT`
+
+**Commits:** 66
+
+### All Commits
+
+- [`f2dd5a1a`](https://github.com/xbmc/xbmc/commit/f2dd5a1ae4bb4b7edab8f5fae3c04dbc7f2b3350) [RetroPlayer] Batch GUI capture submission before reuse
+- [`2e86af64`](https://github.com/xbmc/xbmc/commit/2e86af64949db8a2e021fd62393a1fb461441765) [Video][Database] Clear the hashes of shows that lose episodes.
+- [`8ad91ceb`](https://github.com/xbmc/xbmc/commit/8ad91cebe1d09ec8eff239da06bf4323119dda75) [VideoInfoScanner] Use the scanned folder for a show's local art.
+- [`0d39166e`](https://github.com/xbmc/xbmc/commit/0d39166e2bea5a03c3c7844b932f423a0242719e) [Video][Database] Remove links to show folders that have gone.
+- [`f8889cf7`](https://github.com/xbmc/xbmc/commit/f8889cf7dc5a4f16a780290cd0fb8538daf44e99) [Android] Skip app icons with no intrinsic size
+- [`7c3b818b`](https://github.com/xbmc/xbmc/commit/7c3b818b9dcd9574191e287477623931e568cd43) [Video] Name the NFO and art of episodes in an archive after the archive.
+- [`2b910fec`](https://github.com/xbmc/xbmc/commit/2b910fec303225ef5c24e7e561047c4418cbf37f) [guilib] FFmpegImage: let av_frame_get_buffer align the temp stride
+- [`13a04851`](https://github.com/xbmc/xbmc/commit/13a04851af596f6a81fbc3113c96b19c8e0ff748) fixed: honour the directory parameter of a video library clean
+- [`0e1b93e6`](https://github.com/xbmc/xbmc/commit/0e1b93e66f4ed5c43242d0b2efeb6f339ae992b4) [guilib] Fix CGUIImage::SetFileName ignoring useCache
+- [`29dba37b`](https://github.com/xbmc/xbmc/commit/29dba37b8b6e1d1bc16459053d48d9aa04c844e7) [WinEventsWin32] Improved handling of display changes.
+- [`d9ab26f0`](https://github.com/xbmc/xbmc/commit/d9ab26f056ab5082d155731d9a0f430cf876c8ed) [PlayListPlayer] Don't read the current item of a cleared playlist
+- [`4b704add`](https://github.com/xbmc/xbmc/commit/4b704addab6aba013b671c1e17ae71edc596d0c2) [music] Album: initialise year when loading legacy <year> tag
+- [`e3f067bd`](https://github.com/xbmc/xbmc/commit/e3f067bd0b8deccc47a7b6252108ec1c6776d6f9) [test] TestVideoPlayer: avoid 2 s renderer wait per test
+- [`8202c4ea`](https://github.com/xbmc/xbmc/commit/8202c4eaa782db21906b926db653e145fb1f72f8) added: the content geometry core
+- [`3babf317`](https://github.com/xbmc/xbmc/commit/3babf3172b4c69deb2532a9d6d5c1c3a273db269) added: CTerritory, a place a language is used in
+- [`a7b9d334`](https://github.com/xbmc/xbmc/commit/a7b9d334599c96db5d88727f81555a29304bf200) changed: open a Blu-ray title without a player
+- [`7399f8b4`](https://github.com/xbmc/xbmc/commit/7399f8b47c97d45ef750b0e2ca9b385c4b939e63) [RetroPlayer] Fix FBO renderer synchronization
+- [`08364e60`](https://github.com/xbmc/xbmc/commit/08364e607acef5bd0b803b71cc129cc6da187c9e) [RetroPlayer] Clear game window
+- [`140cde43`](https://github.com/xbmc/xbmc/commit/140cde43073dddec80da7fc99818301b1a9428cc) [games] Drop an error that can no longer be shown
+- [`dd385d97`](https://github.com/xbmc/xbmc/commit/dd385d9703bd49fb02e4e0ecf3e8db421b1dff36) changed: name the view states once
+- [`19c05470`](https://github.com/xbmc/xbmc/commit/19c05470122da3d8b8575d0faacad753d48ca8e5) changed: drop two includes Application.cpp does not use
+- [`c6246d44`](https://github.com/xbmc/xbmc/commit/c6246d440d76e3d5dfc59b09299c75f2681ee905) fixed: translate a legacy library path by its longest matching prefix
+- [`c52a1276`](https://github.com/xbmc/xbmc/commit/c52a12765672045ff63d1ba7cec34d55115dbdfa) changed: the volume component handles the volume actions
+- [`0c33dd10`](https://github.com/xbmc/xbmc/commit/0c33dd108d7145ddb3e32618bbf755fdf8307383) changed: the player component handles the playback and video display actions
+- [`fce05935`](https://github.com/xbmc/xbmc/commit/fce059356b0f0f6d19b0b2c108c1f8179c23e8df) Dev-kit: Share the check for an instance's API version
+- [`4db9eb20`](https://github.com/xbmc/xbmc/commit/4db9eb204b1167576cd3a7934ff298acb68a36af) [games] Pass a game client its libretro core's name
+- [`83838f85`](https://github.com/xbmc/xbmc/commit/83838f850b89dedba9eabf6ceccd1d74656df19d) Merge pull request #29494 from kel-mo/guiimage-usecache
+- [`940ab0f8`](https://github.com/xbmc/xbmc/commit/940ab0f84df3e64eac4f089a7fa783b34755efc3) Merge pull request #29534 from malard/volume-actions-in-component
+- [`d8a8363f`](https://github.com/xbmc/xbmc/commit/d8a8363f255605544281ae721fc615d0e5968d17) Merge pull request #29513 from malard/bluray-open-without-player
+- [`9a84a73d`](https://github.com/xbmc/xbmc/commit/9a84a73d48e4eb673451dee926cc3020d6b019c1) Merge pull request #29514 from malard/add-territory
+- [`1517ce1e`](https://github.com/xbmc/xbmc/commit/1517ce1e7f992e786bb68a5de7fb0dc91976a210) Merge pull request #29509 from neo1973/fix-testvideoplayer-slow-teardown
+- [`14946b61`](https://github.com/xbmc/xbmc/commit/14946b61d8d5dec70e73c2477a3694210c4b7ece) Merge pull request #29502 from sunlollyking/playlist-play-after-clear
+- [`d34e66e5`](https://github.com/xbmc/xbmc/commit/d34e66e5c70eed1530fd8a3d26a1873dcbc8125a) Merge pull request #29511 from malard/add-content-geometry-core
+- [`0a67f17d`](https://github.com/xbmc/xbmc/commit/0a67f17d5dc30c938edbac6be11abde615508df2) Merge pull request #29506 from neo1973/fix-album-year-uninit
+- [`7fa2ccda`](https://github.com/xbmc/xbmc/commit/7fa2ccdaa963bdfb07b76c2d5a8710a95d3b6050) Merge pull request #29530 from malard/drop-unused-application-includes
+- [`0f5792ea`](https://github.com/xbmc/xbmc/commit/0f5792ea9a82b667dabed7cd7d79c0280cc8b149) Merge pull request #29456 from M0Rf30/android-appicon-zero-size
+- [`4c149d23`](https://github.com/xbmc/xbmc/commit/4c149d23af0076d68bbf28ef35c05c18d8395316) Merge pull request #29483 from malard/fix-cleanlibrary-directory
+- [`ee9fb61d`](https://github.com/xbmc/xbmc/commit/ee9fb61da142e4f70ae0749ccfe4646bb3caf7b6) fixed: keep a C standard from CFLAGS out of the depends CPPFLAGS
+- [`048c1c42`](https://github.com/xbmc/xbmc/commit/048c1c42ac2952ddf1f3d8e064bb3d860df2de0c) [Video] Export the scraped runtime to nfo rather than the stream duration.
+- [`e456f6aa`](https://github.com/xbmc/xbmc/commit/e456f6aacb009b0ad192d8471a808957671df2ec) [Video] Don't export a tv show's cast as the cast of each of its episodes.
+- [`f622b89a`](https://github.com/xbmc/xbmc/commit/f622b89abd7b4aa9d143d012f3c6ba1dfa283b0d) [Video] Export the video stream language to nfo.
+- [`25bfb445`](https://github.com/xbmc/xbmc/commit/25bfb445facbc5182592c29d10a9a26f65046ac3) [Video] Keep the case of the hdr detail read from nfo.
+- [`e6fb2e62`](https://github.com/xbmc/xbmc/commit/e6fb2e6294871c7b3b011884735749fb8cc2f0c1) [Video] Export and import the total time of an episode bookmark.
+- [`b74eeea0`](https://github.com/xbmc/xbmc/commit/b74eeea02edd7be643b5776e4bd0d4c7aaab36ed) [Video] Don't escape a plain text episode guide read from nfo.
+- [`79ad9462`](https://github.com/xbmc/xbmc/commit/79ad946211b55b8dbb15f4c63f4a5e895f6d2d38) [Video] Keep the streamdetails of a movie converted into a version or extra.
+- [`85b57a64`](https://github.com/xbmc/xbmc/commit/85b57a640ec8632cf9e2a05a8d1ed48afc8e0e4e) Merge pull request #29449 from KOPRajs/retroplayer-gl-v3
+- [`64520f48`](https://github.com/xbmc/xbmc/commit/64520f488e2454084ea09c2f5c24c66e992fb5db) Merge pull request #29475 from 78andyp/nfoart
+- [`e51caaaa`](https://github.com/xbmc/xbmc/commit/e51caaaac328bed84aa79bd3671436cba0dbec06) Merge pull request #29525 from sunlollyking/remove-unreachable-gl-message
+- [`337a467c`](https://github.com/xbmc/xbmc/commit/337a467c4ab9b3d5df317ea277be36a7859154f4) Merge pull request #29480 from neo1973/fix-ffmpegimage-stride
+- [`c94ca95c`](https://github.com/xbmc/xbmc/commit/c94ca95c20ce273cc76bda6e2ab9cadaa8504b20) Merge pull request #29450 from 78andyp/cleanshows
+- [`e46bd9cc`](https://github.com/xbmc/xbmc/commit/e46bd9cc6cafa0073f386a974e0aa43546a4d531) Merge pull request #29539 from sunlollyking/game-libretro-core-name
+- [`33cf0eb4`](https://github.com/xbmc/xbmc/commit/33cf0eb4ab39fe5531b6eb0d6f297ae1cb29cb7b) fixed: clear the scraped time of the artist being refreshed (#29533)
+- [`ef190cdc`](https://github.com/xbmc/xbmc/commit/ef190cdce25529e35784edb0566643c074f9884f) fixed: trim the genres a music tag keeps when asked to (#29531)
+- [`eebf7908`](https://github.com/xbmc/xbmc/commit/eebf79082ba44045bb9cc3b42cfd41c9b0122aa8) changed: name the placeholder entry paths once (#29527)
+- [`f3156d1f`](https://github.com/xbmc/xbmc/commit/f3156d1f5373a7a897b3505619e72654313e65ae) fixed: establish the subtitle position from playback start, not the first line (#29150)
+- [`c14999cd`](https://github.com/xbmc/xbmc/commit/c14999cd75604bbf314bcb23687de169b910571f) changed: name the library:// node paths once (#29526)
+- [`c082c55f`](https://github.com/xbmc/xbmc/commit/c082c55fefed64709c528a83142c9a9f34b39a76) fixed: tell one renderer action's reply from another's (#29219)
+- [`3b5010b5`](https://github.com/xbmc/xbmc/commit/3b5010b53818bf5142602c6f7bb1ae72c6494bee) added: the result of sampling one file for content geometry (#29564)
+- [`9d554b9e`](https://github.com/xbmc/xbmc/commit/9d554b9ef2d7006889ac23a879469c85b2d974cb) Merge pull request #29479 from 78andyp/exportimport
+- [`5d356178`](https://github.com/xbmc/xbmc/commit/5d3561780f5d1cfc285f81366670236e794c6ab3) Merge pull request #29458 from 78andyp/rdp
+- [`ca28c949`](https://github.com/xbmc/xbmc/commit/ca28c9492c3993dd4164495951f4ac904a51aba2) added: content bar detection and live geometry selection
+- [`590cff67`](https://github.com/xbmc/xbmc/commit/590cff6765b5c5efd7b1bd9c7d037571eaa13f5e) fixed: keep a sample above the declared depth inside the histogram
+- [`72f4be96`](https://github.com/xbmc/xbmc/commit/72f4be96e2b5e2b4d82346f7a8e4ed35f1fd0a35) Merge pull request #29532 from malard/fix-legacy-path-longest-prefix
+- [`19a54021`](https://github.com/xbmc/xbmc/commit/19a540213ada28502f40697e6036e8c69ed14097) Merge pull request #29535 from malard/player-actions-in-component
+- [`5ef5185c`](https://github.com/xbmc/xbmc/commit/5ef5185c365f3a9198128f22212d1e2b8bdaa3b5) Merge pull request #29529 from malard/name-view-states
+- [`d1cecd8a`](https://github.com/xbmc/xbmc/commit/d1cecd8ab59d8e6c67bcfd2eaa25312184733339) Merge pull request #29563 from malard/geometry-bar-detector
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/0056082c...d1cecd8a)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261004-d1cecd8a-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261002-0056082c
 
 **Homebrew Version:** `23.26.275`
