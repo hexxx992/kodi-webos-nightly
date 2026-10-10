@@ -1,5 +1,133 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261008-60c2c516
+
+**Homebrew Version:** `23.26.281`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-10-09 19:45:38 PDT`
+
+**Commits:** 110
+
+### All Commits
+
+- [`c49438e9`](https://github.com/xbmc/xbmc/commit/c49438e9f81d1d6a1e5fa997f86eb7c94c12fe89) windowing/gbm: fix reentrant Unregister() UB in OnResetDisplay()
+- [`d072578a`](https://github.com/xbmc/xbmc/commit/d072578ac7a0e71b66f0c00d2cbd3aeecc205721) [filesystem] Avoid replaying seeks at FileCache EOF
+- [`19d3508c`](https://github.com/xbmc/xbmc/commit/19d3508c35a3c5d0d88b8345209c85186d1ea785) FFmpegImage: Read the EXIF orientation from the display matrix
+- [`02b3e356`](https://github.com/xbmc/xbmc/commit/02b3e3560bcb845a8a0636db9fc80f76ea98a8aa) VideoPlayer: build the GLES renderers for wasm
+- [`272811c3`](https://github.com/xbmc/xbmc/commit/272811c33b91c88e013eeee496152385bd4be991) windowing/wasm: add the WebGL 2 windowing backend
+- [`c9d4746f`](https://github.com/xbmc/xbmc/commit/c9d4746f3e37725f0ff694e13122c6e50134b174) windowing/wasm: sync the reference clock to the display
+- [`225fa79f`](https://github.com/xbmc/xbmc/commit/225fa79f001fad0b36468dd2590708cfe76a8aa7) windowing/wasm: keep the screen awake with a wake lock
+- [`27d1e568`](https://github.com/xbmc/xbmc/commit/27d1e568f7dffdcd3dd1b4ea078bc9ae1af2045e) wasm: persist the user profile to IndexedDB
+- [`4b03f9df`](https://github.com/xbmc/xbmc/commit/4b03f9df45ad7c6c1bde6ff9310cd81fcd1151c9) windowing/wasm: paste from the browser clipboard
+- [`877c82ac`](https://github.com/xbmc/xbmc/commit/877c82ac5b391308a3d2f575a178d542f9e89afe) windowing/wasm: support the browser's native keyboard
+- [`f29e0537`](https://github.com/xbmc/xbmc/commit/f29e053739b1f7e5c0b8a75bed913f8ba98287cb) tools/wasm: route cross-origin requests through the dev proxy
+- [`99f224f1`](https://github.com/xbmc/xbmc/commit/99f224f194f39b45cfed4822030c7e4822bbbee4) windowing/wasm: translate mouse wheel input
+- [`105e0a9e`](https://github.com/xbmc/xbmc/commit/105e0a9ec2b977f38114258ee5c5426ee826174f) [filesystem] Add tests for replay seek at EOF
+- [`23b298b1`](https://github.com/xbmc/xbmc/commit/23b298b1c0ee496c6d3cc35660bc6d63000783e1) changed: let a resource add-on say what it publishes rather than what is allowed
+- [`7dcf13cc`](https://github.com/xbmc/xbmc/commit/7dcf13cc540c83ecbc72cf6f7f5b434e5b418b93) [video] Add "Refresh all content" to the video source context menu
+- [`65b551ed`](https://github.com/xbmc/xbmc/commit/65b551eddb17241b2c587602a78411b8d37af215) [video] Don't save the default icon as art when refreshing
+- [`33dbdf30`](https://github.com/xbmc/xbmc/commit/33dbdf3053ecdb72c5c5414d87f649ba0a4b71c2) [video] Refresh a bluray movie from its disc
+- [`c0700490`](https://github.com/xbmc/xbmc/commit/c07004904252143abb94fb6a8bc83c1d99f20637) [video] Keep a disc's watched state when a refresh finds one playlist
+- [`38f56084`](https://github.com/xbmc/xbmc/commit/38f5608455c4ea456279ca46b342584b42a4e72b) [video] Re-read the stream details of the versions kept by a refresh
+- [`59503f8f`](https://github.com/xbmc/xbmc/commit/59503f8fb0d7feb34e559ffc21bc254eb1691114) windowing/wasm: give the reference clock the measured refresh rate
+- [`5ed979a1`](https://github.com/xbmc/xbmc/commit/5ed979a1cbd2320fd7fb438b99c42df3d4656d65) [RetroPlayer] Restore the audio delay after a pause
+- [`b97434d1`](https://github.com/xbmc/xbmc/commit/b97434d1e8418005c8f66dfcd658484ffe01356b) [RetroPlayer] Give every shader pass the preset's parameters
+- [`b307a426`](https://github.com/xbmc/xbmc/commit/b307a4264cfd663233e4839b43d81c0ce6b71a0f) Games: Add RetroAchievements hardcore mode, hidden until approved
+- [`5e2fb3d5`](https://github.com/xbmc/xbmc/commit/5e2fb3d5cfb84d48786e2eb015a98250503c3a39) [Windows] Bump Python to 3.14.8 / OpenSSL to 3.5.9 / expat to 2.8.5
+- [`1a13e491`](https://github.com/xbmc/xbmc/commit/1a13e491f844ae92b199093153e918e0223a1e95) [input] Play the GUI sound for a controller's actions too
+- [`b519ee30`](https://github.com/xbmc/xbmc/commit/b519ee30144a20cb191e90d4d38f8c212b9a1554) windowing/wasm: follow refresh-rate changes in the reference clock
+- [`182dff13`](https://github.com/xbmc/xbmc/commit/182dff13fb85bd85cf5b0189fbe8f4c21f46b28f) [RetroPlayer] Remove leftover regex includes from the shader presets
+- [`99bb9d91`](https://github.com/xbmc/xbmc/commit/99bb9d910f602daf294670eee877a4b2e4f12601) [RetroPlayer] Only show achievement indicators over the game
+- [`37499d4a`](https://github.com/xbmc/xbmc/commit/37499d4ac513e8103040167f13090ea20e00f37d) VideoPlayer: detect a 3D file name from the file, not the library URL
+- [`218b0c0d`](https://github.com/xbmc/xbmc/commit/218b0c0d7a8314e1f26269f981c242d0dc7600ac) changed: report an RDS country as a CTerritory
+- [`b4b4b97c`](https://github.com/xbmc/xbmc/commit/b4b4b97cbb2cee7427524800178ec92c3e541cdc) MediaSettings: keep the default stereo invert across a restart
+- [`e1d9aef9`](https://github.com/xbmc/xbmc/commit/e1d9aef96cb4bc468e2b5772198ae7ab1f2ca86d) fixed: resolve no resource path through a parent segment, and build with GCC
+- [`fe7c69a2`](https://github.com/xbmc/xbmc/commit/fe7c69a29e0ea3c2013daa1c2eff4eeb19841a6b) fixed: tell a UPnP renderer to stop once, and close even when it does not answer
+- [`c6c63772`](https://github.com/xbmc/xbmc/commit/c6c63772e611eb07986f2474fa3d2035bbad0394) [Estuary] Add colour icons to media flags
+- [`be3cc854`](https://github.com/xbmc/xbmc/commit/be3cc8543be4cd915b7e167ac0d71df607eb1045) Merge pull request #29568 from Hitcher/colourise_media_flags
+- [`e3f7fdfe`](https://github.com/xbmc/xbmc/commit/e3f7fdfec44c698fb76322749c2d184560918ccf) Merge pull request #29290 from malard/fix-upnp-player-repeated-stop
+- [`ef9eb6b4`](https://github.com/xbmc/xbmc/commit/ef9eb6b40faef1f5e1733be06e836eaae61d4418) Merge pull request #29574 from thexai/python-openssl-expat
+- [`77e7e482`](https://github.com/xbmc/xbmc/commit/77e7e4821c1ed3cebfdc3e7b40a8db4d17e51248) fixed: compile the content bar detector where ptrdiff_t is 32 bits
+- [`bcacd8ff`](https://github.com/xbmc/xbmc/commit/bcacd8ffb86d67d61314c37c2b99c4bf35e07776) [Windows] Fix rare crash related to audio initialization with incomplete format
+- [`7e3d87bf`](https://github.com/xbmc/xbmc/commit/7e3d87bf0ff7c8acaa7a7eda24df0538e57f48ce) Merge pull request #29441 from smp79/28915-follow-up
+- [`c5bd04f5`](https://github.com/xbmc/xbmc/commit/c5bd04f5ec3bf4e0c3fa974ce89c54ced2887987) Merge pull request #29609 from malard/fix-content-bar-32bit
+- [`857262ad`](https://github.com/xbmc/xbmc/commit/857262add6c413050472303d3824deb5ba619d33) [Video][Database] Fix stale path entries surviving a library clean.
+- [`5e899dc9`](https://github.com/xbmc/xbmc/commit/5e899dc9aecd1c420bf881abe56bd3331397af1c) [Video][Database] Fix a library clean keeping the dead sub paths of a live source.
+- [`45b1f26c`](https://github.com/xbmc/xbmc/commit/45b1f26cce17215adf5825788634cea88e50a605) [Video][Database] Fix a library clean leaving the path entry of a removed disc or archive behind.
+- [`0d2c65e2`](https://github.com/xbmc/xbmc/commit/0d2c65e2a7dad602d01d68c5cfb494ad1c100ba4) [Video][VideoInfoScanner] Fix incorrect logging of 'missing' directories that have been collapsed by stacking.
+- [`e33bd68d`](https://github.com/xbmc/xbmc/commit/e33bd68db541800778084f37dea560a06b1e1b00) [Video][Database] Remove files that have gone.
+- [`b3b63b66`](https://github.com/xbmc/xbmc/commit/b3b63b66e05cb2d9886c4b4c28e5c55a4d6c6885) [Video][Database] Remove redundant deletes from EraseAllForPath.
+- [`46bc86d3`](https://github.com/xbmc/xbmc/commit/46bc86d3de37f6965c90c6a852e47ea077e2a0d4) [Video] Remove unused CSetInfoTag::Copy()
+- [`36d2b859`](https://github.com/xbmc/xbmc/commit/36d2b859321cc198e2ab5912e6344c300cd50dc2) [Video] Add <sorttitle> to SetInfoTag and read it from set.nfo
+- [`a715dc5b`](https://github.com/xbmc/xbmc/commit/a715dc5b78b075ce9f3ed898cf350d16be67d825) [Video][Database] Store the movie set sort title
+- [`5684f76a`](https://github.com/xbmc/xbmc/commit/5684f76afab429287efd89512f2fe439265e7335) [Video] Allow movie sets to be sorted by sort title
+- [`d5e2a5ad`](https://github.com/xbmc/xbmc/commit/d5e2a5ad0d4abf072d847d85a87ab8e880dc00bc) [JSON-RPC] Add sorttitle to movie set details
+- [`09855bfd`](https://github.com/xbmc/xbmc/commit/09855bfd76fdf3505420d2d4bd267ae49fc9ba43) [Windows] SMB: don't reconnect when a path doesn't exist.
+- [`b5fc9a1f`](https://github.com/xbmc/xbmc/commit/b5fc9a1fdd5a6fd646ddf3c1943fd96c18bc5ee4) [Windows] SMB: don't reconnect for a file in a missing folder.
+- [`e7c9e83c`](https://github.com/xbmc/xbmc/commit/e7c9e83c86052f446de3025c3e3c59d5d6b43de8) [Windows] SMB: use the existing session on a credential conflict.
+- [`7e87e475`](https://github.com/xbmc/xbmc/commit/7e87e4754e3b18ebde138b3d4f63c888f0a426f6) [Windows] WS-Discovery: lock server list access.
+- [`45912708`](https://github.com/xbmc/xbmc/commit/45912708dcc2c2c96d39f138edd42ab3fb0cd569) [Windows] WS-Discovery: don't resolve server names over multicast.
+- [`36e1a887`](https://github.com/xbmc/xbmc/commit/36e1a8875e637bc88eb9ef255b36cae8a7611172) [Windows] WS-Discovery: track servers by endpoint.
+- [`725f02b1`](https://github.com/xbmc/xbmc/commit/725f02b1c410d80dcc5c782a27effda08abd7458) [Windows] WS-Discovery: use the computer name the server announces.
+- [`9396996f`](https://github.com/xbmc/xbmc/commit/9396996f85258772de6860d4e96647c9be334571) [Windows] WS-Discovery: resolve server names in parallel and cache them.
+- [`70d092ef`](https://github.com/xbmc/xbmc/commit/70d092efdff690398f8636fc00fae03e29762b23) [Windows] SMB: list servers with the same name by IP.
+- [`de4e353c`](https://github.com/xbmc/xbmc/commit/de4e353c22bcfd9efd3c2504a37dbf446b05a0da) [Windows] WS-Discovery: log name lookup time.
+- [`994aecad`](https://github.com/xbmc/xbmc/commit/994aecadc7d7c5dd3f1248ba31309fc87fdef8e6) [passwordManager] Look up credentials by host name in any case.
+- [`dffbeb86`](https://github.com/xbmc/xbmc/commit/dffbeb865ee2e686e0dd70e3ba75ce41f2308f02) [windowing] Allow cropped content to match whitelist modes
+- [`6907645f`](https://github.com/xbmc/xbmc/commit/6907645f3f71df338c99c94f2ac98a52d64497cb) [Video][Database] Fix movie search results matched by original title.
+- [`1204b5bc`](https://github.com/xbmc/xbmc/commit/1204b5bc486c6efd7cd60ddba1e0770b1d22dedb) Merge pull request #29496 from olympia/videodb/search-show-original-title
+- [`048936cc`](https://github.com/xbmc/xbmc/commit/048936ccb387e5224731b0b242cf95d7bb6c504b) Merge pull request #28953 from 78andyp/sets
+- [`391fb9d4`](https://github.com/xbmc/xbmc/commit/391fb9d406954a67530b63e01f8574f150a40465) Merge pull request #29454 from 78andyp/smb
+- [`d3a80ccd`](https://github.com/xbmc/xbmc/commit/d3a80ccde220ca7e220d4f5d21c96f70e8379a7f) Merge pull request #29411 from 78andyp/delete
+- [`8b50843a`](https://github.com/xbmc/xbmc/commit/8b50843a840d4121b4863fb1e35a92db7403fd41) [Video][Bluray] Improve handling of heuristic v. project differences.
+- [`4c8954df`](https://github.com/xbmc/xbmc/commit/4c8954dfd0bb5df1da77b8d98af489f78c8b10cb) [Video][Bluray] Add advanced setting to disable authoring project parsing.
+- [`8141618d`](https://github.com/xbmc/xbmc/commit/8141618db7fd21ab2ee8ba60a2ef81bcc699c7fe) [Video][Bluray] Don't reject a playlist whose extension data is invalid.
+- [`3ca52af4`](https://github.com/xbmc/xbmc/commit/3ca52af4ea71f43e14b0f3aabb56eadcf6889c49) [PVR][RDS] Address review of the RDS country lookup
+- [`421b0542`](https://github.com/xbmc/xbmc/commit/421b0542979e4a6cc227f436f2cb519a4ed1e8f8) Merge pull request #29455 from 78andyp/parse
+- [`6ce46324`](https://github.com/xbmc/xbmc/commit/6ce46324b9df0bfe993e4e1b28e1327820615a25) Merge pull request #29577 from thexai/fix-audio-crash
+- [`c8c7d26d`](https://github.com/xbmc/xbmc/commit/c8c7d26df32c7a02cccb850e4082f4573d6038f4) Merge pull request #29584 from popcornmix/stereopath
+- [`c25d7246`](https://github.com/xbmc/xbmc/commit/c25d72466b3cea5988578ae557321beeb8874ca5) Merge pull request #29586 from popcornmix/stereoinvert
+- [`446f818c`](https://github.com/xbmc/xbmc/commit/446f818c6ae25232c2dd9a5b8d5f598339a523f5) [RetroPlayer] Keep the shader frame count in medium precision on GLES
+- [`6c040bd6`](https://github.com/xbmc/xbmc/commit/6c040bd6713f7f37c6b7a65ca11e31408e0be03c) [VideoPlayer] Audio ID3: Update the displayed artist with each tag
+- [`f6f3162c`](https://github.com/xbmc/xbmc/commit/f6f3162c4428d755c394e5c6dc602320d241ed3d) [VideoPlayer] Audio ID3: Show attached pictures as thumb
+- [`ca711de8`](https://github.com/xbmc/xbmc/commit/ca711de86e1d5fb97a1fde7d6f94546bca3234f0) Merge pull request #29565 from malard/rds-country-territory
+- [`6f72492c`](https://github.com/xbmc/xbmc/commit/6f72492c71654d9652a66a28d6fcf21b6ba65a7f) Merge pull request #29512 from malard/resource-addons-publish
+- [`b2b55564`](https://github.com/xbmc/xbmc/commit/b2b5556480daec3a7a40838a4e3253171fb4b68b) Merge pull request #29448 from kel-mo/ffmpegimage-displaymatrix
+- [`8952e9e8`](https://github.com/xbmc/xbmc/commit/8952e9e8897c4d4809cb035cf83abf3e06cf03f1) Merge pull request #29497 from chewitt/whitelist-crop-tolerance
+- [`7d76d07d`](https://github.com/xbmc/xbmc/commit/7d76d07da647b46716f1707ad03098be24079d7f) Merge pull request #29562 from sunlollyking/retroplayer-shader-pass-parameters
+- [`969a7a25`](https://github.com/xbmc/xbmc/commit/969a7a2539342e45effbdc28a6586e84d0011ec0) Merge pull request #29452 from garbear/fix-smb-seek
+- [`31e3167b`](https://github.com/xbmc/xbmc/commit/31e3167bb0339c3ad8a1ede72662fb3b883c5c45) Merge pull request #29575 from sunlollyking/game-indicators-over-game
+- [`ac7a9792`](https://github.com/xbmc/xbmc/commit/ac7a979233a711c749fce915e25d362dac91ed5e) Merge pull request #29559 from sunlollyking/retroplayer-audio-resume-delay
+- [`2cf5e3e0`](https://github.com/xbmc/xbmc/commit/2cf5e3e05bd1642782e2d6f540f333eb793d4470) Merge pull request #29504 from sunlollyking/controller-navigation-sounds
+- [`14a6bd18`](https://github.com/xbmc/xbmc/commit/14a6bd1854307e0736b3568b2e6a50304c78ad30) Merge pull request #29467 from sunlollyking/hardcore-upstream
+- [`bbecced0`](https://github.com/xbmc/xbmc/commit/bbecced088f85b0a1e679f3827efa9d703ae5406) Merge pull request #29648 from ksooo/audio-id3-fixes
+- [`49459725`](https://github.com/xbmc/xbmc/commit/49459725a5834304952dfcd36743090c765848cf) Merge pull request #29259 from clementperon/upstream/06-windowing
+- [`58b66c7e`](https://github.com/xbmc/xbmc/commit/58b66c7ee7600d5761ef0e56ec8881e8c264ae55) [depends][python] build a statically linkable CPython for wasm
+- [`ad18aaef`](https://github.com/xbmc/xbmc/commit/ad18aaefa9dc58f26126a41366196b7438fa9a02) [wasm] run the Python interpreter from a statically linked CPython
+- [`0b336247`](https://github.com/xbmc/xbmc/commit/0b33624753a6afc3b1c432235c6d77001036c519) [wasm] re-glob the Python stdlib when the depends change
+- [`640d8279`](https://github.com/xbmc/xbmc/commit/640d827976fd0b1009fe90162d58ed6055553588) Merge pull request #29169 from clementperon/upstream/wasm-python
+- [`014071ee`](https://github.com/xbmc/xbmc/commit/014071ee44affd8370e904cee48a919c0d17138c) Merge pull request #29471 from 78andyp/library
+- [`86c38b02`](https://github.com/xbmc/xbmc/commit/86c38b0294a8ed840681489e5bfa622cd363faec) [VideoPlayer][CBaseRenderer] Read the 4:3 stretch setting once in SetViewMode (#29644)
+- [`30e80b94`](https://github.com/xbmc/xbmc/commit/30e80b9441cd9df023b1fd84a1b9b9186b9f6548) [GUIWindowFullScreen] Draw the picture through one function (#29643)
+- [`e178c1d5`](https://github.com/xbmc/xbmc/commit/e178c1d5c0145454c3acc45d24694ae7d3dffba2) [PVR][CPVRChannel] Let a channel keep its own logo when the airing programme has artwork (#29634)
+- [`f89ea8eb`](https://github.com/xbmc/xbmc/commit/f89ea8eb34b9bc51b090c54b6a632f506dbf193f) [JSON-RPC] Register the methods before anything can call them (#29623)
+- [`76efd7ec`](https://github.com/xbmc/xbmc/commit/76efd7eccd095c813ed74031d3fb70ce55baa0bc) [JSON-RPC] Don't open a PVR item through Player.Open before PVR has started (#29627)
+- [`133d6e3e`](https://github.com/xbmc/xbmc/commit/133d6e3eb129f27f528151810a448310d242d9ee) [playlists][CPlayListPLS] Name a playlist without a name entry after its file (#29642)
+- [`198575f6`](https://github.com/xbmc/xbmc/commit/198575f69fb3331244ea95e33036edd9308a6e99) [media] Remove the media type names nothing asks for (#29631)
+- [`20606fe1`](https://github.com/xbmc/xbmc/commit/20606fe176bdc463a14a89c3da7a4c59d0fd9899) [Database] Keep the art table code the video and music databases share in CDatabase (#29635)
+- [`1a2e269d`](https://github.com/xbmc/xbmc/commit/1a2e269d2ad236e2d14c6d7b6146c93dde411a09) [Video] Name the videodb:// node paths once (#29599)
+- [`db76a0b8`](https://github.com/xbmc/xbmc/commit/db76a0b832c0f4d3a146ad348b64382bc222e3df) [addons] Name the addons:// node paths once (#29637)
+- [`c1a0f9cb`](https://github.com/xbmc/xbmc/commit/c1a0f9cb5daf0ebb7c8d0416c52043b477d53fac) [Music] Name the musicdb:// node paths once (#29619)
+- [`2f561616`](https://github.com/xbmc/xbmc/commit/2f561616a77fc5c7f1715094409a064b0acb2336) [FileItemList] Name a list's content once (#29620)
+- [`60c2c516`](https://github.com/xbmc/xbmc/commit/60c2c516981b531e44d99c6009867d3458faf22d) [FileItem] Name the list item property keys shared between files (#29626)
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/d1cecd8a...60c2c516)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261008-60c2c516-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261004-d1cecd8a
 
 **Homebrew Version:** `23.26.277`
