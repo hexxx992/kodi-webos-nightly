@@ -1,5 +1,90 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261011-494721df
+
+**Homebrew Version:** `23.26.284`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-10-11 10:07:24 PDT`
+
+**Commits:** 67
+
+### All Commits
+
+- [`a80745bb`](https://github.com/xbmc/xbmc/commit/a80745bbc8f7f0cf94de4ae1040a660a61c8bcba) [RetroPlayer] Fix GL shader preset fallback logic when RenderUpdate fails
+- [`3a7a163d`](https://github.com/xbmc/xbmc/commit/3a7a163da50351b377db1dcf063ae9957cd1d024) [RetroPlayer] Clean up GL renderers' clearing
+- [`941d589d`](https://github.com/xbmc/xbmc/commit/941d589dfdedd669adcf43ce506fd75d6ee40a2b) [RetroPlayer] Use limited black for clears
+- [`d55ddaea`](https://github.com/xbmc/xbmc/commit/d55ddaeafda43383a55227d934c03a2282cd1975) [RetroPlayer] Wait for FBO capture fences before deleting their textures
+- [`3f885ee2`](https://github.com/xbmc/xbmc/commit/3f885ee236a1d08f05c453b2c92c1040b0b3d9eb) [RetroPlayer] Grow the framebuffer for a frame larger than reported
+- [`9c0dc205`](https://github.com/xbmc/xbmc/commit/9c0dc205c523ae9807ba7d8f6fb90b7b3f79e422) Break the CAgentController reference cycle on shutdown
+- [`f86e1547`](https://github.com/xbmc/xbmc/commit/f86e1547809a0895dcae9470f6710fbada2ce8a3) [Video] Fixes a crash on the GUI thread in `CStreamDetails::GetPreferredAudioStreamIndex()` while a video library list is loading.
+- [`aac75aa1`](https://github.com/xbmc/xbmc/commit/aac75aa1603269c36be270c501b8d9f4c3d1be24) [addons][pvr] Show PVR settings menu hooks in add-on settings dialog
+- [`98904763`](https://github.com/xbmc/xbmc/commit/989047636c175be997932f1f8a85a6033dbd2c22) [addons] Make add-ons with settings actions but no settings configurable
+- [`1ee73d0f`](https://github.com/xbmc/xbmc/commit/1ee73d0ff14d14c1888ee05edef221167762dfba) [pvr] Remove client specific settings entry from PVR settings
+- [`689f0476`](https://github.com/xbmc/xbmc/commit/689f0476ecefa932d9ce965799c94bad84574982) [pvr] Scope channel OSD to provider and group
+- [`aa67611c`](https://github.com/xbmc/xbmc/commit/aa67611c3bd64a89bff6e2184a61529611d36b89) SaveFileState: keep a disc image's state against the image
+- [`8840d876`](https://github.com/xbmc/xbmc/commit/8840d87601f8300f87dec48be811b7c897802bf8) ActiveAE: log buffer state on large audio sync errors
+- [`8e6f9050`](https://github.com/xbmc/xbmc/commit/8e6f90504e2b214b51707ac26a8e0d3c825179fc) audioengine: add a Web Audio worklet sink
+- [`0b1bb8d0`](https://github.com/xbmc/xbmc/commit/0b1bb8d0d21f78406020a07f7107da01ecdd9799) windowing/wasm: fix double promotion in the refresh-rate check
+- [`fda52e62`](https://github.com/xbmc/xbmc/commit/fda52e62ab8b08a689f15afa57bd940c748860c2) platform/wasm: rename CWasmAudioWorkletManager::Instance() to GetInstance()
+- [`7fad4f8d`](https://github.com/xbmc/xbmc/commit/7fad4f8d9180c50547421535f5c137ae58767bbe) platform/wasm: wait for the browser pipeline when draining audio
+- [`bdd42c69`](https://github.com/xbmc/xbmc/commit/bdd42c6930f27e829e8d23f0df808c99eca56062) [pvr] Add channel groups node to provider view
+- [`0929e56b`](https://github.com/xbmc/xbmc/commit/0929e56b09c852df85669e5c421d2a75b84b2f4d) [application] Keep the frame move guard released after Stop() (#29569)
+- [`fecf9c58`](https://github.com/xbmc/xbmc/commit/fecf9c58d4574f46856cfc669f84a7afe36dd69d) Update translation files
+- [`15653f05`](https://github.com/xbmc/xbmc/commit/15653f05a7de7e46139b3a8306d2796a248c0781) platform/wasm: refresh the pipeline latency before the drain wait
+- [`540a4ac4`](https://github.com/xbmc/xbmc/commit/540a4ac4cd6dc695e76c2907ed1ea29268641637) Merge pull request #29690 from weblate/weblate-kodi-add-ons-skins-skin-estuary
+- [`9a33d95c`](https://github.com/xbmc/xbmc/commit/9a33d95c421971367f88d8de07d94b5db300b9f0) [language][CLanguageTag] Move CLanguageTag to xbmc/language (#29655)
+- [`498725fe`](https://github.com/xbmc/xbmc/commit/498725fe6e6dbdda5374a86e03268d121e62f8c2) Merge pull request #29433 from ldzhjn/pvr-osd-provider-title
+- [`256fe8a1`](https://github.com/xbmc/xbmc/commit/256fe8a175bbd2ea993e426869b5ca81c5f8ad50) [AudioEngine][CAEStreamParser] Confirm a DTS core frame before taking it as the stream (#29641)
+- [`d07adc93`](https://github.com/xbmc/xbmc/commit/d07adc9336d2dcf1fbb0634594370ed3fc74de34) [buildsteps][depends] Keep built depends of other revisions in a workspace cache (#29611)
+- [`a2de1274`](https://github.com/xbmc/xbmc/commit/a2de12747a94ca79e929914b4fc5269385c2a203) [VideoPlayer] Keep a hidden subtitle selected when its stream is closed (#29624)
+- [`02f40fc0`](https://github.com/xbmc/xbmc/commit/02f40fc0c314b09e40c19349ef0b0961f385fe10) [Announcements][CAnnouncementManager] Call announcers without holding the announcer lock (#29515)
+- [`14e94add`](https://github.com/xbmc/xbmc/commit/14e94addded41219a791971f0079d72f895a430b) [Video][CVideoDatabase] List a TV show director's shows when found by search (#29601)
+- [`4d2e30b6`](https://github.com/xbmc/xbmc/commit/4d2e30b6bc663e6ee21e031c667e701e1f504abf) [dialogs] Name the image choice entries once (#29528)
+- [`61f590c5`](https://github.com/xbmc/xbmc/commit/61f590c5d609f56703f28bcec397c1a225eb57a6) [JSON-RPC][AudioLibrary] Keep each album's tracks together when several are added to a playlist (#29656)
+- [`4c97c8c2`](https://github.com/xbmc/xbmc/commit/4c97c8c2951b2b4d7064695c6592b5d922883ff7) [media] Name a section of Kodi with a type, not a string (#29621)
+- [`e75e05e1`](https://github.com/xbmc/xbmc/commit/e75e05e1374a0786679d0ab4891a4a279a8b6304) [utils] Name the common art types once (#29625)
+- [`296e91df`](https://github.com/xbmc/xbmc/commit/296e91df28b04bd1fe9f0aebf23e2e0b95c03ab1) Merge pull request #29649 from ksooo/pvr-settings-menuhooks-in-addon-settings
+- [`36adc12c`](https://github.com/xbmc/xbmc/commit/36adc12c8e300e6a42cf232750700980c1dc03c5) Merge pull request #29432 from ldzhjn/pvr-provider-channel-groups
+- [`46928e87`](https://github.com/xbmc/xbmc/commit/46928e87cfc0744391be0a3888fe761aa368e996) Merge pull request #29588 from sunlollyking/retroplayer-grow-hw-framebuffer
+- [`7c769ae8`](https://github.com/xbmc/xbmc/commit/7c769ae882637a37b31aa51710bc1a95d039a613) Merge pull request #29553 from clementperon/upstream/07-audio
+- [`48728880`](https://github.com/xbmc/xbmc/commit/48728880755ffcad4ed543d9fa46e61ef0ca7b4b) Merge pull request #29440 from 78andyp/race
+- [`f36b45d8`](https://github.com/xbmc/xbmc/commit/f36b45d87061be5a181687e72403dc03e564319e) Merge pull request #29589 from popcornmix/discresume
+- [`612d11b5`](https://github.com/xbmc/xbmc/commit/612d11b598100f550b78e10f9c9c66b6547573a0) Merge pull request #29607 from popcornmix/peripheral-shutdown-cycle
+- [`eab05410`](https://github.com/xbmc/xbmc/commit/eab05410a50ce77646330e708e7e65623c50c95c) [Peripherals] Power off controllers on quit (#29686)
+- [`73029888`](https://github.com/xbmc/xbmc/commit/730298886ecff81436bd7516d47d6e7fb81a3950) [UPnP][CUPnPPlayer] Apply the deadline set on a renderer action (#29155)
+- [`0a9c932b`](https://github.com/xbmc/xbmc/commit/0a9c932b61ca5abfa7156510cb7a5759715dd642) [utils] Remove utility members that only the unit tests call (#29605)
+- [`63f24baa`](https://github.com/xbmc/xbmc/commit/63f24baaeb932b5492dbd61fc92913d98cab3dff) [VideoPlayer][CDebugRenderer] Build the debug overlay's subtitle options with the main overlay's code (#29616)
+- [`da968f69`](https://github.com/xbmc/xbmc/commit/da968f69fbfa91ad5e677bd949149842b506b252) [Database] Never hand a deleted library item's id to another item (#29622)
+- [`507005ce`](https://github.com/xbmc/xbmc/commit/507005cec3ac5769cf83c7b15bae29f51852d475) [URIUtils] Decode a path's escapes without turning a '+' into a space (#29630)
+- [`0dd455fa`](https://github.com/xbmc/xbmc/commit/0dd455faf83706c702756d35bc8eab24d140df94) [windowing][RESOLUTION_INFO] Give a declared aspect the pixel ratio that produces it (#29657)
+- [`34d4e422`](https://github.com/xbmc/xbmc/commit/34d4e42203535312bbd40d6413473c4edb7eccec) [addons][CSkinInfo] Ignore a layout aspect that is not a positive ratio (#29658)
+- [`376e3b71`](https://github.com/xbmc/xbmc/commit/376e3b71d194b892d5232d6072ff03d4b9bb93e5) [network][HTTPRequestHandlerUtils] Report the scheme a request arrived by, not always http (#29659)
+- [`6761830e`](https://github.com/xbmc/xbmc/commit/6761830e72f4cd5c9f8a9b6dfb587f374c9fdbd6) [JSON-RPC][VideoLibrary] Apply a TV show's playcount and lastplayed to its episodes (#29660)
+- [`be900708`](https://github.com/xbmc/xbmc/commit/be900708a1ef6828cdce26832bf63c68014694e0) [JSON-RPC][AudioLibrary] Report a failed artist query as an internal error, not a missing artist (#29661)
+- [`13d27c4c`](https://github.com/xbmc/xbmc/commit/13d27c4c067786bdf9958f386942890b26ab494a) [LocalizeStrings] Remove the fallback to language folders named after the language (#29662)
+- [`7cbb5041`](https://github.com/xbmc/xbmc/commit/7cbb5041d5cb754e514649c078225a2371c5abc6) [Video][Database] Remove the artist id GetMusicVideoAlbumsNav is never given (#29671)
+- [`1e176c94`](https://github.com/xbmc/xbmc/commit/1e176c94b1c264d5faf8ef8a6effffa61d47b202) [VFS][VFSEntry] Read the preformatted-label flag from the property's value (#29676)
+- [`3bd7db75`](https://github.com/xbmc/xbmc/commit/3bd7db755745d75eebc01ac5b42bd011ffc96af0) [utils][Digest] Match a digest type name regardless of case (#29678)
+- [`1b0a9550`](https://github.com/xbmc/xbmc/commit/1b0a95503c244d1cbdfa31d39023e5e0dbff8c22) [input][CInputManager] Let every listed builtin run past the screensaver (#29679)
+- [`4507628f`](https://github.com/xbmc/xbmc/commit/4507628f05624d58f3e62c5d10648480153904dd) [peripherals][CPeripherals] Skip a mapping setting without a key (#29680)
+- [`fc421a09`](https://github.com/xbmc/xbmc/commit/fc421a094b06aa208a9e52dee5a49145a109265b) [Video][CVideoInfoTag] Restart the cast at an NFO actor marked clear="true" (#29681)
+- [`fa8ea0b1`](https://github.com/xbmc/xbmc/commit/fa8ea0b14af0a853c9b22f7ec8b2f42304828d47) [windowing][X11] Take the GLES pbuffer fallback from --gl-interface (#29683)
+- [`ff7678f6`](https://github.com/xbmc/xbmc/commit/ff7678f69a50f86e47376b3785df5352a4c82f3a) [dialogs] Own the colour picker's list and the progress bar's handles (#29700)
+- [`6b390285`](https://github.com/xbmc/xbmc/commit/6b39028587d87154f4f375ec7511ecd26e8ae4cc) [guilib][test] Share the GUI tests' stub render system, window system and GUI (#29702)
+- [`e624fb08`](https://github.com/xbmc/xbmc/commit/e624fb080c632c5f411f91e6ddf773c2320da04a) [utils][CLabelFormatter] Label a whole list in one place (#29703)
+- [`f41d8066`](https://github.com/xbmc/xbmc/commit/f41d80660b036360d87de4647507c4d4c73029cf) [utils][LabelFormatter] Read a rating from a file name as a number (#29677)
+- [`0939c0f8`](https://github.com/xbmc/xbmc/commit/0939c0f8244885540181cf47e7fdaee39fc337ad) [peripherals][CPeripherals] Read the order of a mapping setting (#29682)
+- [`a7dd0c7d`](https://github.com/xbmc/xbmc/commit/a7dd0c7d247032776e90e6fc73337208d13b0c52) [settings][SettingLevel] Name the setting levels in the settings code (#29704)
+- [`6f8320d5`](https://github.com/xbmc/xbmc/commit/6f8320d51f2b4de6a1c20997f87f46ad6247829a) Merge pull request #29567 from KOPRajs/retroplayer-gl-cleanup
+- [`494721df`](https://github.com/xbmc/xbmc/commit/494721df6fde78d1188ae110b6688d2a8324ba44) [RetroPlayer][test] Bring the test renderers in line with the GL clearing cleanup (#29777)
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/60c2c516...494721df)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261011-494721df-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261008-60c2c516
 
 **Homebrew Version:** `23.26.281`
