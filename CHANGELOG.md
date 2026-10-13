@@ -1,5 +1,133 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261012-11f50401
+
+**Homebrew Version:** `23.26.285`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-10-13 11:42:26 PDT`
+
+**Commits:** 110
+
+### All Commits
+
+- [`0fd22480`](https://github.com/xbmc/xbmc/commit/0fd22480005614dc1ea0397742aa514cd83629d8) webOS: prefix gcc for LTO plugin
+- [`363bb6d2`](https://github.com/xbmc/xbmc/commit/363bb6d208a1e36b093cd483fa6fbc772717d158) [GL] Give rotated controls their perspective back
+- [`61c40b4a`](https://github.com/xbmc/xbmc/commit/61c40b4ac8669673fa7776804daeb790ae03baf1) [GUILIB] CGUIImage: report the requested image until one renders
+- [`6845bbc3`](https://github.com/xbmc/xbmc/commit/6845bbc3e7fd127ae37706c13692832182ec7f25) [Video][Bluray] Remove orphaned all-episodes branch from GetOrShowPlaylistSelection.
+- [`d378e8e7`](https://github.com/xbmc/xbmc/commit/d378e8e73e76cd1083850c57bc100eff69bbf066) [GUILIB] CGUILargeTextureManager: share decodes across nearby display sizes
+- [`4a9d15d5`](https://github.com/xbmc/xbmc/commit/4a9d15d5d8fc97b210cb3d3b9aba11508141c8c8) [GUILIB] CGUITexture: draw another loaded size while the requested one loads
+- [`6ac01f43`](https://github.com/xbmc/xbmc/commit/6ac01f43ef9fc912192edc19e16b75a2043bd67d) [RetroPlayer] Give shader passes their real texture size
+- [`16bdfad7`](https://github.com/xbmc/xbmc/commit/16bdfad73b3fa83f5d860a0674b17e9339f961d8) [Bluray] Take one clip per play item of a multi-angle playlist.
+- [`2841ff9e`](https://github.com/xbmc/xbmc/commit/2841ff9e17914c9266d8edf1484bab2bcfb6a3f2) [Bluray] Offer the longest candidate for a single special first.
+- [`b1d75acc`](https://github.com/xbmc/xbmc/commit/b1d75acc2151214e19fccf132759b868a5454d72) [Bluray] Apply the minimum special length to a disc holding only specials.
+- [`7ff12249`](https://github.com/xbmc/xbmc/commit/7ff12249d99206cae173d8a3a1285625a75eb818) [VideoInfoScanner] Keep a disc's movie when merging its main title fails.
+- [`40f3d2e8`](https://github.com/xbmc/xbmc/commit/40f3d2e81ff2f23cb1b681c839e893d5b99b05c6) [VideoInfoScanner] Resolve an episode's bluray playlist as an episode.
+- [`5771b85d`](https://github.com/xbmc/xbmc/commit/5771b85d651afba224d680849cc777ec11e5ab85) [Bluray] Don't take a seconds-long named segment as the single title.
+- [`502a08c8`](https://github.com/xbmc/xbmc/commit/502a08c83994ea85e2fcf09981312e915d491b28) [Bluray] Keep an episode's stored duration when none is given.
+- [`26e7835d`](https://github.com/xbmc/xbmc/commit/26e7835da9f80060ed2b9f6b95825b9f38047abb) [Video] Keep a folder stack's nfo and art inside its own folder
+- [`16867be7`](https://github.com/xbmc/xbmc/commit/16867be75bb98333d74e8cc78efadca0a87b0c87) [Joysticks] Fix accelerometer losing its axes
+- [`379a214f`](https://github.com/xbmc/xbmc/commit/379a214fe77a51c8a2e2da259e6bb27fa056d7df) Games: Stop rumble when a game's controller is detached
+- [`cb30df01`](https://github.com/xbmc/xbmc/commit/cb30df015a37634d340a78265d3ecae0fb43ba22) [Windows][buildsteps] Keep built dependencies between builds, and seed liblzo2's configure checks
+- [`aaf1fea8`](https://github.com/xbmc/xbmc/commit/aaf1fea84206c6c85902267564810bf76abea7ec) Games: Stop rumble when a game is paused
+- [`90a69eb9`](https://github.com/xbmc/xbmc/commit/90a69eb9e573638c85ac027710191ca33d81c018) [Windows][buildsteps] Key the dependency cache by build configuration
+- [`c618c502`](https://github.com/xbmc/xbmc/commit/c618c502b81df409a492ea54a7bf3b30b9003d9b) rendering/gles: own CGUITextureGLES::DrawQuad's drawer as a CRenderSystemGLES member instead of a static local
+- [`5cf059fa`](https://github.com/xbmc/xbmc/commit/5cf059fa2804ca64c157b050d68555cf06c47f47) rendering/gles: upload GLES draws through real GPU buffers instead of client-side arrays
+- [`beb76f4c`](https://github.com/xbmc/xbmc/commit/beb76f4cdb902217fdbdb6fea05a256d3adc1a38) cmake/wasm: drop -sFULL_ES3=1 now that GLES rendering no longer uses client-side arrays
+- [`7c6ef84c`](https://github.com/xbmc/xbmc/commit/7c6ef84c549ce0e04b5c941b36a7be912b493dfc) pictures/gles: destroy CSlideShowPicGLES's GL buffers in Free() instead of relying only on the destructor
+- [`2b85cce2`](https://github.com/xbmc/xbmc/commit/2b85cce22933e6e72887f36c6ace5de1ffc7daf4) utils/test: add unit tests for CGLBufferObject
+- [`7b68240e`](https://github.com/xbmc/xbmc/commit/7b68240ea6ae697efabab9f8aa650366f0605018) LinuxRendererGLES: keep the buffers behind the clearing quads
+- [`a61fbf29`](https://github.com/xbmc/xbmc/commit/a61fbf29f6deb69ddd1f967c5432e60edb5937e9) [VideoPlayerVideo] Skip late packets to the next keyframe when the decoder can't keep up.
+- [`06e26a37`](https://github.com/xbmc/xbmc/commit/06e26a37fe10774ef7fb4bc13359ecd9f78531da) [VideoRenderers][Windows] Don't convert the same picture again on every refresh.
+- [`66c46139`](https://github.com/xbmc/xbmc/commit/66c461390b7dd5ab04bb189425138e3bb1c031d9) [VideoRenderers][Windows] Convert at view size when downscaling with shaders.
+- [`4524d544`](https://github.com/xbmc/xbmc/commit/4524d544deade8fc68e8028bd78303dddb75ae7c) [VideoRenderers] Use the configure result after a slow renderer configure.
+- [`a6049882`](https://github.com/xbmc/xbmc/commit/a604988287eddf139d0a5ed3eddea0fad088e134) [VideoRenderers][Windows] Don't HQ scale the same picture again on every refresh.
+- [`2a383940`](https://github.com/xbmc/xbmc/commit/2a383940716ce35ee18e301d10986be40ba4d51c) [Bluray] Notice a disc replaced at the same path.
+- [`7dbc21f5`](https://github.com/xbmc/xbmc/commit/7dbc21f5f5702886bd86b8843b30f53adef8d2e4) [Bluray] Count only the playlists offered when logging a silent choice.
+- [`0ace3fba`](https://github.com/xbmc/xbmc/commit/0ace3fbad36206d1c323f3e362c4a65c6d8ee17b) [Bluray] Treat a picture-in-picture copy of a playlist as a copy.
+- [`a2ca18af`](https://github.com/xbmc/xbmc/commit/a2ca18afbd5ee5ce4de5b8c74ee0a1e50c671420) [Bluray] Prefer the Dolby Vision copy of a playlist.
+- [`29341d47`](https://github.com/xbmc/xbmc/commit/29341d47403104e82490785b299fca31937a2d46) [Bluray] Record which disc a probe cached its name from.
+- [`5cafbfca`](https://github.com/xbmc/xbmc/commit/5cafbfcae5219da935a84ef8867a3ae9a48a1473) Merge pull request #29608 from 78andyp/blurayfixes
+- [`3ad030d9`](https://github.com/xbmc/xbmc/commit/3ad030d9b7aa326edb67cff2d7bd1caa1db78108) VAAPI: fix build with ffmpeg 7.0.3
+- [`6acfac6f`](https://github.com/xbmc/xbmc/commit/6acfac6ffba80898db9d022ecaf69c905881e1e9) AEEncoderFFmpeg: fix build with ffmpeg 7.0.3
+- [`3c316917`](https://github.com/xbmc/xbmc/commit/3c3169171165607a7637c7c5dbd876a637e2109a) InputStreamAddon: fix build with ffmpeg 7.0.3
+- [`2bfb4bcf`](https://github.com/xbmc/xbmc/commit/2bfb4bcf0e75481fe82a9b005248dce0e5b2acb0) [Windows] Add option to render on the high-performance GPU.
+- [`b0a30c69`](https://github.com/xbmc/xbmc/commit/b0a30c69c72a7a5abbee2baadfb83f73eabce8c4) Merge pull request #29719 from 78andyp/allepisodes
+- [`35881862`](https://github.com/xbmc/xbmc/commit/3588186266bae749ff59e0bf15128541355de865) Merge pull request #27810 from cscd98/lto-prefix
+- [`da16b2f0`](https://github.com/xbmc/xbmc/commit/da16b2f0077d61474bbf9955b42f9f41f82c59b5) Merge pull request #28558 from clementperon/gles-webgl2-client-arrays
+- [`15edfb92`](https://github.com/xbmc/xbmc/commit/15edfb926868a9de3cd8e6df2315ab428a0a4b25) [GUILIB] CGUILargeTextureManager: reuse a loaded decode instead of rounding
+- [`6b88075d`](https://github.com/xbmc/xbmc/commit/6b88075dde1e9d4467b8cab7eef8c194157e286b) [pictures] Don't stall a slideshow on a picture that won't load
+- [`c4865d88`](https://github.com/xbmc/xbmc/commit/c4865d887ca8a95fa5f2f0b11286613aae01a1c6) [pictures] Don't change the display mode for a slideshow video
+- [`d07932a5`](https://github.com/xbmc/xbmc/commit/d07932a5cef29aa92b286d6e416ae492c1f1f618) [addons] Show progress for background add-on installs
+- [`5c2e3d2d`](https://github.com/xbmc/xbmc/commit/5c2e3d2d3627a2b1ea598488ecff503620376c27) Merge pull request #29519 from 78andyp/video
+- [`e33ba5ae`](https://github.com/xbmc/xbmc/commit/e33ba5aeed5384cd63ef0b117bf2a6c80e54dd6d) [Video][CGUIWindowVideoBase] Let a video library path carry a filter, as a music library path does (#29654)
+- [`08c80e49`](https://github.com/xbmc/xbmc/commit/08c80e49d1bb31a942b4a1d54a666860289c2e89) [i18n][CIso3166_1] Remove the English country names and the lookups nothing calls (#29633)
+- [`d3630f5e`](https://github.com/xbmc/xbmc/commit/d3630f5ecd932e90e1e4d9c1f1dd54355888bfab) [AirTunes] Clear the previous track's cover when a track has no cover art (#29629)
+- [`bda459fa`](https://github.com/xbmc/xbmc/commit/bda459fa15c0639d9f93a910b5bb7e8465aefe4e) [DatabaseUtils] Return a movie's filename column without the numbered column offset (#29628)
+- [`7d48bf1e`](https://github.com/xbmc/xbmc/commit/7d48bf1e487f5b1b346311f8158c7faf6421bfeb) [cleanup] Remove three members nothing calls (#29618)
+- [`d3ae06c4`](https://github.com/xbmc/xbmc/commit/d3ae06c4961ea56b5dc786df41129852c3c2a4c9) [music][CGUIWindowMusicNav] Open the box sets for the boxsets start folder (#29602)
+- [`5d90391c`](https://github.com/xbmc/xbmc/commit/5d90391c21708c7bc0d7a2d2e31159b9dbb4ff79) [cleanup] Nest the named constant groups inside their area's namespace (#29598)
+- [`2cd210f2`](https://github.com/xbmc/xbmc/commit/2cd210f2a37cfc67a096df7daaf0cb2fa3c289c7) Merge pull request #29693 from 78andyp/stacknfo
+- [`5544ff63`](https://github.com/xbmc/xbmc/commit/5544ff63d1ebedb8142f22e72ca1d0b138dfdf67) [pictures] Show HDR video in a slideshow
+- [`745c94d7`](https://github.com/xbmc/xbmc/commit/745c94d7be57af3ae18f76b3998d86343fd30aea) [VideoPlayer] Measure the content geometry of a file by sampling it (#29600)
+- [`5f2cb9bc`](https://github.com/xbmc/xbmc/commit/5f2cb9bc7e008c4bfbeb506b2e926dcfc446afb1) [Video][CBlurayDirectory] Join the stream languages through one helper (#29729)
+- [`5ac32066`](https://github.com/xbmc/xbmc/commit/5ac3206627baa61a68f8166c8b5ee270374d8bbb) [JSON-RPC][CTCPServer] Serve each connection on its own thread, and let no peer hold up the server (#29636)
+- [`e48e05ec`](https://github.com/xbmc/xbmc/commit/e48e05ec874cbac6bbdb2de91e6d28d92fc7dcb0) [settings] Don't hold a setting's lock while its change callbacks run (#29011)
+- [`bab56fad`](https://github.com/xbmc/xbmc/commit/bab56fad18a51cc0106b1afb8d0a280c9498a814) [pictures] Keep a video slide's thumbnail up until the video starts
+- [`5958d6f8`](https://github.com/xbmc/xbmc/commit/5958d6f8524baf42acc8f62724343fa1c78f0d67) [pictures] Add a setting to show a picture's date and time on screen
+- [`f929f6f9`](https://github.com/xbmc/xbmc/commit/f929f6f95b1c64a083606b096b8f120b2ea37689) [media] Name what a library item is with KODI::MEDIA::TYPE, not a string (#29707)
+- [`320fc963`](https://github.com/xbmc/xbmc/commit/320fc9639248edaa0cd41406af87f8d07919a9b0) [pictures] Show a video's thumbnail in a running slideshow too
+- [`d2313f95`](https://github.com/xbmc/xbmc/commit/d2313f95445db2e919d175d52b53931ec49012d8) [Video][Database] Fix a targeted library clean skipping disc rips.
+- [`fd685a2b`](https://github.com/xbmc/xbmc/commit/fd685a2bcaa1574c06969d15d26de3a997bec6c5) [Video][VideoInfoScanner] Fix the clean after a scan missing video extras.
+- [`dc1acc9d`](https://github.com/xbmc/xbmc/commit/dc1acc9db8f5560dcf7cfd382200dcdb0eac8aca) [Video] Fix a failed movie refresh leaving its versions and extras behind.
+- [`a32c743e`](https://github.com/xbmc/xbmc/commit/a32c743eea13d1c7fcdc206cb42310bd19a5f75f) [Video][Database] Fix the announcement of versions and extras removed by a clean.
+- [`e45c1579`](https://github.com/xbmc/xbmc/commit/e45c1579a4bb7668b5b3f0f2a1ffb643ff1fdde8) [Video][Database] Fix a default version without art leaving the movie with none.
+- [`5456b11a`](https://github.com/xbmc/xbmc/commit/5456b11aaee56c64d2ba410a6020df4ae83acacb) [Video][Database] Fix a clean asking about versions and extras outside the sources.
+- [`d8d5ef34`](https://github.com/xbmc/xbmc/commit/d8d5ef3473a631373a760175ee6ea1970d377369) [Video][Database] Fix a clean removing a movie whose default version is offline.
+- [`c85ca0d6`](https://github.com/xbmc/xbmc/commit/c85ca0d64683d91dd986fb55ac3e805782e7ec94) [Video][Database] Add tests for the library clean.
+- [`5ce6a028`](https://github.com/xbmc/xbmc/commit/5ce6a028f991a230f3522f374b8368203a4977a1) [Video][Database] Add tests for the clean of paths and played files.
+- [`79d7cb4a`](https://github.com/xbmc/xbmc/commit/79d7cb4a0f4a4d9d26d338bb52967efd6fa73eac) [Video][Database] Fix GetSourcePath() swapping two settings of a parent source.
+- [`db1c86a0`](https://github.com/xbmc/xbmc/commit/db1c86a0e0f5eb113a195a723627bb6b20e2aaa4) Merge pull request #29724 from sunlollyking/joystick-accelerometer-axes
+- [`5c97b631`](https://github.com/xbmc/xbmc/commit/5c97b631cfc0d2741f5b18990fa6722ad2b338bd) Merge pull request #29579 from 78andyp/gpu
+- [`0c89745d`](https://github.com/xbmc/xbmc/commit/0c89745df922e29d634bb93a2402843905bf1e51) Merge pull request #29793 from bkuhls/master-fix-ffmpeg-7.0
+- [`99019b2b`](https://github.com/xbmc/xbmc/commit/99019b2bb2219fab2aa63787f58607bb092ccde4) Merge pull request #29732 from malard/buildsteps-win-cache
+- [`02034d89`](https://github.com/xbmc/xbmc/commit/02034d89f3fe8668649043d2827c2e5880608667) [GUILIB] CGUILargeTextureManager: reuse a decode only at its exact size
+- [`f414b1bb`](https://github.com/xbmc/xbmc/commit/f414b1bbce4b3be0e2416ec5319a03cb9c86ebbe) Merge pull request #29650 from ksooo/addon-install-progress
+- [`154fe01d`](https://github.com/xbmc/xbmc/commit/154fe01dc091df4355551de8341df149cf455aaf) [pictures] Skip a video that won't play in a slideshow
+- [`acb94725`](https://github.com/xbmc/xbmc/commit/acb947255af6a236a40ca164939d697d9b1e547b) guilib: keep CGUITexture quads in skin space between frames
+- [`721d3ca6`](https://github.com/xbmc/xbmc/commit/721d3ca639c49e135a9b803d68a26a0c0dd9981e) rendering/gles: draw GUI textures from static vertex buffers
+- [`fb69f7ae`](https://github.com/xbmc/xbmc/commit/fb69f7ae65eec0d19552d38a0eba4339c8f732bb) rendering/gles: draw CGUITexture::DrawQuad from a static unit quad
+- [`8d075085`](https://github.com/xbmc/xbmc/commit/8d0750859772072f57f62f8e6d808e737beea37d) OverlayRendererGLES: draw bitmap overlays with DrawGUIQuad
+- [`a49b99be`](https://github.com/xbmc/xbmc/commit/a49b99be5686044b3f5b7204dc7a5aba53a207d1) RetroPlayer: draw the GLES game quad with DrawGUIQuad
+- [`f34df188`](https://github.com/xbmc/xbmc/commit/f34df1882ea2d3a821244ea47fe649de3aaa5d45) pictures/gles: draw the slideshow with DrawGUIQuad
+- [`76ac6163`](https://github.com/xbmc/xbmc/commit/76ac6163b0993d4c4a53a3fcc5b9ffe438bbba6e) LinuxRendererGLES: draw the clear quad and black bars with DrawGUIQuad
+- [`d4706119`](https://github.com/xbmc/xbmc/commit/d4706119516f9c98c6539ea5bf1edf7737402a10) LinuxRendererGLES: draw the video passes from the static unit quad
+- [`bfa1047d`](https://github.com/xbmc/xbmc/commit/bfa1047dfdd21bfa113e8d0d1bdfa1558b11ec6b) RetroPlayer: draw the GLES renderers' game quad with DrawGUIQuad
+- [`0122e10a`](https://github.com/xbmc/xbmc/commit/0122e10a54a6d000aa66b3e9798c19e167061c62) RendererDRMPRIMEGLES: draw from the static unit quad
+- [`fad900ed`](https://github.com/xbmc/xbmc/commit/fad900edda827a2108b79d91184a5c2e3a731b21) RetroPlayer: upload GLES shader preset quads only when the size changes
+- [`8063cdfe`](https://github.com/xbmc/xbmc/commit/8063cdfe1f6da9c3b6214a78609693378eeb3f0d) windowing/gbm: draw the GUI composite from the static unit quad
+- [`e32e7c74`](https://github.com/xbmc/xbmc/commit/e32e7c7444fd24aa237f4465aa61ffa5aec8ae80) rendering/gles: keep GUI texture quads relative to the texture rectangle
+- [`f98e903e`](https://github.com/xbmc/xbmc/commit/f98e903edfd526f09c5d1a64c5148f065cc2a014) rendering/gles: multiply the GUI projection and model-view on the CPU
+- [`d80e2142`](https://github.com/xbmc/xbmc/commit/d80e21428951d89a690da492d02e0966d91bf7b3) rendering/gles: skip the texture matrix for CGUITexture quads
+- [`a465181c`](https://github.com/xbmc/xbmc/commit/a465181c507f03eeed96f5fe7d8ed9bc174215a5) Merge pull request #29687 from clementperon/gles-static-gui-vertices
+- [`ab402f1e`](https://github.com/xbmc/xbmc/commit/ab402f1eff20294421589ae341c598487e99f567) Merge pull request #29667 from 78andyp/delete2
+- [`a07b2bba`](https://github.com/xbmc/xbmc/commit/a07b2bbabdb7a07f9de0d00728962378f5b902c2) Merge pull request #29730 from sunlollyking/rumble-stop-on-detach
+- [`798cbc23`](https://github.com/xbmc/xbmc/commit/798cbc2315d2e02bbca682dd911c521ea94572a2) Merge pull request #29688 from MikeSiLVO/fix-image-decode-delay
+- [`915379eb`](https://github.com/xbmc/xbmc/commit/915379ebe3457da08186c779d42dcf3e247b8af4) Merge pull request #29542 from sunlollyking/gl-rotate-perspective
+- [`6bac2db5`](https://github.com/xbmc/xbmc/commit/6bac2db516b44e09e29fb7553c36e3b321b082d9) Merge pull request #29576 from sunlollyking/retroplayer-shader-pass-whole-pixels
+- [`616fa78b`](https://github.com/xbmc/xbmc/commit/616fa78b03c7a07ac0e713b3e8c9d3a1a01e53b0) Merge pull request #29802 from sunlollyking/slideshow-broken-picture
+- [`9275c5b7`](https://github.com/xbmc/xbmc/commit/9275c5b77d0334beb18f42cb89916c2a06245dd2) Merge pull request #29803 from sunlollyking/slideshow-video-display-mode
+- [`b9e69078`](https://github.com/xbmc/xbmc/commit/b9e6907849b2b91635b364e5c63f165729acc4d9) Merge pull request #29808 from sunlollyking/slideshow-hdr-video
+- [`8df12d4b`](https://github.com/xbmc/xbmc/commit/8df12d4b212196d2f03e9e44a9c96c57560de9c5) Merge pull request #29815 from sunlollyking/slideshow-date-taken
+- [`fc73908b`](https://github.com/xbmc/xbmc/commit/fc73908b757d475e61565b4596face92fc9f030a) Merge pull request #29814 from sunlollyking/slideshow-video-thumbnail
+- [`11f50401`](https://github.com/xbmc/xbmc/commit/11f5040156551bafcfda36ee1a3c0523c995ca7f) Merge pull request #29812 from sunlollyking/slideshow-skip-broken-video
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/494721df...11f50401)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261012-11f50401-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261011-494721df
 
 **Homebrew Version:** `23.26.284`
