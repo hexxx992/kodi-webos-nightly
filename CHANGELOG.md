@@ -1,5 +1,112 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261015-41a645ab
+
+**Homebrew Version:** `23.26.288`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-10-15 09:02:47 PDT`
+
+**Commits:** 89
+
+### All Commits
+
+- [`b34415bd`](https://github.com/xbmc/xbmc/commit/b34415bde03ff6be4519d365bde975bb50cb4a06) Use local .strm files as subtitle anchors
+- [`a169167d`](https://github.com/xbmc/xbmc/commit/a169167d30b648db91c0744984be3d790c5e67c5) SMBWSDiscoveryListener: fix stack buffer overflow in UDP receive path
+- [`ec06f163`](https://github.com/xbmc/xbmc/commit/ec06f1638551f93edd29ea07aef5522379626c26) cc_decoder: fix heap buffer overflow in cc_to_text
+- [`9d1c26c2`](https://github.com/xbmc/xbmc/commit/9d1c26c23121f94887aa7c5b47d7a24a282bb2ae) [python] Release the GIL in xbmc.getInfoLabel() and getInfoImage()
+- [`400cbba6`](https://github.com/xbmc/xbmc/commit/400cbba6f7b9c5fff81c863e5d3542f4220e8cb8) [skin] Guard skin setting registration and access with a lock
+- [`c65b242d`](https://github.com/xbmc/xbmc/commit/c65b242d412fa388faf70ae07c2b643f4dbb92fd) [wayland] Fail video sync setup when the refresh rate is unknown
+- [`b4db7800`](https://github.com/xbmc/xbmc/commit/b4db780014fc8b038f637a3aacdab1b8fbd63668) [wayland] Use the refresh rate of the presented event for video sync
+- [`c168ae8b`](https://github.com/xbmc/xbmc/commit/c168ae8b1418d74b10498566674fbbc8d087bb74) [VideoPlayer] Don't reopen a stream if it is already selected
+- [`aea60c33`](https://github.com/xbmc/xbmc/commit/aea60c33fce87f0fcd98bc8ce9ae82be6e7b822d) [games] Keep each game's saves and state in one folder
+- [`9d1a3fb1`](https://github.com/xbmc/xbmc/commit/9d1a3fb14f9800ed3e19177ca32348515719d563) [games] Find a game's folder from any form of its path
+- [`ce5a21ff`](https://github.com/xbmc/xbmc/commit/ce5a21ff746eb5d77457194fddb5a6600e46f467) [GUI] Play the selected cue sheet track when started from the files view
+- [`955f6ee1`](https://github.com/xbmc/xbmc/commit/955f6ee1f33fbffdf351a87bf37834b43fc185ee) RetroPlayer: Advance the shader frame count at the playback speed
+- [`ace0110e`](https://github.com/xbmc/xbmc/commit/ace0110e5cfbe86a3b4f5256b4a55314ee558de8) [games] Key a game's folder on its last two folders and file name
+- [`f9a662af`](https://github.com/xbmc/xbmc/commit/f9a662afe9eb9d5abff5231e6a0699d9bce88108) [ActiveAE] Reset AC3/EAC3 encoder on flush when transcoding
+- [`a282c288`](https://github.com/xbmc/xbmc/commit/a282c288d30f8ce30b70332abed3a9d3dd494bc6) [guilib] Protect m_vecTextures with m_section in CGUITextureManager
+- [`c22e472f`](https://github.com/xbmc/xbmc/commit/c22e472fa18422aaeabbef690f6809870bae93ee) [video] Start the thumb loader after the items are filtered
+- [`3f48799f`](https://github.com/xbmc/xbmc/commit/3f48799fb0c708ca4546871f77090856b42b1b7e) [guilib] Protect the list item layouts against concurrent SetInvalid()
+- [`f66b6c42`](https://github.com/xbmc/xbmc/commit/f66b6c42342ffc3c25e7fe5f6b4c0dd8c07095e3) [filesystem] Lock the cache in CDirectoryCache::ClearFile()
+- [`a5ff10c5`](https://github.com/xbmc/xbmc/commit/a5ff10c5db4cc020966d7bbc27f64efd128242e7) [pvr] Channel group thumbs: Skip channels without icon
+- [`deadbd47`](https://github.com/xbmc/xbmc/commit/deadbd470285558e371c07220f4476ee39f33df5) [pvr] Channel group thumbs: Refresh when the tiled channel icons change
+- [`5cfdea9a`](https://github.com/xbmc/xbmc/commit/5cfdea9ac7d5e4678cd7a9fd71570bad69022724) [music] Stop the thumb loader while the items are filtered
+- [`66fa879c`](https://github.com/xbmc/xbmc/commit/66fa879ca70e80e313b919c9ec3d41d52d0e729e) [guilib] Keep processing windows while background images are loading
+- [`3ebe1534`](https://github.com/xbmc/xbmc/commit/3ebe15341bc77dc0b8074a8e9b98156ecaf14626) [guilib] Process all dialogs when a dialog changes
+- [`b0deb27f`](https://github.com/xbmc/xbmc/commit/b0deb27f586d8be82198ee3653181242e78415be) [skin] Notify windows when skin timers change
+- [`bfe67cfb`](https://github.com/xbmc/xbmc/commit/bfe67cfba71f8c4ff110c3d1b932f90d5b7b8209) [guilib] Mark fade labels dirty when their labels change
+- [`6f8e5925`](https://github.com/xbmc/xbmc/commit/6f8e592550ea100712da704bc113810c8a018e8d) [guilib] Keep retained list item layouts across container resets
+- [`d16bbe69`](https://github.com/xbmc/xbmc/commit/d16bbe69f5e4661b4d03d9f8648678c97deca732) pictures: stop over-allocating the image rotation buffer
+- [`f28581a6`](https://github.com/xbmc/xbmc/commit/f28581a6d42e6d26fcc85a5e499e4024e2ef01e9) [pictures] Keep picture details across restarts
+- [`8d041a06`](https://github.com/xbmc/xbmc/commit/8d041a061a15c8e1212209a47d7c32335cfb5eb5) [games] Keep a game's folder and cheat choice when the library moves
+- [`9a51b8dd`](https://github.com/xbmc/xbmc/commit/9a51b8dd76dd0e36961e42a7db752a964986d7b0) [Windows] Bump pycryptodome to 3.24.1
+- [`266f5065`](https://github.com/xbmc/xbmc/commit/266f5065a76caa19184ad3fb21affb879115e705) windowing/gbm: apply the GUI size limit on 1080p displays too
+- [`2a8e25c3`](https://github.com/xbmc/xbmc/commit/2a8e25c3f26f8a4c6b40e63cbcfe525c9da97805) [pvr] Channel group thumbs: Replace magic number for max tiles
+- [`3dcee3b1`](https://github.com/xbmc/xbmc/commit/3dcee3b1eba8971dd441616b20684469a741c488) Merge pull request #29615 from thexai/pycryptodome-3.24.0
+- [`e5d5ba7e`](https://github.com/xbmc/xbmc/commit/e5d5ba7eeea728f68ad4b16242450c9c4d64e6bd) Merge pull request #29689 from sunlollyking/games-per-game-folder
+- [`cbf502d9`](https://github.com/xbmc/xbmc/commit/cbf502d998cc50d9fd7eb16bae962ca9e1b554ca) Merge pull request #29786 from Portisch/fix_main_menu_selection
+- [`f881012b`](https://github.com/xbmc/xbmc/commit/f881012b10c547622d9c5a75d7255fbcf5f3c9a0) Merge pull request #29545 from TristanInSec/fix/wsdiscovery-recvfrom-oob
+- [`5fff0621`](https://github.com/xbmc/xbmc/commit/5fff062126f050d9f1d8f71de46704fdf26636fd) Merge pull request #29546 from TristanInSec/fix/cc608-text-heap-overflow
+- [`679620af`](https://github.com/xbmc/xbmc/commit/679620af9e29d13abb5d16f096bbece72f12f16b) Merge pull request #29692 from sorin-suciu/fix-files-view-cue-track-selection
+- [`8fd95313`](https://github.com/xbmc/xbmc/commit/8fd95313199e39d68c6c01e11d5113da870bf21c) Merge pull request #29714 from VuzzyM/reset-encoder
+- [`0a8f5abe`](https://github.com/xbmc/xbmc/commit/0a8f5abe2d0ca6afacb51eb89acb046dc04ae446) [games] Keep a game's folder when its Windows drive letter changes
+- [`d825e2ce`](https://github.com/xbmc/xbmc/commit/d825e2ce780bba6be7bff7fd38dee25e33d95c51) Merge pull request #28077 from senendds/fix-strm-subtitles
+- [`8cfc1476`](https://github.com/xbmc/xbmc/commit/8cfc1476996bb185373e4d6f4bdda67ae7fd361c) [Games] Name the file an emulator is missing when it can't load a game
+- [`71d5d847`](https://github.com/xbmc/xbmc/commit/71d5d84769c4c531ac29f1121fd46dba2222dfef) Merge pull request #29639 from sunlollyking/retroplayer-shader-speed
+- [`42c0ea8d`](https://github.com/xbmc/xbmc/commit/42c0ea8db6df87993af2802526b4d9dc7d248219) RetroPlayer: Count shader frames at the speed the game rewinds
+- [`8f988431`](https://github.com/xbmc/xbmc/commit/8f988431ca75ee66689ccb1f8e4697eb8ef64aa8) Merge pull request #29548 from kel-mo/python-infolabel-release-gil
+- [`0d8f0b17`](https://github.com/xbmc/xbmc/commit/0d8f0b174efb7b8a921a708b2b7073a6684f89a0) [guilib] Allow textures to be mipmapped
+- [`53aef6f9`](https://github.com/xbmc/xbmc/commit/53aef6f98e3ea3c4037e2e8818edc29e0f087922) [cmake] Fix Windows LCMS2 definitions after rediscovery
+- [`cf1f47ac`](https://github.com/xbmc/xbmc/commit/cf1f47ac15d70fbc6223a42d5fa8abe59ffe594a) Merge pull request #29796 from popcornmix/rotatebuffer
+- [`37d3f24e`](https://github.com/xbmc/xbmc/commit/37d3f24ebc1c4e93c9c20604bc2c4a95f8454ffd) Merge pull request #29739 from ksooo/pvr-channel-group-thumbs
+- [`13b52717`](https://github.com/xbmc/xbmc/commit/13b52717245dd41459bf3df0f7584ccbe2df902a) threads: make Join() with a max() timeout actually wait
+- [`43edf43d`](https://github.com/xbmc/xbmc/commit/43edf43dc66fb3a18e85bab3a80ad0c020c66472) [Video][Player] Implement seek whilst paused.
+- [`6d4e50ac`](https://github.com/xbmc/xbmc/commit/6d4e50ac3e9b99bbf4eaabf4b0664a3684bc0316) [Video][Player] Remove unused variable.
+- [`02dc672f`](https://github.com/xbmc/xbmc/commit/02dc672f484f3cf82055953f2812027554e67129) [RenderManager] Fix pause -> rewind -> pause did not stop smoothly.
+- [`c44272cd`](https://github.com/xbmc/xbmc/commit/c44272cd0e991e2d131da6f5b0337de74db39ea1) [Video][Player] Fix excessive seeks on rewind.
+- [`74ee3ae1`](https://github.com/xbmc/xbmc/commit/74ee3ae14658787fc14b0e3eed0f22931873239e) [Video] Publish stream details once instead of rebuilding them in place.
+- [`096e214f`](https://github.com/xbmc/xbmc/commit/096e214fe155450e311d92515cddef41e1f82225) Merge pull request #29818 from sunlollyking/pictures-details-cache
+- [`1a7630c0`](https://github.com/xbmc/xbmc/commit/1a7630c092c1c786789e47ef5731d09b4de78b81) [Video] Fix missing movie information within sets (#29736)
+- [`2f83a932`](https://github.com/xbmc/xbmc/commit/2f83a932f9b328e1f69958d07ad9a8e53f5e2971) [cleanup] Remove a header, two members and a property nothing uses (#29696)
+- [`381ccc8d`](https://github.com/xbmc/xbmc/commit/381ccc8d62c4ce951a6e18bb41b8c1e6120bd1d2) [VideoDatabaseDirectory] Read the details level with the variant's fallback (#29697)
+- [`8785725c`](https://github.com/xbmc/xbmc/commit/8785725c669eda8ede27926fd8378db61f1a8d62) [VideoPlayer][RDS] Accept language code 1, Albanian (#29698)
+- [`0b312d14`](https://github.com/xbmc/xbmc/commit/0b312d14f6604b4a00a359b88a9bd24a457771f1) [Doxygen][CMusicDatabase] Describe the song and album parameters as they are (#29705)
+- [`4673b0f6`](https://github.com/xbmc/xbmc/commit/4673b0f6ed929bfc7bf13f020ad6ecacd7699c94) [builtins][CleanLibrary] Clean the content named in any case (#29712)
+- [`afe9b316`](https://github.com/xbmc/xbmc/commit/afe9b316af6ce48c89d3eded3b0613620bf6f7da) [language][CLangInfo] Take the region's long date format for a regional long date (#29718)
+- [`492d01b0`](https://github.com/xbmc/xbmc/commit/492d01b042761bec828bbb31b1a3d79e34bc7e79) [UPnP][UPnPInternal] Keep every artist and genre of a song, and share the mapping's conversions (#29731)
+- [`4aca3567`](https://github.com/xbmc/xbmc/commit/4aca3567f4fecba31a27b069dc078557512e4a16) [playlists] Add a smart playlist feed that deals its matches without repeats (#29713)
+- [`1e5bc7aa`](https://github.com/xbmc/xbmc/commit/1e5bc7aaf32e1b5456b63c0e57442fa055206034) [media][ContentNames] Name the remaining content strings in library URLs, databases and UPnP (#29699)
+- [`1d03a755`](https://github.com/xbmc/xbmc/commit/1d03a755617307fb69f5cb3a1dc0306a53a10b5b) [pictures][CPictureInfoTag] Replace SetInfo with SetResolution and SetDateTimeTaken (#29695)
+- [`bd7f9f99`](https://github.com/xbmc/xbmc/commit/bd7f9f99d2d5e2a229058108a4893f35bab4a05e) [Video][VideoUtils] Set a show or season's episode counts in one place (#29701)
+- [`25d6103d`](https://github.com/xbmc/xbmc/commit/25d6103d83eeb23c18c6c656959a56127acd7040) [application] Skin, volume and power handle their own setting callbacks (#29710)
+- [`08fce0ca`](https://github.com/xbmc/xbmc/commit/08fce0ca8556e0260ffc34102678d5f2a43396ef) [utils] Name the default images a skin provides once (#29725)
+- [`0a18f184`](https://github.com/xbmc/xbmc/commit/0a18f1848bce2f479b59e27597a740f65a689ad6) [Util] Find the playlists folder wherever the user keeps it (#29726)
+- [`685dc56f`](https://github.com/xbmc/xbmc/commit/685dc56fdcaa97302e733abcae144350fa53cd1f) RetroPlayer: Stop the savestate capture test racing its worker thread (#29745)
+- [`4088fb0e`](https://github.com/xbmc/xbmc/commit/4088fb0e914945f569aa87dc02364f510e1d8343) [dialogs] Name the numeric dialog's modes once, as DIALOGS::NUMERIC_MODE (#29727)
+- [`4b207809`](https://github.com/xbmc/xbmc/commit/4b2078099e84324da486b2a03349a6ec75b4a2e5) [addons] Name the content a plugin provides in one table (#29711)
+- [`590ecc01`](https://github.com/xbmc/xbmc/commit/590ecc017ec6d109969475cf00abec8ef9ab8a65) Merge pull request #29778 from neo1973/fix-smartredraw-background-images
+- [`d95558df`](https://github.com/xbmc/xbmc/commit/d95558dfa3acf31d0fe0a65d3477160cee6fe27d) Merge pull request #29735 from neo1973/fix-gui-data-races
+- [`03052882`](https://github.com/xbmc/xbmc/commit/030528827a9d524c9a29f14f52798758cc42d07d) Merge pull request #29603 from neo1973/wayland-presentation-refresh
+- [`b373a04c`](https://github.com/xbmc/xbmc/commit/b373a04cebb506332d912395f887c5cf77d2cd33) Merge pull request #29518 from kel-mo/gui-mipmap-textures
+- [`5d3030c3`](https://github.com/xbmc/xbmc/commit/5d3030c3f358de32895385001627a02c3ad42b35) Merge pull request #29516 from kel-mo/videoplayer-same-audiostream
+- [`2160595a`](https://github.com/xbmc/xbmc/commit/2160595a170e9c514fe2c82a1bdc8f69f484fbf2) Merge pull request #29847 from sunlollyking/games-folder-windows-root
+- [`07c2b2e1`](https://github.com/xbmc/xbmc/commit/07c2b2e11c02d0164d5055494a4dee9f04e38c47) Merge pull request #29792 from sunlollyking/game-load-failed-message
+- [`f918831a`](https://github.com/xbmc/xbmc/commit/f918831ad61bd27197f4162fa6af90385d97ca18) Merge pull request #29848 from sunlollyking/retroplayer-shader-rewind-speed
+- [`9e1c5fcd`](https://github.com/xbmc/xbmc/commit/9e1c5fcd0839f28fe824659d73166f4eb4d3ded5) Merge pull request #29852 from garbear/fix-lcms2
+- [`86868508`](https://github.com/xbmc/xbmc/commit/868685089456b418f7e230bae5b58260727098d6) Merge pull request #28774 from 78andyp/paused
+- [`d6a360cd`](https://github.com/xbmc/xbmc/commit/d6a360cd375d33535a2bd4973ce44451fe6555a4) Merge pull request #29798 from popcornmix/guilimit1080
+- [`c8c6c098`](https://github.com/xbmc/xbmc/commit/c8c6c0982d6ca72fea7e91c39e7a1499bf8cda2f) Merge pull request #29853 from popcornmix/joinmax
+- [`66dd635f`](https://github.com/xbmc/xbmc/commit/66dd635f802bb715a9c888621334e13d71be0fe5) [RetroPlayer] Fix macOS FBO capture state and test lifecycle
+- [`47d81a48`](https://github.com/xbmc/xbmc/commit/47d81a48da4bce1effc53880e5df51a45a348622) Merge pull request #29860 from 78andyp/race
+- [`41a645ab`](https://github.com/xbmc/xbmc/commit/41a645ab9e3deb8ae983ab1c3bed8cec1bd6096d) Merge pull request #29877 from garbear/fix-macos-test
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/11f50401...41a645ab)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261015-41a645ab-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261012-11f50401
 
 **Homebrew Version:** `23.26.285`
