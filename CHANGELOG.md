@@ -1,5 +1,56 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261017-ef8105c7
+
+**Homebrew Version:** `23.26.290`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-10-17 07:44:07 PDT`
+
+**Commits:** 33
+
+### All Commits
+
+- [`243dbe71`](https://github.com/xbmc/xbmc/commit/243dbe712c8dcd245ce3a9ed91ad959b431f959e) [Windows] Enable ccache for Visual Studio builds
+- [`61c7d72e`](https://github.com/xbmc/xbmc/commit/61c7d72e7b9c4bcea24c7175f67bfa2a675aaa82) utils: add CGLBufferArena for small shared vertex ranges
+- [`235eb321`](https://github.com/xbmc/xbmc/commit/235eb321dcd67ff026b654c15b43c2b0ede0dc96) guilib/GUIFontTTFGLES: share text vertex storage through a buffer arena
+- [`bda2d5ba`](https://github.com/xbmc/xbmc/commit/bda2d5ba218be570317b80f157188ac7f8e85b10) [games] Answer ListItem labels from a game's own details
+- [`316c7b98`](https://github.com/xbmc/xbmc/commit/316c7b9865d4536001c4257095049c2bf5bf09b9) [games] Sort a game list by title, year and genre
+- [`45b3bac4`](https://github.com/xbmc/xbmc/commit/45b3bac450659d911502c1a2f3e75111b40caaf4) guilib/GUIFontTTFGLES: shrink text vertices from 24 to 16 bytes
+- [`aa4661a8`](https://github.com/xbmc/xbmc/commit/aa4661a8a2d66ae2e85e68f5986db208aa110f16) [Video][Database] Fix a clean listing an episode once for each folder of its show.
+- [`53d4ca8c`](https://github.com/xbmc/xbmc/commit/53d4ca8c78fdbeb5a17d2863d80efcece670828d) [Video][Database] Keep movie art the new default version lacks.
+- [`30be4789`](https://github.com/xbmc/xbmc/commit/30be4789b5892bfb179e78a416d40c80e2552e12) [VideoPlayer][Windows] Fix HQ scaler cache in stereo modes.
+- [`21cb09df`](https://github.com/xbmc/xbmc/commit/21cb09dfea303c05625359f7bc9e38894ba6307c) [VideoPlayer][Windows] Fix right eye of Pixel Shaders output in split stereo modes.
+- [`564a6417`](https://github.com/xbmc/xbmc/commit/564a6417b5cf201c6a92ca0086386e72248da13c) [GUI] Age dirty regions once per frame in stereo modes.
+- [`4208561c`](https://github.com/xbmc/xbmc/commit/4208561ce51ada45e2c6490e4c3823ca0f85b58c) [depends] Update TagLib to 2.3.2
+- [`7692b7c6`](https://github.com/xbmc/xbmc/commit/7692b7c653af7ad2c18020b3bac255398de6640e) [Video] Don't re-import movies already in the library on update.
+- [`670ef0f0`](https://github.com/xbmc/xbmc/commit/670ef0f04f9682bd03b660e872cdd7ccdabe0bf8) [guilib] Allow textures to keep subpixel positions
+- [`6fab3d57`](https://github.com/xbmc/xbmc/commit/6fab3d575aebeaa1821d1fbaf346f234b93b9864) [guilib] Keep subpixel textures fractional only while they move
+- [`b6dfbb1f`](https://github.com/xbmc/xbmc/commit/b6dfbb1fac45cefd257debb5a3a747fd10b3d467) [guilib] Settle subpixel textures a moment after they stop
+- [`9a1e3f8c`](https://github.com/xbmc/xbmc/commit/9a1e3f8c5f05d59639186b71cf1ce3db8d1df5f2) [Video][Bluray] Decouple context menu 'Choose Playlist' from automatically playing the choice. This allows selection separately to playback.
+- [`ad13d6db`](https://github.com/xbmc/xbmc/commit/ad13d6db8192b0cf1c42191c105bcaefecf939d0) [UDF] Read ahead when reading a few blocks of an image
+- [`5376187a`](https://github.com/xbmc/xbmc/commit/5376187af7814c6880e00711aae7852240b05f78) [UDF] Don't read each file's size when listing without file info
+- [`c88b87b0`](https://github.com/xbmc/xbmc/commit/c88b87b01b98f3c6c382ed269dd625b710e1c53b) [DiscsUtils] Look for a bluray image's index in BDMV first
+- [`664c98a4`](https://github.com/xbmc/xbmc/commit/664c98a47986902d7cb6f22d35fd9fc202a25479) Merge pull request #29835 from sunlollyking/game-listitem-labels
+- [`1f09aebf`](https://github.com/xbmc/xbmc/commit/1f09aebfa7856f11d8e3c46209c4da6bc594f231) Merge pull request #29839 from garbear/update-taglib
+- [`f31214e8`](https://github.com/xbmc/xbmc/commit/f31214e82e7b7e2f13193fed9737bef00cd11016) Merge pull request #29716 from clementperon/gles-font-vertex-arena
+- [`ca2ccdc8`](https://github.com/xbmc/xbmc/commit/ca2ccdc855ba2b9024c95e0a03d17b2841ae8f4d) Merge pull request #29822 from garbear/windows-ccache
+- [`efc26d71`](https://github.com/xbmc/xbmc/commit/efc26d719f8832d03e7694378ff82c5b7313a3e4) Merge pull request #29857 from 78andyp/delete2
+- [`6581bb80`](https://github.com/xbmc/xbmc/commit/6581bb809145540fa0ceb78d56a1c2a8930f4f31) Merge pull request #29672 from 78andyp/missing
+- [`4e681966`](https://github.com/xbmc/xbmc/commit/4e681966b251c6d561a496a66c355af81c59df49) Merge pull request #29410 from 78andyp/various
+- [`fd041b7d`](https://github.com/xbmc/xbmc/commit/fd041b7de9ce12eefcb02544ab5a2759e9e9c370) Merge pull request #29859 from 78andyp/stereo
+- [`48dec8fb`](https://github.com/xbmc/xbmc/commit/48dec8fb6957596357cf39bc08ef51b901721af6) Merge pull request #29742 from 78andyp/test
+- [`c7c26084`](https://github.com/xbmc/xbmc/commit/c7c26084f84b258fb59bb51a84cd10a70256b26a) [Estuary] Fix video version icons and labels (#29832)
+- [`85cd79a0`](https://github.com/xbmc/xbmc/commit/85cd79a00cfaff6212cf5265c91f92fddb9846a5) Merge pull request #29493 from kel-mo/gui-subpixel-textures
+- [`fb170c24`](https://github.com/xbmc/xbmc/commit/fb170c2456abf471da6f4a630a10ec0edfbd5a30) [Windows] Report the selected ccache and its statistics after the build (#29881)
+- [`ef8105c7`](https://github.com/xbmc/xbmc/commit/ef8105c71ca79843ec58b088bfb5ea25349ab510) Merge pull request #29894 from 78andyp/discperf
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/41a645ab...ef8105c7)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261017-ef8105c7-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261015-41a645ab
 
 **Homebrew Version:** `23.26.288`
