@@ -1,5 +1,101 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261021-47ee87ca
+
+**Homebrew Version:** `23.26.294`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-10-21 09:22:38 PDT`
+
+**Commits:** 78
+
+### All Commits
+
+- [`250af933`](https://github.com/xbmc/xbmc/commit/250af933e19e6eaa6da36e07a4f2cba3e4a4bf70) [games][CGUIWindowGames] Remove a commented-out game info dialog and two bare todos
+- [`85b13776`](https://github.com/xbmc/xbmc/commit/85b13776ee84b8e35efb6811bb20e553875e274b) [cmake] Isolate dependency downloads from shared cache writers
+- [`6b2a6c68`](https://github.com/xbmc/xbmc/commit/6b2a6c68835e7ac43864bccc1acf4a0d0094908d) uwp: add libdovi dependency
+- [`adc081f8`](https://github.com/xbmc/xbmc/commit/adc081f86f6c29bf09e5e8c1eeb30d700bc948ee) [test] Characterize Kodi URL and path semantics
+- [`64e3ea88`](https://github.com/xbmc/xbmc/commit/64e3ea88d477f57b2c7016b4f1efa245e833c3f6) [utils] Add lossless URI reference parsing
+- [`a01228ec`](https://github.com/xbmc/xbmc/commit/a01228ecd28eadc4a6d389e1c2b29854973b863f) [CMake] Don't disable optimizations for Mime.cpp on Clang
+- [`fca12dca`](https://github.com/xbmc/xbmc/commit/fca12dca06ec305cc28cbafec90badf6fb8b6680) [RetroPlayer] Only read a savestate when a game is resumed from one
+- [`ee93b2b3`](https://github.com/xbmc/xbmc/commit/ee93b2b3688d989c3a5aff6d8e17f2412cc48b53) [cmake] Support SOURCE_SUBDIR for dependency builds
+- [`11458b74`](https://github.com/xbmc/xbmc/commit/11458b74ddc975229e805c86194d10906b4e1aa3) [tools/depends][target] Add Zstandard dependency
+- [`e105eeb4`](https://github.com/xbmc/xbmc/commit/e105eeb4b4214b629a6fbd7a3f321f4b1eeadf8a) [cmake] Introduce Zstandard dependency discovery
+- [`a6bcd5a2`](https://github.com/xbmc/xbmc/commit/a6bcd5a2bbe8a3dd7172446dad5a8824c6e749fe) [cmake] Enable Zstandard support in curl
+- [`8d3d054e`](https://github.com/xbmc/xbmc/commit/8d3d054edaa449d6f0c5d65b57627db2b4e55274) [cmake] Build MariaDB with static Zstandard support
+- [`6d9181e4`](https://github.com/xbmc/xbmc/commit/6d9181e4cba470730665a61223cf998a52b747f4) [games] Add more details to a game's info tag
+- [`575bbd95`](https://github.com/xbmc/xbmc/commit/575bbd956e5f3e08b95c626f9e442fc832b0590a) [filesystem] CFile::LoadFile: return -1 when the file cannot be read
+- [`72fda1d0`](https://github.com/xbmc/xbmc/commit/72fda1d0a5046e9e1fb501e9196783e723091e29) [filesystem] HTTPDirectory: read through CFile instead of CCurlFile
+- [`e82f29c1`](https://github.com/xbmc/xbmc/commit/e82f29c1f6eb53a1936e37d135cf41e8ec65a8c0) [addons] Repository: read through CFile instead of CCurlFile
+- [`cc647782`](https://github.com/xbmc/xbmc/commit/cc647782d9f58145b3f83dbf4499e3bdc8ac93d8) [CDateTime] Get the time zone bias for dates before 1970 on POSIX
+- [`417dc3a1`](https://github.com/xbmc/xbmc/commit/417dc3a176baa20dcd80f41ba88c32ebe0b4f95a) [CMake] Add precompiled header support for non-Windows platforms
+- [`a25aa714`](https://github.com/xbmc/xbmc/commit/a25aa714d57345df40f1ca51bc224eecaeb0c490) [CMake] Keep ccache effective with precompiled headers
+- [`ca502c9e`](https://github.com/xbmc/xbmc/commit/ca502c9ef4bf6bf0cbe02aec6a02b84ff34c9c8c) [guilib] Keep processing windows while interim images are shown
+- [`28d01a46`](https://github.com/xbmc/xbmc/commit/28d01a462069d601c1f95e09be6ee982bdd098dd) [VideoPlayer] DVDFactoryInputStream: resolve redirects through CFile
+- [`26def6e5`](https://github.com/xbmc/xbmc/commit/26def6e58bc4839a466f5348ddff504ec20e2ea1) wasm/tizen: BSD sockets over the Tizen Sockets Extension
+- [`a9056143`](https://github.com/xbmc/xbmc/commit/a90561435976343b1bae5756031bf6345d9b8ff8) wasm/filesystem: serve http(s) through XMLHttpRequest without sockets
+- [`68459f1b`](https://github.com/xbmc/xbmc/commit/68459f1bc9e979cfdde0c6f1a6febb08b2ad8ea8) [GUILIB] CGUIImage: report the incoming image right away
+- [`efab72aa`](https://github.com/xbmc/xbmc/commit/efab72aa70be286873daf3f90a62a3edf8be67a6) Merge pull request #29883 from sunlollyking/retroplayer-skip-empty-savestate
+- [`70256bc9`](https://github.com/xbmc/xbmc/commit/70256bc9ac72cc3e6fe08cdcf4fb450ebcfdcbe4) [RetroPlayer] Remove the unreachable savestate game client warning
+- [`7915e245`](https://github.com/xbmc/xbmc/commit/7915e245f54b1426db5a529235026c987c40468b) Merge pull request #29890 from sunlollyking/game-info-tag-details
+- [`8f6c50bd`](https://github.com/xbmc/xbmc/commit/8f6c50bd005f5b96426db93f8861cb063b2ebb21) Merge pull request #29843 from garbear/concurrent-downloads
+- [`a2f8f396`](https://github.com/xbmc/xbmc/commit/a2f8f396fa08a9e5b51c0d81a81c84b09d935674) [RetroPlayer] Leave scissor testing disabled after capture
+- [`2dc6f964`](https://github.com/xbmc/xbmc/commit/2dc6f964bdc57b6fcfa22ad63956d721b065634e) xbox: add dolby vision low latency and transform plugin
+- [`56f0e005`](https://github.com/xbmc/xbmc/commit/56f0e005fb457e3d37e5752acaf94126673a0a14) [MediaManager] Keep the optical drive off the GUI and application threads.
+- [`b1d28895`](https://github.com/xbmc/xbmc/commit/b1d28895db6f590552b56d8ce95089291fe7f5d7) [MediaManager] Don't let a finished job describe a disc that was ejected.
+- [`839cf04b`](https://github.com/xbmc/xbmc/commit/839cf04b471b0333c9c01ea46391d61680b82418) [MediaManager] Work the tray from a job, not the application thread.
+- [`5ea85c61`](https://github.com/xbmc/xbmc/commit/5ea85c611cdfbb248b4bab2434e8c8d4f534f4cf) [Disc] Report whether a tray operation moved the drive.
+- [`ea3ed638`](https://github.com/xbmc/xbmc/commit/ea3ed63884c991774bc7a0151b12dabbc31c6679) [MediaManager] Leave autorun to the disc detection thread except on Windows.
+- [`a0f6e219`](https://github.com/xbmc/xbmc/commit/a0f6e219e758d62e2c11a94275da92f1ce455d6b) [MediaManager] Leave reading the disc to a job when the GUI polls.
+- [`0d5945a5`](https://github.com/xbmc/xbmc/commit/0d5945a589b74590fc780f472ce9f21595df5ab7) [MediaManager] Forget the Blu-ray playlist status when a disc arrives.
+- [`46d4cf21`](https://github.com/xbmc/xbmc/commit/46d4cf2171a7ef85ba22d8b501ba2025d7154550) [macOS/tvOS] build in Release config
+- [`5260e44c`](https://github.com/xbmc/xbmc/commit/5260e44c169ada5eeda3d9fef0492b2cd7baa714) [iOS] build RelWithDebInfo, package debug symbols for AppStoreConnect
+- [`b0dbf25c`](https://github.com/xbmc/xbmc/commit/b0dbf25c9b6c1538462f49ca8efe44221f537ed0) [buildsteps] pass `--disable-debug` for anything but Debug config
+- [`562dd54c`](https://github.com/xbmc/xbmc/commit/562dd54c8b55f4f5246e8b30f9b47e879ccc5fa2) [darwin_embedded] remove unused dSYM copying from the packaging scripts
+- [`32f47f70`](https://github.com/xbmc/xbmc/commit/32f47f70a0327aaee99665cbf80ad7d6cf49d090) [Games] Let a game client ask for fast-forward
+- [`c085541b`](https://github.com/xbmc/xbmc/commit/c085541b1dadb32dd80040b1ab45d5d102d3e6d1) Merge pull request #29861 from cscd98/dolby-vision-xbox
+- [`88ae1b47`](https://github.com/xbmc/xbmc/commit/88ae1b4791e57cd2711429872fb5e763cdf19eb4) Merge pull request #29372 from 78andyp/status
+- [`262e3a86`](https://github.com/xbmc/xbmc/commit/262e3a86f2f44ec486a19532dd261d95257d856e) [Application] Keep the startup job event alive until Set() returns.
+- [`eca4f20a`](https://github.com/xbmc/xbmc/commit/eca4f20a835516c85362c6a01f2a86f7c807d073) [Stacks] Classify stack parts as video so .iso parts don't start RetroPlayer.
+- [`b3870943`](https://github.com/xbmc/xbmc/commit/b387094301b30f8580fcd92f1f590e664eab069e) Merge pull request #29758 from 78andyp/crash
+- [`9d576155`](https://github.com/xbmc/xbmc/commit/9d576155045f89a365b2777b084f9b603d0ee933) Merge pull request #29929 from garbear/rp-scissor
+- [`b6b56b67`](https://github.com/xbmc/xbmc/commit/b6b56b6779679dfb1da655015befd21514730c46) Merge pull request #28476 from garbear/enable-zstd-curl
+- [`180aca76`](https://github.com/xbmc/xbmc/commit/180aca7664d605280474d960c880c11fe7132f91) Merge pull request #29570 from kambala-decapitator/apple-release
+- [`1d3419b0`](https://github.com/xbmc/xbmc/commit/1d3419b08e9ba8ccf57f607528e96851c811222c) Merge pull request #29837 from garbear/lossless-uri
+- [`ae78af5f`](https://github.com/xbmc/xbmc/commit/ae78af5f64d2acb79e4dc4e95dd230b5d04bb806) Merge pull request #29885 from sunlollyking/retroplayer-drop-unreachable-client-warning
+- [`fe8292d1`](https://github.com/xbmc/xbmc/commit/fe8292d1019c801b2c8b8b709c34316f48cf50ab) Merge pull request #29893 from sunlollyking/game-fastforward
+- [`e80aac24`](https://github.com/xbmc/xbmc/commit/e80aac246026eaa426dd1357fe8cb0e84cc291eb) Merge pull request #29946 from 78andyp/stackfix
+- [`2238d34d`](https://github.com/xbmc/xbmc/commit/2238d34d2d6269fe01c490765444a102d5551c95) [test] Test the AUTOINCREMENT rebuild directly
+- [`18bce6d2`](https://github.com/xbmc/xbmc/commit/18bce6d2c2c70415860794bc509fd5d316c5e55d) Merge pull request #29902 from neo1973/fix-smartredraw-interim-images
+- [`f0534ad1`](https://github.com/xbmc/xbmc/commit/f0534ad16e65ffce53e3d797bd3487334fa818f8) Merge pull request #29960 from 78andyp/dbtestfix
+- [`e4957913`](https://github.com/xbmc/xbmc/commit/e4957913df124447a7d379529e584171c51370e4) [cmake] FindCurl: pass resolved zstd to an installed curl config
+- [`f2343296`](https://github.com/xbmc/xbmc/commit/f23432964fe34369cd998f36d94c00a09a319ac8) [cmake] FindCurl: restore CMAKE_MODULE_PATH after the curl config lookup
+- [`d354fb7d`](https://github.com/xbmc/xbmc/commit/d354fb7dc556dec969dfc583cfdde31fc48e8053) Merge pull request #29961 from 78andyp/windowsfix
+- [`0ca6ddb1`](https://github.com/xbmc/xbmc/commit/0ca6ddb1073b0537902b55891ced7503a6c4b91c) [Estuary] Avoid duplicate version names in asset folders (#29913)
+- [`f034024a`](https://github.com/xbmc/xbmc/commit/f034024a267559b5dc49b35796420a01a8de5e27) wasm/filesystem: handle XHR credentials safely
+- [`51be90c3`](https://github.com/xbmc/xbmc/commit/51be90c393f8c45dc1594cc7efe7fa1d65e3dc1b) Merge pull request #29557 from neo1973/pch-non-windows
+- [`cdbfacb1`](https://github.com/xbmc/xbmc/commit/cdbfacb15acc9d6b7b7c24d13fe5f0c84d88154d) [AudioEngine] ActiveAE: Do not mute in-sync samples while measuring the sync error
+- [`e384f2f8`](https://github.com/xbmc/xbmc/commit/e384f2f897c6c089f74641c2dbba953230648fa4) [depends] mariadb: declare static zstd plugin in libmariadb.pc
+- [`7ca2fcdd`](https://github.com/xbmc/xbmc/commit/7ca2fcdde53b04ded54f6031db5035c8150569cf) Merge pull request #29896 from sunlollyking/tz-bias-before-1970
+- [`8743c6cf`](https://github.com/xbmc/xbmc/commit/8743c6cf564198ef833f6ec5368c47a6a3f8561d) Merge pull request #29781 from malard/remove-games-window-dead-code
+- [`b4a8b410`](https://github.com/xbmc/xbmc/commit/b4a8b410c2cc72c6e2d750633329ee230d1be87e) Merge pull request #29980 from 78andyp/webosfix
+- [`0acda0b8`](https://github.com/xbmc/xbmc/commit/0acda0b8b7d34b7e3b284f68cce56456b15b93af) [posix][smb] percent encode the colons of an IPv6 host again
+- [`c13d40b9`](https://github.com/xbmc/xbmc/commit/c13d40b95b0073717a1d825dcad6f6bea34cb547) [posix][smb] read errno before strerror() when reporting failures
+- [`37a2ca24`](https://github.com/xbmc/xbmc/commit/37a2ca24bc212767319a6db29a49ee9d111c6cf6) [posix][smb] treat libsmbclient's offset EINVAL codes as EINVAL
+- [`f0a88217`](https://github.com/xbmc/xbmc/commit/f0a882175f9e60b7bca0ef55302bc757a3b38f4a) [dialogs] CGUIDialogExtendedProgressBar: Open dialog asynchronously
+- [`9f66e981`](https://github.com/xbmc/xbmc/commit/9f66e981b0d1228b33bf040f1d1cda7cd8657f14) [dialogs] Test that GetHandle() does not wait for the GUI thread
+- [`899f4bc6`](https://github.com/xbmc/xbmc/commit/899f4bc644c584570839fa9195256149e58712a6) Merge pull request #29984 from ksooo/activeae-sync-no-mute
+- [`1e3e298b`](https://github.com/xbmc/xbmc/commit/1e3e298b68cc6d99fbdc7e3114a81ae2e93f1f6e) Merge pull request #29817 from clementperon/upstream/08-filesystem-network
+- [`24ebd0f2`](https://github.com/xbmc/xbmc/commit/24ebd0f2f7c48ca7a7b3f2a7a5c1816355f8b6dd) Merge pull request #29925 from MikeSiLVO/fix-getlabel-pending-image
+- [`8fc88d5a`](https://github.com/xbmc/xbmc/commit/8fc88d5a9773de75b5a67a6ea38cdaaee90e5157) Merge pull request #29969 from 78andyp/ipv6
+- [`47ee87ca`](https://github.com/xbmc/xbmc/commit/47ee87ca616578267a0d34c6759918807f605cc5) Merge pull request #29945 from 78andyp/crash2
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/ef8105c7...47ee87ca)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261021-47ee87ca-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261017-ef8105c7
 
 **Homebrew Version:** `23.26.290`
