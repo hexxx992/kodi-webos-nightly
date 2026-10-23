@@ -1,5 +1,104 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261023-a097d697
+
+**Homebrew Version:** `23.26.296`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-10-23 09:12:03 PDT`
+
+**Commits:** 81
+
+### All Commits
+
+- [`8200621b`](https://github.com/xbmc/xbmc/commit/8200621b3ad1003749c6066a8f0d8abd127dc80b) [Video][Music] Leave the All entries out of the library windows' item count
+- [`532cf915`](https://github.com/xbmc/xbmc/commit/532cf915ebeecccc5f12c1084bbae3576d8b3a13) [cleanup] Look each service up once per function
+- [`df2de23d`](https://github.com/xbmc/xbmc/commit/df2de23d54dc2899ebe15aefdbbe0c388db9c094) [cleanup][PVR] Use the PVR manager GetProvidersDirectory already holds
+- [`8374ee8b`](https://github.com/xbmc/xbmc/commit/8374ee8b6a25229a35ddeb76a561caf1f2584d72) [PVR][JSON-RPC] Hand out PVR image paths as URLs the web server can serve
+- [`d4835b37`](https://github.com/xbmc/xbmc/commit/d4835b3728d4128aa779cb69859610bc9b76b9c5) [Windows][RendererSoftware] Draw RGB sources in their own colours
+- [`67760a13`](https://github.com/xbmc/xbmc/commit/67760a136f0f9c1d249fc75072f7f0e6f6b5f14a) [VideoPlayer] RGB with no range given is full range
+- [`d8335091`](https://github.com/xbmc/xbmc/commit/d833509187727ec3125b7e707f281c521c1d14a7) [VideoPlayer][CDVDDemuxClient] Keep parsed stream properties when a stream is opened again
+- [`b7b3db85`](https://github.com/xbmc/xbmc/commit/b7b3db8593c840205a74d57cc66ab9eeb516da8d) [VideoPlayer][CDVDDemuxClient] Take a changed aspect, and the profile of a stream that changed codec
+- [`a856eaab`](https://github.com/xbmc/xbmc/commit/a856eaab57552d334301dcca47ab3540ee3b3a2a) [dialogs] Nest the image choice entries inside KODI::ART
+- [`2a951304`](https://github.com/xbmc/xbmc/commit/2a95130444ab0988457efc945b740f9fc9c20626) [cleanup] Look a service up in the GUI info case that uses it, and the messenger at each send
+- [`0db84fe4`](https://github.com/xbmc/xbmc/commit/0db84fe4703118742b3c5994132da887866052b0) [RetroPlayer] Only strip shader parameter pragmas that start a line
+- [`3b8a340c`](https://github.com/xbmc/xbmc/commit/3b8a340c02f9a40b361211e6c072025febdc30eb) [Video] Use cached local art in file listings and revalidate it
+- [`04038b7c`](https://github.com/xbmc/xbmc/commit/04038b7c704120b2affdce20db96d59fd6e45779) [cmake] Make cache publication non-fatal
+- [`688fbc0c`](https://github.com/xbmc/xbmc/commit/688fbc0cb246c4e0355f20cb8c172d54cccddbb9) [TextureCache] Return the cached copy at the requested size on a miss
+- [`9c442a82`](https://github.com/xbmc/xbmc/commit/9c442a8235a8f89e4d2cc7604d21698e10142908) RetroPlayer: Fix hang when a client asks for its framebuffer off-thread
+- [`487a8fee`](https://github.com/xbmc/xbmc/commit/487a8fee0975d0ebc944ccd47689ece243e90eb3) cmake: build FFmpeg with libopus for wasm
+- [`d157b14f`](https://github.com/xbmc/xbmc/commit/d157b14f13e824dedae4bb8e0fe1b85d00f1d787) [video] Keep an unset play count when archiving a video info tag
+- [`6cb8fd86`](https://github.com/xbmc/xbmc/commit/6cb8fd86fb9b53517ad6f2d589aa56f7a9d18e84) cmake: make Opus optional across platforms and bump to 1.6.1
+- [`880957c9`](https://github.com/xbmc/xbmc/commit/880957c918c720a9e4fd934ce647d93a5ca32981) [RetroPlayer] Don't leave a shader's GLSL profile in its source
+- [`6dfbe602`](https://github.com/xbmc/xbmc/commit/6dfbe60209e8ac0300a941eae3f2be3123d29f73) Games: Fix the player's standing on RetroAchievements leaderboards
+- [`b5bad5a3`](https://github.com/xbmc/xbmc/commit/b5bad5a329203b5551831daa367d6ebe3c417097) [AudioEngine] ActiveAE: Leave audio starting late to the player's clock
+- [`701d1033`](https://github.com/xbmc/xbmc/commit/701d10330f0efa5db5e8c1f1fe95304780e66cb5) VideoPlayer: add CProcessInfoWasm
+- [`f8e8eef1`](https://github.com/xbmc/xbmc/commit/f8e8eef1910710616d56c8a270de6f9a378a1eb4) VideoPlayer: add WebCodecs bitstream helpers
+- [`8810a63e`](https://github.com/xbmc/xbmc/commit/8810a63e736e069c33d7ae9c6b9ee8d41de0db35) VideoPlayer: add a WebCodecs video decoder
+- [`ba5c4e3d`](https://github.com/xbmc/xbmc/commit/ba5c4e3d11dc7256b034fe0fdb27169d09ed4af6) VideoPlayer: render WebCodecs frames as WebGL textures
+- [`9f17a616`](https://github.com/xbmc/xbmc/commit/9f17a616b00043903178bfb2d05a50ac37d1401c) cmake: track Opus configuration in Windows FFmpeg rebuilds
+- [`b0b7a659`](https://github.com/xbmc/xbmc/commit/b0b7a6590aae01905c8e57be3aadd00231ff2ce4) cmake: search the dependency prefix for FFmpeg packages
+- [`98d14a0c`](https://github.com/xbmc/xbmc/commit/98d14a0cdcd9d765a34aa09ab51b6d7c2b189946) [cert] Update CA bundle to 2026-10-20
+- [`608a522f`](https://github.com/xbmc/xbmc/commit/608a522fb385746b8c43e80836d2d9004ece6ce9) Revert "[depends] mariadb: declare static zstd plugin in libmariadb.pc"
+- [`c657b904`](https://github.com/xbmc/xbmc/commit/c657b904c268eee82fe26a732edb5ba5c2ae94e2) [cmake] FindMariaDBClient: link zstd after a reused static libmariadb
+- [`9d8f4200`](https://github.com/xbmc/xbmc/commit/9d8f420049f39df96647580a6e6b727386947245) Merge pull request #29800 from clementperon/upstream/09-webcodecs
+- [`b1dfafb1`](https://github.com/xbmc/xbmc/commit/b1dfafb1f7a5e49a46bcefaf9729562c7b0d5edd) Merge pull request #29917 from olympia/video-thumbloader-cached-art
+- [`3cba8efb`](https://github.com/xbmc/xbmc/commit/3cba8efb39c13213cdd1abc275a35a9dca797902) [media] Fix the build with libfmt 10
+- [`cf3582c7`](https://github.com/xbmc/xbmc/commit/cf3582c7bfcc6ee6c4b219ecc24daee6e07a40d3) [FileItemList] Leave the sort order of an added sort method to the view
+- [`453dfcd8`](https://github.com/xbmc/xbmc/commit/453dfcd8597931867408a22ed870405f0bac7cca) [VideoPlayer] Reopen a hidden subtitle stream when showing it again
+- [`5c87d5e9`](https://github.com/xbmc/xbmc/commit/5c87d5e9f890906bd9ace8d7ea66c57eb3168b2c) Merge pull request #29834 from sunlollyking/media-type-format-as
+- [`c93aa95d`](https://github.com/xbmc/xbmc/commit/c93aa95dc835a095d45f005d1820504c934e4da5) Merge pull request #30004 from 78andyp/webosfix
+- [`93132b7f`](https://github.com/xbmc/xbmc/commit/93132b7f2195ad0a999b4e1ddc08ec18028c088e) [VideoDatabase] Import a movie set's art of every type the artwork level allows.
+- [`3abf251f`](https://github.com/xbmc/xbmc/commit/3abf251fbfb3a30c9c707e74fe3e63174b871c2e) [TextureCache] Cache an image again where its row has outlived its file.
+- [`cbfae508`](https://github.com/xbmc/xbmc/commit/cbfae5088fdaccabc533d642fcf9f7aeb48ee0b0) [TextureCache] Name an exported image by the type it is cached again as.
+- [`8cd19e23`](https://github.com/xbmc/xbmc/commit/8cd19e23be8e48daf99d9468b1e19a1319bac3e7) [TextureCache] Export art that hasn't been cached yet.
+- [`cafd4a6c`](https://github.com/xbmc/xbmc/commit/cafd4a6cf7931147a56a21b10bb140ed3efff865) [TextureCache] Add TextureCache tests for exporting and recaching art.
+- [`d642d1d6`](https://github.com/xbmc/xbmc/commit/d642d1d654661639773102ec2cb44ec8df2b7964) [VideoThumbLoader] Don't make a thumb of a stack of disc playlists.
+- [`e23f255c`](https://github.com/xbmc/xbmc/commit/e23f255c45c4acab0e215833da9aee35b54a95c6) [VideoDatabase] Cache art on export that a scan caches.
+- [`dccc1e67`](https://github.com/xbmc/xbmc/commit/dccc1e6773b0c9387e48bb675b5adf0d7817e1af) Merge pull request #29976 from clementperon/upstream/13-libopus
+- [`485b4e27`](https://github.com/xbmc/xbmc/commit/485b4e27cc860100d746dc31b3e75e9872c0ce76) Merge pull request #29973 from sunlollyking/retroplayer-client-thread-framebuffer
+- [`db19b77f`](https://github.com/xbmc/xbmc/commit/db19b77f0a815dea61a3f3d2a56618d5d6e23571) Merge pull request #29905 from sunlollyking/retroplayer-shader-parameter-lines
+- [`8e4cef14`](https://github.com/xbmc/xbmc/commit/8e4cef1436bf73042e0c6d67a1671589369f4b38) [guilib] Free list item artwork when a container's window is deinited
+- [`87d0f972`](https://github.com/xbmc/xbmc/commit/87d0f9721626ca63e64fe30c4113489ffb8bdd7a) windowing/gbm: apply videoscreen.limitguisize without a restart
+- [`8d805c2d`](https://github.com/xbmc/xbmc/commit/8d805c2de597e6cc190bdce3ceae2f419b3d677b) threads: free the std::thread object when a thread is stopped
+- [`620fbbff`](https://github.com/xbmc/xbmc/commit/620fbbff9fa8c74b0aa81751f24644ba859f3f6b) Merge pull request #29978 from ksooo/videoinfotag-archive-playcount
+- [`998331ed`](https://github.com/xbmc/xbmc/commit/998331ed5b7df91998db95789f81e2e2ac6650dd) Merge pull request #30007 from ksooo/videoplayer-reopen-hidden-subtitle
+- [`142ba687`](https://github.com/xbmc/xbmc/commit/142ba68716c8ceb2e3c121ec3ca28f43d0f6f67e) Merge pull request #29991 from ksooo/activeae-late-start-clock
+- [`06294e41`](https://github.com/xbmc/xbmc/commit/06294e41e9c0dc9dea70d2503f45ba25b154bee0) Merge pull request #30009 from ksooo/fileitemlist-sort-order
+- [`d41eb00c`](https://github.com/xbmc/xbmc/commit/d41eb00c9116deb7b0e95a5cfa6c8bd3965cd0f1) Merge pull request #30000 from shaan-forks/fix-emudhra-ca-compromise
+- [`a9ffc7ab`](https://github.com/xbmc/xbmc/commit/a9ffc7ab3e025471b2c1422d16d1f887f9ebd7a2) Merge pull request #29970 from olympia/texturecache-miss-load-cached
+- [`88a43c0f`](https://github.com/xbmc/xbmc/commit/88a43c0fa3162ddcf239f570c3f64f1ff6609e1b) guilib: scale an image from the frame's own dimensions
+- [`3aa6033f`](https://github.com/xbmc/xbmc/commit/3aa6033f99637ec74e22991533515043932728a0) guilib: tell the image decoder the size the caller will use
+- [`3168a2f2`](https://github.com/xbmc/xbmc/commit/3168a2f24e46ef9e7332f4832b0ea462667d8d3b) TextureCacheJob: load an image only as large as the cache will keep
+- [`434da3cd`](https://github.com/xbmc/xbmc/commit/434da3cdb7974dbc40d6796fd5f96c10f12a0c6e) Merge pull request #29895 from sunlollyking/retroplayer-shader-version-profile
+- [`e18cac9a`](https://github.com/xbmc/xbmc/commit/e18cac9a61cc78ed6d57f8c594fc736769b0ff5a) [depends] Include GBM in Linux system GL libraries
+- [`4705fd3e`](https://github.com/xbmc/xbmc/commit/4705fd3e35ec385c696f748036b67483c0951125) guilib: decode oversized JPEGs at a reduced size
+- [`b505d452`](https://github.com/xbmc/xbmc/commit/b505d45266a2e5ec71c2b80b2ad17f11db637d59) [RetroPlayer] Leave the client's scissor test as it was after capture
+- [`654662df`](https://github.com/xbmc/xbmc/commit/654662dfe9d5deea53e539a9cae9e6ab2f795025) Merge pull request #29765 from malard/fix-jsonrpc-pvr-image-urls
+- [`212539a4`](https://github.com/xbmc/xbmc/commit/212539a46b1236ef2a452b672fe3b169cbfe7bc3) Merge pull request #29790 from malard/fix-demuxclient-keep-parsed-stream-props
+- [`964b40db`](https://github.com/xbmc/xbmc/commit/964b40db6c1f757db211fb3bc1589ee03106f68f) Merge pull request #29779 from malard/software-renderer-rgb
+- [`ab97a0d1`](https://github.com/xbmc/xbmc/commit/ab97a0d12eea6b875ba9665e9a93856bd7d0961b) Merge pull request #29762 from malard/nest-image-choice-namespace
+- [`17b29f78`](https://github.com/xbmc/xbmc/commit/17b29f78b1db874611d0b5df672d9bb884649cf2) Merge pull request #29728 from malard/look-up-services-once
+- [`4ef416ff`](https://github.com/xbmc/xbmc/commit/4ef416ffa6c0f7b206f21d1d52c2b7e975a7eba3) Merge pull request #29694 from malard/fix-videonav-all-entry-count
+- [`f6253f17`](https://github.com/xbmc/xbmc/commit/f6253f17315edb835b10b71d83c1025dacdb5fd3) Merge pull request #29955 from garbear/cache-rename-fix
+- [`8ba86889`](https://github.com/xbmc/xbmc/commit/8ba868899755e0644a8b7b36678d32e2f4393db3) [guilib] Keep processing multiimages with smart redraw
+- [`677c28e0`](https://github.com/xbmc/xbmc/commit/677c28e0dbcb1a4af1651632347ec62bd5bb8394) Merge pull request #29992 from popcornmix/texturecache-decode-ceiling
+- [`05ed311c`](https://github.com/xbmc/xbmc/commit/05ed311c764ff1fe81c5678d7b82a2dbb76da17d) Merge pull request #29995 from popcornmix/texturecache-jpeg-lowres
+- [`30069420`](https://github.com/xbmc/xbmc/commit/300694203c8a30dac93ec1642482d9a0536aa672) Merge pull request #29996 from popcornmix/listprovider-free-art
+- [`5bffa62e`](https://github.com/xbmc/xbmc/commit/5bffa62ea98ba055ff718cb427e6243b044f4d16) Merge pull request #29985 from sunlollyking/retroplayer-scissor-restore
+- [`3b19c96b`](https://github.com/xbmc/xbmc/commit/3b19c96b464851b0e851fb4d53d77c6e61350318) Merge pull request #29723 from 78andyp/artfixes
+- [`d2eef63e`](https://github.com/xbmc/xbmc/commit/d2eef63eaced1ae701a412f054fc70e76cab09cb) Merge pull request #30023 from garbear/fix-missing-gbm
+- [`e1ca53d5`](https://github.com/xbmc/xbmc/commit/e1ca53d5861dbb3afcb58d652fc7af74e0bf2805) Merge pull request #29795 from popcornmix/threadleak
+- [`4c377a8d`](https://github.com/xbmc/xbmc/commit/4c377a8db0d5eb8d6014dbe49a4254288c0b4be3) Merge pull request #29799 from popcornmix/guilimitlive
+- [`3c155bc4`](https://github.com/xbmc/xbmc/commit/3c155bc4273877ab980c67948bd4604e24e38189) Merge pull request #29982 from sunlollyking/leaderboard-standings
+- [`a097d697`](https://github.com/xbmc/xbmc/commit/a097d6978028aef8840b23695a57c606697f156a) Merge pull request #29965 from neo1973/fix-smartredraw-multiimage
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/47ee87ca...a097d697)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261023-a097d697-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261021-47ee87ca
 
 **Homebrew Version:** `23.26.294`
