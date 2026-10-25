@@ -1,5 +1,49 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261024-caf31556
+
+**Homebrew Version:** `23.26.297`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-10-25 08:20:26 PDT`
+
+**Commits:** 26
+
+### All Commits
+
+- [`66c60bb6`](https://github.com/xbmc/xbmc/commit/66c60bb67e877c777781af3bee770b833c15cc60) [favourites] Keep a favourite's thumbnail when "Current thumb" or "No thumb" is chosen
+- [`dbb35a8a`](https://github.com/xbmc/xbmc/commit/dbb35a8a3a224fdeaf607b8686dcac4b81bab9e4) [JSON-RPC][FileItemHandler] Give every cast member of a PVR item a role and an order
+- [`5c6c6027`](https://github.com/xbmc/xbmc/commit/5c6c602798672b3e6536c4f4dc1d9480e3e6a268) [PVR][CGUIEPGGridContainer] Mouse wheel over the channels scrolls the channels
+- [`c29f37db`](https://github.com/xbmc/xbmc/commit/c29f37db33bdccf0915330fd14ee935a055c8218) [favourites] Report no change when the chosen thumbnail is the one already set
+- [`99559ede`](https://github.com/xbmc/xbmc/commit/99559ede20d28f182430e3d20d47440ff9e84772) [VideoPlayer] Give a picture's display size without masking it
+- [`3f6e8bf4`](https://github.com/xbmc/xbmc/commit/3f6e8bf4ab9919b17d0d71341d730b8b533f5a92) [RetroPlayer] Game OSD dialogs fixes
+- [`29b99146`](https://github.com/xbmc/xbmc/commit/29b991465a2e863bbb566c010186e213a163124c) [guiinfo] Lock the GUI while finding the current list item
+- [`451a2755`](https://github.com/xbmc/xbmc/commit/451a27550e2a8ed931704f4d5348baff40acf874) [Games] Show achievement sets, missable achievements and Beaten progress
+- [`213e9ab3`](https://github.com/xbmc/xbmc/commit/213e9ab351eaa108fb6b62757fc8f3739bff5974) Merge pull request #29761 from malard/fix-favourite-thumbnail-choice
+- [`08cd8f42`](https://github.com/xbmc/xbmc/commit/08cd8f42d932b72a62d0d545c738d453166efd61) Merge pull request #29764 from malard/fix-jsonrpc-pvr-cast-role-order
+- [`9aef335f`](https://github.com/xbmc/xbmc/commit/9aef335f13e487f185cddf3f20a66031155197d9) Merge pull request #29787 from malard/epg-grid-wheel-over-channels
+- [`b8bc5e5c`](https://github.com/xbmc/xbmc/commit/b8bc5e5c8739d9e3ab0c4bba0b8a0bffd5b836ad) Merge pull request #29791 from malard/video-display-size-unmasked
+- [`3c061e3b`](https://github.com/xbmc/xbmc/commit/3c061e3b2444bc021d6b814ac471b4aaf4383883) [favourites] Use the image choices' new namespace
+- [`5da895ac`](https://github.com/xbmc/xbmc/commit/5da895ac9e2782ff4b6121218e59c3f9a81027b3) Merge pull request #30060 from sunlollyking/favourites-image-choice-namespace
+- [`013fadb1`](https://github.com/xbmc/xbmc/commit/013fadb1fd35e208b30da6736292efba7de1bf08) [PVR] Channels OSD: Fix channel up/down after group switch w/o channel switch
+- [`7e410789`](https://github.com/xbmc/xbmc/commit/7e41078935be3c84b7b8687ecc08e6fe33f955b3) [PVR] Guide window: Fix crash when add-ons query the selected item
+- [`a5777ff5`](https://github.com/xbmc/xbmc/commit/a5777ff51cbad238709d83a585af7819cc21c676) Merge pull request #30010 from KOPRajs/retroplayer-estuary
+- [`b54eb0f4`](https://github.com/xbmc/xbmc/commit/b54eb0f487c8f6ad37e8dbfc93347ffa82efb9e1) Merge pull request #30008 from sunlollyking/guiinfo-listitem-lock
+- [`7cd7b057`](https://github.com/xbmc/xbmc/commit/7cd7b057611c0f81c7b38187b122d940e0d4f6c1) Merge pull request #29988 from sunlollyking/achievement-sets-upstream
+- [`3f9e6b3e`](https://github.com/xbmc/xbmc/commit/3f9e6b3e0aa8cd99245103058095e656ab830ff5) Merge pull request #30064 from ksooo/pvr-epg-grid-model-race
+- [`0658cd06`](https://github.com/xbmc/xbmc/commit/0658cd06e07d1b4b23c4155404c9006a4ccf0951) Merge pull request #30063 from ksooo/pvr-channelsosd-group-switch
+- [`38cf4261`](https://github.com/xbmc/xbmc/commit/38cf4261cefe8ca0cd69c44519902fc170f112d7) [application] Let scripts shut down in parallel on exit
+- [`d55f1903`](https://github.com/xbmc/xbmc/commit/d55f1903ddaccbf0ae883961d065c7e09232090c) [video] Stop choosing art when the art type list isn't confirmed
+- [`930d5d29`](https://github.com/xbmc/xbmc/commit/930d5d29a0dc59dfabb6b6aee0b60c18c834b1ef) [profiles] Don't report stale credentials from the network login prompt
+- [`7379efb9`](https://github.com/xbmc/xbmc/commit/7379efb96948a83a344715c9d18d9450796ca29c) Merge pull request #30058 from ksooo/parallel-script-shutdown
+- [`caf31556`](https://github.com/xbmc/xbmc/commit/caf3155643d3aec7195ed2532eb48ebbf9076b91) Merge pull request #30041 from 78andyp/arthang
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/a097d697...caf31556)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261024-caf31556-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261023-a097d697
 
 **Homebrew Version:** `23.26.296`
