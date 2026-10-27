@@ -1,5 +1,141 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261026-8091c148
+
+**Homebrew Version:** `23.26.299`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-10-27 10:07:33 PDT`
+
+**Commits:** 118
+
+### All Commits
+
+- [`615d9651`](https://github.com/xbmc/xbmc/commit/615d9651f728ff8029b51f516acde378ca5595be) [webOS] Reconfigure the renderer on video resolution changes
+- [`a3dd470a`](https://github.com/xbmc/xbmc/commit/a3dd470aea3af5fc155330af977684408c1fc0be) [webOS] Fix swapped screen size for 720p GUI devices
+- [`1bb55680`](https://github.com/xbmc/xbmc/commit/1bb5568042ae720d5460e0da79af8b255644097a) [guilib] Keep the group of the focused control focused
+- [`ce1d1a94`](https://github.com/xbmc/xbmc/commit/ce1d1a94049aece74d0ae500a6457a8262e1899b) [guilib] Don't redraw a grouplist when scrolling is requested
+- [`4a6c6f15`](https://github.com/xbmc/xbmc/commit/4a6c6f1541f13f18334cfda813a6ec4e69aad40e) [guilib] Mark controls dirty when a conditional animation is reset
+- [`9677af75`](https://github.com/xbmc/xbmc/commit/9677af7572707cb649db2cd2f2774fb405e65f2e) [guilib] Don't redraw the whole window when a dialog is dirty
+- [`e6086806`](https://github.com/xbmc/xbmc/commit/e60868060dced4ebeda174340e1a261f3455d9bf) [cmake] Avoid redundant dav1d rebuilds with depends
+- [`cbd6dc4d`](https://github.com/xbmc/xbmc/commit/cbd6dc4d36cb168d82eaf46619ede9c5e4bc8090) [video][JSON-RPC] Announce play count and resume point changes of any file
+- [`cefce810`](https://github.com/xbmc/xbmc/commit/cefce810e6ab7f94e8d02c81d9d2483b359b1df9) [Android] Restart once the previous instance has exited
+- [`6515937f`](https://github.com/xbmc/xbmc/commit/6515937fcf01693f9307b3736b87db5f4c4a6908) windowing/gbm: stop holding every buffer the implementation will give
+- [`363e8bf7`](https://github.com/xbmc/xbmc/commit/363e8bf7a64a76b8392d9c150517fa5c508d8815) [games] Read what a game is from its file
+- [`1052226a`](https://github.com/xbmc/xbmc/commit/1052226a4b21eebb2bd7c53956114204c07ad835) [Windows] Bump Python to 3.14.9 / expat to 2.9.0
+- [`6b5c477f`](https://github.com/xbmc/xbmc/commit/6b5c477f672ad0b21c351f3e6a1cc09777b8527b) Estuary: Add a Manual button to the game OSD
+- [`a639646f`](https://github.com/xbmc/xbmc/commit/a639646f694fb06e6c360b374b6bdb17d7432674) [Games] Leave a turned-off set out of the game-start totals
+- [`f20929ed`](https://github.com/xbmc/xbmc/commit/f20929edac862f2a9ba2dadf559b112074397ce1) [depends] Bump FriBidi to 1.0.17 and build at cmake time for Windows
+- [`86380f08`](https://github.com/xbmc/xbmc/commit/86380f08b8f0a731925d510bc83ee197a9cc3428) [RetroPlayer] Give savestate thumbnails the game's aspect ratio
+- [`bad2fd77`](https://github.com/xbmc/xbmc/commit/bad2fd77bfb9c7431c4e9067618de6f7e9ceb075) [Games] Clear a port's input receivers once its controller is gone
+- [`8994a575`](https://github.com/xbmc/xbmc/commit/8994a5756289df13ebc122a1b6e03b3ae57b9072) Merge pull request #29942 from ksooo/files-announcements
+- [`ea556248`](https://github.com/xbmc/xbmc/commit/ea5562489a7229915b201b2b49da221d52729461) [network] Signal WS-Discovery to stop with the other servers, join later
+- [`1dbbb6a2`](https://github.com/xbmc/xbmc/commit/1dbbb6a2171843c8625659ddd7d8eeb235b28618) [RetroPlayer] Clamp GLES shader textures to the border when asked
+- [`f8c5fb83`](https://github.com/xbmc/xbmc/commit/f8c5fb83573e21082872d2f6072a6a9b36e3c5c9) AEStreaminfo: Fix false positive detection of DTS-HD at mid playback of DTS-HD MA
+- [`6a451e92`](https://github.com/xbmc/xbmc/commit/6a451e92eeff8201622493256446bd4ba3f80897) [PVR] Wake the manager thread when it is told to stop
+- [`8152f61a`](https://github.com/xbmc/xbmc/commit/8152f61aa768dda2e43cf406d894bb33557df682) [PVR] Bound the EPG tag range delete from below
+- [`a8f6d88d`](https://github.com/xbmc/xbmc/commit/a8f6d88d300e56e6817db6bab0f133ad37184a8b) [VideoInfoScanner] Test how movies and tv shows are scanned
+- [`0314c0d9`](https://github.com/xbmc/xbmc/commit/0314c0d9b5d8e8ca3b554001564bd408a378fca3) [VideoInfoScanner] Don't stop a scan for one failed scraper search
+- [`6dbe8fff`](https://github.com/xbmc/xbmc/commit/6dbe8fff407ca3299b45a4f3135a8d9e4bdf6632) [EpisodeUtils] Don't throw on a digit run too long for an episode
+- [`1a428bdf`](https://github.com/xbmc/xbmc/commit/1a428bdf1ec117258d9e7049c2861ac88361b4eb) [VideoInfoScanner] Don't hash a new show's folder when its details fail
+- [`d6e370fd`](https://github.com/xbmc/xbmc/commit/d6e370fd31680b3f6fe845868005fca1409d4fde) [VideoInfoScanner] Carry on with a show's episodes after a lookup fails
+- [`e89df2dc`](https://github.com/xbmc/xbmc/commit/e89df2dcc69ed864869549f00d20f2a721be3ef4) [VideoDatabase] Don't leave the clean's transaction open
+- [`43417ca7`](https://github.com/xbmc/xbmc/commit/43417ca7793c1526020cfa1d979bdbe8caae22f8) [VideoLibraryQueue] Keep a cancelled scan's queue slot until it ends
+- [`5e49617e`](https://github.com/xbmc/xbmc/commit/5e49617e3d36a7ee4cd9295de2ac5bfd8013c926) [NfoFile] Take a video nfo's url only from the path's own scraper
+- [`1bf25235`](https://github.com/xbmc/xbmc/commit/1bf25235612394085e0eab41195a770f3d289637) [VideoInfoScannerArt] Look for a tv show's actor thumbs in its folder
+- [`7f3bdc86`](https://github.com/xbmc/xbmc/commit/7f3bdc86151eb1735fbfafbe5d09fe570dd0923a) [Util] Keep an unreachable custom subtitle folder disabled
+- [`b18d0f9e`](https://github.com/xbmc/xbmc/commit/b18d0f9e0060eb32ecc2c173726b2f7448cac41e) [VideoInfoScanner] Ignore a bluray's backup index.bdmv on Windows
+- [`b71fdeb1`](https://github.com/xbmc/xbmc/commit/b71fdeb1d75840738a12fa29a70beb22b5a965c4) [VideoInfoScanner] Don't hash a directory where a lookup failed
+- [`e49c1722`](https://github.com/xbmc/xbmc/commit/e49c172278c2da520ff96440d7bbf043929754fb) [VideoInfoScanner] Carry on with a directory after an error with one item
+- [`6703abdf`](https://github.com/xbmc/xbmc/commit/6703abdf60a595082e55a4a4f9ecf03775ce4d55) [VideoInfoScanner] Close the database again after adding a set
+- [`0e6bc0e5`](https://github.com/xbmc/xbmc/commit/0e6bc0e55cecab5fde9a042518fbf0dbc85d4db0) [VideoTagLoaderFFmpeg] Don't throw on a track tag that isn't a number
+- [`5a507acd`](https://github.com/xbmc/xbmc/commit/5a507acd6f3dd5e7195a1838226dbeb1f76af1a0) Merge pull request #30035 from ksooo/android-relaunch-while-exiting
+- [`a6316201`](https://github.com/xbmc/xbmc/commit/a6316201bd4e64414474ae6005a86c7d578ce465) Merge pull request #29914 from sundermann/webos-fix-resolution-change
+- [`6fd1ce48`](https://github.com/xbmc/xbmc/commit/6fd1ce48e41e4bcf63675712426a1b4448037e44) Merge pull request #30042 from sunlollyking/retroplayer-thumbnail-aspect
+- [`e45bcdb9`](https://github.com/xbmc/xbmc/commit/e45bcdb9a4b82ad1311e1590b90c0678b87328e5) Merge pull request #30071 from sunlollyking/sets-startup-toast
+- [`b3c745d2`](https://github.com/xbmc/xbmc/commit/b3c745d2217b934d0510ed20dcf9b1795bea8b7e) Merge pull request #30067 from sunlollyking/game-manuals-osd-master
+- [`e5ae2c53`](https://github.com/xbmc/xbmc/commit/e5ae2c539717ceb45521d6608840a7af1d36fcc2) Merge pull request #30022 from garbear/fix-ffmpeg-ccache
+- [`de08ecf4`](https://github.com/xbmc/xbmc/commit/de08ecf4f2d61163dd8b154c7bd9c824101c2dab) [cmake] Fix Visual Studio ccache builds
+- [`a5c45f1d`](https://github.com/xbmc/xbmc/commit/a5c45f1db3e43e50137bc7e800226a8a81984f01) [cmake] Preserve dependency initialization with Visual Studio ccache
+- [`52f5f480`](https://github.com/xbmc/xbmc/commit/52f5f4801624da29e0528d5361190476b2a3a357) Merge pull request #29983 from 78andyp/scanfixes
+- [`f77d53c3`](https://github.com/xbmc/xbmc/commit/f77d53c30effc4a75dad3a81b00294bc61fc4c3d) [Video][Bluray] List the extras a disc's project names.
+- [`2fb6ab62`](https://github.com/xbmc/xbmc/commit/2fb6ab62be4ef9d8875818bfab1df76b65d9d845) [Video][Bluray] Choose an extra's playlist from the disc's extras.
+- [`dc5d38fe`](https://github.com/xbmc/xbmc/commit/dc5d38fef861d95e532ace04a9f4b1c8822e5674) [VideoInfoScanner] Move adding video extras into its own class.
+- [`c2d44e25`](https://github.com/xbmc/xbmc/commit/c2d44e25acc7e93579a5e009b2bdea6f18211196) [VideoInfoScanner] Don't scan an extras folder for movies.
+- [`d459ef2e`](https://github.com/xbmc/xbmc/commit/d459ef2e120af6ec0740b87d223c8b9d98936519) [VideoInfoScanner][Bluray] Add the extras a disc names to its movie.
+- [`88a56329`](https://github.com/xbmc/xbmc/commit/88a5632966cc508d2cde850bcafbe77a278c74b1) [VideoInfoScanner][Bluray] Find the movie of a disc holding its versions.
+- [`dbd10722`](https://github.com/xbmc/xbmc/commit/dbd107220455293a4fd246f258a885e53c3874f6) [VideoInfoScanner] Add a disc in an extras folder as one extra.
+- [`d758ceb0`](https://github.com/xbmc/xbmc/commit/d758ceb08a39771f16e9310f62a61f2749fccccb) [VideoInfoScanner] Add the extras folders beside a movie's disc.
+- [`89a834fa`](https://github.com/xbmc/xbmc/commit/89a834fafa75708e9bef67dc10d50721313568c8) [VideoInfoScanner] Make the folder hashes free video utilities.
+- [`1686c2be`](https://github.com/xbmc/xbmc/commit/1686c2bedcb8ecfdc36a261e9dd98490380f81e6) [VideoInfoScanner] Notice a file added to the extras beside a disc.
+- [`31297c9c`](https://github.com/xbmc/xbmc/commit/31297c9c276a906119567c9c965ee1410bf2db36) [VideoInfoScanner] Keep an extra's name and art when its folder is re-added.
+- [`757c3792`](https://github.com/xbmc/xbmc/commit/757c379233466d2a678f031fdba086c55c30ec1c) [VideoInfoScanner] Leave a version in an extras folder a version.
+- [`aab5945d`](https://github.com/xbmc/xbmc/commit/aab5945d550ee7cf2cbc404a8978bc2e1637ff37) [Video] Correct the help text of the ignore video extras setting.
+- [`0aea9e07`](https://github.com/xbmc/xbmc/commit/0aea9e0739007d0aa3238b8e603b44e20bc9d711) [Video] Don't offer a movie's own version as its extra.
+- [`37850548`](https://github.com/xbmc/xbmc/commit/3785054895af33631d01b20aa0c6ab1533807743) [Video] Don't crash adding the first extra of a movie.
+- [`33f37559`](https://github.com/xbmc/xbmc/commit/33f375596a5fbd4c75957474f7c45cef0d351e92) [Video] Move choosing a bluray playlist to the video manager.
+- [`1555909c`](https://github.com/xbmc/xbmc/commit/1555909c3317f8194d22d33873dba350cd04aa05) [Video][Bluray] Don't offer a disc's menu when choosing a playlist to store.
+- [`a271c4ac`](https://github.com/xbmc/xbmc/commit/a271c4acbaff6bd51948b99b5c45fbfdec89eda0) [Video][Bluray] Choose an asset's type before locking the database.
+- [`4151ef2f`](https://github.com/xbmc/xbmc/commit/4151ef2fa2c9e27e7b6dd99a44dc3ad5994a4f15) [Video] Use a movie's folder as the item folder when browsing.
+- [`5edf1d2b`](https://github.com/xbmc/xbmc/commit/5edf1d2b9c19d73940a1a70b9d59ffea4c5f325c) [Video][Bluray] Add extras from a bluray in Manage extras.
+- [`34a4f028`](https://github.com/xbmc/xbmc/commit/34a4f028c4e84a4615d241ff4fd4f766794ff147) [Video][Bluray] Save a playlist chosen for an extra against its movie.
+- [`0492d1b6`](https://github.com/xbmc/xbmc/commit/0492d1b696b7122b9a660665e5a364f5d645a3de) [Video][Bluray] Play an extra's own playlist whatever the playback setting.
+- [`ab012016`](https://github.com/xbmc/xbmc/commit/ab012016ab9a0ee39017dc1f18cfeb39c1b63e18) [Video] Don't offer Extras on an extra.
+- [`797a3b4f`](https://github.com/xbmc/xbmc/commit/797a3b4f3ea62d5a108590776ea97cd7f04b224c) [Video] Browse only video sources for a version or an extra.
+- [`46b76fb5`](https://github.com/xbmc/xbmc/commit/46b76fb5d0fc5394a230c768d40947687b2708f0) [Bluray] Read the playlists a disc's titles play.
+- [`cdfbc276`](https://github.com/xbmc/xbmc/commit/cdfbc2768d90e8f401b13b892988b50a021c016c) [Video][Bluray] Offer the playlists a disc's titles play as its extras.
+- [`4e52b496`](https://github.com/xbmc/xbmc/commit/4e52b496658b9cece8cca46462063a45667e71f5) [depends][m4] Disable system pipe2 on macOS
+- [`094f4cab`](https://github.com/xbmc/xbmc/commit/094f4cab9ffe4833b4386799c233745ee8305a48) [depends][python3] Disable dup3 and pipe2 on macOS
+- [`9f41d8f4`](https://github.com/xbmc/xbmc/commit/9f41d8f45daf6172c8b729f300e0735ae5f18354) Merge pull request #29935 from sunlollyking/games-file-identity
+- [`91c81b84`](https://github.com/xbmc/xbmc/commit/91c81b84873e5603bd02de9a0db10a8f1d0f89f8) [url] Extract URL credential and resource redaction
+- [`e130d13c`](https://github.com/xbmc/xbmc/commit/e130d13c317db5a4c4cf3e172112f3a52efd20c2) [uri] Add lossless URI representation
+- [`462cfc87`](https://github.com/xbmc/xbmc/commit/462cfc873e2618d58a21b4e8167c8d5972d94798) [url] Integrate URI policy with Kodi URL compatibility
+- [`2e3da70a`](https://github.com/xbmc/xbmc/commit/2e3da70ad667080f7ff7721de37f47a5e3df4b79) [utils] Make path helpers respect URI semantics
+- [`e5e91874`](https://github.com/xbmc/xbmc/commit/e5e918742f7fd053f011727b7ee15185750dd7ae) [url] Remove nested credentials from explicit URI wrappers
+- [`d036c0ad`](https://github.com/xbmc/xbmc/commit/d036c0adec44e7f9184f316e8cd5771209c5e75f) Merge pull request #30095 from kel-mo/rumble-unplug-crash
+- [`b99d74c2`](https://github.com/xbmc/xbmc/commit/b99d74c2df4ba37caecadc0194796052a9cba596) Merge pull request #29971 from neo1973/fix-smartredraw-dirty-child
+- [`b736c870`](https://github.com/xbmc/xbmc/commit/b736c8707709e699bac7ec30b59e86003b0f6018) Merge pull request #29972 from neo1973/fix-smartredraw-focus-groups
+- [`f513db54`](https://github.com/xbmc/xbmc/commit/f513db54f9400e1bb6defb06e2873f420a4cf77e) Merge pull request #30105 from kel-mo/pvr-manager-stop-wake
+- [`2c8e9a52`](https://github.com/xbmc/xbmc/commit/2c8e9a5245b8027515627a278625985c8f9a88ee) [Video] Delete only the version or extra chosen, not its movie.
+- [`e58bfc39`](https://github.com/xbmc/xbmc/commit/e58bfc398dac29fd8d4f6291fe9b72972d928c1a) [Video] Offer Manage extras beside Manage versions.
+- [`6080f90c`](https://github.com/xbmc/xbmc/commit/6080f90c50b8f274d90b39246e91e878f5a14e5f) [Video] Show an extra's movie art in its information.
+- [`ad55d094`](https://github.com/xbmc/xbmc/commit/ad55d0944d5ab742663cd5d3641bf8f46be464a4) [Video] Import video extras as extras.
+- [`8bbe99a4`](https://github.com/xbmc/xbmc/commit/8bbe99a444360b014b7f8f94f74ddfdadb450e89) [VideoInfoScanner][Bluray] Restore a bonus disc's extras from its nfo.
+- [`a27b0afd`](https://github.com/xbmc/xbmc/commit/a27b0afda9463cf2322d67692a4e26f355a29842) [Video] Import the art of a movie's versions and extras.
+- [`fcccec17`](https://github.com/xbmc/xbmc/commit/fcccec1704386e71673ee222fdfc2be5a1a3b381) [VideoInfoScanner] Restore a file extra from its nfo.
+- [`6e35f24e`](https://github.com/xbmc/xbmc/commit/6e35f24ecb59bf9e1caa5656f20ab75f5834e30d) [Video] Export a movie's art and cast once, not with each asset.
+- [`c90a671f`](https://github.com/xbmc/xbmc/commit/c90a671f027515f66bbe67fa2f428adc66ea9abf) [VideoInfoScanner] Don't carry art from one nfo entry to the next.
+- [`0a58f45a`](https://github.com/xbmc/xbmc/commit/0a58f45ab748100b32265ef7ed7917cf0dafe1eb) [Video] Keep an extra's name only while an extra has it.
+- [`8a4f9a4e`](https://github.com/xbmc/xbmc/commit/8a4f9a4ef5c1857cf65fee1f75899ac23ef22028) [Video] Don't import a movie as a version of another of its title.
+- [`a698d91b`](https://github.com/xbmc/xbmc/commit/a698d91b59c95653341d815bb3f1dbedec8f1114) [Video] Write all of a disc's entries to its nfo when exporting.
+- [`86c0e67f`](https://github.com/xbmc/xbmc/commit/86c0e67ffb7ad23be9ae182028e01f7849fa2cb9) [VideoInfoScanner][Bluray] Leave a stack part an nfo has no playlist for.
+- [`a3dfd108`](https://github.com/xbmc/xbmc/commit/a3dfd108b3585f9a0889bbb48607a7e5af14add1) [VideoInfoScanner] Add a movie's extras when it is refreshed.
+- [`0b7446bc`](https://github.com/xbmc/xbmc/commit/0b7446bc06adfa65b713dfef87d81af3a4f45477) [VideoInfoScanner] Add an extras folder only to the one movie beside it.
+- [`df285034`](https://github.com/xbmc/xbmc/commit/df285034911faf61856642af9b668d711856dbd1) [VideoDatabase] Give an extra found by search its file to play.
+- [`b938d97c`](https://github.com/xbmc/xbmc/commit/b938d97c8425c719582b880c2b15050684ae1d53) [Video] Don't refuse an extra of a kind its movie already has.
+- [`6d383d2c`](https://github.com/xbmc/xbmc/commit/6d383d2c7a47de09926c1d5139a5ad39cf27173b) [VideoDatabase] Clean a version or extra on a disc outside the sources.
+- [`dc2a3f04`](https://github.com/xbmc/xbmc/commit/dc2a3f0418c3a217d22b299994640c6f93de290c) [VideoInfoScanner] Move a test folder's time on a day, not an hour.
+- [`5e052a73`](https://github.com/xbmc/xbmc/commit/5e052a73909d92d160958f0964b5227068e918b4) [VideoInfoScanner] Test adding a movie's extras in a scan.
+- [`bc22475b`](https://github.com/xbmc/xbmc/commit/bc22475ba54606de854fafb3fd7744bc26ec8e22) [VideoInfoScanner] Notice a file added below an extras folder.
+- [`b7d19575`](https://github.com/xbmc/xbmc/commit/b7d19575032332233dedfbee76df40dc57824e90) Merge pull request #30082 from kel-mo/network-services-stop-signal
+- [`77e31e79`](https://github.com/xbmc/xbmc/commit/77e31e79c67dd782d860a9a935e32f0f9be99223) Merge pull request #30109 from ksooo/pvr-epg-delete-lower-bound
+- [`1c438358`](https://github.com/xbmc/xbmc/commit/1c4383588262e67feb73b34b7167871ed0e7abc5) Merge pull request #30056 from sunlollyking/retroplayer-gles-border-clamp
+- [`54d2c3de`](https://github.com/xbmc/xbmc/commit/54d2c3dee4c112d7e6dd82fcca3b2f65016d6b9e) Merge pull request #30061 from thexai/python-3.14.9
+- [`bf1d0d6e`](https://github.com/xbmc/xbmc/commit/bf1d0d6ef39260933777b95fc056cb28c857685a) Merge pull request #30083 from thexai/fribidi
+- [`b90c6eee`](https://github.com/xbmc/xbmc/commit/b90c6eee6c95b87419ec199d230ccddd0e60fe8c) [cmake][osx] Fix Xcode 27 builds
+- [`0c51bd54`](https://github.com/xbmc/xbmc/commit/0c51bd5443b815465afb36869118384acb8f6205) Merge pull request #30066 from garbear/fix-vs-ccache
+- [`b5f0b214`](https://github.com/xbmc/xbmc/commit/b5f0b2142affd261e30217cf1dcb77033d10c5f8) Merge pull request #29994 from popcornmix/gbm-buffers-held
+- [`adb847d3`](https://github.com/xbmc/xbmc/commit/adb847d3f0b8d51f0e07b107decf5cd5d7eb515f) Merge pull request #29722 from 78andyp/extras
+- [`b9f54afd`](https://github.com/xbmc/xbmc/commit/b9f54afdaa9108f068f61315533a1a8c62a00f90) Merge pull request #29967 from garbear/uri-foundation
+- [`68a29dba`](https://github.com/xbmc/xbmc/commit/68a29dba9f24fce08089c9f1bb77684068d6940c) Merge pull request #30103 from thexai/fix-dts-detection
+- [`8091c148`](https://github.com/xbmc/xbmc/commit/8091c14861babe82d7d6e80c4a677d90b74fedc0) Merge pull request #30027 from garbear/xcode-27
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/caf31556...8091c148)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261026-8091c148-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261024-caf31556
 
 **Homebrew Version:** `23.26.297`
