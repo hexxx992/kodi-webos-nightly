@@ -1,5 +1,72 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261028-3868348c
+
+**Homebrew Version:** `23.26.301`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-10-29 10:51:02 PDT`
+
+**Commits:** 49
+
+### All Commits
+
+- [`dda16027`](https://github.com/xbmc/xbmc/commit/dda16027517701bc7bf0c5e7d334a4a71cb41abc) [EDL] Allow a plugin to supply an EDL file via the EDLPath property
+- [`43cacbd7`](https://github.com/xbmc/xbmc/commit/43cacbd7443f2d32e25cf56191624c5ce5cdb8c0) [python] Bump xbmc.python to 3.1.2 for the EDLPath ListItem property
+- [`f2c6bf7b`](https://github.com/xbmc/xbmc/commit/f2c6bf7bf6a1ad4ee74ac3cf7abb490e4d77dd33) [Android] MediaCodec: Don't release output buffers invalidated by flush
+- [`6f51b006`](https://github.com/xbmc/xbmc/commit/6f51b0068c0d103e97a887ace0c3094ff47d3420) [AE] PipeWire: don't wait for a paused stream to drain
+- [`95159f4c`](https://github.com/xbmc/xbmc/commit/95159f4cef10fddab8963011f9752baf4b8d36a1) [pvr] Let the cached image clean-up stop when PVR manager stops
+- [`c4b1f4eb`](https://github.com/xbmc/xbmc/commit/c4b1f4eb2550d625f29a7f29adb3bc276f926c4a) [webOS] Always respond to screensaver requests with a timestamp
+- [`657d93f8`](https://github.com/xbmc/xbmc/commit/657d93f87134b92f813e621b50cc3fc42961173e) [Video] Do not refresh the list when the Manage menu is cancelled
+- [`92cc9747`](https://github.com/xbmc/xbmc/commit/92cc9747e1a576b81a5e11935ec382b4c89aeb39) RetroPlayer: Remove obsolete stretch-mode logging
+- [`e03d83c4`](https://github.com/xbmc/xbmc/commit/e03d83c481248d7277399f2957cb866a1648bb39) [Video] Reset the updated items flag of the information dialog
+- [`6807623b`](https://github.com/xbmc/xbmc/commit/6807623b8d3d5b2e1285ba92a4edc8fdb8a68362) [Video] Do not skip a requested refresh after a user rating change
+- [`ef07d4a4`](https://github.com/xbmc/xbmc/commit/ef07d4a41c5cef27d8b3bddf0cee1455b6affd41) [Video] Keep the change flags when the information dialog reopens
+- [`ea1593d2`](https://github.com/xbmc/xbmc/commit/ea1593d23914220c12a52dec0053f4badff818cd) [Video] Save the user rating before the information dialog moves on
+- [`4b5aa9d3`](https://github.com/xbmc/xbmc/commit/4b5aa9d38a256a529004b69c1346363ca2053f47) [Video] Report art changes of every art type chosen in a row
+- [`b8656b6f`](https://github.com/xbmc/xbmc/commit/b8656b6f0d729cf03d566620d1ecf91b0b31f7c2) RetroPlayer: Give every savestate a thumbnail and show it in game
+- [`b57fd8a4`](https://github.com/xbmc/xbmc/commit/b57fd8a49b471cb4bff90d71d17d1359c2d2d343) [filesystem] DirectoryFactory: don't stat internet streams
+- [`8ad609fc`](https://github.com/xbmc/xbmc/commit/8ad609fc45da1dfbe5c4e2185b82c89a23166976) [i18n] Read the subtag registry file into memory before parsing
+- [`a87267fd`](https://github.com/xbmc/xbmc/commit/a87267fdd1b8bb12b8d2061d0271bd3f4a3b7722) [filesystem] Add data: URI support
+- [`34363863`](https://github.com/xbmc/xbmc/commit/34363863b0ac377d66b97bd31bbf1575403716d8) [Video] Add hue and saturation video settings.
+- [`102cb53c`](https://github.com/xbmc/xbmc/commit/102cb53cdad7282008e1f17d58d37a26fa1563bc) [VideoPlayer] Apply hue and saturation in the YUV to RGB matrix.
+- [`2a89dcd9`](https://github.com/xbmc/xbmc/commit/2a89dcd95a485a2a5c87602c59acc38d79df50ba) [Windows] Pass hue and saturation to the DXVA video processor.
+- [`5d549b0a`](https://github.com/xbmc/xbmc/commit/5d549b0a65c0e19e3b5177a0c19653a71b7fb15c) [VideoPlayer] Add a linear light hue and saturation matrix.
+- [`718fc09f`](https://github.com/xbmc/xbmc/commit/718fc09fff73a21503d18c3ee7c74ddfd0903c8e) [Windows] Apply HDR hue and saturation in linear light.
+- [`5af231c9`](https://github.com/xbmc/xbmc/commit/5af231c91dd386767fd8269b193ff7bc84869441) [GL][GLES] Apply HDR hue and saturation in linear light.
+- [`f2881457`](https://github.com/xbmc/xbmc/commit/f2881457ddd9024deff55f382c4549af9ae12e70) [Video] Add an image adjustment granularity setting.
+- [`a0e96d90`](https://github.com/xbmc/xbmc/commit/a0e96d90aca4ff7c5918d4a7e367d5ae987d6e66) [VideoPlayer] Apply the gamma video setting.
+- [`c2aeabca`](https://github.com/xbmc/xbmc/commit/c2aeabca694ef0cafcaeef021f1dac37271c247c) Merge pull request #30116 from garbear/fix-rp-log
+- [`80d63c51`](https://github.com/xbmc/xbmc/commit/80d63c51b9d423501edd455560e5d8f66cdb89ec) Merge pull request #29550 from popcornmix/addon_edl
+- [`551d5470`](https://github.com/xbmc/xbmc/commit/551d5470bebf650151f01dbd4795f719daa53411) Merge pull request #30102 from sunlollyking/pvr-cleanup-cached-images-stop
+- [`a4e533f0`](https://github.com/xbmc/xbmc/commit/a4e533f01adc75ff113dae705b7437cf885a59a4) AudioEngine: discard sink output on explicit stream flush
+- [`82c624be`](https://github.com/xbmc/xbmc/commit/82c624be6ca85d718f370073c364c9d1e34abca7) AudioTrack: discard stale RAW audio on stream flush
+- [`a1ce1231`](https://github.com/xbmc/xbmc/commit/a1ce1231cee182ae43184ee578fc556e4753a36b) Merge pull request #30019 from clementperon/upstream/subtag-registry-load
+- [`4ea24c74`](https://github.com/xbmc/xbmc/commit/4ea24c74748767e1390171a9df811106b918980d) Merge pull request #30138 from olympia/video-info-reset-updated-items
+- [`dff18352`](https://github.com/xbmc/xbmc/commit/dff183522236e2d32d3a6044dfcefdc510176a58) Merge pull request #30124 from olympia/fix-video-manage-cancel-refresh
+- [`837cad72`](https://github.com/xbmc/xbmc/commit/837cad7298cafcf582013d48158c49309da9bee8) [GUI] Allow GUI_MSG_REFRESH_THUMBS to be limited to one item
+- [`c6060625`](https://github.com/xbmc/xbmc/commit/c6060625e238631bd063d630166798b9d6f4a643) Merge pull request #30073 from danog/directoryfactory-skip-internet-stat-master
+- [`932590be`](https://github.com/xbmc/xbmc/commit/932590be1ecd314a4fe43168df51037080a312c6) Merge pull request #30101 from kel-mo/pipewire-drain-paused
+- [`989331a6`](https://github.com/xbmc/xbmc/commit/989331a6e2461d647be823e097bd3dcdab55335f) Merge pull request #28888 from garbear/data-uri
+- [`9f1d7972`](https://github.com/xbmc/xbmc/commit/9f1d797231531e50a2d0f9143098da50b621762e) Merge pull request #29610 from 78andyp/hsl
+- [`cc179fed`](https://github.com/xbmc/xbmc/commit/cc179fed9eee1037096738d2b52fd7db0a407cbf) Merge pull request #30106 from marsli-jpg/audio/sony-raw-discard
+- [`1208a566`](https://github.com/xbmc/xbmc/commit/1208a56691d08b287933e3e036f5ea40a363c724) Merge pull request #30113 from sundermann/webos-screensaver-timestamp
+- [`1b9680bd`](https://github.com/xbmc/xbmc/commit/1b9680bdbd81d1e03f56db069740a91f771eac7c) Merge pull request #29911 from sunlollyking/retroplayer-hw-savestate-thumbnails
+- [`bfdf0149`](https://github.com/xbmc/xbmc/commit/bfdf0149fb1fb0e93ff266b92caecea53526c706) [games] Start a game from its own media, not saved disc state
+- [`801c5353`](https://github.com/xbmc/xbmc/commit/801c5353e4f8c5a43ea151505527e9d629ee2fa0) Validate VFS add-on directory metadata safely
+- [`99210feb`](https://github.com/xbmc/xbmc/commit/99210febae142a0502b3e6a2570459d12c26a1c3) Merge pull request #30141 from sunlollyking/games-drop-disc-persistence
+- [`3294b709`](https://github.com/xbmc/xbmc/commit/3294b709ca23b3fd67a7784951246fefecc1dd34) Merge pull request #30059 from ksooo/mediacodec-flush-invalidate
+- [`9f784728`](https://github.com/xbmc/xbmc/commit/9f784728da26093af8cd3d3fce433e83d03fe471) [Video] Update only the changed movie after the information dialog
+- [`2ab8074a`](https://github.com/xbmc/xbmc/commit/2ab8074a9d6ef5943f25ddfbbc1c095d275c9b80) [Video] Update only the changed movie after Manage > Choose art
+- [`61d03f37`](https://github.com/xbmc/xbmc/commit/61d03f37ed19334bfdc97404d880bb22620597c3) Merge pull request #30164 from olympia/video-info-targeted-refresh
+- [`3868348c`](https://github.com/xbmc/xbmc/commit/3868348cef550dc6d29cd857f33dd94c2872cc66) Merge pull request #30065 from garbear/vfs-metadata
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/8091c148...3868348c)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261028-3868348c-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261026-8091c148
 
 **Homebrew Version:** `23.26.299`
