@@ -1,5 +1,81 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261031-faa2ab57
+
+**Homebrew Version:** `23.26.304`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-10-31 09:36:34 PDT`
+
+**Commits:** 58
+
+### All Commits
+
+- [`ba206368`](https://github.com/xbmc/xbmc/commit/ba20636846e00ec6d18dd58005f7d9bddd107e7f) [pictures] Read only a JPEG's metadata, not its image data
+- [`427c4fdb`](https://github.com/xbmc/xbmc/commit/427c4fdb40d8117167f6b8b87558dbd0202f05b4) [guilib] Keep dirty regions independently of the buffer age
+- [`85a67f8b`](https://github.com/xbmc/xbmc/commit/85a67f8b79b832d51ef4d33e814f9f23042a9b1d) [guilib] Only mark the changed items dirty when a container moves focus
+- [`6efd0da5`](https://github.com/xbmc/xbmc/commit/6efd0da58880f0bffda5a73848c9955b55f45d64) [guilib] Include the alignment offset in the grouplist render region
+- [`4b0dddd5`](https://github.com/xbmc/xbmc/commit/4b0dddd558062d54f91a1acd93070b4c39438e1c) [Android] Preserve 64-bit system memory values
+- [`7f96f2ce`](https://github.com/xbmc/xbmc/commit/7f96f2ce29b9101e385c9ee4c2373c877d284901) [addons] Preserve memory values until unit conversion
+- [`aee5761b`](https://github.com/xbmc/xbmc/commit/aee5761b14dd73e05547a8fff9be929f8b5cccb5) [utils] Utf8Utils: Fix validation of 4-byte sequences starting with F0
+- [`58ccd202`](https://github.com/xbmc/xbmc/commit/58ccd2025fe16682cd60b83417154f0279d8c6c3) [utils] CharsetConverter: Don't truncate text at emoji on Darwin
+- [`faaa2d32`](https://github.com/xbmc/xbmc/commit/faaa2d321d52df9fdb9561c32db7cc22d4243d6c) [guilib] Keep characters beyond U+FFFF in rendered text
+- [`76b2fc72`](https://github.com/xbmc/xbmc/commit/76b2fc72099bf092b8b9eec0466dba2960fb9f87) [utils] CharsetConverter: Keep emoji sequences intact in BiDi conversion
+- [`1524ecd7`](https://github.com/xbmc/xbmc/commit/1524ecd7cb25ac4b0f79096cdeee2aa0756c468f) [media] Add Twemoji Mozilla font
+- [`f55c4c91`](https://github.com/xbmc/xbmc/commit/f55c4c9151ee364c95071bdd0186845611ffa74d) [guilib] Fall back to the emoji font for missing glyphs
+- [`981b5cbe`](https://github.com/xbmc/xbmc/commit/981b5cbe516ee1e83bc5c582484dd548469eabeb) [guilib] Render emoji in their own colors
+- [`20236c0b`](https://github.com/xbmc/xbmc/commit/20236c0b9b6c5186deb866fd0704479081b34a3b) [guilib] Don't mark hidden controls dirty for their animations
+- [`5fbd06d1`](https://github.com/xbmc/xbmc/commit/5fbd06d1fd4097f21a83d40c86fa390d4933df04) [android] CPUInfo: report Kodi's own CPU usage per core
+- [`f06ab312`](https://github.com/xbmc/xbmc/commit/f06ab312e5a042463f9962cba3b9dd8c172db04b) Widen operands before multiplications assigned to larger types
+- [`fa7876d4`](https://github.com/xbmc/xbmc/commit/fa7876d480b2d88777abb28e2fef4287742ad8c9) [network] Fix IPv6 port range check in CPosixUDPSocket::CheckIPv6
+- [`38685bcd`](https://github.com/xbmc/xbmc/commit/38685bcd076af2d571a21c2ef8fa7eb9f9efe9e3) [pvr] Fix unsigned subtraction in HasNonRecordingTimers
+- [`b7a603de`](https://github.com/xbmc/xbmc/commit/b7a603de337c862a80fc3cf896a285e9d6bea665) [upnp] Fix format specifier in ProcessSubscribeResponse log prefix
+- [`10fd0dc7`](https://github.com/xbmc/xbmc/commit/10fd0dc77d11b29de576caebd04c527464ff8c27) Fix new/free mismatches
+- [`08fbb5fc`](https://github.com/xbmc/xbmc/commit/08fbb5fc9e49cee8a9ccf4a6d71e47731dc74e6e) [webinterface] Harden URL parameter validation in videoPlayer.html
+- [`72deff59`](https://github.com/xbmc/xbmc/commit/72deff59315212c74af472221f5ed394be0cc80d) [ci] Restrict GITHUB_TOKEN permissions in SonarQube workflow
+- [`239ae7f2`](https://github.com/xbmc/xbmc/commit/239ae7f2d5416129aa210aeff8b9025329302393) [webinterface] Escape all brackets in getParameterByName
+- [`c9197d83`](https://github.com/xbmc/xbmc/commit/c9197d8338c7f817ed088a8eb5197b232730c79e) [utils] Decode lossless URI filenames in titles
+- [`f1e8fe75`](https://github.com/xbmc/xbmc/commit/f1e8fe7567e0e85c8aecb88b0344cd334b377dca) [depends] Bump Python to 3.14.10
+- [`f7e580c2`](https://github.com/xbmc/xbmc/commit/f7e580c2ffbce63635f75053db4385fadf43f70e) [gui] Skip legacy filter options for lossless URIs
+- [`93464bb6`](https://github.com/xbmc/xbmc/commit/93464bb602b5201c62bd801dd4de3a0573dcce62) [gui] Clang-format media source validation condition
+- [`5660c3c9`](https://github.com/xbmc/xbmc/commit/5660c3c9d5fb8cb4e361fc4dd15053233201376d) [Video] Find a movie's nfo when refreshing it from its folder
+- [`9a63ddab`](https://github.com/xbmc/xbmc/commit/9a63ddab265b5bea0a54009fd14e8dbd963c899a) [Video] Stop the thumb loader before the list item is read
+- [`aa0fc6b2`](https://github.com/xbmc/xbmc/commit/aa0fc6b2d6c9d47d27319fcf89850a6c1f1a46dc) [Video] Do not take an unmatched copy of the list item for the movie
+- [`5df166f0`](https://github.com/xbmc/xbmc/commit/5df166f042b5d3f935b4fd0884814861a16ed104) [VideoPlayer] Don't flush on a Blu-ray playlist stop while opening the demuxer
+- [`9d82ebaf`](https://github.com/xbmc/xbmc/commit/9d82ebaf5d9636066e8a4f5a4d2fb7dab207c3c1) fixed: list local drives when browsing for a subtitle
+- [`49904419`](https://github.com/xbmc/xbmc/commit/49904419e40a8c410b4c92bdc7c54275ca961cae) [Subtitles] Add the item folder to the subtitle browser root
+- [`e60a2c62`](https://github.com/xbmc/xbmc/commit/e60a2c625bc0ff46d435f629d8230b5cecf593b5) Merge pull request #30170 from olympia/fix-video-refresh-folder-nfo
+- [`cb89aacc`](https://github.com/xbmc/xbmc/commit/cb89aaccb9b2ac7e9822ec556ac776690e0d8982) Merge pull request #30190 from olympia/video-targeted-refresh-fixes
+- [`ecbe4b81`](https://github.com/xbmc/xbmc/commit/ecbe4b8127ff82c44d489db9b6d5ced1ab6cff99) Merge pull request #30162 from thexai/python-3.14.10
+- [`71280bd7`](https://github.com/xbmc/xbmc/commit/71280bd74076f1b6f747a3bc03c6b84ff4f8b76d) Merge pull request #30114 from kontell/fix/android-memory-status
+- [`7b12e7be`](https://github.com/xbmc/xbmc/commit/7b12e7be164ddee838efb1d6272c720b5e23b187) Merge pull request #30132 from isarrider/android-cpu-usage
+- [`adffd930`](https://github.com/xbmc/xbmc/commit/adffd93027ff41a9f17a564b1af3e65bd6a946fb) [RetroPlayer] Browse video filters by category
+- [`9c2c2b3c`](https://github.com/xbmc/xbmc/commit/9c2c2b3cb71c83a569c30fd5daafde2dd8800afc) Merge pull request #30034 from ksooo/emoji-support
+- [`8fda5587`](https://github.com/xbmc/xbmc/commit/8fda558703078697b949c1b612a181e15ffcec93) [tests] Stabilize TCP server tests on Windows
+- [`4b139d9f`](https://github.com/xbmc/xbmc/commit/4b139d9f8ba91cbba14ab341251915ed0756e68f) Merge pull request #29813 from sunlollyking/pictures-exif-header
+- [`09907b39`](https://github.com/xbmc/xbmc/commit/09907b391a3a514ca99544417b0439a588aa0089) Merge pull request #30084 from sunlollyking/shader-categories-master
+- [`278d5bb4`](https://github.com/xbmc/xbmc/commit/278d5bb40e2e4c7dc9f7281f0b723756981628cc) Merge pull request #30174 from garbear/fix-tcp-windows
+- [`af9ff93d`](https://github.com/xbmc/xbmc/commit/af9ff93d022fedceaff6b5a256b3a8345f4263d5) Merge pull request #30159 from garbear/lossless-uris
+- [`eac86e36`](https://github.com/xbmc/xbmc/commit/eac86e3655e1f74d805705a797c0928c24a53bf8) [Video] Skip the local information question if the answer has no effect
+- [`7e4f39d2`](https://github.com/xbmc/xbmc/commit/7e4f39d2b70dcc3abfd97e9e8f8e1b4785f8d617) Merge pull request #30033 from 78andyp/subtitles
+- [`6014cd8b`](https://github.com/xbmc/xbmc/commit/6014cd8b9ef38297a488567f1e1ec23c20da0e96) Merge pull request #30169 from olympia/fix-video-refresh-nfo-prompt
+- [`6220ac2a`](https://github.com/xbmc/xbmc/commit/6220ac2a28afa9d713eaaa779b64eb0a725772d2) [BackgroundInfoLoader] Allow an item to be held back from the loader
+- [`29870e8a`](https://github.com/xbmc/xbmc/commit/29870e8a30dd809ac26efe57ff28e661384c85af) [Video] Hold the list item while the information dialog is open
+- [`2f091e12`](https://github.com/xbmc/xbmc/commit/2f091e12ba0910ee02e9e8ca9b766eb64ae1e236) [Video] Hold the list item while it is managed
+- [`3e272339`](https://github.com/xbmc/xbmc/commit/3e2723398a197c18452e0c44ab4924c105829f9f) Merge pull request #30197 from olympia/video-thumb-loader-dialog-race
+- [`db8b2562`](https://github.com/xbmc/xbmc/commit/db8b2562ad71f1a1a9ae1bcba946c6d31f5359c2) Merge pull request #30049 from neo1973/fix-dirtyregions-buffer-age
+- [`3dd48105`](https://github.com/xbmc/xbmc/commit/3dd4810575f4a928b962843b3ec7f79a318490a3) Merge pull request #30051 from neo1973/fix-grouplist-render-region
+- [`3f7c8ad1`](https://github.com/xbmc/xbmc/commit/3f7c8ad1385ed0c0a26c819c15eb20f9e26ef02b) Merge pull request #30052 from neo1973/fix-smartredraw-container-cursor
+- [`0ef9ca91`](https://github.com/xbmc/xbmc/commit/0ef9ca911e80d46fdc83caff80ef515cb0c24499) Merge pull request #30088 from neo1973/fix-dirtyregions-hidden-animations
+- [`34ce01f3`](https://github.com/xbmc/xbmc/commit/34ce01f3744cfbb125e0b5d0cd6b09a5f75223ac) Merge pull request #30129 from 78andyp/security
+- [`faa2ab57`](https://github.com/xbmc/xbmc/commit/faa2ab5781ce8d306e6b5ee95ac1a559b07a135d) Merge pull request #30191 from 78andyp/menucrash
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/3868348c...faa2ab57)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261031-faa2ab57-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261028-3868348c
 
 **Homebrew Version:** `23.26.301`
