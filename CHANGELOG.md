@@ -1,5 +1,63 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261101-3eff8d52
+
+**Homebrew Version:** `23.26.305`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-11-01 09:27:22 PST`
+
+**Commits:** 40
+
+### All Commits
+
+- [`9a21a0fc`](https://github.com/xbmc/xbmc/commit/9a21a0fc8c0bbc49da4d60a9711f3501e46667de) [VideoPlayer] Detect EDL edits on the current time, not the last play state
+- [`e7e395c0`](https://github.com/xbmc/xbmc/commit/e7e395c052b9e167a86ce64f4e07f93932d4c85b) [VideoPlayer] Drop all pictures before the target of an accurate seek
+- [`6de6e7e9`](https://github.com/xbmc/xbmc/commit/6de6e7e905533cb784edc4a4e25e79dd0706f14d) [VideoPlayer] Skip commercial breaks ahead by the display latency
+- [`69078749`](https://github.com/xbmc/xbmc/commit/6907874961696fffe1626904c93fd739f9e6e5f1) [docs] Add security policy
+- [`61fb689f`](https://github.com/xbmc/xbmc/commit/61fb689f090508db4dd8c790fa97dad1df316276) [filesystem] Skip redundant stats for extensionless and stack paths
+- [`2d750aa7`](https://github.com/xbmc/xbmc/commit/2d750aa78e2eb75c9da32bf023b9f600a7d3dc4b) [python] Empty the callback queue when Python shuts down
+- [`c6efdf74`](https://github.com/xbmc/xbmc/commit/c6efdf741536000a2821958cbe7a3f7f271f3603) [AudioEngine] Negotiate XAudio2 sample rates using device capabilities
+- [`9171de02`](https://github.com/xbmc/xbmc/commit/9171de027662e5c9e62821d6dba503a98eccdad4) [Video][Database] Repair versions turned into extras by upgrades < v131
+- [`3e428f02`](https://github.com/xbmc/xbmc/commit/3e428f02432cd7de818d501198da73de00bbb386) [Games] Let the mouse play a mouse in a controller port
+- [`12e1fd89`](https://github.com/xbmc/xbmc/commit/12e1fd89ecd23a4a8f61bc4a65c503c4afaa0f23) [settings] Migrate video version scanning preference
+- [`e6bbcc89`](https://github.com/xbmc/xbmc/commit/e6bbcc89634784df740689d82b0c12380ad0f319) [addons] Fix lock inversion during add-on enumeration
+- [`7b2f1b90`](https://github.com/xbmc/xbmc/commit/7b2f1b900d518b3f486682590151f75eb225489c) [PR 30207] [win32] Guard audio notifications when ActiveAE is unavailable
+- [`df3e81be`](https://github.com/xbmc/xbmc/commit/df3e81bed824628dfc923dd8c4decbef9f457e7d) [docs] Address security policy review comments
+- [`5085cc4a`](https://github.com/xbmc/xbmc/commit/5085cc4a29ab4e0aed23ecda34535ce446ad0770) [VideoPlayer] Seek past commercial breaks that are still to be skipped
+- [`5611f1be`](https://github.com/xbmc/xbmc/commit/5611f1be5d9fbef63b915df4a8496029c5be9649) [cmake][addons] Package each Windows add-on in a folder of its own
+- [`67edc64a`](https://github.com/xbmc/xbmc/commit/67edc64ac803a8599384b625009e14e99367f160) [Games] Fix an empty leaderboard after submitting a score
+- [`0a62df0f`](https://github.com/xbmc/xbmc/commit/0a62df0f35e7ed7993e46b99979b86712eb927ef) [VideoInfoScanner] Test a bluray folder rip only with libbluray.
+- [`429f3a7f`](https://github.com/xbmc/xbmc/commit/429f3a7fdf08d5de6c8f44ffb0ca7f2caade048d) [guilib] Keep dirty regions longer when visualizing them
+- [`af27e382`](https://github.com/xbmc/xbmc/commit/af27e3828f061f91617f0df3ba0ef388b017f45c) [Games] Show every achievement being attempted
+- [`b5f1cd71`](https://github.com/xbmc/xbmc/commit/b5f1cd71c50fa3fc6488403c9f77aff895c1de44) Merge pull request #30133 from clementperon/security-policy
+- [`93fe26d3`](https://github.com/xbmc/xbmc/commit/93fe26d35597702d86723b07dab2da41000dc2f0) Merge pull request #30231 from clementperon/upstream/bluray-scan-test-guard
+- [`a6b83b09`](https://github.com/xbmc/xbmc/commit/a6b83b09efc358d9ebfba6d7caa470260525d644) [depends][python3] drop the iOS patches Python 3.14.10 already has
+- [`c1fd9435`](https://github.com/xbmc/xbmc/commit/c1fd94351968125819a7e2419bb451c08a1be1d0) Merge pull request #30232 from neo1973/fix-dirtyregions-visualize-age
+- [`ea0d7088`](https://github.com/xbmc/xbmc/commit/ea0d7088466d01bf28b6c2001e22d3c8b08d1f51) [RetroPlayer] Restore a savestate at the size it was made at
+- [`9dfa1a7e`](https://github.com/xbmc/xbmc/commit/9dfa1a7e309ce7671e8e5f36ee133f95ffa26fe7) Merge pull request #30236 from clementperon/depends-python-ios-patches
+- [`9fd19019`](https://github.com/xbmc/xbmc/commit/9fd190199c4f33e09797a4a0b5c08d9dca0f6640) [games][tests] Bypass the directory cache when listing special://temp
+- [`d1b41ac1`](https://github.com/xbmc/xbmc/commit/d1b41ac1ea63632408bfd5a3b2696bd2739096e8) Merge pull request #30211 from sunlollyking/games-mouse-on-controller-port
+- [`b1d06518`](https://github.com/xbmc/xbmc/commit/b1d065187fc5924a1910c44fccbf4346050f6808) Merge pull request #30200 from garbear/fix-deadlock
+- [`b58532e3`](https://github.com/xbmc/xbmc/commit/b58532e3ee4535a064c0f7f7f9e47f6ecbdcba06) Merge pull request #29943 from 78andyp/upgrade
+- [`72bbaece`](https://github.com/xbmc/xbmc/commit/72bbaecef5d76652e6bbe63bbf3391524fd05be4) Merge pull request #30160 from garbear/fix-video-migration
+- [`94c180c6`](https://github.com/xbmc/xbmc/commit/94c180c6cf8d07ffcddadf554110f38997974984) Merge pull request #30165 from garbear/skip-dir-stat
+- [`d9509968`](https://github.com/xbmc/xbmc/commit/d9509968a408fc55b1c0631cdfd763de1cba2b5e) Merge pull request #30207 from garbear/fix-ae-notify
+- [`7c9b76d9`](https://github.com/xbmc/xbmc/commit/7c9b76d9ad1782397d45bee76d2081383cb885b7) Merge pull request #30131 from ksooo/videoplayer-edl-commercial-skip
+- [`9f3cde6f`](https://github.com/xbmc/xbmc/commit/9f3cde6fbc1357753a358c7a02375b1fc65abeef) Merge pull request #30186 from sunlollyking/addons-windows-package-folder
+- [`6d2ac9c0`](https://github.com/xbmc/xbmc/commit/6d2ac9c048103aa750201a5227d11d65802ac34c) Merge pull request #30189 from garbear/fix-xaudio-sr
+- [`38cdfefb`](https://github.com/xbmc/xbmc/commit/38cdfefbd844dcaa23344b9c187377e8da25bd93) Merge pull request #30183 from sunlollyking/python-callback-queue-exit
+- [`4fd05c7e`](https://github.com/xbmc/xbmc/commit/4fd05c7e5cdeca72a083dc424640cc8103f0e936) Merge pull request #30229 from sunlollyking/leaderboard-standings-refresh
+- [`3afaf0de`](https://github.com/xbmc/xbmc/commit/3afaf0dea3ec2290b028fe18e701154dd4d436b6) Merge pull request #30244 from sunlollyking/savestate-load-size
+- [`0a85d0a3`](https://github.com/xbmc/xbmc/commit/0a85d0a3d82165a215e6cc1f538471be20b5d22b) Merge pull request #30246 from clementperon/fix-gamefileidentity-dircache
+- [`3eff8d52`](https://github.com/xbmc/xbmc/commit/3eff8d522011e84c40fce07b3f63daa323b19bc1) Merge pull request #30201 from sunlollyking/challenge-indicators
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/faa2ab57...3eff8d52)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261101-3eff8d52-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261031-faa2ab57
 
 **Homebrew Version:** `23.26.304`
