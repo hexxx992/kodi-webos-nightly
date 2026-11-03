@@ -1,5 +1,64 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261103-159ed6cd
+
+**Homebrew Version:** `23.26.307`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-11-03 10:53:00 PST`
+
+**Commits:** 41
+
+### All Commits
+
+- [`9f35f855`](https://github.com/xbmc/xbmc/commit/9f35f8559f616dec64bfb6354b0c9dbae816d40c) FFmpegImage: Decode the primary video stream
+- [`172af4ab`](https://github.com/xbmc/xbmc/commit/172af4ab0ed15232faad90edfa716fe4c61db287) FFmpegImage: Split frame decoding from the frame properties
+- [`58a74616`](https://github.com/xbmc/xbmc/commit/58a746160fccc2375dc5b00c093529b30de4b579) FFmpegImage: Composite HEIF and AVIF tile grids
+- [`f3b62447`](https://github.com/xbmc/xbmc/commit/f3b62447b2a5eef3be18d14a017b655e6328bd7c) FFmpegImage: Apply the rotation of tile grids
+- [`9fe55278`](https://github.com/xbmc/xbmc/commit/9fe55278ba14e1ffba9e1c0b672b25054e3ad2c7) [VideoPlayer] Only mark a subtitle stream demuxer-disabled if the demuxer honours it
+- [`06004405`](https://github.com/xbmc/xbmc/commit/0600440513b4735d6eaad809647f17caaf50ab8d) [utils] Add charset tests for CXBMCTinyXML
+- [`04cf2725`](https://github.com/xbmc/xbmc/commit/04cf27250916f2d3a8c86c2a08da38aaf2d62a90) [utils] CXBMCTinyXML2: add charset detection
+- [`946f2850`](https://github.com/xbmc/xbmc/commit/946f28506cee8162fd8db07ee5d991fc101d242f) [AudioEngine][CAEStreamParser] Do not sync on a DTS-HD frame with no type
+- [`5f6005e2`](https://github.com/xbmc/xbmc/commit/5f6005e257a34b3caf176ec3b47ffbc91e2917fc) [AudioEngine][CAEStreamParser] Wait for the DTS-HD asset sync before classifying
+- [`e2fe395d`](https://github.com/xbmc/xbmc/commit/e2fe395d2abede5323ecb069a7bb12cc3adc67fe) [Games] Lead a worse leaderboard attempt's toast with the best score
+- [`9b976e9b`](https://github.com/xbmc/xbmc/commit/9b976e9b4a0235a799fe63c8402c9ea5d345a5cd) RetroPlayer: Run the game in step with the screen
+- [`3d2dc109`](https://github.com/xbmc/xbmc/commit/3d2dc109434985eb02c35b3aba91e5059e2a4eb8) [fonts] Add UnicodeSymbols fallback font
+- [`3870a6cb`](https://github.com/xbmc/xbmc/commit/3870a6cbd99462b28591883f0219071311343b62) [guilib] Add shared Unicode symbol font fallback
+- [`d620f565`](https://github.com/xbmc/xbmc/commit/d620f56541804d6d38ea639c339c80a92c38952e) [VideoPlayer] Keep Blu-ray menu overlays separate from subtitles
+- [`8a81ff17`](https://github.com/xbmc/xbmc/commit/8a81ff17185fe3f42dd3043a4002dd3e9553d2ed) [VideoPlayer] Keep Blu-ray menu overlays across flushes
+- [`46ea4776`](https://github.com/xbmc/xbmc/commit/46ea47768424c816b126ede9c1a7b10156ed071d) [VideoPlayer] Close the player controls when a Blu-ray opens a menu
+- [`fbe019aa`](https://github.com/xbmc/xbmc/commit/fbe019aadab459aaa6b117dc19a4349871997992) [Bluray] Don't read past the end of the BD-J overlay image
+- [`f6e5702a`](https://github.com/xbmc/xbmc/commit/f6e5702a658e045a172f0676caba13d09212032b) [games] Rename ReleaseStatus::DEBUG to DEBUG_BUILD
+- [`8d1e9245`](https://github.com/xbmc/xbmc/commit/8d1e9245d6f2457901eba0450f1be52b27b262ed) [games] Name regions by Kodi's territories
+- [`de1685e3`](https://github.com/xbmc/xbmc/commit/de1685e353cc21f1075f6cf4f875bdef05799b11) [cmake] FindCCache: probe ccache as cl.exe with /help instead of /?
+- [`89699a68`](https://github.com/xbmc/xbmc/commit/89699a68b230bddcfdb252b98b84b3583492b50c) Merge pull request #30268 from clementperon/ccache-msvc-probe
+- [`fa60598d`](https://github.com/xbmc/xbmc/commit/fa60598db0f9e0f21b674fc8ea8c04ca03fac5fd) [windows] run-tests.bat: fail when kodi-test reports failing tests
+- [`8abc5a37`](https://github.com/xbmc/xbmc/commit/8abc5a37f6cfad2b6dd57c285f89c3c5760ed3b1) [windows] run-tests.bat: let the caller choose the build configuration
+- [`132400ba`](https://github.com/xbmc/xbmc/commit/132400bafa36f2315bd998271de850caef74c150) [docs] Replace scons with pugixml in waylandpp build dependencies
+- [`6a26de1e`](https://github.com/xbmc/xbmc/commit/6a26de1efa2d908d020eec39f9a2c06d554d49a4) Merge pull request #30228 from 78andyp/menus
+- [`679ee23a`](https://github.com/xbmc/xbmc/commit/679ee23ab1609e76073a18d0ef84e880872cd061) Merge pull request #30264 from sunlollyking/docs-waylandpp-pugixml
+- [`8689fda3`](https://github.com/xbmc/xbmc/commit/8689fda309fdf26e820d4495bd10c086a7ad1933) [windows] make-addons.bat: pass add-on patterns through to CMake
+- [`0e033a82`](https://github.com/xbmc/xbmc/commit/0e033a82a53c7f4987014f007d73fb2372365ecd) Merge pull request #30152 from neo1973/tinyxml2/p0-charset
+- [`aad001a6`](https://github.com/xbmc/xbmc/commit/aad001a6be1056a77d22e9fe4329d2d496ec710d) Merge pull request #30206 from garbear/unicode-symbols
+- [`a620d157`](https://github.com/xbmc/xbmc/commit/a620d157300a467901a369d45b6631c2eee3b790) [games] Show games by their titles in the Games window
+- [`3f4312ea`](https://github.com/xbmc/xbmc/commit/3f4312eaf49ab0c6d2f04ee8aed5a54efa9751e4) Merge pull request #30270 from clementperon/windows-buildsteps-ci
+- [`ce93c7f3`](https://github.com/xbmc/xbmc/commit/ce93c7f3283169097fadcf60567524ff2865f946) Merge pull request #30218 from cinema-ONE/dts-null-type
+- [`612a920c`](https://github.com/xbmc/xbmc/commit/612a920cc376c58309cfb75d8ed3195d4a0f5a13) RetroPlayer: Free the textures of renderers that are no longer drawn
+- [`121b18d6`](https://github.com/xbmc/xbmc/commit/121b18d602d24e74aa23c823fa645f225746f9e2) Merge pull request #30090 from smp79/subs-fix
+- [`36aefddf`](https://github.com/xbmc/xbmc/commit/36aefddf94ece6702b43686a37d8875dd6762bc1) Merge pull request #30125 from sunlollyking/games-file-names
+- [`536575c6`](https://github.com/xbmc/xbmc/commit/536575c6ef8a27f87ff46a3b81d00dc0deaf77c9) Merge pull request #29552 from sunlollyking/retroplayer-display-paced
+- [`948f88c3`](https://github.com/xbmc/xbmc/commit/948f88c34398ad6cff9febc9f7b1f9b0899c2e9a) Translated using Weblate (Swedish (sv_se))
+- [`87fc1ab5`](https://github.com/xbmc/xbmc/commit/87fc1ab515f91978ded66c85a08de100baf5d41e) Merge pull request #30297 from weblate/weblate-kodi-add-ons-skins-skin-estuary
+- [`1f53c6b0`](https://github.com/xbmc/xbmc/commit/1f53c6b0d950ec727bfbd5c1665a33aba7db4481) Merge pull request #30176 from sunlollyking/retroplayer-release-unused-renderers
+- [`94ecb53f`](https://github.com/xbmc/xbmc/commit/94ecb53f72bd2df3780418c989aa6cae53b059bf) Merge pull request #30224 from sunlollyking/games-scoreboard-best-first
+- [`159ed6cd`](https://github.com/xbmc/xbmc/commit/159ed6cd1515d7825309b390a945dab32904ce70) Merge pull request #29931 from kel-mo/ffmpegimage-tile-grid
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/3eff8d52...159ed6cd)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261103-159ed6cd-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261101-3eff8d52
 
 **Homebrew Version:** `23.26.305`
