@@ -1,5 +1,102 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261104-c61f3fd9
+
+**Homebrew Version:** `23.26.308`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-11-05 11:16:55 PST`
+
+**Commits:** 79
+
+### All Commits
+
+- [`811501ff`](https://github.com/xbmc/xbmc/commit/811501ff2a804764bcd40c8f5844c16e60a6f70e) [Android][Windowing][GLES] Tag HDR from transfer characteristic, not display metadata
+- [`a6ed5b40`](https://github.com/xbmc/xbmc/commit/a6ed5b40184dbce570e80c8c17867f5c2a8b4fe3) [posix][filesystem] Fix Exists() for bare SMB server URLs
+- [`fca682a2`](https://github.com/xbmc/xbmc/commit/fca682a23a6f9650d2ddbe55d77322a94e5a6d41) [macOS] Read USB interface class without opening its user client
+- [`1cce58f6`](https://github.com/xbmc/xbmc/commit/1cce58f6a171255f69e680fff30d19b8e3c6bf2e) [capture] Tag SDR screenshots as sRGB
+- [`7f6d8f85`](https://github.com/xbmc/xbmc/commit/7f6d8f85679d9cf8a63d1dae7c59cebd80966a6b) [macOS] Match USB interface lookup formatting
+- [`06ea2cae`](https://github.com/xbmc/xbmc/commit/06ea2caecef53cce5c2d2c1750399161fa50431c) [Storage] Quote mount points for umount so the shell expands nothing.
+- [`cd95fda2`](https://github.com/xbmc/xbmc/commit/cd95fda2b0b586e8f8a95549f70958d67b930446) [Disc] Stop playback and unmount a disc before opening its drive's tray.
+- [`af95ff4c`](https://github.com/xbmc/xbmc/commit/af95ff4cbb563f35c1cd830b3d3882deacb2f645) [Bluray] Read on past a unit libbluray skips when playing without menus.
+- [`3005d1da`](https://github.com/xbmc/xbmc/commit/3005d1da5569924b12dc94f8a60eac2e37d90465) AudioEngine: fix RAW passthrough A/V sync
+- [`029a72f2`](https://github.com/xbmc/xbmc/commit/029a72f28cb01ae460fe265e19f9f5af2319dffc) [VideoInfoScanner] Don't delete a movie when its disc is scanned again.
+- [`c33841fb`](https://github.com/xbmc/xbmc/commit/c33841fb31cbdfce439cd8b8961df34e3bea7073) [VideoDatabase] Find the movie of a disc image left without one.
+- [`e63d67c7`](https://github.com/xbmc/xbmc/commit/e63d67c7aeb4fceb2491d92939479433a9fd5b84) [Video] Keep a movie whose refresh can't read its details.
+- [`1bc27c18`](https://github.com/xbmc/xbmc/commit/1bc27c1803de78bb3ca7abd6c9ade1a6bf6a92f3) [Video] Look a refreshed movie up by the ids it already has.
+- [`3cbda63c`](https://github.com/xbmc/xbmc/commit/3cbda63c620c8c5f7e3ed87ff5fba9c4a4d93e5d) [Video] Refresh each disc of a source once.
+- [`b8b57ad0`](https://github.com/xbmc/xbmc/commit/b8b57ad03b1d0cd4f4eb0aa944b449db33c4392f) [Video] Drop a disc's number from a movie that spans discs again.
+- [`4c8bdcf5`](https://github.com/xbmc/xbmc/commit/4c8bdcf5be1881f40077a9135ded5e753bd17ec8) [Video] Make the discs of a movie beside each other one movie.
+- [`4ee1de99`](https://github.com/xbmc/xbmc/commit/4ee1de99597062e0ac0b6a927006965c193b41d9) [Video] Keep the assets a movie gained after it was listed in its refresh.
+- [`ea1aa0e4`](https://github.com/xbmc/xbmc/commit/ea1aa0e4a878b978f6e5c795ece1b8748ab9bd2a) [Video] Keep the hashes of a refreshed movie's folders.
+- [`b1a740a7`](https://github.com/xbmc/xbmc/commit/b1a740a7294ac5099cb0f656f8ceccc5974fbf91) [VideoInfoScanner] Hash a folder holding a disc rip the same each scan.
+- [`762e3e21`](https://github.com/xbmc/xbmc/commit/762e3e2157d1bc30eb701ff24e1e553493bbfe2e) [VideoInfoScanner] Find the extras folders of discs whose extras are playlists.
+- [`51c2e4f0`](https://github.com/xbmc/xbmc/commit/51c2e4f025ddd43711ee755f997ba037e3bba408) [VideoInfoScanner] Hash an extras folder added with its movie.
+- [`3e6e8b67`](https://github.com/xbmc/xbmc/commit/3e6e8b673ea9087fbcabcd7b6e05bd60cabd6bc0) [Video] Test more of the refresh and scan of movies on discs.
+- [`92206435`](https://github.com/xbmc/xbmc/commit/92206435ada610d87827a3e7f43c6c0bdd444f3f) [Video] Test refreshes that add the movie again.
+- [`a53c5854`](https://github.com/xbmc/xbmc/commit/a53c5854739a5bb0ff8ca9714afdfb78ba66cb80) [Video] Look a refreshed tv show up by the ids it already has.
+- [`488f5e54`](https://github.com/xbmc/xbmc/commit/488f5e542321b42e819add42f4c0b6624475e981) [Video] Keep the hashes of a refreshed episode's folders.
+- [`6f50216a`](https://github.com/xbmc/xbmc/commit/6f50216ac3a7b03a3d731865ebb4b0bcca343c5e) [VideoTagLoaderNFO] Find the nfo beside a folder rip refreshed from its playlist.
+- [`e049dff7`](https://github.com/xbmc/xbmc/commit/e049dff7527dc3dc1d092e6ba59daa015342c8a3) [VideoTagLoaderNFO] Find the nfo beside a folder rip of a movie with versions or extras.
+- [`b9e1f93a`](https://github.com/xbmc/xbmc/commit/b9e1f93aaab9bc62d62b1bcff0ee6cd2a0696fad) [Video] Say which movie the discs of a movie become one with.
+- [`a9300f1a`](https://github.com/xbmc/xbmc/commit/a9300f1a9a459fcb2bc97dc249df3dfaa7851e13) [Video] Refresh the disc of a movie merged into another before its turn.
+- [`0212920d`](https://github.com/xbmc/xbmc/commit/0212920d5b4ae2e6fb615e6a9e8c3d15a43c335f) [depends] Split compiler arguments in Meson cross files
+- [`db7ae0c0`](https://github.com/xbmc/xbmc/commit/db7ae0c0aec9d95cdbd9101fb38e239eb3e043bf) [depends] Fix GMP lshift_com configure tests for C23
+- [`a9aaf72e`](https://github.com/xbmc/xbmc/commit/a9aaf72ebef9f6d877ac30443a46244262e2857a) [RetroPlayer] Guard border clamp helper on GLES
+- [`67b535ad`](https://github.com/xbmc/xbmc/commit/67b535addbc8aaff8854b2f0bfd737153d4ad21b) [RetroPlayer] Use enum-based GLES border clamp extension checks
+- [`b8f8815a`](https://github.com/xbmc/xbmc/commit/b8f8815a49ea26264ff6d529bc6c8090e084a6f9) [depends] Preserve compiler commands in ExternalProject environments
+- [`9d35eadc`](https://github.com/xbmc/xbmc/commit/9d35eadc56cc35bda78530b520ceb2c178f79ef3) [test] Avoid folder-stack matches in trailer test paths
+- [`cbd7bbe8`](https://github.com/xbmc/xbmc/commit/cbd7bbe8747db57d8e894237d67b3bcfd9ece660) [guilib] add support for msked groups
+- [`075a377c`](https://github.com/xbmc/xbmc/commit/075a377c44d31f8014df9f5cd675c5addef15d2b) [guilib] Fix rotated masking-group rendering
+- [`93cfcff1`](https://github.com/xbmc/xbmc/commit/93cfcff16d9d472a984ff2016f1c4528e4a74e07) [guilib] Propagate list items through masked groups
+- [`ff3dcdc5`](https://github.com/xbmc/xbmc/commit/ff3dcdc5cb9f8791ec5155c64555dca1560ed143) [guilib] Add GLES support for masking groups
+- [`12f66cc8`](https://github.com/xbmc/xbmc/commit/12f66cc8eb4e77774b29b7463eed4b3160eb9733) [guilib] Add D3D11 support for masking groups
+- [`0a12bb01`](https://github.com/xbmc/xbmc/commit/0a12bb0113d4460e60e7642c609ed64476c4095a) [windows] run-tests: fail on a non-zero cmake result instead of only exactly 1
+- [`4a53e69e`](https://github.com/xbmc/xbmc/commit/4a53e69e73d090b9760e0e9563d4ba17744cd3b9) Merge pull request #29498 from VuzzyM/raw-drop-sink-delay
+- [`ae3dd68a`](https://github.com/xbmc/xbmc/commit/ae3dd68a138441acfa02874b8573c3378cc1cda5) [ActiveAE] Fix clock unit of visualization data timing
+- [`34da49e3`](https://github.com/xbmc/xbmc/commit/34da49e31db7855017dcf28b301ab95407a9212c) Merge pull request #30185 from 78andyp/refreshfixes
+- [`7a956a48`](https://github.com/xbmc/xbmc/commit/7a956a48b33fb26d72960274f995df9fecb70d53) [Video] Keep a bluray version's art beside BDMV, with the disc's art
+- [`d831007a`](https://github.com/xbmc/xbmc/commit/d831007a6c610304df22af4df2f6ee7fc651230b) [Video] Keep the art of an episode on a disc beside BDMV/VIDEO_TS
+- [`50c35103`](https://github.com/xbmc/xbmc/commit/50c3510381b654e42badea1c7cce5a2723573401) [Video] Find a bluray version's own subtitles
+- [`0fffcdaa`](https://github.com/xbmc/xbmc/commit/0fffcdaae391ffe878c3b97ad768760dec7deb62) [Video] Look for a disc folder rip's trailer beside BDMV/VIDEO_TS
+- [`5b598710`](https://github.com/xbmc/xbmc/commit/5b598710188886081893b7dc4f38aac43164bb98) [Video] Find a bluray version's own external audio
+- [`1932c066`](https://github.com/xbmc/xbmc/commit/1932c0669dafb7fd49d6a8c627bf9382e7b6fea2) [Video] Offer a version's or episode's own art in Choose art
+- [`ef886d57`](https://github.com/xbmc/xbmc/commit/ef886d5729b156f877998eb21ce0652b44af2fa9) [Video] Use all external audio for a bluray when its source does
+- [`ef6b0caa`](https://github.com/xbmc/xbmc/commit/ef6b0caa8be653a9753f555977fd0fe19d0a4b76) [Video] Look for a disc's EDL beside BDMV/VIDEO_TS
+- [`b478ad79`](https://github.com/xbmc/xbmc/commit/b478ad79394721259f3536483a02970209a31a7c) [Video] Only take movie-trailer for a movie with a folder of its own
+- [`eeebb92d`](https://github.com/xbmc/xbmc/commit/eeebb92db5e275230d077c2eace3e946c1fe3de5) [Video] Find an episode's own subtitles, audio and EDL
+- [`c19695a8`](https://github.com/xbmc/xbmc/commit/c19695a87c9ca7ca321d3f2d79b2fd4dbb2bfc6f) [Video] Offer an extra on a disc only its own subtitles and audio
+- [`bf5d7d10`](https://github.com/xbmc/xbmc/commit/bf5d7d10d85664bdd51657489a7616979473c3c2) [Video] Don't take another episode's file for a disc in a folder named S02
+- [`af6a8efa`](https://github.com/xbmc/xbmc/commit/af6a8efab77c4c32a7e27c1ba938aeab4ea549e8) [Video] Fix two comments in the art and trailer tests
+- [`4afc120e`](https://github.com/xbmc/xbmc/commit/4afc120e004e9740149bbf2e30e4f8b40bddcf0b) [Video] Keep a disc's own files for an extra that is the whole disc
+- [`3da9658b`](https://github.com/xbmc/xbmc/commit/3da9658ba5cb29bdd865f1391e1e479c01efeacb) [Video] Give each of a bonus disc's extras none of the disc's art
+- [`0f4637d0`](https://github.com/xbmc/xbmc/commit/0f4637d0e57d2b34f4f1bdf77b0027f4fbf70a89) [Video] Offer no other video's plain art in Choose art
+- [`44e7a28d`](https://github.com/xbmc/xbmc/commit/44e7a28dea82ebf45f4fd868c6fdd55c77d64f7d) Merge pull request #30304 from ksooo/activeae-viz-clock-unit
+- [`d36044d7`](https://github.com/xbmc/xbmc/commit/d36044d71a5a71231091b38de4835791aa57ef96) [BackgroundInfoLoader] Test an item held twice
+- [`33b81a14`](https://github.com/xbmc/xbmc/commit/33b81a14c613010cdeef3fb1fad03784d4af361b) [windows] Fail the build when cmake reports failure
+- [`843c5fa9`](https://github.com/xbmc/xbmc/commit/843c5fa9a3b567087869c97a5e854afb7a19149e) [Video] Hold the list item while it is played
+- [`3d005da5`](https://github.com/xbmc/xbmc/commit/3d005da5f50c3c5207afdc8f94f7cb42814560af) [Video] Hold the list item while its disc playlist is chosen
+- [`635a5f7c`](https://github.com/xbmc/xbmc/commit/635a5f7c4b987937c4d15a07fed8ce340c2758a8) Merge pull request #30302 from xbmc/fix/windows-run-tests-failures
+- [`36feb3b1`](https://github.com/xbmc/xbmc/commit/36feb3b1895395b760389b09a240632f8652737e) Merge pull request #30002 from 78andyp/artlocation
+- [`bbe78db2`](https://github.com/xbmc/xbmc/commit/bbe78db24f036bae9e0099840c0d6e12ce44d720) Merge pull request #29823 from garbear/stencil-clip2
+- [`0c9c8284`](https://github.com/xbmc/xbmc/commit/0c9c8284bfa517a557f3b89ac69765de555fdd52) Merge pull request #30208 from xbmc/fix/windows-build-fail-on-cmake-error
+- [`8570fb64`](https://github.com/xbmc/xbmc/commit/8570fb64b0f8803a963fedefe5cb827abab485ed) Merge pull request #30293 from garbear/fix-gles-border-clamp
+- [`3e52b7f5`](https://github.com/xbmc/xbmc/commit/3e52b7f5a37893b0e858bee932034aeb19bbba1e) Merge pull request #30292 from garbear/fix-depends-c23
+- [`d90d1337`](https://github.com/xbmc/xbmc/commit/d90d1337d0faaf24d76c1e69fc515d1cae6cdf7a) [Video] Hold the list item while it is updated from a message
+- [`f542826b`](https://github.com/xbmc/xbmc/commit/f542826b25a6a1cee494146093e7a513dd201e97) Merge pull request #30153 from keithah/codex/macos-usb-registry-current
+- [`2c57eda9`](https://github.com/xbmc/xbmc/commit/2c57eda9be770ee8e9984931ba3dae1e9bd75604) Merge pull request #30298 from garbear/fix-trailer-test
+- [`95cc298b`](https://github.com/xbmc/xbmc/commit/95cc298bd0fa4789831b5a59eeb97830072fc9aa) Merge pull request #30158 from sunlollyking/screenshot-sdr-srgb
+- [`e3b0c184`](https://github.com/xbmc/xbmc/commit/e3b0c18450bf8a6d9129642f4371a03c72371646) Merge pull request #30313 from olympia/video-thumb-loader-play-update-race
+- [`e7ead100`](https://github.com/xbmc/xbmc/commit/e7ead100967c9221ddf95568c6a7e970ed82dd5d) Merge pull request #29078 from sasha-spb-ru/android-egl-hdr-detection
+- [`06494fe5`](https://github.com/xbmc/xbmc/commit/06494fe52ad41d55448ec9a8bd2af5b8a6f278d3) Merge pull request #30223 from 78andyp/eject
+- [`c61f3fd9`](https://github.com/xbmc/xbmc/commit/c61f3fd9e2464a1ac79d0acb34191c55ac4cfca9) Merge pull request #30087 from sasha-spb-ru/smb-exists-server-url
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/159ed6cd...c61f3fd9)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261104-c61f3fd9-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261103-159ed6cd
 
 **Homebrew Version:** `23.26.307`
