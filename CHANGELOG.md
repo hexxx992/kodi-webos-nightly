@@ -1,5 +1,106 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261106-a12dc19e
+
+**Homebrew Version:** `23.26.310`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-11-07 09:13:44 PST`
+
+**Commits:** 83
+
+### All Commits
+
+- [`67487276`](https://github.com/xbmc/xbmc/commit/67487276888ed96b6ee8770deb09ac981068a47d) [gbm] Present without queuing ahead while a game is full screen
+- [`f55d15d6`](https://github.com/xbmc/xbmc/commit/f55d15d6f682e084ea6f9612183b81b59e016655) [tvOS] Add HDR10 and HLG playback
+- [`e67c2351`](https://github.com/xbmc/xbmc/commit/e67c235101c1d11e334098fcea3f7238e751c76e) [tvOS] Normalize compatible Dolby Vision HDR base layers
+- [`75a116a6`](https://github.com/xbmc/xbmc/commit/75a116a6913641f303acc713a5e8edb1b1abf09e) [tvOS] Apply rotation to the HDR video layer
+- [`e49e1280`](https://github.com/xbmc/xbmc/commit/e49e128085a3d34ae7265c92ddfb4f10e6b09b4d) [tvOS] Display HDR10+ content through its HDR10 base layer
+- [`6f8d9315`](https://github.com/xbmc/xbmc/commit/6f8d9315f1818f4ccefb3c1ad6b6c9e4ec7928bf) [tvOS] Restore HDR video view controls
+- [`cda9c8d6`](https://github.com/xbmc/xbmc/commit/cda9c8d6a1240fb2fc41cb628faff7fbc3f7e5ad) [tvOS] Capture native HDR video frames
+- [`789a0fe6`](https://github.com/xbmc/xbmc/commit/789a0fe67ffdfc023543e7b1008a35645d43b38c) [tvOS] Include native HDR video in composite screenshots
+- [`df54465e`](https://github.com/xbmc/xbmc/commit/df54465ec1d5541e3cfd1a06db9a5ef8d98accb7) [tvOS] Fix HDR range, refresh and preview geometry
+- [`3cab5a94`](https://github.com/xbmc/xbmc/commit/3cab5a94065605aff7e4f025bd70d317d469946f) [tvOS] Stabilize the presented frame index during capture
+- [`aa7ec424`](https://github.com/xbmc/xbmc/commit/aa7ec424e85933fd1e38a3343c35e619340852fb) [application] Drop the 200 ms sleep at the end of CApplication::Stop()
+- [`2872e940`](https://github.com/xbmc/xbmc/commit/2872e9403649164da2678edde69c1ee5e85e0c0d) [BitstreamConverter] Reset SPS/PPS context on decode restart
+- [`d596f2a2`](https://github.com/xbmc/xbmc/commit/d596f2a291b70e81329071f1172ceb73e8eae4aa) [tvOS] Clarify native video capture geometry
+- [`76dcb02f`](https://github.com/xbmc/xbmc/commit/76dcb02f29ac620564b664c6bc49d4c6d39fa0ec) [tvOS] Separate capture scaling and translation
+- [`7315ced0`](https://github.com/xbmc/xbmc/commit/7315ced0a2fd1329c3f6f2fe6554b55fd13bde2f) [Windows] Fix liblzo2 is rebuild even if already exist
+- [`c1e965b6`](https://github.com/xbmc/xbmc/commit/c1e965b6793205dfd596bc00bcbd0096a2150d77) windowing/gbm: keep the vblank clock running through a modeset
+- [`152b9707`](https://github.com/xbmc/xbmc/commit/152b97078d58602005b4ce689d03ecb422d4cdb2) [webOS] Transcode AAC when the stream format is unknown
+- [`cd44181f`](https://github.com/xbmc/xbmc/commit/cd44181f7b0d59c0896b94067959d359485bb0dd) Games: Name the leaderboard a timer is timing
+- [`18f16598`](https://github.com/xbmc/xbmc/commit/18f16598f2d3370d1696bfeb2a2cf50084857121) [application] Reopen the toast dialog while it is closing
+- [`5aae1ef1`](https://github.com/xbmc/xbmc/commit/5aae1ef1814984249c08a179ee943bac02177142) [AudioEngine] Stop every playing copy of a sound
+- [`0d8b2f91`](https://github.com/xbmc/xbmc/commit/0d8b2f91b9939d1e31a838d9f46ca03394a57ce9) [UPnP] Fix serving files after the path traversal fix
+- [`c543b886`](https://github.com/xbmc/xbmc/commit/c543b886db7a1295dc7219bf44ac7a502e3dca8e) [VideoPlayer] Add ChapterOrSceneOrBigStep actions
+- [`c279b23c`](https://github.com/xbmc/xbmc/commit/c279b23c2b66c317877b66a38a710f74186c725f) [keymaps][Estuary] Use ChapterOrSceneOrBigStep for up/down in videos
+- [`e3d15f5e`](https://github.com/xbmc/xbmc/commit/e3d15f5e6e04c1cd7f5acd7693c598c9c8285443) [pictures] Play the moving part of Live Photos and Motion Photos
+- [`2e41e020`](https://github.com/xbmc/xbmc/commit/2e41e0204c0d6b4a546069774c74df74b0536070) [Games] Show achievements earned before as locked in Encore mode
+- [`e8803c29`](https://github.com/xbmc/xbmc/commit/e8803c29ee45b10d9ef147b27884c1c9c64f3b86) [Video][Stacks] Fix Play part always playing part 1 of a disc stack
+- [`e1abdfb8`](https://github.com/xbmc/xbmc/commit/e1abdfb89045207f0c15605784b9893a210c35c0) [Video][Stacks] Keep next part bookmarks of disc stacks
+- [`6fb368db`](https://github.com/xbmc/xbmc/commit/6fb368dbeae75980ad6ce39f1b2d0921e1cc35fa) [Video][Stacks] Resume a disc stack part played out of order at its position
+- [`8ca93458`](https://github.com/xbmc/xbmc/commit/8ca93458fe5276120850068b5b2e6a2011cce956) [VideoPlayer][DVD] Record titles entered without reopening the demuxer
+- [`43b39c26`](https://github.com/xbmc/xbmc/commit/43b39c2650fb1e41f49a4ec7b2edf7e175f154f3) [Video][Stacks] Mark a disc stack watched when its last part finishes
+- [`521f0fcb`](https://github.com/xbmc/xbmc/commit/521f0fcb4cde8c2357bfe970780f0e92d9ab7967) [Video][Stacks] Show the resume part of a stack from its stack times
+- [`6170432f`](https://github.com/xbmc/xbmc/commit/6170432fc25b01d24342570f9b019050c590960c) [Video][Stacks] Handle next part bookmarks in watched and Play part resume
+- [`e784f89d`](https://github.com/xbmc/xbmc/commit/e784f89d9fdc9ac6c5acd6504a0f3f86ee0bb0ba) [Video][Stacks] Pass a part's resume state to the item it resumes
+- [`b2e07be4`](https://github.com/xbmc/xbmc/commit/b2e07be47b1fb0f1a865289e7ef936368b20349f) [Video][Stacks] Keep the Play part resume offset for bookmarks without a state
+- [`0eabcb21`](https://github.com/xbmc/xbmc/commit/0eabcb216699ea1cdb575dde1d88778f09914f13) [AudioEngine] ActiveAE: Keep passthrough muted while measuring sync
+- [`ae02bdaa`](https://github.com/xbmc/xbmc/commit/ae02bdaab45b482f13e532f763c5766f318533a3) [Video][Database] Fix a clean of media whose parent path has gone.
+- [`5b8af561`](https://github.com/xbmc/xbmc/commit/5b8af56143dea26a8a09234c1a53bdd97b763126) [Video][Database] Fix a clean asking about media of a source it can't name.
+- [`43b394b0`](https://github.com/xbmc/xbmc/commit/43b394b0075d319c5bfde52b2992dd50cd7f3562) [Video][Database] Fix a clean missing media whose file has gone.
+- [`9824fbfe`](https://github.com/xbmc/xbmc/commit/9824fbfeb2d1b60652ecf995b3f61138fadb10ab) [dbwrappers] Fix MySQL results never holding a NULL.
+- [`d714ef65`](https://github.com/xbmc/xbmc/commit/d714ef65ef4af8eafe62d757ebd4abc564ad62f4) [Video][Database] Fix a clean removing media outside the sources that exists.
+- [`d7132532`](https://github.com/xbmc/xbmc/commit/d713253289adafc01478fb7091478f9a309e69cd) [Video][Database] Fix a clean removing an episode through another folder of its show.
+- [`0f2eb983`](https://github.com/xbmc/xbmc/commit/0f2eb9835abbb29b0548d12cb7d6cd2f92edbaee) RetroPlayer: Add run-ahead to hide a game's own input lag
+- [`67316f04`](https://github.com/xbmc/xbmc/commit/67316f04277068dd2fb415fd878ca8c754eb8e9e) [Android] Queue lifecycle playback pause and resume
+- [`3eeeb437`](https://github.com/xbmc/xbmc/commit/3eeeb437028aefc669934f980360e9c8e0272ac9) [fonts] Expand UnicodeSymbols to full Noto Sans Symbols 2
+- [`81609157`](https://github.com/xbmc/xbmc/commit/816091570422514ddf36aef31d3eacbc0142ed67) Merge pull request #30139 from sunlollyking/gbm-vsync-survive-modeset
+- [`4575cca6`](https://github.com/xbmc/xbmc/commit/4575cca621389679cd15300d31b231573b6e5ca6) Merge pull request #29442 from ldzhjn/codex/tvos-hdr-community
+- [`a1b85ebc`](https://github.com/xbmc/xbmc/commit/a1b85ebccea966f030de47db75d034b3d2fb21f8) [Windows][Python] Fix ctypes callbacks in Xbox / UWP
+- [`be757b99`](https://github.com/xbmc/xbmc/commit/be757b99f802874bb10bde6cf176aea2c68daa8b) [Video][Bluray] Read only NNNNN.mpls files as a disc's playlists
+- [`93d509a1`](https://github.com/xbmc/xbmc/commit/93d509a125941e381a7306e7f1ce7e7c59778a0b) Merge pull request #30222 from sunlollyking/cheevos-encore-locked
+- [`554db856`](https://github.com/xbmc/xbmc/commit/554db85660683ab2e82a3b6b103b450767cd90f8) Games: Turn on RetroAchievements hardcore mode
+- [`f6f0b2ad`](https://github.com/xbmc/xbmc/commit/f6f0b2ad87e63b5447d306d9041683b68b37cdde) [VideoDatabase] Order cast members at the same position by actor
+- [`4b748bb7`](https://github.com/xbmc/xbmc/commit/4b748bb763fa4aeeef2f4b51af1f82e8ce27ac1d) [VideoDatabase] Load the details of a list once per list, not per item
+- [`abb574e2`](https://github.com/xbmc/xbmc/commit/abb574e21f818226ce37b19e0464e78997614ca7) [tests] TestBluray: fix C4828 warning from non-UTF-8 comment
+- [`50662c31`](https://github.com/xbmc/xbmc/commit/50662c313100d7cd66eed6f5288a4601089c3925) Merge pull request #30155 from sunlollyking/runahead-xbmc-master
+- [`9ff8905b`](https://github.com/xbmc/xbmc/commit/9ff8905bed0093e76c226295a25f67dde2143bdc) Merge pull request #29981 from sunlollyking/hardcore-enable
+- [`fa7d945a`](https://github.com/xbmc/xbmc/commit/fa7d945a4e8e434f0b0206e28843a5585a6676fa) [VideoThumbLoader] Prefetch a list's art and stream details in batches
+- [`f5e5c72c`](https://github.com/xbmc/xbmc/commit/f5e5c72c105f3ccb2676a3f1c2400bb98f98dd32) [guilib] CDirectoryProvider: prefetch a widget's art and stream details
+- [`67e9811c`](https://github.com/xbmc/xbmc/commit/67e9811c364f6d03842168d443aeceba27ecf05e) [VideoThumbLoader] Load ratings, tags and unique ids for list items
+- [`dc02bbe6`](https://github.com/xbmc/xbmc/commit/dc02bbe63c361a148b7a10b3be3dec1ae4a217f3) Merge pull request #29332 from garbear/pause-anr
+- [`e859389a`](https://github.com/xbmc/xbmc/commit/e859389a1fab4539731528fc7ada988a3506b2c0) Merge pull request #30263 from ksooo/toast-reopen-while-closing
+- [`7708faae`](https://github.com/xbmc/xbmc/commit/7708faae82621674f53c0c8e33477b646163e673) Merge pull request #30282 from ksooo/videoplayer-chapter-or-scene-seek
+- [`9dafffb6`](https://github.com/xbmc/xbmc/commit/9dafffb68a25cb65774b7c5a2ff0c5d689c2eb88) Merge pull request #30279 from mskpluk/upnp-serve-root
+- [`80c4855f`](https://github.com/xbmc/xbmc/commit/80c4855fccba09a1be3382b98aa086c93e65f524) Merge pull request #30193 from sunlollyking/leaderboard-tracker-title-master
+- [`6ea76ce5`](https://github.com/xbmc/xbmc/commit/6ea76ce561fa3fa4b3309eb370aa251552f97d57) Merge pull request #30092 from 78andyp/dvdstackfixes
+- [`0a443ed0`](https://github.com/xbmc/xbmc/commit/0a443ed009cd486e0e90922725883ac209708a34) Merge pull request #30318 from 78andyp/cleanfixes
+- [`41d9b79d`](https://github.com/xbmc/xbmc/commit/41d9b79de57473b2a2645f47cb08866ebdaeca1d) Merge pull request #29551 from sunlollyking/gbm-game-low-latency
+- [`0758b658`](https://github.com/xbmc/xbmc/commit/0758b65820b5db4be76e635b416822ae9ccae323) Merge pull request #30323 from garbear/add-glyphs
+- [`3408d9c6`](https://github.com/xbmc/xbmc/commit/3408d9c69879734d27ea4e435b366d8e890d4d70) [cmake] Pass target processor to WindowsStore dependencies
+- [`9e57b461`](https://github.com/xbmc/xbmc/commit/9e57b4610cf389a4e8c9e92e4de77fa28083d982) Merge pull request #30344 from thexai/fix-testbluray-utf8
+- [`d91d1a21`](https://github.com/xbmc/xbmc/commit/d91d1a21216751454a32499dfd6062bbb4425847) Merge pull request #30332 from heit88/fix/passthrough-sync-mute
+- [`a035b515`](https://github.com/xbmc/xbmc/commit/a035b51502e8985100e36e3566ba8c6462fc211d) Merge pull request #30276 from sunlollyking/ae-stop-every-sound-copy
+- [`1de3240c`](https://github.com/xbmc/xbmc/commit/1de3240c5b7c748eb5e5c84e3f607101f7c7f975) Merge pull request #30339 from 78andyp/findfix
+- [`a5f16f09`](https://github.com/xbmc/xbmc/commit/a5f16f0977bd37517229f9272d005c4dc8ff5ac7) Merge pull request #30240 from MikeSiLVO/video-library-lists
+- [`4ecc4bd0`](https://github.com/xbmc/xbmc/commit/4ecc4bd0f95eeac3469591cf9039e8e1e5db2b2a) Merge pull request #30241 from MikeSiLVO/video-list-skin-details
+- [`c8554101`](https://github.com/xbmc/xbmc/commit/c8554101d05c19480ab87a2f3f4556f37fb67b4a) Update translation files
+- [`ff334be5`](https://github.com/xbmc/xbmc/commit/ff334be51e51bad4b79a2e544f9384d3a85a2840) Merge pull request #30354 from weblate/weblate-kodi-add-ons-skins-skin-estuary
+- [`32574fb2`](https://github.com/xbmc/xbmc/commit/32574fb2dd270a4e7aa3f7e6020bfdd2c78b0609) Merge pull request #30353 from garbear/fix-uwp-addons
+- [`6da5096f`](https://github.com/xbmc/xbmc/commit/6da5096f6a36531646b76422841fde7791778ac4) Merge pull request #30338 from thexai/fix-ctypes-callbacks-uwp
+- [`8c9153e0`](https://github.com/xbmc/xbmc/commit/8c9153e04b94c9a31a4bc3335eeee2dbfe902955) Merge pull request #30205 from thexai/fix-lzo2-rebuild
+- [`b3ab8548`](https://github.com/xbmc/xbmc/commit/b3ab85485bf7b4ffee423a8e125cf4dba7db21db) Merge pull request #30225 from sundermann/webos-adts-aac
+- [`8e6f510c`](https://github.com/xbmc/xbmc/commit/8e6f510c0f8c61dffffe0ce6f6168437ab04e4b5) Merge pull request #30134 from rcorex/bitstreamconverter-reset-sps-pps-restart
+- [`4bd9b927`](https://github.com/xbmc/xbmc/commit/4bd9b927c67bad2c205d9e236e69f21047dd8041) Merge pull request #30104 from kel-mo/app-stop-drop-sleep
+- [`a12dc19e`](https://github.com/xbmc/xbmc/commit/a12dc19e8b25d6d35262464bc94412659fcd6a2e) Merge pull request #29804 from sunlollyking/slideshow-moving-photos
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/c61f3fd9...a12dc19e)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261106-a12dc19e-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261104-c61f3fd9
 
 **Homebrew Version:** `23.26.308`
