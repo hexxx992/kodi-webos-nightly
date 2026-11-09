@@ -1,5 +1,73 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261108-bffa625c
+
+**Homebrew Version:** `23.26.312`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-11-09 13:47:26 PST`
+
+**Commits:** 50
+
+### All Commits
+
+- [`ac5f045e`](https://github.com/xbmc/xbmc/commit/ac5f045ebf8dd23337dc561084d4b49a9039655b) [VideoPlayer] Match filter threads to a single threaded decode
+- [`90359374`](https://github.com/xbmc/xbmc/commit/90359374a6a7fddb5b40ffcdfee248bd8a161b09) [dbwrappers] Check a database exists only when creating it
+- [`51afb598`](https://github.com/xbmc/xbmc/commit/51afb598e452ee93533f9107efe4c70716981ae0) [VideoDatabase] Keep the path cleanup's derived tables unmerged
+- [`db018b21`](https://github.com/xbmc/xbmc/commit/db018b2123e2ec6078e9158a2c39c3bc0c9c3d90) [depends] Fix crossguid is rebuild even if already exist
+- [`f513d8c6`](https://github.com/xbmc/xbmc/commit/f513d8c6e3d4b5a67a7cf4a1c0629b9129462e22) [guilib][video] Add tests for XML colors, profiler and geometry
+- [`a6ee461b`](https://github.com/xbmc/xbmc/commit/a6ee461ba8f8b4c568994380a2e0528610ea61ac) [addons] Move manifest loading to tinyxml2
+- [`d9998a81`](https://github.com/xbmc/xbmc/commit/d9998a8133b42c688aafd66526b72905f7abf8b8) [games] Move shader preset loading to tinyxml2
+- [`2e62051c`](https://github.com/xbmc/xbmc/commit/2e62051c5a145aeff54ccc1620aff73871fc345f) [application] Move custom window loading to tinyxml2
+- [`58874297`](https://github.com/xbmc/xbmc/commit/58874297a2f55b2e43f5801e2dea4b55614161e8) [guilib] Move colors, sounds and profiler XML to tinyxml2
+- [`030655d5`](https://github.com/xbmc/xbmc/commit/030655d5f330a466debbff367c424a3775934fcd) [video] Move content geometry XML to tinyxml2
+- [`05061f98`](https://github.com/xbmc/xbmc/commit/05061f980fd5866d4d06ed84cff45907e9552213) [music][video] Remove unused CXBMCTinyXML forward declarations
+- [`58d149ea`](https://github.com/xbmc/xbmc/commit/58d149ea71e330b56703ded6959433814fd2917f) [events] Don't notify the event log window when there is no GUI
+- [`fff73188`](https://github.com/xbmc/xbmc/commit/fff731880ba8ddc5d2bba133b89cec951df860c0) [video] Don't report a music video source's folders as not found
+- [`7713a5a3`](https://github.com/xbmc/xbmc/commit/7713a5a32881830dcb5b77cea3f64b0a0a388b1d) [video] Log a summary once a library scan has finished
+- [`76adbd16`](https://github.com/xbmc/xbmc/commit/76adbd16b77934e6af6df3d81b402ed46e30fcd6) [python] Free the proxy of an existing window
+- [`78baeb17`](https://github.com/xbmc/xbmc/commit/78baeb17ad7b1401be1a272029e40e196b383543) [guilib] Allocate the glyph lookup table of each font style on use
+- [`36f83ad3`](https://github.com/xbmc/xbmc/commit/36f83ad3ac2836549f4a14b11d28082b24ae85bb) [guilib] Split words longer than a line with a single shaping pass
+- [`b44df4aa`](https://github.com/xbmc/xbmc/commit/b44df4aa2f8bd885684cf0727609edd9f5cb1cac) [GUIMediaWindow] Reload a library filter node through the node
+- [`46140dc3`](https://github.com/xbmc/xbmc/commit/46140dc36270564b5492f7f903129adcaba78d0d) [Windows] Bump Effects11 to 11.30 and fix CMake config install dir
+- [`b4a641c2`](https://github.com/xbmc/xbmc/commit/b4a641c26cc7066907ec90568bfc368baa6fba7f) Merge pull request #30265 from thexai/fix-crossguid-cmake
+- [`fc98c48c`](https://github.com/xbmc/xbmc/commit/fc98c48c0aa857579895dbf773e703ddaa637f05) [bitstream] Use FFmpeg BSFs for Annex B conversion
+- [`2284fec8`](https://github.com/xbmc/xbmc/commit/2284fec82584ff658f2e64a3c7bbc341539dcc3a) [utils] HevcSei: Stop at an SEI message that runs past the NAL
+- [`fbaaebf1`](https://github.com/xbmc/xbmc/commit/fbaaebf1ec6329c476b11625a743245aabfd6d2a) [VideoPlayer] CC: Read the Annex B slice type from the slice header
+- [`1a3f7124`](https://github.com/xbmc/xbmc/commit/1a3f71247a779aa07f6293751f2400abc57b4a67) [Bluray] Parse an E-AC-3 header at its sync word
+- [`b7daca50`](https://github.com/xbmc/xbmc/commit/b7daca50d08f08fa85b5830521aec49faf372c9e) [utils] Add CBitReader
+- [`14e46b10`](https://github.com/xbmc/xbmc/commit/14e46b10f029c709e76cce77619a70889f2cf723) Read CC, MAT, HEVC SEI and MPEG-2 headers with CBitReader
+- [`cb358a9a`](https://github.com/xbmc/xbmc/commit/cb358a9a8300d32c9aa8b1b12bf75d4676887836) [utils] BitstreamConverter: Ignore an MPEG-2 sequence header cut short
+- [`21fb31ee`](https://github.com/xbmc/xbmc/commit/21fb31ee721c1c986c15780a4af7dd77bae4b471) [VideoPlayer] WebCodecs: Read AV1 headers with CBitReader
+- [`43c32d05`](https://github.com/xbmc/xbmc/commit/43c32d050e450a9e266b903cbd24e4418b77cfdc) [Bluray] Read M2TS headers with CBitReader
+- [`f587ef7d`](https://github.com/xbmc/xbmc/commit/f587ef7dadeac9b54a257cc35bd1eb86293de1cc) Remove the replaced bit readers
+- [`dc3df540`](https://github.com/xbmc/xbmc/commit/dc3df540e4368284c555ce065d8de9e5b6912306) [Bluray] Rename BitReader.h to ByteHelpers.h
+- [`b38fe8b9`](https://github.com/xbmc/xbmc/commit/b38fe8b9d1ddb54a1698a210651df9d7c7a01437) Merge pull request #30365 from ksooo/guilib-wrap-long-words
+- [`4cc0b8c8`](https://github.com/xbmc/xbmc/commit/4cc0b8c8f0438bf3471641f5e52051a2ed61ae64) Merge pull request #30356 from popcornmix/window-proxy-leak
+- [`827060f3`](https://github.com/xbmc/xbmc/commit/827060f3b607eca55f38d9f546dae165b826f92d) Merge pull request #30357 from popcornmix/glyph-table-per-style
+- [`40be2590`](https://github.com/xbmc/xbmc/commit/40be25908bc0322480b0dbbd30d00a177a69fc9c) [guilib] Keep font glyph textures alpha only until they hold an emoji
+- [`a180da3e`](https://github.com/xbmc/xbmc/commit/a180da3ec890359f0de014d101540c04bec2dec9) Merge pull request #30257 from 78andyp/bitreader
+- [`dd6384e8`](https://github.com/xbmc/xbmc/commit/dd6384e8e4c6003ccf5c46f6f592def5fbbf8ccb) Merge pull request #30221 from 78andyp/scans
+- [`d222a139`](https://github.com/xbmc/xbmc/commit/d222a1391039f8edc975ce1b6012e9a20c26a522) [AudioEngine] PackerMAT: count the MAT start code in the first TrueHD frame
+- [`a858d1e2`](https://github.com/xbmc/xbmc/commit/a858d1e2eaa8dc1c7d45299b9cd7661068c1bb2a) [GUIMediaWindow] Keep the library filter node when its load fails
+- [`272e83c1`](https://github.com/xbmc/xbmc/commit/272e83c10f9346a97e73c615ed8a548f2ccc1fb5) [PVR] Coalesce queued epg tag changes per event
+- [`7d57d391`](https://github.com/xbmc/xbmc/commit/7d57d3911d6b45f748a38b8d8f9708f93008c437) Merge pull request #30372 from thexai/effects11-11.30
+- [`8ab2dc1d`](https://github.com/xbmc/xbmc/commit/8ab2dc1d5b0a8152b346461f7d1e1c5a17d35465) Merge pull request #30381 from shaneomac1337/fix-truehd-96k-mat-offset
+- [`40a517b8`](https://github.com/xbmc/xbmc/commit/40a517b8f6cd4d00492dbb2173467ab92cc81b91) Merge pull request #30209 from clementperon/upstream/single-thread-filters
+- [`8f7dfaa9`](https://github.com/xbmc/xbmc/commit/8f7dfaa91cbc5a50aa6639561113d0a4294946b2) Merge pull request #30368 from olympia/fix-library-filter-node-reload
+- [`a01177bd`](https://github.com/xbmc/xbmc/commit/a01177bdcba648382c20041efa3250987d365efb) Merge pull request #30386 from smp79/epg-coalesce
+- [`e629a81f`](https://github.com/xbmc/xbmc/commit/e629a81f3619a0449cebf2e5b1afca6f9424cdb9) Merge pull request #30359 from popcornmix/font-alpha-atlas
+- [`bf6d02cf`](https://github.com/xbmc/xbmc/commit/bf6d02cf618302c49f6062c6a7af2de63946a658) [dbwrappers] MySQL: leave derived_merge on, except on MariaDB
+- [`fcd3afcd`](https://github.com/xbmc/xbmc/commit/fcd3afcd88e0014482c7a02167c34a1a921acc81) [dbwrappers] MySQL: copy a database without its secondary indexes
+- [`cd25bd27`](https://github.com/xbmc/xbmc/commit/cd25bd2779b593908c7a6065f735d10cd02b5293) Merge pull request #30239 from MikeSiLVO/mysql-connection-setup
+- [`bffa625c`](https://github.com/xbmc/xbmc/commit/bffa625cc84860f241772d87a654844b98bebb60) Merge pull request #30280 from neo1973/tinyxml2/l1-loaders
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/a12dc19e...bffa625c)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261108-bffa625c-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261106-a12dc19e
 
 **Homebrew Version:** `23.26.310`
