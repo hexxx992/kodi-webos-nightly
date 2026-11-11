@@ -1,5 +1,110 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261110-2a42ccb3
+
+**Homebrew Version:** `23.26.314`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-11-11 11:10:26 PST`
+
+**Commits:** 87
+
+### All Commits
+
+- [`a3120494`](https://github.com/xbmc/xbmc/commit/a3120494376bbda628be24b368ba4a95007cd969) Don't rely on threads/Timer.h for indirect includes
+- [`346e2498`](https://github.com/xbmc/xbmc/commit/346e24981afd636b18884f253025666b2683710f) [PVR] Post the channel switch action instead of sending it
+- [`2b923cee`](https://github.com/xbmc/xbmc/commit/2b923ceee0214650380f022de24e45fa8aa14b69) [keyboard] Don't wait for the main thread on idle auto-close
+- [`6ff53b78`](https://github.com/xbmc/xbmc/commit/6ff53b782859e75b8a15e0a791c52b59cb93d390) [capture] Preserve floating-point GLES framebuffer samples
+- [`63362443`](https://github.com/xbmc/xbmc/commit/63362443735bd151c803662927503085fd3e46d3) DVDInputStreamBluray: keep the title info at the end of a playlist
+- [`10748f3d`](https://github.com/xbmc/xbmc/commit/10748f3d547dd3c575cee54bd307fd834cad1575) DVDDemuxFFmpeg: put bluray packets on title time
+- [`adb82e7f`](https://github.com/xbmc/xbmc/commit/adb82e7f9d3acec5a39ea00c864e45d2f49b23ca) DVDInputStreamBluray: hold a non-seamless clip start for the reset
+- [`e5a50069`](https://github.com/xbmc/xbmc/commit/e5a50069a8e038226ba7668c6b119135e7ce229a) DVDDemuxFFmpeg: let mpegts see a seek done by the input stream
+- [`8ad3ce58`](https://github.com/xbmc/xbmc/commit/8ad3ce58aae3d2b27790c4485453056548c24580) DVDInputStreamBluray: hold the play item start in navigation mode
+- [`56f59688`](https://github.com/xbmc/xbmc/commit/56f596889f637960febbd24868dca0884e4fd62b) DVDInputStreamBluray: process a held event before draining events
+- [`d5ee79b4`](https://github.com/xbmc/xbmc/commit/d5ee79b4d09d5ac3a0b55c92aa9bbaf405589c3a) VideoPlayer: let a bluray play item sync before the next stream
+- [`f9e86b65`](https://github.com/xbmc/xbmc/commit/f9e86b65f773ebd2138161880fa9e6f7a53e2412) [Android] Report active output depth and color for captures
+- [`1b882ec1`](https://github.com/xbmc/xbmc/commit/1b882ec1d0da91561b67abb345cbf39f9eaf818b) [Video] Refresh the list after an art change of an item moved on from
+- [`a9b4224f`](https://github.com/xbmc/xbmc/commit/a9b4224f8eda6363fa9fbb06a93406acbb4f96f8) [Video] Compare a refreshed movie with the list item before the dialog
+- [`8af28a5a`](https://github.com/xbmc/xbmc/commit/8af28a5a55b7f129f239c521e13c9568102ac622) [depends][native] Bump tar to 1.35
+- [`8a843222`](https://github.com/xbmc/xbmc/commit/8a843222ff969a7ffca323e08baca57b6004b36e) [depends][native] Bump autoconf to 2.73
+- [`dbd75998`](https://github.com/xbmc/xbmc/commit/dbd7599875723738a62bcefbb93240e35f0740e4) [depends][native] Bump automake to 1.19
+- [`94795257`](https://github.com/xbmc/xbmc/commit/9479525758aa7ff9e11c432c45104b434103f3ed) [depends][native] Bump libtool to 2.6.2
+- [`ae8839c1`](https://github.com/xbmc/xbmc/commit/ae8839c111299dcac31e92558053cc8fb4cb78de) [depends][native] Bump gettext to 1.0
+- [`27a97e80`](https://github.com/xbmc/xbmc/commit/27a97e80cf6729a1cd1b7c25f4347326670c8851) [depends][native] Bump cmake to 3.31.12
+- [`20e2511e`](https://github.com/xbmc/xbmc/commit/20e2511ef56bef04f370c723eab5ef7203e6b45a) [depends][native] Bump meson to 1.12.1
+- [`57a20993`](https://github.com/xbmc/xbmc/commit/57a209933f8d69cf4b6bf13069f48fed5b0f31a8) [depends][native] Bump ninja to 1.13.2
+- [`157aee32`](https://github.com/xbmc/xbmc/commit/157aee32addb142375f1d7a8e83c82ef9b4a02ec) [depends][native] Bump nasm to 3.02
+- [`8f6ef6f7`](https://github.com/xbmc/xbmc/commit/8f6ef6f7385b4c4bbb9a85acb38d70744b407730) [Games] Don't disconnect a port whose saved controller isn't accepted
+- [`07ae9bb3`](https://github.com/xbmc/xbmc/commit/07ae9bb3b86b0f76d4ffeb42ac33becd2fd5a8a9) [Video] Update a refreshed movie in place in smart playlists too
+- [`38eaf96b`](https://github.com/xbmc/xbmc/commit/38eaf96bfd7c5c0e14d6ad0c7b42b2f94cce225a) [VideoPlayer] Do not interrupt playback on embedded subtitle change
+- [`5f15bb03`](https://github.com/xbmc/xbmc/commit/5f15bb0319597fc383526896137fb55cd159f3f8) [depends][native] Bump swig to 4.5.1
+- [`c1463332`](https://github.com/xbmc/xbmc/commit/c14633328def18cdb4dc2a22919730ca7dbba774) [depends][native] Bump pkgconf to 3.0.10
+- [`01a812d8`](https://github.com/xbmc/xbmc/commit/01a812d8fea0da283853950d88c5a243affb8b01) [depends][native] Bump cargo-c to 0.10.15
+- [`6327a0ac`](https://github.com/xbmc/xbmc/commit/6327a0acfb7b0126332251cad6225064f611a140) [depends][native] Bump rustup to 1.29.3
+- [`cdeaec99`](https://github.com/xbmc/xbmc/commit/cdeaec995ff328083cc3924dd828cd51844f3d0d) [depends][native] Bump ldid to 2.1.4-b8252d1
+- [`9c14ed7a`](https://github.com/xbmc/xbmc/commit/9c14ed7a246d54123d07870bf98d1a40b6ee9b69) [depends][native] Bump pugixml to 1.16
+- [`5b7b7941`](https://github.com/xbmc/xbmc/commit/5b7b794163d0652af64b92e688e84e8db3d20422) [depends][native] Bump giflib to 6.1.3
+- [`3a2e33bd`](https://github.com/xbmc/xbmc/commit/3a2e33bd5288f15523e2f3c54057cbe02387338b) [depends][native] Bump MarkupSafe to 3.0.4
+- [`ec0ffb12`](https://github.com/xbmc/xbmc/commit/ec0ffb12723f9ecce01666ca8715064a8ca6a3ee) [depends][native] Bump Mako to 1.4.3
+- [`007e75a8`](https://github.com/xbmc/xbmc/commit/007e75a88ac124e1a08c453672c9dd1b72b17141) [depends][native] Bump pybind11 to 3.1.0
+- [`809e18b9`](https://github.com/xbmc/xbmc/commit/809e18b97499eca25475bbe5621f50ba30bcfe2d) [depends][native] Bump setuptools to 84.2.1
+- [`d026b7e7`](https://github.com/xbmc/xbmc/commit/d026b7e7b22003ae0bb823374d399303af563394) [depends] Bump OpenSSL to 3.5.9
+- [`f98b0be3`](https://github.com/xbmc/xbmc/commit/f98b0be33b1543e11f82a35b4d1526d229e5bb4d) [depends] Bump zlib to 1.4
+- [`dc609ff3`](https://github.com/xbmc/xbmc/commit/dc609ff323bd81a28fd2ed0be7f77e51df8c739d) [depends] Bump xz to 5.8.4
+- [`d9c3e9b7`](https://github.com/xbmc/xbmc/commit/d9c3e9b75fc9ae9127e2ba061c51193429b1073d) [depends] Bump expat to 2.10.0
+- [`e73b8b62`](https://github.com/xbmc/xbmc/commit/e73b8b62d18bfa40cf2605858a7c9fbfebfc38a3) [depends] Bump libffi to 3.8.0
+- [`65c9fd8d`](https://github.com/xbmc/xbmc/commit/65c9fd8d3b8e35f101b253294e5b906c05e7a560) [depends] Bump libpng to 1.6.59
+- [`6dd54638`](https://github.com/xbmc/xbmc/commit/6dd546386ba0d08140420d510a30258a659aefc4) [depends] Bump libjpeg-turbo to 3.2.1
+- [`94ce3288`](https://github.com/xbmc/xbmc/commit/94ce328897921d55e9e48ee05c2f3c36d529b263) [depends] Bump pcre2 to 10.49
+- [`11f58690`](https://github.com/xbmc/xbmc/commit/11f5869091fb7aac66912f6c9f464048c4bb06d8) [depends] Bump flatbuffers to 25.12.19
+- [`5c5cfe1d`](https://github.com/xbmc/xbmc/commit/5c5cfe1deb806bd24bf90f294adebabfa1a48ec9) [depends] Bump wayland to 1.26.0
+- [`e8a3fd90`](https://github.com/xbmc/xbmc/commit/e8a3fd9024d12757a14ce443e8214f026ba4df62) [depends][native] Bump waylandpp-scanner to 1.0.1
+- [`c876b0b8`](https://github.com/xbmc/xbmc/commit/c876b0b8b215f7ab4224d113d238bcb584be4691) [input] Don't wait for the touch hold timer with the lock held
+- [`845c57d1`](https://github.com/xbmc/xbmc/commit/845c57d123011d8de4e0da7e2fa5c56053ffe302) [addons] Check for repository updates in a job
+- [`57aa2d43`](https://github.com/xbmc/xbmc/commit/57aa2d4337a4f4de21a3f6f1c0520b456e6448ff) [pvr] Don't wait for the channel number timer with the lock held
+- [`e80ee3f3`](https://github.com/xbmc/xbmc/commit/e80ee3f3c2e753d44781f6149bc8f89fe55be5da) wasm: report TV device identity and manage screensaver inhibition
+- [`096e07f1`](https://github.com/xbmc/xbmc/commit/096e07f15b782386a1e0d7a8976428d5d463d576) wasm: package Samsung TV builds and initialize TV web APIs
+- [`68321e4c`](https://github.com/xbmc/xbmc/commit/68321e4c32f6f1cec54406db92eb0f85ba80e343) wasm: link with -pthread instead of -sUSE_PTHREADS
+- [`984a998b`](https://github.com/xbmc/xbmc/commit/984a998b10f6412f80136f49cd71b04913c8e209) wasm: leave assertions off in release builds
+- [`45b87968`](https://github.com/xbmc/xbmc/commit/45b87968c46205a10217f939952d520a359b54ff) wasm: close the Tizen app when Kodi exits
+- [`1ff0b181`](https://github.com/xbmc/xbmc/commit/1ff0b181c62a9d848761061eda0bfe861d15cae2) wasm: treat the TV remote's Back as browser_back
+- [`e833e170`](https://github.com/xbmc/xbmc/commit/e833e170ccf9e6ab0df31479d770b65776f93b8d) Merge pull request #30387 from olympia/video-info-targeted-refresh-playlist
+- [`9ce073e5`](https://github.com/xbmc/xbmc/commit/9ce073e5a148acc31aa5e76743caad4d12a88d44) Merge pull request #30075 from Portisch/fix/bluray-navigation-play-items
+- [`f2c3d954`](https://github.com/xbmc/xbmc/commit/f2c3d9549659e03d801b3859bd77474afc9495ba) [threads] Run all CTimers on one shared thread
+- [`fbc0ff91`](https://github.com/xbmc/xbmc/commit/fbc0ff910f613fd30f77596695bbc5ccabdb781b) [threads] Document that timer callbacks must not block
+- [`8a00f51c`](https://github.com/xbmc/xbmc/commit/8a00f51c2e35487581418690e586c6e69013aae6) Merge pull request #30217 from clementperon/upstream/shared-timer
+- [`b52b4984`](https://github.com/xbmc/xbmc/commit/b52b4984e965b3d8579e20102a4d96ba3eacd777) [TextureCache] Reschedule cleanup when the timer callback is still active
+- [`073f9f7e`](https://github.com/xbmc/xbmc/commit/073f9f7eda694a1940561c7b260139db5fb593e6) [PVR] Stop the last-watched timer before destroying its members
+- [`34dc2104`](https://github.com/xbmc/xbmc/commit/34dc21049769fdcd5c1430a41080b4f07bc4d7a3) [PVR] Restart channel number input with the input delay
+- [`0add45c0`](https://github.com/xbmc/xbmc/commit/0add45c029c2cc15d15a19ebcea11826b45370d2) [Video] Do not join the thumb loader when playback starts
+- [`6009fa0a`](https://github.com/xbmc/xbmc/commit/6009fa0a7a84d6c1f7b24b99e86df55d20cc68de) Merge pull request #30321 from garbear/android-fp16
+- [`38c99bfb`](https://github.com/xbmc/xbmc/commit/38c99bfb927e7b9c59f33f540e6804f5afaab6ee) Merge pull request #30324 from garbear/hdr-meta
+- [`84a6c642`](https://github.com/xbmc/xbmc/commit/84a6c64293846e02ee5f281b1878c599002fc56c) Merge pull request #30378 from olympia/video-play-thumb-loader-join
+- [`09c6aef2`](https://github.com/xbmc/xbmc/commit/09c6aef2936f9f260f45655a95da9bc6de82a5d1) [GUI] Reload the skin when the screen aspect ratio changes
+- [`c5f0bea3`](https://github.com/xbmc/xbmc/commit/c5f0bea3d49f86aa1180abc1d054b8d788c594e1) [PVR] Select the entered channel number on the GUI thread
+- [`1cf60f9d`](https://github.com/xbmc/xbmc/commit/1cf60f9dd72fc70519e849dad5af70f6aa14af05) [TextureCache] Don't clear the cleaning flag of a running cleanup
+- [`4c02c080`](https://github.com/xbmc/xbmc/commit/4c02c080f9b82c901c770f942a9ea303dc9a2115) Merge pull request #30375 from sasha-spb-ru/fix-subtitle-change-playback
+- [`97b85c21`](https://github.com/xbmc/xbmc/commit/97b85c21cc3b00004ae4c759c6002d97e7c856c3) [PVR] Include GUIComponent.h in the guide window
+- [`04313013`](https://github.com/xbmc/xbmc/commit/043130135fc6e60f50d7c322fff85ef1f8a1430e) [AudioEngine] Free a stream closed while ActiveAE isn't configured
+- [`2e9adbaa`](https://github.com/xbmc/xbmc/commit/2e9adbaacd6a7e9a8e43a5ca5130e4ca788fc7d2) [docs] Improve Tizen SDK installation instructions
+- [`c849c053`](https://github.com/xbmc/xbmc/commit/c849c0531ae74f5d32d5ec8f60716c3009cabe58) Merge pull request #30018 from clementperon/upstream/10-tizen-packaging
+- [`f635d4ef`](https://github.com/xbmc/xbmc/commit/f635d4ef2f2d38c5e8875132a93c6575acab8bef) Merge pull request #30385 from mskpluk/fix-25875-reload-skin
+- [`4a264ee7`](https://github.com/xbmc/xbmc/commit/4a264ee78d4578b936e674ceda5fed2c3a835ca8) Merge pull request #30361 from sundermann/depends-bump-target
+- [`5c5d9686`](https://github.com/xbmc/xbmc/commit/5c5d9686381be70089236e8d62b19889461b65da) Merge pull request #30358 from olympia/video-info-other-item-refresh
+- [`afe07a11`](https://github.com/xbmc/xbmc/commit/afe07a115c1a9417c8c1e1ed5f423dbbdaf55f7a) Merge pull request #30422 from sunlollyking/activeae-free-stream-any-state
+- [`e09c1106`](https://github.com/xbmc/xbmc/commit/e09c1106704e08d8d2ea83f1a3d1b7ee15c2ca12) Merge pull request #30405 from clementperon/upstream/timer-callback-fixes
+- [`f3219060`](https://github.com/xbmc/xbmc/commit/f3219060edd424dc1c24ffc57b85e0b25b01167f) [WASM] Fix splash screen layout on older Samsung TVs
+- [`96ac9fb2`](https://github.com/xbmc/xbmc/commit/96ac9fb2f737c67409dc2a3f46faa376c5d871a3) [WASM] Target Chromium 85 for Samsung TV compatibility
+- [`329d25ff`](https://github.com/xbmc/xbmc/commit/329d25ff1b5b8be76c1867f4bc375fdbdb967fc9) [WASM] Use a fixed 512 MB heap
+- [`b2b2c743`](https://github.com/xbmc/xbmc/commit/b2b2c7439c6b65672adec6037353a4dfafb410bb) Merge pull request #30433 from garbear/fix-legacy-tizen
+- [`2a42ccb3`](https://github.com/xbmc/xbmc/commit/2a42ccb34d7301d9d62170714743ed7680b1389a) Merge pull request #30369 from kel-mo/ports-keep-default-controller
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/bffa625c...2a42ccb3)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261110-2a42ccb3-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261108-bffa625c
 
 **Homebrew Version:** `23.26.312`
