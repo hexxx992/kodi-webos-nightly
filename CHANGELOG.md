@@ -1,5 +1,76 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261113-e69b5f35
+
+**Homebrew Version:** `23.26.317`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-11-13 11:00:08 PST`
+
+**Commits:** 53
+
+### All Commits
+
+- [`863ee0d4`](https://github.com/xbmc/xbmc/commit/863ee0d430ab5aafb547b339814947248028a345) [webserver][CHTTPVfsHandler] Decide whether a file may be served in functions of its own
+- [`7a0aa519`](https://github.com/xbmc/xbmc/commit/7a0aa519e7975cc28bac5100dae639f37a8f2753) [cmake][JSON-RPC] Regenerate ServiceDescription.h when its generator changes
+- [`965430d2`](https://github.com/xbmc/xbmc/commit/965430d2e15f29c201362b02929ab805a4496830) [JSON-RPC] Declare the fields the PVR, stream and music serializers already send
+- [`9b53cac0`](https://github.com/xbmc/xbmc/commit/9b53cac0deac735377f94e5085ed4256df796bcc) [GUI] Let the video show through a videowindow during HDR compositing
+- [`fc72357d`](https://github.com/xbmc/xbmc/commit/fc72357dbf01bbeadb9b31002ee4e59ff89b205f) [GUI] Keep opaque GUI opaque when compositing over HDR video
+- [`ecf4df2c`](https://github.com/xbmc/xbmc/commit/ecf4df2c2c47f6b6d104d30d065983c56dca4d5d) [filesystem][CSourcesDirectory] Name a section's sources:// path in one place
+- [`acbcd33e`](https://github.com/xbmc/xbmc/commit/acbcd33e06db341e26013eb96d4f5eb32906745e) [JSON-RPC][VideoLibrary] Refuse clearing lastplayed on an item left watched
+- [`f30e6df6`](https://github.com/xbmc/xbmc/commit/f30e6df67796c47cab6ab1c0e2141a9bba554c87) [JobManager] Run queued abort callbacks under the manager lock again
+- [`01302a87`](https://github.com/xbmc/xbmc/commit/01302a87d540957f1cf1d339af77abfffe98c413) [dialogs] Own the file browser's and the media source dialog's lists through unique_ptr
+- [`0118f5ce`](https://github.com/xbmc/xbmc/commit/0118f5cec615f780e80af104296019832a8ab601) [filesystem][CSourcesDirectory] Wrap the three lines the sources:// paths took past 100 columns
+- [`6ba8fd34`](https://github.com/xbmc/xbmc/commit/6ba8fd34c5fc9ac812cf4d470f83006498e47cae) [python] Raise SystemExit in scripts that won't stop with PyThreadState_SetAsyncExc
+- [`c0ce1f15`](https://github.com/xbmc/xbmc/commit/c0ce1f15eb2b8d8367f5f3c8ce2c3ef180c2d872) Don't let a script that won't stop keep Kodi from exiting
+- [`122881ea`](https://github.com/xbmc/xbmc/commit/122881ea4f67137b12d8e3eae8e07dd0e138f05c) Don't let a script that holds the GIL keep Kodi from exiting
+- [`662fefd4`](https://github.com/xbmc/xbmc/commit/662fefd4dd6bb492fba0925e1a03eadf09e70bbf) Fix deadlock when a script ends while stop() raises SystemExit
+- [`828c5bc6`](https://github.com/xbmc/xbmc/commit/828c5bc65f2b9071143a79eeacf7ae08b8839930) Keep XBPython when Python is left running at exit
+- [`ae204fa8`](https://github.com/xbmc/xbmc/commit/ae204fa8612ba17c009b06669dfc87775deaca2b) Estuary: Put the game pad icons' buttons the right way round
+- [`f8fb7528`](https://github.com/xbmc/xbmc/commit/f8fb752882a3de748336844bdc26c0d302b7f0f1) [cores] Add tests for player core config and selection rules
+- [`328f3ad8`](https://github.com/xbmc/xbmc/commit/328f3ad84f68abdb69ec099349e4392c9c495feb) [cores] Move player core factory to tinyxml2
+- [`88b4ea7b`](https://github.com/xbmc/xbmc/commit/88b4ea7b3133f4812bbbe17d44c7b816212ba2cf) [VideoPlayer] Invalidate subtitle textures on renderer reconfiguration
+- [`a829f325`](https://github.com/xbmc/xbmc/commit/a829f3259b17a5a0fd402a6a9bb25ec28a2e7e25) [Windows] Update meson to 1.12.1 / nasm to 3.02
+- [`4a735979`](https://github.com/xbmc/xbmc/commit/4a73597915f6abe48d0a9dca5cda2d49f9b90f6a) [tools/depends] Skip empty sed pattern on macOS hosts
+- [`c7919589`](https://github.com/xbmc/xbmc/commit/c7919589983a30f4f4667a440c6363a87ceffbe2) [tools/depends] Disable zlib tests with updated CMake option
+- [`78414ca5`](https://github.com/xbmc/xbmc/commit/78414ca565cd6c9a8c4b6231eb4c0cc771356f24) CThreadImplLinux: uClibc-ng provides gettid()
+- [`5fd07a65`](https://github.com/xbmc/xbmc/commit/5fd07a65e53d00043737c742ff400061d931f77c) [tools/depends] Fix Exiv2 build with Emscripten 7
+- [`a38572f9`](https://github.com/xbmc/xbmc/commit/a38572f961de602e05bac8720fff924c0e76f631) [tools/depends] Build Python without reference types for Chromium 85
+- [`79e2a7b8`](https://github.com/xbmc/xbmc/commit/79e2a7b8af480c2c3be0cbb0b51d18b8fb061285) [tools/depends] Fix libnfs callback signatures for WebAssembly
+- [`4ca2070e`](https://github.com/xbmc/xbmc/commit/4ca2070e93705bfcb92f573651d643b45ef754ee) [tools/depends] Fix libnfs timeouts on WebAssembly
+- [`383db99b`](https://github.com/xbmc/xbmc/commit/383db99b78d5c81453fa3fd5783334b17d9ac984) Merge pull request #29954 from kel-mo/script-stop-timeout
+- [`f15fa07a`](https://github.com/xbmc/xbmc/commit/f15fa07a203a83c5b8e16d6082d436a4302c538e) [Android] MediaCodec: don't reuse the decoder for new extradata
+- [`7ad52a09`](https://github.com/xbmc/xbmc/commit/7ad52a09e8905ef6602148160b3369e5ca4c3ecd) Merge pull request #30054 from bkuhls/master-uclibc-gettid
+- [`9bb8c2e5`](https://github.com/xbmc/xbmc/commit/9bb8c2e5003f1445be56979cca3f81bb3729e53b) Merge pull request #29772 from malard/name-sources-paths
+- [`10b8cc07`](https://github.com/xbmc/xbmc/commit/10b8cc07e41e8ed22a015ba868ec665c21f4d307) Merge pull request #29769 from malard/tidy-vfs-handler-access-check
+- [`118d9631`](https://github.com/xbmc/xbmc/commit/118d9631f666d1629074fbf984646d78de1e6081) [music][GUIViewStateMusic] Build the music sort attributes and the album sort methods once (#29785)
+- [`6b000d52`](https://github.com/xbmc/xbmc/commit/6b000d5243f2354b72707139c7d8e599e792fd5b) [messaging][JSON-RPC] Say who owns a payload handed to the messenger (#29773)
+- [`d6b5e417`](https://github.com/xbmc/xbmc/commit/d6b5e417cbd12ca929a187c58a41de1d4d978c21) Merge pull request #29783 from malard/dialogs-own-their-lists
+- [`90f4f068`](https://github.com/xbmc/xbmc/commit/90f4f0683dccbf395075502610106cd28585026e) [JSON-RPC] Make WriteSetting the permission the settings writes have always declared (#29768)
+- [`e3acfb8f`](https://github.com/xbmc/xbmc/commit/e3acfb8f6b0c209701ffe044ddba6ed578a0b2d7) Merge pull request #29784 from malard/jsonrpc-declare-what-is-sent
+- [`68cdfcf7`](https://github.com/xbmc/xbmc/commit/68cdfcf7495809e8201f7d8ea6470aae72e934de) Merge pull request #30031 from malard/jsonrpc-refuse-clearing-lastplayed-on-watched
+- [`4f0c7bc5`](https://github.com/xbmc/xbmc/commit/4f0c7bc5970ef9c9eaf19b904afc4a7cec9f03c0) Update translation files
+- [`d04ac0e5`](https://github.com/xbmc/xbmc/commit/d04ac0e5f3ac71401ad71ad111d07fc060282b0e) Merge pull request #30456 from weblate/weblate-kodi-add-ons-skins-skin-estuary
+- [`680bfa7a`](https://github.com/xbmc/xbmc/commit/680bfa7aa84ab0b0d2f755c756c535dab8e7f69d) Merge pull request #30431 from garbear/fix-wasm-depends
+- [`bd9ecad9`](https://github.com/xbmc/xbmc/commit/bd9ecad99c41f54087dc9341b32b335e17cc75ef) Merge pull request #30346 from garbear/fix-pgs-cache
+- [`dc101e83`](https://github.com/xbmc/xbmc/commit/dc101e8301d22b5804a3b74ef9137441d6cccf8a) Merge pull request #29463 from cinema-ONE/hdr-gui-composite-alpha-v3
+- [`434cec5d`](https://github.com/xbmc/xbmc/commit/434cec5d32cb0b5a91ddf803e0bc48b623f18a8b) Merge pull request #30414 from thexai/build-tools
+- [`c208b675`](https://github.com/xbmc/xbmc/commit/c208b675c33eda261e4f6527fa287ecd06219b53) Merge pull request #30453 from thexai/mediacodec-reconfigure-extradata
+- [`9d43beeb`](https://github.com/xbmc/xbmc/commit/9d43beeb9ff50c76589b525c76a0ff2d69cfe318) Merge pull request #30355 from sunlollyking/estuary-pad-buttons
+- [`003220c6`](https://github.com/xbmc/xbmc/commit/003220c69e7c4c801d15ce6daf089709a61eef68) [settings][utils] Add the members the JSON-RPC settings and log level methods will ask (#29771)
+- [`8fa41c61`](https://github.com/xbmc/xbmc/commit/8fa41c61569dfcd6354d37bf80b767fa8ef92406) Merge pull request #29782 from malard/regenerate-service-description
+- [`2c17cdd5`](https://github.com/xbmc/xbmc/commit/2c17cdd58fea76d89462902f35e2024889194e7f) [Database] Tell a missing record from a failed lookup in the music and video getters (#29774)
+- [`1911699c`](https://github.com/xbmc/xbmc/commit/1911699c8abb6e33ddb1cc6c62091cb5d669f285) [Windows][RendererSoftware] Write packed RGB to its texture without the scaler (#29789)
+- [`e7aab944`](https://github.com/xbmc/xbmc/commit/e7aab944a62acf229a032ce51bf03645ffdde743) Merge pull request #30032 from malard/revert-canceljobs-under-lock
+- [`2670fe94`](https://github.com/xbmc/xbmc/commit/2670fe94d1a3b036ed15135e2be7fa67c3c77a26) Merge pull request #30399 from neo1973/tinyxml2/l2-playercorefactory
+- [`e69b5f35`](https://github.com/xbmc/xbmc/commit/e69b5f35c69ffc81b308d9b4e05f7846d843314a) [UPnP][CUPnPPlayer] Add gapless playback to UPnP renderers (#29288)
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/2a42ccb3...e69b5f35)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261113-e69b5f35-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261110-2a42ccb3
 
 **Homebrew Version:** `23.26.314`
