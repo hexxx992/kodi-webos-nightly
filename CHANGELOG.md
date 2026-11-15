@@ -1,5 +1,73 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261114-c14c0559
+
+**Homebrew Version:** `23.26.318`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-11-15 10:18:52 PST`
+
+**Commits:** 50
+
+### All Commits
+
+- [`1b29882a`](https://github.com/xbmc/xbmc/commit/1b29882a9329d4d64c7cc92ad1e0ba04184f7a74) Revert "VideoPlayer: stop spinning when the source cannot keep up"
+- [`81fa4514`](https://github.com/xbmc/xbmc/commit/81fa4514f13a82cf0dce58a55e50679c932f1e6f) [VideoPlayer] Mark empty packets that replace dropped input
+- [`5e14903c`](https://github.com/xbmc/xbmc/commit/5e14903cf3125e7bc28b1dea5fda98cd964c1a51) [VideoPlayer] Back off from a demuxer that keeps returning nothing
+- [`6ae7210e`](https://github.com/xbmc/xbmc/commit/6ae7210ef23d860c9522fef7c4cdfc45d0a67b61) [VideoPlayer] Ask an add-on demuxer again before passing on an empty packet
+- [`b6988838`](https://github.com/xbmc/xbmc/commit/b6988838eeb9409e78d41698ba5d9841027d0354) [dialogs] Process the select dialog list when toggling an item
+- [`b888056f`](https://github.com/xbmc/xbmc/commit/b888056ffd4d52b5eb22a39f56819e2c5bb39e8d) [guilib] Don't add the region of a dirty control twice
+- [`43efa96b`](https://github.com/xbmc/xbmc/commit/43efa96b6202892ce0483b2a8f9e17a9b29a4517) wasm: add a layer for the <video> of media backends
+- [`b4965f38`](https://github.com/xbmc/xbmc/commit/b4965f38fd34f0108c63ddb4b3db18b98b19d422) VideoPlayer: add a renderer for pictures a media player shows
+- [`53e221d4`](https://github.com/xbmc/xbmc/commit/53e221d4848dd06b067e005e1b04d2ac219a9237) VideoPlayer: add a media pipeline for platform media players
+- [`d58cee0f`](https://github.com/xbmc/xbmc/commit/d58cee0fc897aeec37f24286f15b7692fe77b638) VideoPlayer: play through the Tizen WASM Player on Samsung TVs
+- [`f7a06e1b`](https://github.com/xbmc/xbmc/commit/f7a06e1bf5bf810c1b9d7d7008c680925b46acdc) wasm: add a Media Source Extensions bridge
+- [`701d4e83`](https://github.com/xbmc/xbmc/commit/701d4e83938c481fc3d8c05551ed793c1d5272ca) VideoPlayer: play through Media Source Extensions in browsers
+- [`2767c9f8`](https://github.com/xbmc/xbmc/commit/2767c9f83b5c03f7cf548f22964b2e6def4a0573) VideoPlayer: fall back to Media Source Extensions on Samsung TVs
+- [`76105136`](https://github.com/xbmc/xbmc/commit/76105136a0b32112d9840eecdda138ec18a45689) [WASM] Fix Tizen video startup and playback stalls
+- [`019b4ac2`](https://github.com/xbmc/xbmc/commit/019b4ac20274f397937fe4ab2522bb60ad544d93) [test] Avoid folder-stack suffixes in fanart fixture paths
+- [`fe9250d5`](https://github.com/xbmc/xbmc/commit/fe9250d576873fd0b3e174f7c2141c71d08df666) [WASM] Publish audio processors before creating worklet nodes
+- [`af24fb76`](https://github.com/xbmc/xbmc/commit/af24fb76e06d86356e496bb796ff2f06d71e78d4) [WASM] Preserve the audio worklet across sink restarts
+- [`a7cee7fa`](https://github.com/xbmc/xbmc/commit/a7cee7fafeee0aac2b84946e22799c7c55182029) [depends][android] Expose NDK major version to binary add-ons
+- [`b1ad9694`](https://github.com/xbmc/xbmc/commit/b1ad969440be24ebca3746c3e55cc28b9e431159) [addons][CSkinInfo] Report a layout's aspect once, when the skin loads
+- [`595b8524`](https://github.com/xbmc/xbmc/commit/595b85244f032a729bb6433359198ac2830d3ef1) [cmake][depends] Fetch the submodules of git depends with --depth 1
+- [`beb99dd8`](https://github.com/xbmc/xbmc/commit/beb99dd8a143192e402fe1521b45e0b08b36242c) [Android] Initialize the desktop resolution from the current display mode
+- [`313acbea`](https://github.com/xbmc/xbmc/commit/313acbeaa33dc29bdf379685bf91359e2f534893) Merge pull request #30482 from garbear/set-ndk-version
+- [`5288896a`](https://github.com/xbmc/xbmc/commit/5288896acd962fa23989ee3e14440f74ddf2405c) [PVR] Guide, Channels window: Fix channel up/down after group switch w/o channel switch
+- [`ff030367`](https://github.com/xbmc/xbmc/commit/ff0303675715d82e2e7849b1cf9861862d38f99a) [PVR] Group manager: Fix channel up/down after closing the dialog
+- [`b346e0a0`](https://github.com/xbmc/xbmc/commit/b346e0a0f089cab35e4fb1a385792330eb4f28ef) [ActiveAE][Android] discard AudioTrack RAW sink audio on pause
+- [`ff725f0e`](https://github.com/xbmc/xbmc/commit/ff725f0e96f9f90069b50449db78e3349ff05d25) Merge pull request #30490 from thexai/android-transcode-resume-pause
+- [`c39f132b`](https://github.com/xbmc/xbmc/commit/c39f132b028bb7cf97f69d044a0ed418e360a130) [ActiveAE][VideoPlayer] Hold playback until an audio format change has settled downstream (#28999)
+- [`82a03590`](https://github.com/xbmc/xbmc/commit/82a0359086965e6d54893d407b94ef2b94637352) [Video][ContentGeometry] Know the shape of the picture and of the screen (#29673)
+- [`0998993e`](https://github.com/xbmc/xbmc/commit/0998993e2bbc16cdafec44da51aed2127a179c25) Merge pull request #30472 from garbear/fix-stacked-fanart-test
+- [`ee3842a9`](https://github.com/xbmc/xbmc/commit/ee3842a90b7bc98edd2c2bb8a4243351ec08b723) Update translation files
+- [`8e8a08b9`](https://github.com/xbmc/xbmc/commit/8e8a08b9edec1a3043ae1c863a6a6f907b79e36d) Merge pull request #30506 from weblate/weblate-kodi-add-ons-skins-skin-estuary
+- [`8cf78274`](https://github.com/xbmc/xbmc/commit/8cf78274f6aaa99c84c79337739e92ae0348676b) Merge pull request #30497 from ksooo/pvr-guide-group-switch
+- [`52041782`](https://github.com/xbmc/xbmc/commit/5204178285f93f9e5fd35df456ea780f52b0f075) [GLES] Bound ASS subtitle atlases to the GPU texture limit
+- [`66ccaf22`](https://github.com/xbmc/xbmc/commit/66ccaf22923b54d7aaf5f14b48fa820dad9f51b8) [GLES] Preserve filtering across internal ASS tile boundaries
+- [`3dd7db00`](https://github.com/xbmc/xbmc/commit/3dd7db00ca326282cf6e26a61d80595551842446) [language][i18n] Keep the ISO 639 data in one table per standard, behind CIso639 and CLanguageTable (#29715)
+- [`8eceaba0`](https://github.com/xbmc/xbmc/commit/8eceaba049d6023d97527fc9ac4b23e83f48ea42) Merge pull request #30370 from neo1973/fix-smartredraw-select-toggle
+- [`6e9ee8e3`](https://github.com/xbmc/xbmc/commit/6e9ee8e3fbf85d9cc58f35da31994053e75b0695) Merge pull request #30380 from neo1973/fix-dirtyregions-control-twice
+- [`623f24ad`](https://github.com/xbmc/xbmc/commit/623f24ad8cf0c6ceb4a4eaeadc8fea7875239343) Merge pull request #30446 from sunlollyking/depends-shallow-submodules
+- [`871c602c`](https://github.com/xbmc/xbmc/commit/871c602c3811fed6306f93ba6359d7f4d08dca11) Merge pull request #30196 from clementperon/upstream/12-media-playback
+- [`832b27d6`](https://github.com/xbmc/xbmc/commit/832b27d662b16a291d7b7a0275efb290b61afaec) Merge pull request #30443 from garbear/fix-wasm-audio
+- [`89f59a86`](https://github.com/xbmc/xbmc/commit/89f59a8679e21054d9cc9bfee40c886390fe0456) Merge pull request #30485 from malard/skin-aspect-log-once
+- [`5ff3643e`](https://github.com/xbmc/xbmc/commit/5ff3643e2bddab26502e6347e3f9612e0c444599) [VideoPlayer][RDS] Name the languages EBU Tech 3244 assigns, in a table a test can read (#29763)
+- [`80caf3cf`](https://github.com/xbmc/xbmc/commit/80caf3cf9f824f3b524f71d5c067818d59bcf2d2) [JSON-RPC][VideoLibrary] Keep an item's metadata in Player.GetItem once it has been played (#29766)
+- [`b1c8619e`](https://github.com/xbmc/xbmc/commit/b1c8619eb0f33c4afe46dc31e6edd3a66796fba3) [JSON-RPC][Player.Open] Play a directory of media as a playlist, not a slideshow (#29767)
+- [`c7bd5b61`](https://github.com/xbmc/xbmc/commit/c7bd5b613de16689171672cb0176b3a219f8eeb2) [utils][CScreenShot] Take a screenshot that is written before the call returns, and delete screenshots (#29770)
+- [`f25905b3`](https://github.com/xbmc/xbmc/commit/f25905b3cbea3bc4411f7db5feb607c749edf1e1) [VideoRenderers][Windows] Apply the CMS 3D LUT on the render thread (#30126)
+- [`656e6476`](https://github.com/xbmc/xbmc/commit/656e6476fe986d17b75aece8667935b9b98da69a) [Windows] Render planar RGB, 4:2:2 and 4:4:4 with Pixel Shaders (#29780)
+- [`f61f443f`](https://github.com/xbmc/xbmc/commit/f61f443fb28eccd6f6babb17345404465a1ea356) Merge pull request #29899 from kel-mo/videoplayer-empty-packet-backoff
+- [`6a524b06`](https://github.com/xbmc/xbmc/commit/6a524b06c89168708a9486e01d0125b03737d1f6) Merge pull request #30496 from william-gibson-wg/fix/android-high-motion-smoothness
+- [`c14c0559`](https://github.com/xbmc/xbmc/commit/c14c055924ae84b176faf0acec59ddd10ac66efd) Merge pull request #29811 from vincent71711/fix/gles-ass-texture-pages
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/e69b5f35...c14c0559)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261114-c14c0559-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261113-e69b5f35
 
 **Homebrew Version:** `23.26.317`
