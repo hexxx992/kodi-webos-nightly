@@ -1,5 +1,98 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261116-89a14ef2
+
+**Homebrew Version:** `23.26.320`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-11-17 12:17:35 PST`
+
+**Commits:** 75
+
+### All Commits
+
+- [`7dd11459`](https://github.com/xbmc/xbmc/commit/7dd114596f1b88a413ccb7ee10038d559dfedf9f) Add CApplicationMessenger::SendMsgAbortable()
+- [`d027212c`](https://github.com/xbmc/xbmc/commit/d027212c694072bb2e88b74228e9392626fa9fa7) Don't deadlock when playback is stopped during the refresh rate switch
+- [`03c9ff17`](https://github.com/xbmc/xbmc/commit/03c9ff170342923f6ca841d132ebcc2497456804) FFmpegImage: Convert pictures with an ICC profile to sRGB
+- [`ef0db628`](https://github.com/xbmc/xbmc/commit/ef0db628bd390459884beb06bdd7799491326eb3) FFmpegImage: Keep the ICC profile of tile grids
+- [`22a619c7`](https://github.com/xbmc/xbmc/commit/22a619c70764fccd9b0505f16690279af6803f13) VideoPlayer: keep stream picks in Blu-ray navigation mode
+- [`2ecd4a07`](https://github.com/xbmc/xbmc/commit/2ecd4a0763f46181f25db94e61ddbc3186fcc1c8) AEPackIEC61937: drop a DTS-HD frame that does not fit its burst instead of crashing
+- [`d85dfe79`](https://github.com/xbmc/xbmc/commit/d85dfe79a17f2da5549eef4b0e92b8335e95187f) [python] Tell scripts run by path that they should stop
+- [`d827d72a`](https://github.com/xbmc/xbmc/commit/d827d72a98972d40bcb6b18987e7444fba653324) [Windows][Renderer] Keep the HDR state when the renderer is replaced
+- [`4d75f092`](https://github.com/xbmc/xbmc/commit/4d75f092fc6eefe98a22b7d08d4ebb88ea51af0c) [NFS] Give each context its own lock and lifetime
+- [`8d3c5d8b`](https://github.com/xbmc/xbmc/commit/8d3c5d8b708e5171a27ac1999275f525d675496c) [NFS] Give each context its own NFSv4 client name
+- [`4f920c52`](https://github.com/xbmc/xbmc/commit/4f920c5229c810a20d624a855436885318a3dc60) [NFS] Count context users and keep maintenance off the UI thread
+- [`3cb46c39`](https://github.com/xbmc/xbmc/commit/3cb46c39ce5d235ec89800f82d281d4cdd29d5d4) [NFS] Allow several contexts per export
+- [`aae16510`](https://github.com/xbmc/xbmc/commit/aae16510621fe32cb1cd0d5fa4cbcd12a169fe8c) [NFS] Check the result of nfs_rmdir(), not errno
+- [`16c4bd17`](https://github.com/xbmc/xbmc/commit/16c4bd1716a8bbdb3b6b2762563fb8b7b758ab0d) [NFS] Recognise an NFSv4 client the server has dropped
+- [`038dbc3c`](https://github.com/xbmc/xbmc/commit/038dbc3ce246ae2321f3191d63fc422b2e918bde) [AdvancedSettings] Apply default metadata sources without <videoscanner>
+- [`ea8e5c66`](https://github.com/xbmc/xbmc/commit/ea8e5c665f530074cb31772a74df2abf64b20c84) [UDF] Mount an image without holding up the mounts of others.
+- [`be625eae`](https://github.com/xbmc/xbmc/commit/be625eae5d10dd7c75c7478e000b6513747f6358) [Bluray] Read a disc's streams once for each clip.
+- [`2eaf3242`](https://github.com/xbmc/xbmc/commit/2eaf324267f60ff8a3ed4635807e196c0ac59672) [Video][Database] Open one progress dialog to remove a source's content.
+- [`a6ddd8ac`](https://github.com/xbmc/xbmc/commit/a6ddd8ac148df62b8adbc2be544ab2e439d477d4) [FFmpeg] Check a log message's level before taking the log lock.
+- [`fa763b8d`](https://github.com/xbmc/xbmc/commit/fa763b8dececfb3821c3e848d32caedf80bff871) [Video] Read the library queue's jobs under its lock.
+- [`cf74b11f`](https://github.com/xbmc/xbmc/commit/cf74b11ff262d7d055fca312994f19076dde8243) [interfaces][Video] Announce an added video with one copy.
+- [`61044508`](https://github.com/xbmc/xbmc/commit/6104450850422d0db70c848c0382c9c9c5d62f40) [VideoInfoScanner] Use a movie's identifier in its folder name again
+- [`04c51cbc`](https://github.com/xbmc/xbmc/commit/04c51cbc2d28ed5e86b9b7a2b07fc8c8db435606) Don't spin a core when paused near the end of a file
+- [`7fd703d9`](https://github.com/xbmc/xbmc/commit/7fd703d90130864a79c5a758518fc67d13187766) [linux] Threads: set thread names on Android, truncate long names
+- [`931bbaf4`](https://github.com/xbmc/xbmc/commit/931bbaf48befd73bfbd544a428b6b1e56873e340) [VideoPlayer] Repaint the GUI when hidden text subtitles leave the screen
+- [`86adcaba`](https://github.com/xbmc/xbmc/commit/86adcaba3f8ea23bdcf6f62e36525fdcae0b51d2) [Video] Find no more episodes in a date or codec after an episode.
+- [`3e607207`](https://github.com/xbmc/xbmc/commit/3e607207de2997f5368c0504a5395cd668548659) [Video][Database] Look no further up than the first folder with content.
+- [`3814d767`](https://github.com/xbmc/xbmc/commit/3814d76772f45d71b904840956ae3981ad596168) [Video][Scanner] Probe a file once and find subtitles in its listing.
+- [`7351958e`](https://github.com/xbmc/xbmc/commit/7351958ec0c500ec3fdafecd6e70a5130c3ff43c) [VideoPlayer] Let a probe of a file's streams say how to open it.
+- [`6defead1`](https://github.com/xbmc/xbmc/commit/6defead1719cd1368e249c647b80df123aafcc9b) [FileItemList] Stack a volume once, and either kind without the other.
+- [`272691a7`](https://github.com/xbmc/xbmc/commit/272691a77596561e82638d195d78727ec486483f) [FileItemList] Stack a part folder's video, not a folder beside it.
+- [`6e0a49cc`](https://github.com/xbmc/xbmc/commit/6e0a49cc7812314b1521b8bf105f98ea47f9a126) [Video] Read 1x05 or Part 5 before a date in the folder's name.
+- [`4191f03b`](https://github.com/xbmc/xbmc/commit/4191f03b7068fbbf9737b60bff86b4663917ee2e) [Video][Scanner] Read an AVCHD rip in a show as one episode.
+- [`68988aaa`](https://github.com/xbmc/xbmc/commit/68988aaa3e4572cd9fb60e97b9105fdd2f5a4f85) [Video][Scanner] Find a Blu-ray's external subtitles as it is added.
+- [`f4d869dd`](https://github.com/xbmc/xbmc/commit/f4d869dd924f26607038c51e957681bb8cc8f5c6) AEStreamParser: keep a DTS-HD MA stream MA when its XLL frames straddle
+- [`a2b09fc9`](https://github.com/xbmc/xbmc/commit/a2b09fc9bd7435982672d942dfb9e573138b03e9) Merge pull request #30486 from kontell/fix/30398-subtitle-hide-repaint
+- [`77acd666`](https://github.com/xbmc/xbmc/commit/77acd666957758a2be54adebc493d7054e69d263) Merge pull request #30548 from isarrider/android-thread-names
+- [`645b2f05`](https://github.com/xbmc/xbmc/commit/645b2f05bebf264a49d952785164f4bcf8a47192) [Bluray] Log no error for a folder a disc needn't have.
+- [`1c7d308f`](https://github.com/xbmc/xbmc/commit/1c7d308f742b9238fc9dc7e8272315e9ff3b9d44) Merge pull request #30247 from 78andyp/ids
+- [`58f6b82c`](https://github.com/xbmc/xbmc/commit/58f6b82c018aa172dfb8edc1efba91fdcc8f1090) Merge pull request #30076 from Portisch/fix/bluray-navigation-stream-picks
+- [`ab81d94d`](https://github.com/xbmc/xbmc/commit/ab81d94def1c35c59a3b140dcacb2ce6aaf9cc4b) Merge pull request #30477 from 78andyp/smbnfs
+- [`f44c4bec`](https://github.com/xbmc/xbmc/commit/f44c4bec5397f29054fd38f720ef255512edd459) Merge pull request #30395 from shaneomac1337/fix-win-hdr-keep
+- [`9555dc53`](https://github.com/xbmc/xbmc/commit/9555dc538a115f8794f9c91942966a6f380f8b54) [addons][CMediaManager] Keep each section's add-on source in one table (#30561)
+- [`c82eb05f`](https://github.com/xbmc/xbmc/commit/c82eb05fac0c12763a064572105fc769de4bb3ff) Merge pull request #30545 from kel-mo/videoplayer-paused-eof-wait
+- [`5da301bf`](https://github.com/xbmc/xbmc/commit/5da301bfee0dea6236282b8adea7ed7ef741c8c0) Merge pull request #30283 from kel-mo/videoplayer-stop-open-deadlock
+- [`0d063b93`](https://github.com/xbmc/xbmc/commit/0d063b9325fcaa054edf9ba749b9599029f9cad3) [VideoPlayer] Let a stop interrupt the demuxer probe of any input stream
+- [`a7f8f4af`](https://github.com/xbmc/xbmc/commit/a7f8f4af242db239483fcf3d1b6061bce0da83f2) Merge pull request #30440 from samnazarko/dts-fixes
+- [`0acfd628`](https://github.com/xbmc/xbmc/commit/0acfd628245b00fefbfc6a25fc2e3b7b51f2e9f0) [GLES] Extract shared HDR GUI compositor
+- [`33a63346`](https://github.com/xbmc/xbmc/commit/33a6334649b8add8911c12d9f39d0e045779be4e) Merge pull request #30511 from 78andyp/split-announce
+- [`858fc285`](https://github.com/xbmc/xbmc/commit/858fc285f0e89a3f85fde4188afd2fecfcc93467) Merge pull request #30513 from 78andyp/split-bluray
+- [`b947a030`](https://github.com/xbmc/xbmc/commit/b947a030cea955f860b5d87095a06d88b0be454c) Merge pull request #30564 from 78andyp/split-episodenames
+- [`ceb7d3fa`](https://github.com/xbmc/xbmc/commit/ceb7d3fa62396208d693d05c0a66229a9fc60d68) Merge pull request #30565 from 78andyp/split-stacks
+- [`6ec72d55`](https://github.com/xbmc/xbmc/commit/6ec72d559cb364987acb4ef9194f29ddb6e29a9a) Merge pull request #30566 from 78andyp/split-paths
+- [`5eb9681e`](https://github.com/xbmc/xbmc/commit/5eb9681e6d165e4d2b399639bc71dc5096d70e86) Merge pull request #30515 from 78andyp/split-smallfixes
+- [`7c559bec`](https://github.com/xbmc/xbmc/commit/7c559bec84aabac9c1a945bfedadeaf4f264b42b) Merge pull request #30516 from 78andyp/split-probe
+- [`954876d7`](https://github.com/xbmc/xbmc/commit/954876d79cce97faea5aa6a874390027e1b1ca71) [UPnP][CUPnPPlayer] Keep the next playlist item when it cannot be queued (#30517)
+- [`8f438da2`](https://github.com/xbmc/xbmc/commit/8f438da26ffab552f10ec0707964d880e8dde8ca) [guilib][CGUIWindowManager] Destroy the screen alignment window at shutdown (#30518)
+- [`4caff1dc`](https://github.com/xbmc/xbmc/commit/4caff1dcb07bceef8895d43c9f060d1bd881fa8c) [VideoPlayer][RenderManager] Keep the renderer when only the picture size changes (#30520)
+- [`887de369`](https://github.com/xbmc/xbmc/commit/887de36980a3096ad6a0e8bb0ad22ad11d8503eb) [Application][Geometry] Apply the stored OSD placement once settings are loaded (#30521)
+- [`e29303c6`](https://github.com/xbmc/xbmc/commit/e29303c6babe648bad87697d1111a1bbbd7d562c) [JSON-RPC][PVR] Build a channel's broadcastnow and broadcastnext through the item handler (#30522)
+- [`7a317cd4`](https://github.com/xbmc/xbmc/commit/7a317cd4f8fefff9ef48bfe9ed0fb373dcf21d38) [Video][CVideoDatabase] Look a library item of any kind up through one call that tells missing from failed (#30523)
+- [`7bbed793`](https://github.com/xbmc/xbmc/commit/7bbed793dee608e9e19d8a4e9e4e4ee7130bb1a6) [playlists] Name the music and video playlists folders through CUtil::PlaylistsPathOf (#30524)
+- [`a3672d84`](https://github.com/xbmc/xbmc/commit/a3672d848470dc8daeb993689b487900df96179b) [dialogs][CGUIDialogNumeric] Keep the minutes when the seconds are erased, and reach the seconds after text input (#30525)
+- [`5847da40`](https://github.com/xbmc/xbmc/commit/5847da40b7cf0b4b0d9dab8ece79b53ff7c23fcf) [language][CLanguageTag] Parse a tag into its parts and name what each member answers (#30528)
+- [`ad7b6bda`](https://github.com/xbmc/xbmc/commit/ad7b6bda42739e807cac6fe9f9aafe6c7e192e97) [JSON-RPC][CFileItemHandler] Return the file and filetype Files.GetFileDetails adds (#30529)
+- [`cd94d2a6`](https://github.com/xbmc/xbmc/commit/cd94d2a62dbf7cfccbfa70dba1ca483a4e38a07c) [Windows][RendererSoftware] Run the scaler on several threads (#30530)
+- [`a1805976`](https://github.com/xbmc/xbmc/commit/a1805976967a6306b7f80f49a189bea1b2fee660) [JSON-RPC][MethodCall] Give a handler only the parameters it uses (#30531)
+- [`afacfece`](https://github.com/xbmc/xbmc/commit/afacfece5cf6babd64fde008a8d51446dd71ca18) [playlists] Name the two playlists, their entries and their shuffle (#30532)
+- [`c5e80e6c`](https://github.com/xbmc/xbmc/commit/c5e80e6c218aae261837f3d09572ef3d33deff38) [JSON-RPC][CJSONServiceDescription] Accept JSON Schema 2020-12 keywords beside draft-03 (#30558)
+- [`f8b6a08d`](https://github.com/xbmc/xbmc/commit/f8b6a08dc7f6f3bec303f63d875ac369dd33a713) [JSON-RPC][schema] Spell eight types the way the parser reads them (#30559)
+- [`da08eb08`](https://github.com/xbmc/xbmc/commit/da08eb08ca337f6f6ef571db2b8601780e2db7c8) [JSON-RPC][tests] Give the description test's stub handler the two-argument form (#30609)
+- [`0bf8cc90`](https://github.com/xbmc/xbmc/commit/0bf8cc90e955d48752f5dd64bf658890eaf89e1a) Merge pull request #30036 from kel-mo/ffmpegimage-icc
+- [`ded7c6d7`](https://github.com/xbmc/xbmc/commit/ded7c6d7d36b43be69175c476fcfa4a899753401) Merge pull request #29956 from kel-mo/script-abort-notify
+- [`c71791c2`](https://github.com/xbmc/xbmc/commit/c71791c21c7acd90eead064920418a1e039869f4) Merge pull request #30301 from kel-mo/videoplayer-probe-abort
+- [`89a14ef2`](https://github.com/xbmc/xbmc/commit/89a14ef250357bc93f14bca4346441dc486ada86) Merge pull request #30475 from garbear/hdr-compositor
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/c14c0559...89a14ef2)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261116-89a14ef2-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261114-c14c0559
 
 **Homebrew Version:** `23.26.318`
