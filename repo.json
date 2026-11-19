@@ -11,22 +11,22 @@
       "title": "Kodi Nightly",
       "iconUri": "https://raw.githubusercontent.com/xbmc/xbmc/master/media/icon256x256.png",
       "pool": "main",
-      "shortDescription": "Kodi 23.0-ALPHA1 Nightly · 20261116-89a14ef2",
-      "fullDescriptionUrl": "https://hexxx992.github.io/kodi-webos-nightly/full_description.html?v=23.26.320",
+      "shortDescription": "Kodi 23.0-ALPHA1 Nightly · 20261119-1bf15bbe",
+      "fullDescriptionUrl": "https://hexxx992.github.io/kodi-webos-nightly/full_description.html?v=23.26.323",
       "manifest": {
         "id": "org.xbmc.kodi",
-        "version": "23.26.320",
+        "version": "23.26.323",
         "type": "native",
         "title": "Kodi Nightly",
         "appDescription": "Kodi 23.0-ALPHA1 Nightly",
         "iconUri": "https://raw.githubusercontent.com/xbmc/xbmc/master/media/icon256x256.png",
         "sourceUrl": "https://github.com/xbmc/xbmc",
         "rootRequired": false,
-        "ipkUrl": "https://github.com/hexxx992/kodi-webos-nightly/releases/download/kodi-nightly/org.xbmc.kodi_23.26.320_arm.ipk",
+        "ipkUrl": "https://github.com/hexxx992/kodi-webos-nightly/releases/download/kodi-nightly/org.xbmc.kodi_23.26.323_arm.ipk",
         "ipkHash": {
-          "sha256": "9a4ae24861804084e545e6bff3c074dc5ca2ea255c21f9c225f7d5efaa5e9440"
+          "sha256": "d00d7848ede824bfbfdba814943d9e93c34537b2631346a3d5208ced1159900d"
         },
-        "ipkSize": 106269942
+        "ipkSize": 107316348
       }
     }
   ]

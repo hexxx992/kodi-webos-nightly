@@ -1,5 +1,109 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261119-1bf15bbe
+
+**Homebrew Version:** `23.26.323`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-11-19 11:47:36 PST`
+
+**Commits:** 86
+
+### All Commits
+
+- [`994b0723`](https://github.com/xbmc/xbmc/commit/994b07236d6ec5d10cae8887a72a05abe3661209) [RetroPlayer] Show games with a video filter in HDR
+- [`cf38585d`](https://github.com/xbmc/xbmc/commit/cf38585d976ed31c284b9463a376f3245394ddce) RetroPlayer: don't fail an EGL restore over an idle thread's default API
+- [`863f0e1d`](https://github.com/xbmc/xbmc/commit/863f0e1d868368e22e464ce25e9e26bd48f9d048) [RetroPlayer] Don't open the game OSD when the mouse moves
+- [`63519da9`](https://github.com/xbmc/xbmc/commit/63519da9de2c2138c8c831ae33997edbed351810) [RetroPlayer] Don't wait for the game OSD to close when pausing
+- [`8244e4f7`](https://github.com/xbmc/xbmc/commit/8244e4f7de84b6f114d5201e215d31a0f42267d7) [python] Abort a Monitor made after its script was told to stop
+- [`6403074f`](https://github.com/xbmc/xbmc/commit/6403074f3f69ad43d3c7e3771d7ab401e11eca8d) [test] Isolate stacked thumbnail test fixtures
+- [`e837ee33`](https://github.com/xbmc/xbmc/commit/e837ee3313a948b538f60e888b21a54c65266fe5) [test] Isolate M2TS parser test directories
+- [`c237f741`](https://github.com/xbmc/xbmc/commit/c237f741ab9c4b39659626e8ff2df8df7e6d1160) [GLES] Sample HDR GUI LUTs at texel centers
+- [`c73452ec`](https://github.com/xbmc/xbmc/commit/c73452ecd9681289c576e69a8b8b4c56c246222e) [NfoFile] Parse only the movie sought of an nfo holding several.
+- [`84a29b65`](https://github.com/xbmc/xbmc/commit/84a29b65aed2d3c18974c6afb23ddffcb2467633) [NfoFile] Read no nfo without a scraper to read it for.
+- [`aa5aecdb`](https://github.com/xbmc/xbmc/commit/aa5aecdb9486f1ca060fd8e5578c38d305edaa0b) [depends][native] Bump automake to 1.20
+- [`d1c3a815`](https://github.com/xbmc/xbmc/commit/d1c3a8150e1380b0a2693de54108f77041c7ed89) [depends][native] Bump Rust toolchain to 1.100.0
+- [`54edc6ee`](https://github.com/xbmc/xbmc/commit/54edc6eed9a8b9c3cc72c7d04811dda88394083b) [depends][native] Bump cargo-c to 0.10.26
+- [`cfc8deee`](https://github.com/xbmc/xbmc/commit/cfc8deeec14cf87ed2b41cbf556a9e692cfdac37) [depends] Bump apache-ant to 1.10.18
+- [`c151da36`](https://github.com/xbmc/xbmc/commit/c151da361dd18d9f87ad10ebaaa67584a9969872) [depends] Bump brotli to 1.2.1
+- [`8cd0d20c`](https://github.com/xbmc/xbmc/commit/8cd0d20cd6dc63c64f08e553e54e7481ce498878) [depends] Bump libcec to 8.1.7
+- [`bb50199c`](https://github.com/xbmc/xbmc/commit/bb50199c81ecac7e4dc8965deec7cdb8c3b2aff8) [depends] Bump curl to 8.23.0
+- [`e277162c`](https://github.com/xbmc/xbmc/commit/e277162c1a4d5312ceedc507ed7ecf6c335e8a5c) [depends] Bump dav1d to 1.5.4
+- [`8bce333a`](https://github.com/xbmc/xbmc/commit/8bce333ad7ebba646a338ad5a0d6e1abe1c6113f) [depends] Bump exiv2 to 0.28.9
+- [`0fcb1ac2`](https://github.com/xbmc/xbmc/commit/0fcb1ac254113d20dfe5353bf57012e92d7b48c4) [depends] Bump fmt to 12.2.1
+- [`7c82e63d`](https://github.com/xbmc/xbmc/commit/7c82e63d454d53177563cab8bf3b27cec4305b04) [depends] Bump fontconfig to 2.18.3
+- [`9cc7bae6`](https://github.com/xbmc/xbmc/commit/9cc7bae6a8c239fc77337874b8f4706e5e93ad14) [depends] Bump freetype to 2.15.0
+- [`3c3702a8`](https://github.com/xbmc/xbmc/commit/3c3702a820e296e074fc08cf6a6101459713872a) [depends] Bump fribidi to 1.0.18
+- [`7d142934`](https://github.com/xbmc/xbmc/commit/7d142934bde67ce057294f05543a59bbd631065b) [depends] Bump gtest to 1.18.0
+- [`66ef83ca`](https://github.com/xbmc/xbmc/commit/66ef83cac1019d48ad3552e741f736eeaec1863b) [depends] Bump lcms2 to 2.20
+- [`5d46b069`](https://github.com/xbmc/xbmc/commit/5d46b0690450b013fbb560883669cef85562ab40) [depends] Bump libaacs to 0.12.0
+- [`55b130c8`](https://github.com/xbmc/xbmc/commit/55b130c8fc9e9d5de565b7ec20d96fceea406149) [depends] Bump libbluray to 1.5.1
+- [`2bba472e`](https://github.com/xbmc/xbmc/commit/2bba472e50695ccb4a16715fc5f52681fd82cf58) [depends] Bump libcdio to 2.4.0
+- [`4992120f`](https://github.com/xbmc/xbmc/commit/4992120f910e59456cf442aac85bf8205cca625d) [depends] Bump libdovi to 3.4.0
+- [`a040f8d5`](https://github.com/xbmc/xbmc/commit/a040f8d5a8ed77c4fbb94c4b23c5d81ca4090277) [depends] Bump libdvdcss to 1.6.0
+- [`faa4f616`](https://github.com/xbmc/xbmc/commit/faa4f6160a61cb1d64b7cb1eecc9a38805cec1ea) [depends] Bump libgcrypt to 1.12.4
+- [`be4680a4`](https://github.com/xbmc/xbmc/commit/be4680a49d80c370d77d9e41f3574b4bbc3933ad) [depends] Bump libgpg-error to 1.61
+- [`9113096e`](https://github.com/xbmc/xbmc/commit/9113096e9296edbe78370f0f742dcb25d612bb66) [depends] Bump libiconv to 1.19.1
+- [`ccc463f1`](https://github.com/xbmc/xbmc/commit/ccc463f130b8d230a2bc1740c7f4e9cbe118b8a1) [depends] Bump libplist to 2.8.1
+- [`706a66b3`](https://github.com/xbmc/xbmc/commit/706a66b3d129bc6639d7fc203ff7735db2fb58ee) [depends] Bump libva to 2.24.1
+- [`d3b974cf`](https://github.com/xbmc/xbmc/commit/d3b974cf1a6d6749a95c9acb4336fc0c6527fe33) [depends] Bump libxkbcommon to 1.13.2
+- [`1b95c1c6`](https://github.com/xbmc/xbmc/commit/1b95c1c696589771526133ecc5539dfbbba00969) [depends] Bump libxml2 to 2.15.4
+- [`4a58cc5e`](https://github.com/xbmc/xbmc/commit/4a58cc5e2df1717e5245f5b429d9b7a089837062) [depends] Bump libzip to 1.12.1
+- [`74ae56cf`](https://github.com/xbmc/xbmc/commit/74ae56cf486b7834059bdcff3b2ca92ce5c50046) [depends] Bump mariadb-connector-c to 3.3.21
+- [`a8069840`](https://github.com/xbmc/xbmc/commit/a806984057e5398647f17d74c49621f2a7ae4737) [depends] Bump nghttp2 to 1.71.0
+- [`41c9b98e`](https://github.com/xbmc/xbmc/commit/41c9b98e3f84a5ae48ecb3f7dfad66a2be1579db) [depends] Bump samba to 4.25.1
+- [`89898d28`](https://github.com/xbmc/xbmc/commit/89898d28c34c9ca3e88e74c6656c18ab00a40aa6) [depends] Bump utfcpp to 4.2.1
+- [`0ee67076`](https://github.com/xbmc/xbmc/commit/0ee670767e52cf5bc92d8f6cf70dd19abc875986) [Video] Read a set.nfo as it is, not as an album scraper's nfo.
+- [`36562136`](https://github.com/xbmc/xbmc/commit/3656213624f00ca363a1e4659dabd48e650e3ad4) [depends][ffmpeg] Write the last pixel of odd width yuv2rgb rows
+- [`f6f82f3d`](https://github.com/xbmc/xbmc/commit/f6f82f3d9b07e757596536d8f48682c6876f7c1d) [network] WebServer: match the URI log callback signature
+- [`221a2c23`](https://github.com/xbmc/xbmc/commit/221a2c231877334bf20762f73d4bea85a80784e5) [wasm] Offer the web server on Samsung TVs only
+- [`b05c1df5`](https://github.com/xbmc/xbmc/commit/b05c1df55a77724b44e5f5ae4c9deb5953a21712) [webOS] Stop rendering the GUI while minimized
+- [`de718e34`](https://github.com/xbmc/xbmc/commit/de718e34cd608d3670866dd3feb1633cf8003a67) [python] Abort a Monitor made after Kodi began to quit
+- [`d8ed223e`](https://github.com/xbmc/xbmc/commit/d8ed223e12c1eda3a7c68b5552aa839d61e48806) [interfaces] Keep a thread for each run of a reusable plugin at once.
+- [`8d905761`](https://github.com/xbmc/xbmc/commit/8d905761fc3c91e4590d3f796919cb5fd6f5a21f) [Video][Scanner] Add a video in one transaction.
+- [`7297b225`](https://github.com/xbmc/xbmc/commit/7297b225a0f3fd4f458371b50690305a36c21345) [CDateTime] Convert dates of any year on POSIX where time_t is 32 bits
+- [`f6d13c1e`](https://github.com/xbmc/xbmc/commit/f6d13c1e686421a495397dea9056e2b956bcede4) [AudioEngine] ActiveAE: Do not raise the limit for audible samples at stream start
+- [`d46135ca`](https://github.com/xbmc/xbmc/commit/d46135ca506b759886285d897f4e05c5bd1b28d7) Merge pull request #30510 from 78andyp/split-transaction
+- [`32076bbe`](https://github.com/xbmc/xbmc/commit/32076bbed6ca0d5fb3543e0d3fd75eb9c42efcf8) [Windows] Recover when the device is lost while re-creating the swap chain
+- [`e2f167b2`](https://github.com/xbmc/xbmc/commit/e2f167b21b930c530f448e2d9ba0f2a18695b6d1) windowing/gbm: add a colour range setting and signal it via Broadcast RGB
+- [`b85a5a8a`](https://github.com/xbmc/xbmc/commit/b85a5a8a63f4c814a45a8c1cb7ec0a9fbe3d413b) [Estuary] ListLabelVar fix for versions (#30618)
+- [`27758a42`](https://github.com/xbmc/xbmc/commit/27758a42d181894c58f893b75123ae2906a150eb) [docs] Fix dead fmt library links in code guidelines
+- [`85bc29dc`](https://github.com/xbmc/xbmc/commit/85bc29dc374431e5215d5e5ed947869a34c41f76) Merge pull request #30507 from 78andyp/split-pluginthreads
+- [`5e4b100a`](https://github.com/xbmc/xbmc/commit/5e4b100adf5d872de82e19a0f22776764d37f0e4) [Scraper] Tell a python search that fails from one finding nothing.
+- [`d949b07c`](https://github.com/xbmc/xbmc/commit/d949b07c033362f342c4bb50860859c73a90c54b) Merge pull request #30479 from garbear/gles-hdr-lut-texel-centers
+- [`c6ce9a51`](https://github.com/xbmc/xbmc/commit/c6ce9a51c03ea1d17128a0e29bf28d7d7e6a1fbe) Merge pull request #30178 from sunlollyking/hdr-games-master
+- [`70f3d4a4`](https://github.com/xbmc/xbmc/commit/70f3d4a421b1db0a3f40d5db5bfefaf74399eda0) [interfaces] Keep the runs of a plugin made for one purpose to one thread.
+- [`6de8da2f`](https://github.com/xbmc/xbmc/commit/6de8da2f461dfd4165eb1d03ee818f1632cd52f8) [interfaces] Stop waiting for an add-on's run once its caller stops.
+- [`c1d7d3c0`](https://github.com/xbmc/xbmc/commit/c1d7d3c0987ed2bcee29dbd46c523715b3414177) [interfaces] Read an invoker's state and a kept thread's reuse safely.
+- [`200ecae1`](https://github.com/xbmc/xbmc/commit/200ecae1e7d47b0eeb1892c6f6ef38329e92c601) [interfaces] Keep track of each run of a script by its path.
+- [`460c2d02`](https://github.com/xbmc/xbmc/commit/460c2d027a5794e2079c965447a9567f8e3a57c1) [interfaces] Let other scripts' kept threads go for a run with its own invoker.
+- [`dd1720c8`](https://github.com/xbmc/xbmc/commit/dd1720c891371502dfdda454a016dc7585001268) Merge pull request #30406 from kel-mo/retroplayer-osd-post
+- [`84cee51f`](https://github.com/xbmc/xbmc/commit/84cee51f21ec1c62b62d4b0ec846a9bc55d311c4) Merge pull request #30099 from smp79/broadcast-rgb
+- [`fef2ccfc`](https://github.com/xbmc/xbmc/commit/fef2ccfc3fac5dd18ff05a9ebf1fd3669a2940a8) Merge pull request #30438 from sunlollyking/game-mouse-move-no-osd
+- [`9c4518cb`](https://github.com/xbmc/xbmc/commit/9c4518cb46c097bfa6a174ec1451b0a4f154b589) Merge pull request #30473 from garbear/fix-test-temp-isolation
+- [`e413caf1`](https://github.com/xbmc/xbmc/commit/e413caf14d4b2b72e322be943a97c57bc686a478) Merge pull request #30602 from 78andyp/dx-swapchain-device-lost
+- [`12124edf`](https://github.com/xbmc/xbmc/commit/12124edfd1f35d3bc42f99cb4e8c5393891e99de) Merge pull request #30418 from sunlollyking/retroplayer-egl-restore
+- [`e074d2f2`](https://github.com/xbmc/xbmc/commit/e074d2f296e699f2265b2519499a99dc48a299f9) Merge pull request #30447 from kel-mo/monitor-abort-late
+- [`0dccc3a2`](https://github.com/xbmc/xbmc/commit/0dccc3a241bf06e29dce39285183b8a074e1a4c4) Merge pull request #30509 from 78andyp/split-heldnotifications
+- [`13872930`](https://github.com/xbmc/xbmc/commit/138729304d5c54c6666d846d25c42b2676eb1d9d) [NfoFile] Read an mkv's url tag and override nfo as text, not a path.
+- [`a87cb03f`](https://github.com/xbmc/xbmc/commit/a87cb03fdc904e4a431c4bbe956f5144f58c0a7f) [Video] Load a video file's embedded art with an nfo beside it.
+- [`6b6c5855`](https://github.com/xbmc/xbmc/commit/6b6c585543bdd099057f814d1b0768ecbc0a31f8) [Video] Read an m4v's tags as an mp4's.
+- [`114d0f2d`](https://github.com/xbmc/xbmc/commit/114d0f2df28e16281c95f5e9e6e9d4926ddcbea8) Merge pull request #30425 from popcornmix/ffmpeg-yuv2rgb-odd-width
+- [`0c00cca1`](https://github.com/xbmc/xbmc/commit/0c00cca1f6aad03bd866d93fc1e730836c27b0e9) Merge pull request #30505 from sundermann/depends-bump-minor
+- [`31d6a317`](https://github.com/xbmc/xbmc/commit/31d6a317135ac72c5b7222a75410a288f31fdb93) Merge pull request #30604 from malard/fix-posix-datetime-32bit-time-t
+- [`5463c985`](https://github.com/xbmc/xbmc/commit/5463c985be049d8720d8e9385f3288face5c1349) Merge pull request #30605 from ksooo/activeae-start-audible-limit
+- [`f8cc0e41`](https://github.com/xbmc/xbmc/commit/f8cc0e412e0c902504a4a1a100930a1975b5ec37) Merge pull request #30582 from Redgrave961/webos-minimized-render
+- [`81579532`](https://github.com/xbmc/xbmc/commit/81579532d63cf602ea3fa4887ac5f1345d6378ee) Merge pull request #30624 from farisbasha/docs-fmt-dev-links
+- [`b856bf52`](https://github.com/xbmc/xbmc/commit/b856bf52ccce3577f3bb5a92dc2b67abe7fbee93) Merge pull request #30572 from clementperon/upstream/wasm-webserver
+- [`4c1fd28e`](https://github.com/xbmc/xbmc/commit/4c1fd28e1f258fd5e5abc52d33f73751b5ebf1cb) Merge pull request #30508 from 78andyp/split-affinity
+- [`1bf15bbe`](https://github.com/xbmc/xbmc/commit/1bf15bbebeac1851d380eb0febd65306ef887836) Merge pull request #30514 from 78andyp/split-nfofile
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/89a14ef2...1bf15bbe)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261119-1bf15bbe-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261116-89a14ef2
 
 **Homebrew Version:** `23.26.320`
