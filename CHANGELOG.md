@@ -1,5 +1,96 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261121-150cb6f5
+
+**Homebrew Version:** `23.26.325`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-11-21 10:30:20 PST`
+
+**Commits:** 73
+
+### All Commits
+
+- [`57eb916a`](https://github.com/xbmc/xbmc/commit/57eb916a8aed48be3f4807777008de668dfe168e) RetroPlayer: upload RGB555 frames with a valid GL format
+- [`784fae9d`](https://github.com/xbmc/xbmc/commit/784fae9d38c927a7466175c932badeec3888644f) [test] Skip platform-inapplicable tests instead of disabling them
+- [`38476415`](https://github.com/xbmc/xbmc/commit/38476415970dc58b40d26f3540bffc9ceb3a73bb) [Video] Prefer a video's own art to its folder's, in any listing order.
+- [`ad310a77`](https://github.com/xbmc/xbmc/commit/ad310a77031f30445ef52166251ea35d4d4e3699) [Video][Scanner] Match season art by its whole name, as it's looked up.
+- [`274b5cad`](https://github.com/xbmc/xbmc/commit/274b5cada9b636dc8f144c2d9bc47413d141a154) [Video][Scanner] Look up a version's art by the types versions have.
+- [`68de878d`](https://github.com/xbmc/xbmc/commit/68de878dd98dd2357e3e1cd41878a0c81492b5c2) [application] Drop setting callbacks nothing handles
+- [`fa2d0ce7`](https://github.com/xbmc/xbmc/commit/fa2d0ce76f08063e5f674c06f916e9a1e77d5f2c) [depends] Remove the target setuptools
+- [`c81546e0`](https://github.com/xbmc/xbmc/commit/c81546e08f56d0fa583fb0556d1f640595955b84) [depends][python3] Do not install pip's installer and the Tk tools
+- [`dbe7186b`](https://github.com/xbmc/xbmc/commit/dbe7186bb66af87e65d1c1daf0600936da1b42ca) [GUIInfo][Bluray] Give a disc's file, not its playlist, as the filename.
+- [`09880b7e`](https://github.com/xbmc/xbmc/commit/09880b7e806ed825b62ae3405a2d6d0c285f43fa) [VideoPlayer][RDS] Hold the RDS language as a CLanguageTag
+- [`35aa3523`](https://github.com/xbmc/xbmc/commit/35aa3523953e70d50bc34e73dce0e0a3a8415052) [Video][CStreamDetails] Hold stream and original languages as CLanguageTag
+- [`86622ae8`](https://github.com/xbmc/xbmc/commit/86622ae8a7eb8cb9c7b7205488be28c3dee622ab) [JSON-RPC][schema] Write the service description in JSON Schema 2020-12
+- [`ae73d07d`](https://github.com/xbmc/xbmc/commit/ae73d07d53d01c3a99a3542808099140dbf3582a) [AdvancedSettings] Add mintempo to allow tempo playback below 0.8x
+- [`04d5bbfc`](https://github.com/xbmc/xbmc/commit/04d5bbfcd1408052c451909aac71763a7c54a26e) [RetroPlayer] Hide Save / Load for games that can't save their state
+- [`3d6b9091`](https://github.com/xbmc/xbmc/commit/3d6b9091ee20c4815c0263f35a92a1c470295492) [GBM][GL] Composite the GUI as HLG over HLG video
+- [`c28d53a1`](https://github.com/xbmc/xbmc/commit/c28d53a135f5b19b09659df8747fb8c438455ef4) [VideoPlayer] Don't drop a multi-source input while a stop aborts it
+- [`999cc3e0`](https://github.com/xbmc/xbmc/commit/999cc3e0d31b7b33e1a8977b2b44126c27f81ff0) [Video] Look up a refreshed movie with the current smart playlist path
+- [`8ea87c40`](https://github.com/xbmc/xbmc/commit/8ea87c40ba893c2fc644dcc28cb0b6d4bc4611ac) [guilib] Stop a video control redrawing the screen when nothing plays
+- [`a48ad6f1`](https://github.com/xbmc/xbmc/commit/a48ad6f140bfa714eb5b8a009de048e49a41d69b) [UPnP][CUPnPPlayerController] Send, wait for and check a renderer action in one call
+- [`e2317d3d`](https://github.com/xbmc/xbmc/commit/e2317d3debad09500c379924013e7591b13dcd39) [Video][CStreamDetails] Format the audio candidate, drop its parsing comment
+- [`2c33ef5d`](https://github.com/xbmc/xbmc/commit/2c33ef5da62b5990414bc092c4a5ea415480556f) [JSON-RPC][schema] Drop the draft-03 "any" type from three schemas
+- [`0d207b70`](https://github.com/xbmc/xbmc/commit/0d207b70f61d8d1404415ab5badbc01a811bb0a2) [JSON-RPC][CJSONServiceDescription] Print a notification's types with it
+- [`cc5a8c2e`](https://github.com/xbmc/xbmc/commit/cc5a8c2ee81f53998ce5c284174ca8d6cc486642) [GUIInfoManager] Say what RDS.AudioLanguage shows for a reserved index
+- [`962bcf13`](https://github.com/xbmc/xbmc/commit/962bcf13d992f12e7aba3e0625c8e1bb43934cc9) [github] Sync addon metadata translations: Update Python and actions
+- [`5c0fc6cd`](https://github.com/xbmc/xbmc/commit/5c0fc6cdf5c157a6378cdfbb24c5cfba7eec7f7b) [depends][native] Bump autoconf-archive to 2026.11.11
+- [`b4d9f7f6`](https://github.com/xbmc/xbmc/commit/b4d9f7f6b37832f04910a2e8c7e484baf29a8754) [depends] Bump libffi to 3.8.1
+- [`dc132c17`](https://github.com/xbmc/xbmc/commit/dc132c177abaabc3a75ae5932247645358fd5c9c) [depends][native] Bump pkgconf to 3.0.11
+- [`d9943625`](https://github.com/xbmc/xbmc/commit/d9943625bf72a2d2816bb04a0db80a309f785223) [depends] Bump dav1d to 1.5.5
+- [`101c9fae`](https://github.com/xbmc/xbmc/commit/101c9faef6efc8f3c68062af231ec94e3c132671) [depends] Bump fontconfig to 2.18.4
+- [`40474e73`](https://github.com/xbmc/xbmc/commit/40474e730fc59322951efac4bcdee49c28afc2ef) [depends] Bump sqlite3 to 3.54.1
+- [`9ce1ce49`](https://github.com/xbmc/xbmc/commit/9ce1ce49c73c23db5ab43810075a3a666ddac52d) [depends] Bump harfbuzz to 15.1.0
+- [`51b86bb7`](https://github.com/xbmc/xbmc/commit/51b86bb7df5694c89811617802339f760677df7c) [JSON-RPC][schema] Return an empty schema from JSONRPC.NotifyAll
+- [`c2f36d1a`](https://github.com/xbmc/xbmc/commit/c2f36d1a6d4766d5f917d2975d04bf7c79098706) Update translation files
+- [`5d198b5c`](https://github.com/xbmc/xbmc/commit/5d198b5c166d221433204143daf26ef2e28a17bb) [Video][Scanner] Take a movie set's art as the artwork level allows.
+- [`326f1b4b`](https://github.com/xbmc/xbmc/commit/326f1b4b3f6e123f85ae45dbd7a4cbbbf8846b09) Merge pull request #30659 from weblate/weblate-kodi-add-ons-skins-skin-estuary
+- [`809db0da`](https://github.com/xbmc/xbmc/commit/809db0daf90386fdb3f02f623a47a7e87f31788c) [pictures] Show Ultra HDR photos in HDR
+- [`4feb5b87`](https://github.com/xbmc/xbmc/commit/4feb5b87bfc3f395aa1b40b49c166108c0f3d354) Merge pull request #30625 from ksooo/fix-sync-workflow-python
+- [`5f0a3735`](https://github.com/xbmc/xbmc/commit/5f0a3735325352a748a24a78712e9a3eb9452c2a) [depends] Bump gettext to 1.0
+- [`9634ff5c`](https://github.com/xbmc/xbmc/commit/9634ff5c5489996c1eef1a8c235ad2c5413cb13e) [depends] Bump libnfs to 8.0.1
+- [`f3875827`](https://github.com/xbmc/xbmc/commit/f387582768556d3a85d589601331a24c740e247a) [depends] Bump eudev to 3.3.0
+- [`28939676`](https://github.com/xbmc/xbmc/commit/289396767e5f803de813ac8576b4b82ba74aef71) [depends] Bump libevdev to 1.14.0
+- [`42307f5f`](https://github.com/xbmc/xbmc/commit/42307f5fe3dc5eb19390a91dba9bba376b22f2f1) [depends] Bump mtdev to 1.1.7
+- [`e3921e86`](https://github.com/xbmc/xbmc/commit/e3921e86349f12060c93edc85c9653ccc7162a0b) [depends] Bump libuuid (e2fsprogs) to 1.47.4
+- [`3ccb27ec`](https://github.com/xbmc/xbmc/commit/3ccb27eca014c9482b2ec9aeddae467b02007544) [depends] Bump utfcpp to 5.0.0
+- [`436eaabe`](https://github.com/xbmc/xbmc/commit/436eaabe0a5783cf19effbc10336b81f691f43a8) Merge pull request #30599 from clementperon/upstream/depends-python-cleanup
+- [`a3207281`](https://github.com/xbmc/xbmc/commit/a32072814a8e6487179a07f9fa0dc0d69ab4939d) wasm: play audio through a plain JS AudioWorklet
+- [`3d443d53`](https://github.com/xbmc/xbmc/commit/3d443d5353e3a836f58f0a62b640c680292ae760) [Video][Scanner] Carry on past a failed search without asking.
+- [`de50755d`](https://github.com/xbmc/xbmc/commit/de50755d5fd347011f6816d3c5d72c5cdbd83f61) Merge pull request #30568 from 78andyp/split-localart
+- [`8acc8788`](https://github.com/xbmc/xbmc/commit/8acc8788787fe1a7f23fc6063bff7633a48c9dc6) Merge pull request #30417 from sunlollyking/retroplayer-gl-rgb555
+- [`c7027412`](https://github.com/xbmc/xbmc/commit/c702741275d2decf42c33ca6e180cec1587668f1) Merge pull request #30432 from sunlollyking/osd-hide-save-load
+- [`cd954324`](https://github.com/xbmc/xbmc/commit/cd954324440edec715560b4b4a59ce219813f39f) Merge pull request #29807 from sunlollyking/slideshow-hdr-pictures
+- [`37865525`](https://github.com/xbmc/xbmc/commit/37865525e4cd3088be327a335d323a3ba88cc5e0) Merge pull request #30419 from sunlollyking/videocontrol-idle-redraw
+- [`0c7ace11`](https://github.com/xbmc/xbmc/commit/0c7ace1153d64a7734e7bc79c8076e2bed2432b5) Merge pull request #30487 from sunlollyking/gl-gui-composite-hlg
+- [`fe2f253a`](https://github.com/xbmc/xbmc/commit/fe2f253a49c8d947f6514728fc969cc903e443d6) Merge pull request #30645 from olympia/video-info-targeted-refresh-playlist-path-db
+- [`8673a33b`](https://github.com/xbmc/xbmc/commit/8673a33bf790fa5a79b8d9492f479d823dc5c065) Merge pull request #30639 from kel-mo/multisource-abort-erase
+- [`d32d97cc`](https://github.com/xbmc/xbmc/commit/d32d97ccf4fe0607ef9adb3f2e3df98a7f6c8ff6) Merge pull request #30554 from clementperon/upstream/14-js-audio-worklet
+- [`8e87394f`](https://github.com/xbmc/xbmc/commit/8e87394f50d172f9e13222bbc749d0cecc540710) [GUIMediaWindow] Move the filter path to a changed library filter node
+- [`1368dac5`](https://github.com/xbmc/xbmc/commit/1368dac5ff5224abe69258fd8935fd480fd25267) [ActiveAE] Fall back to the null sink when no audio device opens
+- [`cc7cece9`](https://github.com/xbmc/xbmc/commit/cc7cece9d4ac54fccf435e436113eea05962a30f) [AudioEngine][CAESinkNULL] Pace a pass-through stream on its packed frames
+- [`f2c120aa`](https://github.com/xbmc/xbmc/commit/f2c120aabb84c49c3760a7d01d8dc3432b0e9043) [pictures][CGUIWindowPictures] Hide every folder.jpg, not every other one
+- [`a922b253`](https://github.com/xbmc/xbmc/commit/a922b25310a83bedfc297d909a43b570c4db0e79) Merge pull request #30655 from sundermann/depends-bump-major
+- [`c5b03af6`](https://github.com/xbmc/xbmc/commit/c5b03af6ffdf587207b904be078ebbbc825d6f1f) Merge pull request #30672 from olympia/fix-library-filter-node-filter-path
+- [`381e4809`](https://github.com/xbmc/xbmc/commit/381e480924404881a4e7f4d8930a11c3e3e0d9e4) Merge pull request #30560 from malard/upnp-controller-one-call-per-action
+- [`1813adc4`](https://github.com/xbmc/xbmc/commit/1813adc4efa563c66bbea477bbde9e6f8281f371) Merge pull request #30606 from malard/rds-language-tag
+- [`4e9cb533`](https://github.com/xbmc/xbmc/commit/4e9cb533a16a78a058d4e6e726eb64c31a3236b0) Merge pull request #30608 from malard/stream-language-tag
+- [`d246ebb3`](https://github.com/xbmc/xbmc/commit/d246ebb31a8e350d6f000878ad049ad4844375bc) Merge pull request #30607 from malard/jsonrpc-schema-2020-12-form
+- [`88610ff7`](https://github.com/xbmc/xbmc/commit/88610ff70f66a7733fb1ecb4589d85b3e34c1398) Merge pull request #30538 from malard/fix-audio-engine-no-device-stalls-player
+- [`e923c159`](https://github.com/xbmc/xbmc/commit/e923c159b07ae56a021d5d1649d7ca9527b541e0) Merge pull request #30535 from malard/tests-disabled-tests-review
+- [`12847e09`](https://github.com/xbmc/xbmc/commit/12847e096b690d44b91dd734a73545846dbaffb3) Merge pull request #30562 from malard/application-drop-unhandled-setting-callbacks
+- [`6341963f`](https://github.com/xbmc/xbmc/commit/6341963f5b7462e2496b11b3a980958b78496c0f) Merge pull request #30610 from malard/fix-18709-added-ability-override-mintempo
+- [`77377215`](https://github.com/xbmc/xbmc/commit/773772157e6156f54458cdbb3e41a57a8ef3e6ea) Merge pull request #30571 from malard/fix-pictures-stray-folder-jpg
+- [`12ce730a`](https://github.com/xbmc/xbmc/commit/12ce730aba39b1c80c975de5c048c787e8cfc588) Merge pull request #30663 from 78andyp/split-failedsearch
+- [`150cb6f5`](https://github.com/xbmc/xbmc/commit/150cb6f54a533e3caac24b4d33085629241065fb) Merge pull request #30598 from 78andyp/filename
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/1bf15bbe...150cb6f5)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261121-150cb6f5-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261119-1bf15bbe
 
 **Homebrew Version:** `23.26.323`
