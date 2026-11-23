@@ -1,5 +1,79 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261123-6ac03eea
+
+**Homebrew Version:** `23.26.327`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-11-23 15:08:30 PST`
+
+**Commits:** 56
+
+### All Commits
+
+- [`e7c80f37`](https://github.com/xbmc/xbmc/commit/e7c80f37af4fa683144595e8d9bba742775005c5) [guilib] Don't mark stale layout regions dirty on a focus change
+- [`64db8071`](https://github.com/xbmc/xbmc/commit/64db80713de0ab2e6bb873545232a3266ac7d2ca) [guilib] Keep the scissor when clipping text in the GLES shader
+- [`20329269`](https://github.com/xbmc/xbmc/commit/20329269792a037dc04fb06ff0560dcc5afbd1d5) [guilib] Mark children drawn outside of a grouplist dirty with it
+- [`e4b0a651`](https://github.com/xbmc/xbmc/commit/e4b0a651a41df3f7e4e5c107dd803e372ed6a6c9) [addons][CAddonMgr] Warn on every start about each incompatible add-on
+- [`2fcea6d8`](https://github.com/xbmc/xbmc/commit/2fcea6d82ae856dcfbf7f9f90d03722e4860b162) [VideoRenderers][Dither] Dither to the output depth, up to 10 bits
+- [`32f5672d`](https://github.com/xbmc/xbmc/commit/32f5672d5736e7163b51fbaf269b651bf073e79b) [VideoPlayer] Redraw when a disc menu removes part of its images
+- [`cffcd438`](https://github.com/xbmc/xbmc/commit/cffcd4389ac22b76f26277f1ed901c796fa1c20b) AEStreamInfo: remove 'm_skipCount' workaround for DTS-HD
+- [`7ad63da8`](https://github.com/xbmc/xbmc/commit/7ad63da897b2c803e6ab2e8b7886d7c42ba59c79) [Windows][depends] Build libxml2 at cmake time for Windows
+- [`b8cd2d91`](https://github.com/xbmc/xbmc/commit/b8cd2d9116f60e6ec4c49cc807ff32b4c7aa11ca) [Windows][depends] Build libcdio at cmake time for Windows
+- [`a46dcf90`](https://github.com/xbmc/xbmc/commit/a46dcf90a422347d2264767afc18410f5de6c864) [depends][target] Update ffmpeg to 9.1
+- [`88273a2f`](https://github.com/xbmc/xbmc/commit/88273a2faadc024f7c5f233a9a5ae87f3e0c6dea) [guilib] FFmpegImage: use stream group entries for tile grids
+- [`ef488b8a`](https://github.com/xbmc/xbmc/commit/ef488b8abefd0b689d9c0bb137818a37ea6f8f2e) [addons][CRepository] Report a repository's problems once per version
+- [`b45ca2b0`](https://github.com/xbmc/xbmc/commit/b45ca2b0703721f94a157d5e369809f00a816ff4) [VideoRenderers][Dither] Follow the output depth through HDR switches
+- [`54500384`](https://github.com/xbmc/xbmc/commit/545003846137e635c5d501024db2c5848ff80072) [music][CMusicDatabase] Let SetScraper clear an item's info provider
+- [`682566eb`](https://github.com/xbmc/xbmc/commit/682566eb44750f3d557179b80ddc89fe86fbe324) [filesystem] Remove unused DirectoryCache methods
+- [`831d0c08`](https://github.com/xbmc/xbmc/commit/831d0c08c30316670a6563689d7a535ad035c729) [PVR] Speed up CPVRCachedImages::Cleanup URL matching
+- [`fe67aa38`](https://github.com/xbmc/xbmc/commit/fe67aa386891f0621574097d0ecfce2f20169511) Merge pull request #30673 from thexai/libcdio-windows
+- [`b93be94c`](https://github.com/xbmc/xbmc/commit/b93be94c4f3bb2eb46fae8c5117679b4e46d1d56) Merge pull request #30635 from thexai/remove-dts-hd-workarund
+- [`5e8bce1b`](https://github.com/xbmc/xbmc/commit/5e8bce1b1e7b1e9ea6afe1633edb33c68cb1fe82) Merge pull request #30661 from thexai/libxml2-windows
+- [`7381d55b`](https://github.com/xbmc/xbmc/commit/7381d55b31415b5071dcc51ac9f75be58587cc21) [buildsteps] Clear the binary add-on result markers on every build
+- [`094aefe7`](https://github.com/xbmc/xbmc/commit/094aefe7b5347ef449e6475faee207b70163938d) [VideoRenderers][Dither] Leave DirectX's auto depth to #30706
+- [`c8757279`](https://github.com/xbmc/xbmc/commit/c87572792bbb46696ed1b7f1702f6ec144892e27) [addons][Test] Give each run of the repository log test its own versions
+- [`cdb80bef`](https://github.com/xbmc/xbmc/commit/cdb80befcaf7556cef0037a1c170a6030668400e) Merge pull request #30534 from malard/addons-warn-incompatible-disabled
+- [`7cb348de`](https://github.com/xbmc/xbmc/commit/7cb348debd51840dc5624a74afb5be67dff9f4a2) [Video][Scanner] Test the scanner's look-ups with a python scraper.
+- [`51bbe031`](https://github.com/xbmc/xbmc/commit/51bbe03108ba2250d1a383fe37b0d6d49cee5323) [Scraper] Make Local information only a scraper with nothing to run.
+- [`408d78ce`](https://github.com/xbmc/xbmc/commit/408d78ce91295a5a993a79a47ceab38d983fc528) [addons] Remove the bundled xml scrapers.
+- [`7e4ad0ad`](https://github.com/xbmc/xbmc/commit/7e4ad0ad823f03fca3f3035ccae6165fe6369238) [addons] Treat an xml scraper as incompatible.
+- [`d4c8564d`](https://github.com/xbmc/xbmc/commit/d4c8564d9210f8b0fa583363f020c20885c7a5a0) [Video][Music] Cope with a scraper Kodi no longer has.
+- [`6f5cda43`](https://github.com/xbmc/xbmc/commit/6f5cda43cf2672c37ed36b4f9b68be1d8937112f) [Scraper] Remove the xml scraper engine.
+- [`2a0ad822`](https://github.com/xbmc/xbmc/commit/2a0ad822ce16921b88ecaac439812e7a99ef7722) [Video] Remove what only xml scrapers needed.
+- [`9af5b4a9`](https://github.com/xbmc/xbmc/commit/9af5b4a903258541748de4e81bf779c13528e9b4) [Music] Remove what only xml scrapers needed.
+- [`646fafdc`](https://github.com/xbmc/xbmc/commit/646fafdcf23548dc12905ca0ae1ed05459bafdae) [ScraperUrl] Remove the page fetch only xml scrapers used.
+- [`38181c84`](https://github.com/xbmc/xbmc/commit/38181c84fc76b5d805194748408cf242c8d4a6e5) [cmake] Remove libxslt.
+- [`9a3ac9cb`](https://github.com/xbmc/xbmc/commit/9a3ac9cb908c3515d8d23ee07fd5654e4bd19062) [addons] Remove the scraper library add-on type.
+- [`a64cd5df`](https://github.com/xbmc/xbmc/commit/a64cd5dfc91903eb7814d34078df790d1b52a17e) [test][CZipFile] Check a zip64 member's size from the listing
+- [`fa64f439`](https://github.com/xbmc/xbmc/commit/fa64f439b3d80e7a767f90234139d8a8bb558f41) Merge pull request #30674 from sundermann/ffmpeg-9.1
+- [`6cca1c1d`](https://github.com/xbmc/xbmc/commit/6cca1c1d36b543f0fa125175f9e33bb91f5be99e) Merge pull request #30696 from alephnot/pr/pvr-cachedimages-cleanup
+- [`1bbdd680`](https://github.com/xbmc/xbmc/commit/1bbdd6805fe5ca35bd380e9e9d5b87dd19e77f98) Merge pull request #30694 from alephnot/pr/directorycache-dead-methods
+- [`cc9f2f35`](https://github.com/xbmc/xbmc/commit/cc9f2f355ecf2278f60f0fa8141bb1f235edfe58) Merge pull request #30526 from shaneomac1337/fix-overlay-redraw-partial-removal
+- [`c2bf8428`](https://github.com/xbmc/xbmc/commit/c2bf84283534eb8e91ac7a8fc4a6e44ebda51aeb) Merge pull request #30632 from 78andyp/xmlscrapers
+- [`43446e2e`](https://github.com/xbmc/xbmc/commit/43446e2e0707f28071f772763e91c5627c9e54dc) [language] Split the language pack out of CLangInfo
+- [`2fde8e6b`](https://github.com/xbmc/xbmc/commit/2fde8e6bcaa8dfe9c513a3cd09e5c1e78cb636bb) [language] Name the interface language alone for subtitle search
+- [`c2eb4a84`](https://github.com/xbmc/xbmc/commit/c2eb4a84591abaeb88636be1f887db9838389d8e) [language][Test] Iterate the collation codes as const char*
+- [`146c7d8e`](https://github.com/xbmc/xbmc/commit/146c7d8effc774c724a8b398cbc263db8fdf7616) [addons][Test] Brace the assertion on a parsed add-on
+- [`cb745deb`](https://github.com/xbmc/xbmc/commit/cb745debe2aaceffe4274c2883b311381fa24455) Merge pull request #30719 from malard/test-zip64-size-from-listing
+- [`f07a2bb6`](https://github.com/xbmc/xbmc/commit/f07a2bb6a90ebbd13ba9135cbd8e9145019efd8e) Merge pull request #30688 from malard/music-setscraper-clear-info-provider
+- [`3ab8acc1`](https://github.com/xbmc/xbmc/commit/3ab8acc1f96fc4c3f8be0ecbd336675274711cb4) Merge pull request #30675 from malard/fix-30658-repository-log-once
+- [`f2c2f795`](https://github.com/xbmc/xbmc/commit/f2c2f795d6b240cade4d64628fdbcd3084888a17) Merge pull request #30712 from malard/buildsteps-clear-addon-markers
+- [`5c7c6a97`](https://github.com/xbmc/xbmc/commit/5c7c6a97b507adce2efc1331141277dddb0ed5dc) Merge pull request #30536 from malard/video-dither-up-to-output-depth
+- [`e0f28d21`](https://github.com/xbmc/xbmc/commit/e0f28d21d4461b0c20c5776fe8f5ffecf849d9c9) [github] Block merging a PR labelled "Jenkins: Ignore"
+- [`a14078b7`](https://github.com/xbmc/xbmc/commit/a14078b7a0d08d64aa9d861734ca9c4330bc9340) Merge pull request #30747 from malard/github-mergeable-jenkins-ignore
+- [`d1c34c1e`](https://github.com/xbmc/xbmc/commit/d1c34c1e0a4ff74d8253a409775d2a3bb40846a9) [language] Format the lines the language split changed
+- [`5329d2b1`](https://github.com/xbmc/xbmc/commit/5329d2b1779d378e2d2dfdd8c57635c24e3000f0) Merge pull request #30691 from malard/language-authority-and-loader
+- [`019c460a`](https://github.com/xbmc/xbmc/commit/019c460a5e5cc2cceaefc55018b35936e9e8549c) Merge pull request #30400 from neo1973/fix-dirtyregions-stale-layout
+- [`c055ab2d`](https://github.com/xbmc/xbmc/commit/c055ab2d9b18c27f8bf47ac7f9072e7ef39ecc6e) Merge pull request #30407 from neo1973/fix-gles-font-scissor
+- [`6ac03eea`](https://github.com/xbmc/xbmc/commit/6ac03eea98548d41425b8a625e98678606d2d986) Merge pull request #30439 from neo1973/fix-dirtyregions-grouplist-children
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/150cb6f5...6ac03eea)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261123-6ac03eea-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261121-150cb6f5
 
 **Homebrew Version:** `23.26.325`
