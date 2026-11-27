@@ -1,147 +1,92 @@
 <h2>Kodi 23.0-ALPHA1 Nightly</h2>
-<p><b>Nightly Build:</b> <code>20261125-9d2a18a5</code></p>
-<p><b>Homebrew Nightly Version:</b> <code>23.26.329</code></p>
+<p><b>Nightly Build:</b> <code>20261127-27a746d0</code></p>
+<p><b>Homebrew Nightly Version:</b> <code>23.26.331</code></p>
 <p><b>Official Kodi webOS Package Version:</b> <code>22.90.701</code></p>
-<p><b>Feed Updated:</b> 2026-11-25 12:54:25 PST</p>
-<p><b>Feed Updated (UTC):</b> 2026-11-25 20:54:25 UTC</p>
-<p><b>Commits Since Previous Nightly:</b> 128</p>
+<p><b>Feed Updated:</b> 2026-11-27 12:30:36 PST</p>
+<p><b>Feed Updated (UTC):</b> 2026-11-27 20:30:36 UTC</p>
+<p><b>Commits Since Previous Nightly:</b> 73</p>
 <hr>
 <h3>All Commits Since Previous Nightly</h3>
 <ul>
-<li><a href="https://github.com/xbmc/xbmc/commit/5cc3c78d9caf46cea96ea105038d1b086cdf7a78">5cc3c78d</a> [cmake] ModuleHelpers: pass the full CMAKE_PREFIX_PATH to external projects</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/959fd9b5ae44cc2dfc40498386e7f039ad08d40b">959fd9b5</a> VideoPlayer: don&#x27;t retry a refused packet every 1 ms while paused</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/fe66a58b0cb512f250a0fe578d23d2a9c5dc4f86">fe66a58b</a> [ci] Move CodeQL to advanced setup and prune overlay-base caches</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/825a366db19cf4be3e10e2d74d53bea224cafb4e">825a366d</a> [video] Refresh an item with the folder name setting the scanner uses</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/e935004b3b175f535e2be9d9dd8513153dd78b18">e935004b</a> [video] Refresh a Blu-ray movie with the settings of its disc&#x27;s folder</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/7faa60213964885ba16d44781048450007d3419b">7faa6021</a> [filesystem][CurlFile] Don&#x27;t wait when libcurl asks to run again</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/97dc885cb6aa1490f5d00029c770970c52dca013">97dc885c</a> [filesystem] Forget the parent&#x27;s cached listing when creating a folder</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/540ccac80d8a62e250ae2c21cee437b3a0a8c13a">540ccac8</a> [playlists] Add smart playlist XML tests</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/d8483f6a01c9b273efd5bc388f36c3619d15a470">d8483f6a</a> [playlists] Move smart playlists and library nodes to tinyxml2</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/007984e541591a1d903102137c5b1a23741b5339">007984e5</a> ImageDecoder: scale add-on pictures down to the size asked for</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/fb8c73edc02bb9e0ac5ba1b4070d3c93b8f86211">fb8c73ed</a> [guilib] Round dirty regions outward to whole pixels</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/a3aed49188be23aecea6cbe160e4f72f27f82010">a3aed491</a> Fix leak of filter frames in CFFmpegPostproc</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/35a82003f532c25115c4a83f827944b072bd639c">35a82003</a> [python] Abort scripts after System.OnQuit has been queued for them</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/089629a861971f2146a623c95306b59ef8a40949">089629a8</a> [application] Send the playback stop when quitting during playback</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/e1b7ff06513a32f18e94d1f02780cc35cbc81b21">e1b7ff06</a> VAAPI: keep the decoder when FFmpeg asks for the format again</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/54d803641b47075010342789f5022bd64991c627">54d80364</a> [dialogs][video] Show the new stream name immediately when switching</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/36ccc5ccb1c2683fb91ce62330b24ad18352b305">36ccc5cc</a> [addons] Stop a plugin&#x27;s script when Kodi quits during its call</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/8091ebb03cbb991bea81e8ac56d20f54242b2636">8091ebb0</a> [VideoPlayer] Count only video packets in the probe budget</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/ec4cc8ee57fa03871a564b024ba93ae8429a5189">ec4cc8ee</a> [VideoPlayer] Do not decode probe packets before the first keyframe</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/3ccd2d9075aa1d9f6bdc582df44605fd0c4c4839">3ccd2d90</a> [TextureCacheJob] Do not load the target of a special image as a picture</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/185239b7dfb4e7a7e5e51d7d5a28698854db00ee">185239b7</a> [ActiveAE] Measure the sync error in media time</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/cb4cff1a1309f92402c06c441fa5480198e1f41d">cb4cff1a</a> [ActiveAE] Correct sync at the clock&#x27;s speed</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/bc78fa78b5f43b4b93788bbfbe4392f803eb32b5">bc78fa78</a> [ActiveAE] Change the tempo of a running atempo filter in place</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/dff544cdc6971423f96ec3928524a6d168a5726f">dff544cd</a> [ActiveAE] Count atempo output as consumed once it is returned</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/006bc8608642ce1911961d37991d6865fe55547a">006bc860</a> [ActiveAE] Let atempo go above a tempo of 2</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/074988c6be5ce322714fae2aa2cabe71a2da5583">074988c6</a> [ActiveAE] Convert the sync error at the speed audio was produced at</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/8a1a0a7876a999a08c1d6fa2c78ea1769f72cd07">8a1a0a78</a> [ActiveAE] Test sync at a tempo through the engine</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/e238107f3960f2695b847bf9117308257fc44529">e238107f</a> [video] Do not list library folders for local trailers or art</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/ca5e438e67993dc9ce1a6afd964078326bac204d">ca5e438e</a> [depends] Bump Python to 3.15.2</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/2c3cfd4e8b5fa00d81fca59d832213d505352e2b">2c3cfd4e</a> [depends][target] Bump pillow to 13.0.0</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/6721b6d16a4e6ede7c4f00dc234b5893e312503f">6721b6d1</a> [depends][target] Bump pycryptodome to 4.5.0</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/fc74c1a87107f0e7bc1f4ca2bb0e9d2a6d331300">fc74c1a8</a> [Video][Stacks] Keep the position of a disc stack part left by a seek</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/fabe138c7aa525eef0b52b9a8621e7a708617e64">fabe138c</a> [Video][Stacks] Test disc stack bookmarks for seeks and partly timed stacks</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/df817d8cfb631a8fe703ef2092e3e511c21ccdc5">df817d8c</a> [FileItemList] Filter the remaining lists with erase_if</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/bed21db3daebc85b17bd21162c022df1f713dd43">bed21db3</a> [media] Keep each section&#x27;s names in one table</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/5d53c969b72a01bddeb7a0676b249199d4e4c1ba">5d53c969</a> [addons][CAddonsDirectory] Build the category folders through one helper</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/17cd6dd3a428739a34aec6154ebf9c10bca5caa2">17cd6dd3</a> [dialogs][Test] Use the shared GUI stubs in the busy dialog tests</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/b265c66d8c29a9181dbd0dc54f3ff731605a8950">b265c66d</a> [dialogs][CGUIDialogNumeric] Replace the if-ladders with switches</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/797b77842809e375f0f43e5f9b41d90bb4c73dbe">797b7784</a> [dialogs][CGUIDialogSmartPlaylistRule] Browse a rule&#x27;s values through switches</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/1abfa2772d612f4c73e9825fa9c0e9a30efeca4b">1abfa277</a> [dialogs][CGUIDialogNumeric] Leave a month out of range alone</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/b3cf329f4ad07e7fe0c7ad599c176daf3966587b">b3cf329f</a> [macOS] Keep fullscreen video out of the area hidden by the notch</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/7936fc058c815e7c53cd9687b8c629799bfc405d">7936fc05</a> [Subtitles] Append libass event text with a single realloc</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/70a9cf3b7ab5c74bf3c8bc45fbec8580b4dc7794">70a9cf3b</a> [guilib] Drain all stale font cache entries on miss</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/13d29f9eb14e59f52a5c93d4b25471cae0e48b9f">13d29f9e</a> [network] Let permanent DNS overrides replace earlier entries</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/2b9f1fd35c9a7a912800e0540656b5b4bc8c2e55">2b9f1fd3</a> [VideoRenderers][Windows] Dither to 10 bits on a 10-bit swap chain</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/23ef46eadd315b10b4cd58f5b48569b944ec8716">23ef46ea</a> [Windows][depends] Build libplist at cmake time for Windows</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/534cd89f55ea9030c551c07418ca3d714f2eec77">534cd89f</a> [VideoInfoScanner] Test two disc art cases only with libbluray.</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/13c39dcf7c85a49b86d3701c8f5eba76e35a9d75">13c39dcf</a> [Video][CVideoDatabase] Remove the unused GetVideoItemTitle</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/477ae11be9d7e539b8501f51369af41e582649f2">477ae11b</a> [test] Restructure the URL and path tests</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/19fc67611e161129a21eaae632a9d6c3f6ac6e6f">19fc6761</a> [URL] Keep an IPv6 host&#x27;s brackets when the URL has no port</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/49a642eeca70ad901690ffcf569769fab1143a27">49a642ee</a> [Video][Bluray] Save the main title played for an item still stored as its disc</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/a231080bd50200063fa46ef9094c34eeaea4f134">a231080b</a> [Video] Write the resume point to the file an item moves to at playback end</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/d088865c29f14ec2c19226b8d3d6557a8faebb81">d088865c</a> [ActiveAE] Keep the sink delay when an IEC packet is dropped</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/3da931343d31782a3819f1ce108e256842bbeec0">3da93134</a> [Video] Keep an item on its file when its resume point can&#x27;t be written to the new one</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/fb4238da6a8bfa5bfe8dbcffc55fe52c9c805839">fb4238da</a> [AudioEngine] ActiveAE: Adjust late passthrough audio again</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/31d0e9387980c6c79316992e6f0f52ddbcf06837">31d0e938</a> AESinkAudioTrack: Relate Stuck-Counter to really called AddPackets</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/83d356c567d912fd931e5d00eccb3cafa2668415">83d356c5</a> [video] Look up movie versions and extras by file id in videodb paths</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/eff95159ff44fceef48cb4904a80110c24c19814">eff95159</a> [filesystem] Do not cache video and music library listings</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/ad3afd199caf2dca26d37e3b19bd99da36add1e2">ad3afd19</a> [VideoPlayer] Suspend presentation through one set of reasons</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/1792414c66704e8ee324a6d29ad01bbd395229de">1792414c</a> [Util] Name the playlist folders and paths once</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/2bc07df5336ed303b06aaeec86ba96ac6f8e4559">2bc07df5</a> [VideoDatabase] List the four video types through one listing</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/ff6f9b50a408cdccb853b890323f1af7d0d0b3b8">ff6f9b50</a> [language] Identify a region by its place, and reach it as a service</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/8baf75f9f35d4fe687c8972badb4b508055f88db">8baf75f9</a> [AudioEngine] ActiveAE: Inline IsTrueHDPassthrough() again</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/717e45438618609c49b6b68d56f7d2319e215304">717e4543</a> Merge pull request #30693 from ksooo/macos-notch-fullscreen-video</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/a26bbd03f438bdbf0ceff4080d672219b1f01ee0">a26bbd03</a> [tools/codesign][darwin_embedded] Don&#x27;t fake sign Simulator builds</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/c6cca56574312e1e4ca853d1347bd9748ba56cb0">c6cca565</a> [macOS] Fix media key tap thread racing with disabling the tap</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/fc62871abf76937dc05b8e0751ba690b0794c32e">fc62871a</a> Merge pull request #30089 from 78andyp/winbuild</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/07882686fa6a76e854d17e01edd030e6077f139b">07882686</a> Merge pull request #30253 from clementperon/prune-codeql-caches</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/a61beffdb48b64cd7666a5c6092f39398f30ac07">a61beffd</a> Merge pull request #30680 from sundermann/python-3.15.2</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/02251fc70161d8fcbc7a8ccb9d2b20472f0e6faa">02251fc7</a> Merge pull request #30644 from 78andyp/nextpartfix</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/6f0d9683c0156f07467ed7348ad3d0b2fca7ddd6">6f0d9683</a> Merge pull request #30721 from 78andyp/disc-main-title-resume</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/e17bb6c0434f6c748437063f0caceb47be9bfdaf">e17bb6c0</a> Merge pull request #30348 from popcornmix/dircache-skip-library</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/1b71a756bb2f3f348ace8df58ed9234e9803d7ba">1b71a756</a> [video] Load library items through one call</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/6bdc951a9831d8df653ae9fc7ff96fb01d0ff83a">6bdc951a</a> [video] Add the single-call edits JSON-RPC makes to CVideoDatabase</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/6f07e9efb7b4bc19df92125c9d32f169d1a269e7">6f07e9ef</a> Merge pull request #30692 from ksooo/macos-mediakeys-tap-race</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/9fcb9508bfed666160e4b4ca05ae098fca12b315">9fcb9508</a> Merge pull request #30739 from fritsch/stuckc</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/ded61be83f3b25dec81107a47ba67b460b44760b">ded61be8</a> [guiinfo] Answer the library content conditions from one table</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/380df4c4860cfd09fbce996214a1a47a5d6c5117">380df4c4</a> Merge pull request #30690 from malard/smart-playlist-rule-browse-switches</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/6ce6bf5e6851ffd612c16eda2b05c328302bb3a6">6ce6bf5e</a> [Video][Test] Assert each listed show before reading it</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/de06ae88cee8e30cc37dba10c063d313a4a4465f">de06ae88</a> [addons][CAddonsDirectory] Drop two comments that restate the code</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/3d29e16e63f31021a3df803c4fa1231b29def745">3d29e16e</a> Merge pull request #30689 from malard/numeric-dialog-mode-switches</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/5e8d3e8806d5d988101d23cb4d779e2d715d2b00">5e8d3e88</a> Merge pull request #30684 from malard/busy-dialog-tests-shared-gui-stubs</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/6da72d4f3d14110aa00c129504df4a6fa65fabfa">6da72d4f</a> Merge pull request #30683 from malard/media-section-name-table</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/5fba739a16e26f50fc3a6d32b4618b1f1a2fa374">5fba739a</a> Merge pull request #30682 from malard/fileitemlist-filter-with-erase-if</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/d6c70804fcc7ef0f889ad6e98643ee34bd85df94">d6c70804</a> Merge pull request #30706 from malard/fix-188-video-dither-caps-bit</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/bb7ee74a1ee4719b21d59ec4a7d2e766a4e389ff">bb7ee74a</a> Merge pull request #30685 from malard/addons-directory-category-folders</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/730aded300a44d2f5eb7a2a6af44af91a29a976f">730aded3</a> Merge pull request #30737 from ksooo/activeae-passthrough-late-start</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/eab34a9ab7180f7fbbb6556f1f188de19e9d8c9b">eab34a9a</a> [video] Name the call that could not open the video database</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/4dba913e4a83034134d5b809e669e072856a11f9">4dba913e</a> [cmake] FindMicroHttpd: link GnuTLS when building libmicrohttpd</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/15b908a6dc7ed9f237f2966f7117d57a4688736e">15b908a6</a> Merge pull request #30495 from neo1973/tinyxml2/l3-smartplaylists</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/f362cd0b200f046bb5fe1d6dd6ba58270fd50d19">f362cd0b</a> Merge pull request #30542 from neo1973/fix-dirtyregions-halfpixel</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/5ff3de5274f322d44267a15caae394467dd2ab4a">5ff3de52</a> Merge pull request #30543 from smp79/fix-leak-filter</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/d3190ca29c5dcbeff23d7f55756894b4975eac86">d3190ca2</a> Merge pull request #30267 from 78andyp/paused</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/ede1150221dcfae6636f5ab017ff6fd0a570de14">ede11502</a> Merge pull request #30215 from 78andyp/root</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/129e149ebfc3e4ce43051e731097a8aba61f7fec">129e149e</a> Merge pull request #30421 from sunlollyking/directory-create-clears-cache</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/1f143dc171f504a6d0a40889418778e45928cdc3">1f143dc1</a> Merge pull request #30413 from kris-anderson/curlfile-fillbuffer-zero-timeout</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/d246cea461353c8312905eae3fa9d6440428ed68">d246cea4</a> [video] Return -1 from AddTag when the video database will not open</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/d3c5ef0907529d48701a4008ecb424e556868d75">d3c5ef09</a> [video][CVideoDatabase] Keep an edit&#x27;s writes in its transaction</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/caf98394f69241e2c3e101068ac63bc9c660a215">caf98394</a> Merge pull request #30471 from noaccOS/push-prvnmkpxtzrp</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/dcfac7497d6d808e09b9306c2d1f5926dcb02a30">dcfac749</a> Merge pull request #30710 from thexai/libplist-windows</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/2ce4afb645e209e266b48135d0badc87e9b56e7f">2ce4afb6</a> Merge pull request #30724 from 1358/activeaesink-iec-zero-frame</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/f351324866b03807d2eee9fb19a6d8999a0c536a">f3513248</a> Merge pull request #30579 from sasha-spb-ru/fix-ts-thumbnails</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/1fc11685343d48484a6c60856ea53ec22330608b">1fc11685</a> Merge pull request #30714 from clementperon/upstream/ldid-noplist-execseg</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/a33805eaca7cee33915df77ed8b501537e2591a1">a33805ea</a> Merge pull request #30711 from clementperon/upstream/bluray-art-test-guard</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/d1e46e924ae841270d12f3cd2804818e0c62532e">d1e46e92</a> Merge pull request #29805 from sbraz/fix-kaitoast-superseded-notifications</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/ec8f68b989875ebb77e064bd5743b75c22f8514a">ec8f68b9</a> Merge pull request #30553 from kel-mo/vaapi-keep-decoder-new-sps</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/aa7e6194ca8003ef1aa860921d3ae2ae68c27fa9">aa7e6194</a> Merge pull request #30527 from kel-mo/imagedecoder-decode-scale</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/288ee3322a2ee2fd89e3536956214c05003d2e06">288ee332</a> Merge pull request #30586 from kel-mo/plugin-stop-on-quit</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/fc6cb942b9dc2c17692562e71908bd99686a00c4">fc6cb942</a> Merge pull request #30550 from kel-mo/script-abort-after-onquit</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/f5e9013a0ea7b8cd5598d347746953bcf671ab32">f5e9013a</a> Merge pull request #30699 from alephnot/pr/dns-permanent-override</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/36621cfa36d554c2e026e622c04d8fe96449c0b7">36621cfa</a> Merge pull request #30695 from alephnot/pr/libass-append-realloc</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/045f726abadce547c77a375615c2db572840121a">045f726a</a> Merge pull request #30698 from alephnot/pr/fontcache-drain-stale</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/7200b5a6e9c8ca220217109338875713a67e22cd">7200b5a6</a> [interfaces] Announce typed events instead of variants</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/13a8cdfd747e460818d24008077d0da8f165eeaf">13a8cdfd</a> Merge pull request #30755 from malard/videoplayer-presentation-suspend</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/7f5ad8a33d7e484d2b27352c7393c1dccca7e434">7f5ad8a3</a> Merge pull request #30756 from malard/playlist-folders-named-once</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/b40221ce5f8476c046e8a44a1fe9e8e48f406333">b40221ce</a> Merge pull request #30720 from malard/test-url-suite-restructure</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/13e85df6b1776c678cac4ac8322c83f52c169e14">13e85df6</a> Merge pull request #30716 from malard/remove-getvideoitemtitle</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/fd9361c12631cddcd6a97d49c6dcc4443569ae54">fd9361c1</a> Merge pull request #30754 from malard/region-by-place-and-service</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/db4d2d1ea2ce5c60d99e00392ce09e0319574cf6">db4d2d1e</a> [media] Replace the smart playlist with a library query</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/642005dbccb81e347280ed97e1f7788b39aeb842">642005db</a> [media] Fix mixed playlist fields and party mode on a refused playlist</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/bef396dca56764e7c50ccf52375c8ec60a1263c3">bef396dc</a> Merge pull request #30778 from clementperon/upstream/microhttpd-gnutls</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/618e7e9648e4e8db4d4351d07ccdabfc8e5a8bf0">618e7e96</a> Merge pull request #30753 from malard/video-library-listings</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/f049d0104571e14ec796b24d037eee7c7cd32937">f049d010</a> Merge pull request #30770 from malard/library-guiinfo-table</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/51ef17bb62add3a3e02c3378586f7a4cd1064b78">51ef17bb</a> Merge pull request #30763 from malard/typed-announcement-events</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/13f0fc49f2fc43c2c6e1dc6863f83aee659d7ec7">13f0fc49</a> Merge pull request #30769 from malard/videodb-single-call-edits</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/2f2ff8f09660e053d02f20ab286ebfaafde561e9">2f2ff8f0</a> Merge pull request #30765 from malard/video-library-one-call</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/79c1c55a2fea042b1c3a6b08d58baa84994aadff">79c1c55a</a> Merge remote-tracking branch &#x27;origin/master&#x27; into library-query</li>
-<li><a href="https://github.com/xbmc/xbmc/commit/9d2a18a5c89d7477016d24ba8850c68d52968969">9d2a18a5</a> Merge pull request #30771 from malard/library-query</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/2a2df22b65b692b9ea2411c2ce4071b8ed50eeab">2a2df22b</a> [video][guilib] Play the chosen item when the watched filter drops it</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/5501300363153758e4e6ecf4a3cc99ebf9bd412d">55013003</a> [wayland] Factor out FindOrAddCustomResolution()</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/615f6af5498dec28bf47f66b009ed6d43e7ed428">615f6af5</a> [wayland] Re-apply the GUI resolution after an output hotplug</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/2fe987281fb001750a3ef43f4fe22e2e2fcdf630">2fe98728</a> PeripheralCecAdapter: skip amp queries without volume control</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/754f0f6df718bd3ca2c7d873663e11541e68d4b7">754f0f6d</a> [VideoPlayer] Don&#x27;t wait out the add-data timeout when closing audio</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/3fb5d2c19d3e8173b59d7294a53fcf541c7792a7">3fb5d2c1</a> [Games] Count a set&#x27;s completion in achievements, as RetroAchievements does</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/1f83854faeee59c83a5262a179e4ec8f0453ff1e">1f83854f</a> windowing/gbm: clear the frame committed with a mode change</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/023cb90b3f7a5471f4a4a2a386e2382c1ad2fbf0">023cb90b</a> [peripherals] Keep the USB monitor across filtered events</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/88dba13bf8e5c2057e580a4cde95e9291bf3ca87">88dba13b</a> Feed the DTS parser tests in packets so every frame is checked</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/9b8b75ccd807dd5571f60a0a2feea35fda7d342c">9b8b75cc</a> [guilib] Build a container&#x27;s letter offsets when a letter action needs them</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/0b3fc7b4458687f50f38c2320b83feab17548b39">0b3fc7b4</a> [Android][MediaCodec] Extend MediaTek DTS quirk to OMX.MS.* decoders</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/7705e62d7cf9d1757297f2408e075b296ffa3793">7705e62d</a> Don&#x27;t publish the deinterlace method from a released decoder</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/d772f1dd6fe1a4d2fcb375ed8e4c74ea9ce51234">d772f1dd</a> [AE] PipeWire: fix DTS-HD HRA passthrough</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/5370322f5b2bfec7ed7556d1fde35021087e67b5">5370322f</a> [Wayland] Don&#x27;t abort on transient eglSwapBuffers() failure</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/917d56d5df4a4e60bfdf8903a93cc026b6c4e8c4">917d56d5</a> GBM: push updated HDR metadata live</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/bd1be9e383f34af2df538df87b49c45d078e6732">bd1be9e3</a> addons: accept binary add-ons for the wasm platform</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/7f55d463049a1a3e67bbd6849770f4c69f3a2db8">7f55d463</a> cmake: build binary add-ons for wasm as side modules</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/8453e124e14feb0cfb22227147ca0df57ced1bb9">8453e124</a> wasm: do not build unused EGL code</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/2a90ba79414150104effa787995e7b36bb9de527">2a90ba79</a> wasm: link Kodi as a main module for binary add-ons</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/72049e3568aee4c3f7e3a5c9a09956f3d01456c7">72049e35</a> buildsteps: build binary add-ons for wasm</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/bdfbbc19020cd0494683899bdc81ba8351719440">bdfbbc19</a> [network] Drop eager 64KB buffer reserve for websocket clients</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/8836c856e3de7791cfc3a6bd9a73928ba1980aa5">8836c856</a> wasm: export only what binary add-ons import</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/6cda0e7e1e477ed8cda39995490244935f8d70ba">6cda0e7e</a> [Android][windowing] Fix HDR display detection without an HDR EGL config</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/7a1f6faf9a84cc4b443906dfc46e905eda3ea07d">7a1f6faf</a> [Windows][cmake] FindPython: always use prebuilt Python dependency</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/7687eefa353e9afa6601544df0740ce1fe87792c">7687eefa</a> [ActorProtocol] Release messages removed by PurgeIn and PurgeOut</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/f438d3e8a2a7b4bbba5cd647de97446c62f5e8e5">f438d3e8</a> [ActiveAE] Discard duplicate device change notifications</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/5f0389f42cea01b52e95175432b1cbf11f5e07b2">5f0389f4</a> [github] Check pull request rules in a workflow</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/fe58e725a7468dc1ec75180b242b7997d172a7d8">fe58e725</a> [Estuary] Show the content aspect ratio where one is known</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/8fce2a1843bbdf02e64bf1d971aa33ab7cebe9bf">8fce2a18</a> [Windows][ffmpeg] Detect zlib 1.4 import library</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/cba51457bd8728408514450c6f2f3b304e4f679e">cba51457</a> [Windows] Bump prebuilt dependencies</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/b358654538ef84b44e1ccf4896a2f06a05894ee6">b3586545</a> [VideoPlayer] Guard TrueHD RAW buffer capacity in PackTrueHD</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/41524373f710f691ec9065ab99c4e7094080268d">41524373</a> [buildsteps] wasm: build Kodi, and take the SDK paths from the environment</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/9ac624f88d8ac87f56c0a8c6bfa3c28bc8097cd8">9ac624f8</a> [ci] Make the SonarQube report upload survive SonarQube Cloud&#x27;s delays</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/3ff15b2d933f833fdfd84043be7fe48688351b27">3ff15b2d</a> Merge pull request #30760 from thexai/fix-windows-python-link</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/4a49a8899e094e53a66416cf10d659018b863e2a">4a49a889</a> Merge pull request #30743 from thexai/windows-deps-bump</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/f77456a8b487693116c4442365532aac2fdef6f3">f77456a8</a> Merge pull request #30441 from samnazarko/dts-tests</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/1f2bb8b5e6ae092c26c630fbdde047e0ef53aa12">1f2bb8b5</a> Merge pull request #29063 from smp79/live-metadata-update</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/ca22fc39f776040b9ac0d4e1d0bdc5ec625da372">ca22fc39</a> Merge pull request #29331 from sopparus/activeae-coalesce-device-changes</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/cf4e4ce4ccfd39ecf2044f29350f9fe04f4a8780">cf4e4ce4</a> [WASM] Pack a trimmed, precompiled Python standard library</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/6106c84bb103414137f4d6921365d15b69cd5900">6106c84b</a> Merge pull request #30585 from clementperon/upstream/15-wasm-binary-addons</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/6f8107ec4a45c3b6214859a831ff348c86b0d1a0">6f8107ec</a> [interfaces][AnnouncementV14] Add a deduction guide for Overloaded</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/862465f7b74a796372ec4f349fae4c18dd8ffdc8">862465f7</a> [buildsteps] wasm: resolve the SDK paths before the build identity</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/93ef8342f88dd1125ba1fcac028d0371d50d7494">93ef8342</a> Merge pull request #30803 from xbmc/buildsteps/wasm-headless</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/2ab2c9c1b0d2505fb81ad79ef5e354ab0d1d8a9f">2ab2c9c1</a> Revert &quot;Merge pull request #30803 from xbmc/buildsteps/wasm-headless&quot;</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/22c86978504ab4622688d2b08999d2e171ca40cb">22c86978</a> Merge pull request #30820 from malard/fix-osx-ctad</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/527d64da99b7e8d2945a66b078eeffe6fe2d81c2">527d64da</a> [guilib] Re-enable window animations on init</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/99509b9bfacc7112bd81c7b5cd2f1133da1abcca">99509b9b</a> Merge pull request #30823 from xbmc/revert/wasm-legacy-buildsteps</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/f9b135bf111e8987873fbe2d695cc73a6e76a833">f9b135bf</a> Merge pull request #30802 from clementperon/upstream/wasm-python-stdlib</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/7d82ea2e76e253caa88b2ea732e748e03687d981">7d82ea2e</a> [VideoPlayer] Keep thumbnail color management affordable on weak CPUs</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/0d0eb16ef1290faa1262e03e673f9dea793e555c">0d0eb16e</a> [docs] Replace sdkmanager with Android CLI</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/fb99f34df19149f67a2c3836e36ea680a6fb0cdc">fb99f34d</a> Merge pull request #30773 from xbmc4lyfe/fix/truehd-raw-pack-overflow</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/aa76a11cca998d9c7e933b0c6db192234774aaef">aa76a11c</a> Merge pull request #30254 from sasha-spb-ru/hdr-tonemap-perf</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/779f9ce0554a0ce0c978c03b5eca3dfa9e9745e6">779f9ce0</a> Merge pull request #30734 from sasha-spb-ru/fix-android-hdr-display-detection</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/edb855087e4702d0896884b2461c5b80a2ecc077">edb85508</a> Merge pull request #30775 from malard/estuary-content-aspect-badge</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/3b3a0445ada1ff09cc8bc96513e3c88bd31e83d6">3b3a0445</a> Merge pull request #30500 from joseluismarti/android-cli</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/c801227b1fb51a78bc5f5e9ea44983b82570e173">c801227b</a> Merge pull request #30768 from xbmc/fix/pr-rules-workflow</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/e33320e7cd7ecf0927ad7e859a36ff5f323f7be3">e33320e7</a> Merge pull request #30581 from neo1973/fix-pipewire-dtshd-hra</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/2d714826ae36be8de1fa9266c347e08a99d15601">2d714826</a> Merge pull request #30450 from sunlollyking/container-letter-index-on-demand</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/28185125f394a71077134bef4bbb9f7acd6fc639">28185125</a> Merge pull request #30420 from sunlollyking/achievements-percent-by-count</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/2e22c181551ca80479bbc898eee84c9ad40ce499">2e22c181</a> Merge pull request #30697 from alephnot/pr/websocket-buffer-reserve</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/c2aaf5bb32b2b6f9120dd33c051b1bb2a8672c66">c2aaf5bb</a> Merge pull request #30584 from Lang45/guilib-restore-window-animations</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/003aad7284b4586cd1407bdfcfd89d0cba9fda10">003aad72</a> Merge pull request #30611 from adelmonte/wayland-swap-tolerance</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/1bdac19b98dc3b86d8d4416ac4c5d15d8eb28790">1bdac19b</a> Merge pull request #30563 from smp79/fix-stale-di-method</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/a8214e02e36bba2888b9dcae9d386dfc41970320">a8214e02</a> Merge pull request #30502 from m3neillos/patch-1</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/ee9d1b8830012adcae723bd0c1ae6f411173bdb8">ee9d1b88</a> Merge pull request #30467 from dangowrt/peripherals-udev-null</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/0dee86007e68fdebedfa8d4d30044dfbfb764acf">0dee8600</a> Merge pull request #30466 from dangowrt/gbm-clear-first-frame</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/b311d98a554cdd75a085ddd70c868d393fc87d6e">b311d98a</a> Merge pull request #30393 from shaneomac1337/fix-audio-close-abort</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/ba46f0e1abe6f8ae41658737474b8ad92dcf03cf">ba46f0e1</a> Merge pull request #30382 from Portisch/fix/cec-skip-amp-query-upstream</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/382dce056c58ebc372d51715f3aac6abcb4c1adb">382dce05</a> Merge pull request #30306 from flipperdevices/wayland-hotplug-resolution</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/3de71d9936c575568fd77946066a6826a3b1ba6b">3de71d99</a> Merge pull request #30274 from TooncesToo/fix/resume-ignores-shuffle-when-item-chosen</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/4ac4301d2b3369fed0ecebab97243d1db75d7ef1">4ac4301d</a> Merge pull request #30804 from malard/ci-sonarqube-upload</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/f6d606dc7e3b9033b0d30efb5e9e48700cfaead4">f6d606dc</a> [github] Judge pull request rules on the PR&#x27;s current state</li>
+<li><a href="https://github.com/xbmc/xbmc/commit/27a746d0d787290dd7ecd0783e29f6fd1656ce3b">27a746d0</a> Merge pull request #30845 from malard/ci-pr-rules-current-state</li>
 </ul>
 <hr>
-<p><a href="https://github.com/xbmc/xbmc/compare/6ac03eea...9d2a18a5">View full Kodi GitHub comparison</a></p>
+<p><a href="https://github.com/xbmc/xbmc/compare/9d2a18a5...27a746d0">View full Kodi GitHub comparison</a></p>
 <hr>
 <h3>Package Information</h3>
 <p>Official Kodi Nightly:</p>
-<p><code>org.xbmc.kodi_20261125-9d2a18a5-master_arm.ipk</code></p>
+<p><code>org.xbmc.kodi_20261127-27a746d0-master_arm.ipk</code></p>
 <p>Kodi executables, libraries and resources are unchanged.</p>
 <p>Only the webOS package version metadata is modified so Homebrew Channel can distinguish individual nightly builds.</p>

@@ -1,5 +1,96 @@
 # Kodi webOS Nightly Changelog
 
+## Kodi 23.0-ALPHA1 — 20261127-27a746d0
+
+**Homebrew Version:** `23.26.331`
+
+**Official webOS Package Version:** `22.90.701`
+
+**Feed Updated:** `2026-11-27 12:30:36 PST`
+
+**Commits:** 73
+
+### All Commits
+
+- [`2a2df22b`](https://github.com/xbmc/xbmc/commit/2a2df22b65b692b9ea2411c2ce4071b8ed50eeab) [video][guilib] Play the chosen item when the watched filter drops it
+- [`55013003`](https://github.com/xbmc/xbmc/commit/5501300363153758e4e6ecf4a3cc99ebf9bd412d) [wayland] Factor out FindOrAddCustomResolution()
+- [`615f6af5`](https://github.com/xbmc/xbmc/commit/615f6af5498dec28bf47f66b009ed6d43e7ed428) [wayland] Re-apply the GUI resolution after an output hotplug
+- [`2fe98728`](https://github.com/xbmc/xbmc/commit/2fe987281fb001750a3ef43f4fe22e2e2fcdf630) PeripheralCecAdapter: skip amp queries without volume control
+- [`754f0f6d`](https://github.com/xbmc/xbmc/commit/754f0f6df718bd3ca2c7d873663e11541e68d4b7) [VideoPlayer] Don't wait out the add-data timeout when closing audio
+- [`3fb5d2c1`](https://github.com/xbmc/xbmc/commit/3fb5d2c19d3e8173b59d7294a53fcf541c7792a7) [Games] Count a set's completion in achievements, as RetroAchievements does
+- [`1f83854f`](https://github.com/xbmc/xbmc/commit/1f83854faeee59c83a5262a179e4ec8f0453ff1e) windowing/gbm: clear the frame committed with a mode change
+- [`023cb90b`](https://github.com/xbmc/xbmc/commit/023cb90b3f7a5471f4a4a2a386e2382c1ad2fbf0) [peripherals] Keep the USB monitor across filtered events
+- [`88dba13b`](https://github.com/xbmc/xbmc/commit/88dba13bf8e5c2057e580a4cde95e9291bf3ca87) Feed the DTS parser tests in packets so every frame is checked
+- [`9b8b75cc`](https://github.com/xbmc/xbmc/commit/9b8b75ccd807dd5571f60a0a2feea35fda7d342c) [guilib] Build a container's letter offsets when a letter action needs them
+- [`0b3fc7b4`](https://github.com/xbmc/xbmc/commit/0b3fc7b4458687f50f38c2320b83feab17548b39) [Android][MediaCodec] Extend MediaTek DTS quirk to OMX.MS.* decoders
+- [`7705e62d`](https://github.com/xbmc/xbmc/commit/7705e62d7cf9d1757297f2408e075b296ffa3793) Don't publish the deinterlace method from a released decoder
+- [`d772f1dd`](https://github.com/xbmc/xbmc/commit/d772f1dd6fe1a4d2fcb375ed8e4c74ea9ce51234) [AE] PipeWire: fix DTS-HD HRA passthrough
+- [`5370322f`](https://github.com/xbmc/xbmc/commit/5370322f5b2bfec7ed7556d1fde35021087e67b5) [Wayland] Don't abort on transient eglSwapBuffers() failure
+- [`917d56d5`](https://github.com/xbmc/xbmc/commit/917d56d5df4a4e60bfdf8903a93cc026b6c4e8c4) GBM: push updated HDR metadata live
+- [`bd1be9e3`](https://github.com/xbmc/xbmc/commit/bd1be9e383f34af2df538df87b49c45d078e6732) addons: accept binary add-ons for the wasm platform
+- [`7f55d463`](https://github.com/xbmc/xbmc/commit/7f55d463049a1a3e67bbd6849770f4c69f3a2db8) cmake: build binary add-ons for wasm as side modules
+- [`8453e124`](https://github.com/xbmc/xbmc/commit/8453e124e14feb0cfb22227147ca0df57ced1bb9) wasm: do not build unused EGL code
+- [`2a90ba79`](https://github.com/xbmc/xbmc/commit/2a90ba79414150104effa787995e7b36bb9de527) wasm: link Kodi as a main module for binary add-ons
+- [`72049e35`](https://github.com/xbmc/xbmc/commit/72049e3568aee4c3f7e3a5c9a09956f3d01456c7) buildsteps: build binary add-ons for wasm
+- [`bdfbbc19`](https://github.com/xbmc/xbmc/commit/bdfbbc19020cd0494683899bdc81ba8351719440) [network] Drop eager 64KB buffer reserve for websocket clients
+- [`8836c856`](https://github.com/xbmc/xbmc/commit/8836c856e3de7791cfc3a6bd9a73928ba1980aa5) wasm: export only what binary add-ons import
+- [`6cda0e7e`](https://github.com/xbmc/xbmc/commit/6cda0e7e1e477ed8cda39995490244935f8d70ba) [Android][windowing] Fix HDR display detection without an HDR EGL config
+- [`7a1f6faf`](https://github.com/xbmc/xbmc/commit/7a1f6faf9a84cc4b443906dfc46e905eda3ea07d) [Windows][cmake] FindPython: always use prebuilt Python dependency
+- [`7687eefa`](https://github.com/xbmc/xbmc/commit/7687eefa353e9afa6601544df0740ce1fe87792c) [ActorProtocol] Release messages removed by PurgeIn and PurgeOut
+- [`f438d3e8`](https://github.com/xbmc/xbmc/commit/f438d3e8a2a7b4bbba5cd647de97446c62f5e8e5) [ActiveAE] Discard duplicate device change notifications
+- [`5f0389f4`](https://github.com/xbmc/xbmc/commit/5f0389f42cea01b52e95175432b1cbf11f5e07b2) [github] Check pull request rules in a workflow
+- [`fe58e725`](https://github.com/xbmc/xbmc/commit/fe58e725a7468dc1ec75180b242b7997d172a7d8) [Estuary] Show the content aspect ratio where one is known
+- [`8fce2a18`](https://github.com/xbmc/xbmc/commit/8fce2a1843bbdf02e64bf1d971aa33ab7cebe9bf) [Windows][ffmpeg] Detect zlib 1.4 import library
+- [`cba51457`](https://github.com/xbmc/xbmc/commit/cba51457bd8728408514450c6f2f3b304e4f679e) [Windows] Bump prebuilt dependencies
+- [`b3586545`](https://github.com/xbmc/xbmc/commit/b358654538ef84b44e1ccf4896a2f06a05894ee6) [VideoPlayer] Guard TrueHD RAW buffer capacity in PackTrueHD
+- [`41524373`](https://github.com/xbmc/xbmc/commit/41524373f710f691ec9065ab99c4e7094080268d) [buildsteps] wasm: build Kodi, and take the SDK paths from the environment
+- [`9ac624f8`](https://github.com/xbmc/xbmc/commit/9ac624f88d8ac87f56c0a8c6bfa3c28bc8097cd8) [ci] Make the SonarQube report upload survive SonarQube Cloud's delays
+- [`3ff15b2d`](https://github.com/xbmc/xbmc/commit/3ff15b2d933f833fdfd84043be7fe48688351b27) Merge pull request #30760 from thexai/fix-windows-python-link
+- [`4a49a889`](https://github.com/xbmc/xbmc/commit/4a49a8899e094e53a66416cf10d659018b863e2a) Merge pull request #30743 from thexai/windows-deps-bump
+- [`f77456a8`](https://github.com/xbmc/xbmc/commit/f77456a8b487693116c4442365532aac2fdef6f3) Merge pull request #30441 from samnazarko/dts-tests
+- [`1f2bb8b5`](https://github.com/xbmc/xbmc/commit/1f2bb8b5e6ae092c26c630fbdde047e0ef53aa12) Merge pull request #29063 from smp79/live-metadata-update
+- [`ca22fc39`](https://github.com/xbmc/xbmc/commit/ca22fc39f776040b9ac0d4e1d0bdc5ec625da372) Merge pull request #29331 from sopparus/activeae-coalesce-device-changes
+- [`cf4e4ce4`](https://github.com/xbmc/xbmc/commit/cf4e4ce4ccfd39ecf2044f29350f9fe04f4a8780) [WASM] Pack a trimmed, precompiled Python standard library
+- [`6106c84b`](https://github.com/xbmc/xbmc/commit/6106c84bb103414137f4d6921365d15b69cd5900) Merge pull request #30585 from clementperon/upstream/15-wasm-binary-addons
+- [`6f8107ec`](https://github.com/xbmc/xbmc/commit/6f8107ec4a45c3b6214859a831ff348c86b0d1a0) [interfaces][AnnouncementV14] Add a deduction guide for Overloaded
+- [`862465f7`](https://github.com/xbmc/xbmc/commit/862465f7b74a796372ec4f349fae4c18dd8ffdc8) [buildsteps] wasm: resolve the SDK paths before the build identity
+- [`93ef8342`](https://github.com/xbmc/xbmc/commit/93ef8342f88dd1125ba1fcac028d0371d50d7494) Merge pull request #30803 from xbmc/buildsteps/wasm-headless
+- [`2ab2c9c1`](https://github.com/xbmc/xbmc/commit/2ab2c9c1b0d2505fb81ad79ef5e354ab0d1d8a9f) Revert "Merge pull request #30803 from xbmc/buildsteps/wasm-headless"
+- [`22c86978`](https://github.com/xbmc/xbmc/commit/22c86978504ab4622688d2b08999d2e171ca40cb) Merge pull request #30820 from malard/fix-osx-ctad
+- [`527d64da`](https://github.com/xbmc/xbmc/commit/527d64da99b7e8d2945a66b078eeffe6fe2d81c2) [guilib] Re-enable window animations on init
+- [`99509b9b`](https://github.com/xbmc/xbmc/commit/99509b9bfacc7112bd81c7b5cd2f1133da1abcca) Merge pull request #30823 from xbmc/revert/wasm-legacy-buildsteps
+- [`f9b135bf`](https://github.com/xbmc/xbmc/commit/f9b135bf111e8987873fbe2d695cc73a6e76a833) Merge pull request #30802 from clementperon/upstream/wasm-python-stdlib
+- [`7d82ea2e`](https://github.com/xbmc/xbmc/commit/7d82ea2e76e253caa88b2ea732e748e03687d981) [VideoPlayer] Keep thumbnail color management affordable on weak CPUs
+- [`0d0eb16e`](https://github.com/xbmc/xbmc/commit/0d0eb16ef1290faa1262e03e673f9dea793e555c) [docs] Replace sdkmanager with Android CLI
+- [`fb99f34d`](https://github.com/xbmc/xbmc/commit/fb99f34df19149f67a2c3836e36ea680a6fb0cdc) Merge pull request #30773 from xbmc4lyfe/fix/truehd-raw-pack-overflow
+- [`aa76a11c`](https://github.com/xbmc/xbmc/commit/aa76a11cca998d9c7e933b0c6db192234774aaef) Merge pull request #30254 from sasha-spb-ru/hdr-tonemap-perf
+- [`779f9ce0`](https://github.com/xbmc/xbmc/commit/779f9ce0554a0ce0c978c03b5eca3dfa9e9745e6) Merge pull request #30734 from sasha-spb-ru/fix-android-hdr-display-detection
+- [`edb85508`](https://github.com/xbmc/xbmc/commit/edb855087e4702d0896884b2461c5b80a2ecc077) Merge pull request #30775 from malard/estuary-content-aspect-badge
+- [`3b3a0445`](https://github.com/xbmc/xbmc/commit/3b3a0445ada1ff09cc8bc96513e3c88bd31e83d6) Merge pull request #30500 from joseluismarti/android-cli
+- [`c801227b`](https://github.com/xbmc/xbmc/commit/c801227b1fb51a78bc5f5e9ea44983b82570e173) Merge pull request #30768 from xbmc/fix/pr-rules-workflow
+- [`e33320e7`](https://github.com/xbmc/xbmc/commit/e33320e7cd7ecf0927ad7e859a36ff5f323f7be3) Merge pull request #30581 from neo1973/fix-pipewire-dtshd-hra
+- [`2d714826`](https://github.com/xbmc/xbmc/commit/2d714826ae36be8de1fa9266c347e08a99d15601) Merge pull request #30450 from sunlollyking/container-letter-index-on-demand
+- [`28185125`](https://github.com/xbmc/xbmc/commit/28185125f394a71077134bef4bbb9f7acd6fc639) Merge pull request #30420 from sunlollyking/achievements-percent-by-count
+- [`2e22c181`](https://github.com/xbmc/xbmc/commit/2e22c181551ca80479bbc898eee84c9ad40ce499) Merge pull request #30697 from alephnot/pr/websocket-buffer-reserve
+- [`c2aaf5bb`](https://github.com/xbmc/xbmc/commit/c2aaf5bb32b2b6f9120dd33c051b1bb2a8672c66) Merge pull request #30584 from Lang45/guilib-restore-window-animations
+- [`003aad72`](https://github.com/xbmc/xbmc/commit/003aad7284b4586cd1407bdfcfd89d0cba9fda10) Merge pull request #30611 from adelmonte/wayland-swap-tolerance
+- [`1bdac19b`](https://github.com/xbmc/xbmc/commit/1bdac19b98dc3b86d8d4416ac4c5d15d8eb28790) Merge pull request #30563 from smp79/fix-stale-di-method
+- [`a8214e02`](https://github.com/xbmc/xbmc/commit/a8214e02e36bba2888b9dcae9d386dfc41970320) Merge pull request #30502 from m3neillos/patch-1
+- [`ee9d1b88`](https://github.com/xbmc/xbmc/commit/ee9d1b8830012adcae723bd0c1ae6f411173bdb8) Merge pull request #30467 from dangowrt/peripherals-udev-null
+- [`0dee8600`](https://github.com/xbmc/xbmc/commit/0dee86007e68fdebedfa8d4d30044dfbfb764acf) Merge pull request #30466 from dangowrt/gbm-clear-first-frame
+- [`b311d98a`](https://github.com/xbmc/xbmc/commit/b311d98a554cdd75a085ddd70c868d393fc87d6e) Merge pull request #30393 from shaneomac1337/fix-audio-close-abort
+- [`ba46f0e1`](https://github.com/xbmc/xbmc/commit/ba46f0e1abe6f8ae41658737474b8ad92dcf03cf) Merge pull request #30382 from Portisch/fix/cec-skip-amp-query-upstream
+- [`382dce05`](https://github.com/xbmc/xbmc/commit/382dce056c58ebc372d51715f3aac6abcb4c1adb) Merge pull request #30306 from flipperdevices/wayland-hotplug-resolution
+- [`3de71d99`](https://github.com/xbmc/xbmc/commit/3de71d9936c575568fd77946066a6826a3b1ba6b) Merge pull request #30274 from TooncesToo/fix/resume-ignores-shuffle-when-item-chosen
+- [`4ac4301d`](https://github.com/xbmc/xbmc/commit/4ac4301d2b3369fed0ecebab97243d1db75d7ef1) Merge pull request #30804 from malard/ci-sonarqube-upload
+- [`f6d606dc`](https://github.com/xbmc/xbmc/commit/f6d606dc7e3b9033b0d30efb5e9e48700cfaead4) [github] Judge pull request rules on the PR's current state
+- [`27a746d0`](https://github.com/xbmc/xbmc/commit/27a746d0d787290dd7ecd0783e29f6fd1656ce3b) Merge pull request #30845 from malard/ci-pr-rules-current-state
+
+[Full Kodi GitHub comparison](https://github.com/xbmc/xbmc/compare/9d2a18a5...27a746d0)
+
+Official Nightly Source: https://mirrors.kodi.tv/nightlies/webos/master/org.xbmc.kodi_20261127-27a746d0-master_arm.ipk
+
+---
 ## Kodi 23.0-ALPHA1 — 20261125-9d2a18a5
 
 **Homebrew Version:** `23.26.329`
